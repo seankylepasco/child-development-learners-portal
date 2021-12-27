@@ -1,0 +1,13 @@
+<header><h2 mat-dialog-title>Add New Academic Year</h2></header>
+<mat-card>
+  <div class="flex-column">
+    <label for="year">Academic Year</label>
+    <input
+      [(ngModel)]="year"
+      name="year"
+      type="text"
+      placeholder="2020 - 2021 .."
+    />
+  </div>
+  <button class="save" (click)="addYear()">save</button>
+</mat-card>

@@ -1,0 +1,86 @@
+<mat-drawer-container autosize>
+  <mat-drawer #drawer mode="side" opened="true">
+    <div class="flex-row end-obj">
+      <button class="button-44 none" (click)="drawer.toggle()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+    <div class="center">
+      <img src="../../assets/img/signup/user.jpg" *ngIf="!profile.img" />
+      <img appLazyLoad src="{{ profile.img }}" *ngIf="profile.img" />
+    </div>
+
+    <div class="user">Hello {{ profile.firstname }}!</div>
+    <div class="profile">
+      <button (click)="toTeacher()" class="red">
+        <mat-icon>home</mat-icon>&nbsp;Dashboard
+      </button>
+      <button (click)="toMasterList()" class="red">
+        <mat-icon>list</mat-icon>&nbsp;Master List
+      </button>
+      <button (click)="toEnrollees()" class="red">
+        <mat-icon>list</mat-icon>&nbsp;Incoming Enrollees
+      </button>
+      <button (click)="toAnnouncementPost()" class="red">
+        <mat-icon>announcement</mat-icon>&nbsp;Post announcement
+      </button>
+      <button class="blue">
+        <mat-icon> attach_file</mat-icon>&nbsp;Post Activity
+      </button>
+    </div>
+
+    <div class="logout">
+      <button (click)="openLogout()" class="blue">Logout</button>
+    </div>
+  </mat-drawer>
+  <header>
+    <button (click)="drawer.toggle()"><mat-icon>menu</mat-icon></button>
+    <h1>Activities</h1>
+  </header>
+  <div class="col">
+    <div class="divcon">
+      <button (click)="openAddActivity()" class="blue-save" type="submit">
+        <mat-icon inline="true">add</mat-icon>&nbsp;Add Activity
+      </button>
+
+      <div class="flex-column">
+        <div class="con">
+          <h1><mat-icon>list</mat-icon>&nbsp;List of Activities</h1>
+        </div>
+
+        <mat-card *ngIf="!teacher_modules">
+          <h2>
+            <mat-icon> cancel_presentation</mat-icon>&nbsp;No modules created
+            yet!
+          </h2>
+        </mat-card>
+        <mat-card
+          *ngFor="
+            let module of teacher_modules
+              | paginate
+                : {
+                    itemsPerPage: 10,
+                    currentPage: page,
+                    totalItems: total
+                  }
+          "
+        >
+          <div class="flex-row">
+            <h2 style="margin-right: auto">
+              Activity Title: {{ module.title }}
+            </h2>
+            <button (click)="viewActivity(module)" class="red-view">
+              <mat-icon>remove_red_eye</mat-icon> &nbsp; view
+            </button>
+          </div>
+        </mat-card>
+        <div class="center" *ngIf="teacher_modules">
+          <pagination-controls
+            class="my-pagination"
+            (pageChange)="page = $event"
+          ></pagination-controls>
+        </div>
+      </div>
+    </div>
+  </div>
+</mat-drawer-container>

@@ -1,0 +1,143 @@
+<div class="card-main">
+  <div class="list-label">
+    <h1><i class="fas fa-utensils"></i> Food List</h1>
+  </div>
+  <div class="search-input">
+    <form id="form-search"> 
+      <label for="search"><i class="fas fa-search"></i>&nbsp; <input id="search" name="search" placeholder="search" [(ngModel)]="search"></label>
+      <button class="search" type="submit" (click)="getFood()">search</button>
+    </form>
+  </div>
+  <div>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Available</th>
+        <th>Actions</th>
+      </tr>
+      <tr *ngFor="let food of food">
+        <td style="width: 30%">  
+          <div style="float: left; padding-left: 10px">
+            <div class="div-product-td"><p>{{ food?.product_name}}</p></div>
+          </div>
+        </td>
+        <td class="td-avail">
+          <p *ngIf="food.available==1">Yes</p>
+          <p *ngIf="food.available==0" style="color:red">No</p>
+        </td>
+        <td> 
+          <button (click)="viewModal(food)" class="card-view-button"><i class="fas fa-eye"></i>&nbsp;view</button> &nbsp;
+          <button (click)="editModal(food)" class="card-edit-button"><i class="fas fa-edit"></i>&nbsp; Edit</button> &nbsp;
+          <button (click)="openDelete(food)" class="card-delete-button"><i class="fas fa-trash-alt"></i>&nbsp; Delete</button> 
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+<!-- Edit Modal -->
+<div *ngIf = "openEditModal" class="modal">
+  <div class="modal-content">
+    <!-- Onclick close modal -->
+    <button type="button" (click)="closeEditModal()" class="close-modal"><i class="fas fa-times"></i></button> 
+      <h2><i class="fas fa-edit" style="color:green"></i>&nbsp; Edit Menu</h2>
+      <hr>
+      <input id="edit_id_name" class="modal-input" placeholder="" [(ngModel)]="foodArray.product_name" >
+      <input id="edit_id_price" class="modal-input" placeholder="" [(ngModel)]="foodArray.product_price" >
+      <input id="edit_id_type" class="modal-input" placeholder="" [(ngModel)]="foodArray.product_type" >
+      <div>
+      <div class="h-30" >
+        <h4>Ingredients &nbsp;<button (click)="addIngModal(foodArray)" class="modal-button-add">add ingredients</button></h4>
+      </div>
+      </div>
+      <div class="modal-container">
+        <ul *ngFor="let ingredient of ingredients">
+          <li class="li-10">
+            {{ ingredient.ing_name }} &nbsp;
+            ( {{ ingredient.ing_quantity }} )
+            <button type="button" (click)="editIngModal(ingredient)" class="modal-button">edit</button>
+            &nbsp;
+            <button type="button" (click)="deleteIng(ingredient)" class="modal-button-danger"><i class="fas fa-trash-alt"></i></button>
+          </li> 
+        </ul>
+      </div>
+      <div class="button-mid">
+        <button type="submit" (click)="updateProduct()" class="modal-button-add" >Save Changes</button>
+      </div>
+  </div>
+</div>
+
+<!-- Edit Ingredient -->
+<div *ngIf="openIngredientModal" class="modal">
+  <div class="modal-content">
+    <!-- Onclick close modal -->
+    <button type="button" (click)="closeIngModal()" class="close-modal"><i class="fas fa-times"></i></button> 
+      <h2><i style="color:brown" class="fas fa-drumstick-bite"></i>&nbsp; Edit Ingredient</h2>
+      <hr>
+      <input class="modal-input" placeholder="Ingredient Name" [(ngModel)]="ingredientsArray.ing_name">
+      <input class="modal-input" placeholder="Ingredient Name" [(ngModel)]="ingredientsArray.ing_quantity">
+      <div class="button-mid">
+        <button type="button" (click)="closeIngModal()" class="modal-button">Back</button>
+        <button type="submit" (click)="updateIng()" class="modal-button-add" >Save Changes</button>
+      </div>
+  </div>
+</div>
+
+<!-- Add Ingredient -->
+<div *ngIf="addIngredientModal" class="modal" (submit)="addIng($event, foodArray)">
+  <div class="modal-content">
+    <!-- Onlick close modal -->
+    <button type="button" (click)="closeAddIng()" class="close-modal"><i class="fas fa-times"></i></button>
+    <h2>Add Ingredient</h2>
+    <hr>
+    <form ngNativeValidate>
+      <input name="ingredientAdd" type="text" class="modal-input" placeholder="Ingredient Name" required>
+      <input name="ingredientQty" type="number" class="modal-input" placeholder="Ingredient QTY" required>
+      <div class="button-mid">
+        <button type="submit" class="modal-button-add">submit</button>
+      </div>
+    </form>
+  </div>
+</div>
+  
+
+<!-- View Modal -->
+<div *ngIf="openViewModal" class="modal">
+  <div class="modal-content">
+    <!-- Onclick close modal -->
+    <button type="button" (click)="closeViewModal()" class="close-modal"><i class="fas fa-times"></i></button> 
+      <h2><i class="fas fa-eye" style="color: gray"></i>&nbsp; View Menu</h2>
+      <hr>
+       <!-- Onclick close modal -->
+    <div class="text-center">
+      <h1>{{ foodArray.product_name }}</h1>
+    </div>
+    <div>
+    <div class="h-30">
+      <h4>Ingredients</h4>
+    </div>
+    </div>
+    <div class="modal-container">
+      <ul *ngFor="let ingredient of ingredients">
+        <li class="li-10">
+          {{ ingredient.ing_name }} &nbsp;
+        </li> 
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Delete Modal -->
+<div *ngIf="deleteModal" class="modal">
+  <div class="modal-content">
+    <button type="button" (click)="closeDelete()" class="close-modal"><i class="fas fa-times"></i></button> 
+    <h2><i class="fas fa-exclamation-triangle" style="color: red"></i>&nbsp; Delete</h2>
+    <hr>
+    <p>Are you sure to delete?</p>
+    <h3>{{ foodArray.product_name }}</h3>
+    <div class="button-mid">
+      <button (click)="closeDelete()" type="button" class="modal-button">No</button>
+      <button (click)="deleteFood( foodArray.product_id )" type="submit" class="modal-button-danger">Yes</button>
+    </div>
+  </div>
+</div>
+

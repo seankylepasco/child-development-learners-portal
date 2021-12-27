@@ -1,0 +1,140 @@
+<mat-drawer-container autosize>
+  <mat-drawer #drawer mode="side" opened="true">
+    <div class="flex-row end-obj">
+      <button class="button-44 none" (click)="drawer.toggle()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+    <div class="center">
+      <img src="assets/img/signup/user.jpg" *ngIf="!profile.img" />
+      <img appLazyLoad src="{{ profile.img }}" *ngIf="profile.img" />
+    </div>
+
+    <div class="user">Hello {{ profile.firstname }}!</div>
+
+    <div class="profile">
+      <button (click)="toTeacher()" class="red">
+        <mat-icon>home</mat-icon>&nbsp;Dashboard
+      </button>
+      <button (click)="toMasterList()" class="red">
+        <mat-icon>list</mat-icon>&nbsp;Master List
+      </button>
+      <button class="blue">
+        <mat-icon>list</mat-icon>&nbsp;Incoming Enrollees
+      </button>
+      <button (click)="toAnnouncementPost()" class="red">
+        <mat-icon>announcement</mat-icon>&nbsp;Post announcement
+      </button>
+      <button (click)="toActivityPost()" class="red">
+        <mat-icon> attach_file</mat-icon>&nbsp;Post Activity
+      </button>
+    </div>
+
+    <div class="logout">
+      <button (click)="openLogout()" class="blue">&nbsp;Logout</button>
+    </div>
+  </mat-drawer>
+  <header>
+    <button (click)="drawer.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <h1>Enrollees</h1>
+  </header>
+  <div class="flex-column">
+    <section class="section-right">
+      <div class="flex-row">
+        <div class="flex-column">
+          <div class="card-table">
+            <div class="con">
+              <table>
+                <tr>
+                  <th>Name</th>
+                  <th>Status</th>
+                  <th>Address</th>
+                  <th>Contact No</th>
+                  <th>Actions</th>
+                </tr>
+                <div *ngIf="!students" class="center">
+                  <h2>
+                    <mat-icon> cancel_presentation</mat-icon>&nbsp;No Enrollees!
+                  </h2>
+                </div>
+                <tr
+                  *ngFor="
+                    let student of students
+                      | paginate
+                        : {
+                            itemsPerPage: 4,
+                            currentPage: page,
+                            totalItems: total
+                          }
+                  "
+                >
+                  <td>{{ student.firstname }} &nbsp; {{ student.lastname }}</td>
+                  <td>{{ student.type }}</td>
+                  <td>{{ student.address }}</td>
+                  <td>{{ student.phone }}</td>
+                  <td class="flex-row">
+                    <button (click)="updateToStudent(student)" class="blue">
+                      <mat-icon>check_circle</mat-icon>
+                      Accept
+                    </button>
+                    &nbsp;
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div class="center">
+            <pagination-controls
+              class="my-pagination"
+              (pageChange)="page = $event"
+            ></pagination-controls>
+          </div>
+        </div>
+        <div class="card-students flex-column" *ngFor="let student of students">
+          <mat-card>
+            <div class="con flex-column">
+              <h2>{{ student.firstname }} &nbsp; {{ student.lastname }}</h2>
+              <h3>{{ student.type }}</h3>
+              <h3>{{ student.address }}</h3>
+              <h3>{{ student.phone }}</h3>
+              <div class="flex-row">
+                <button (click)="updateToStudent(student)" class="blue">
+                  <mat-icon>check_circle</mat-icon>
+                  Accept
+                </button>
+              </div>
+            </div>
+          </mat-card>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <ng-template #content let-c="close" let-d="dismiss">
+    <div class="modaledit" *ngFor="let edit of edit">
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Student Information</h4>
+        <button
+          mat-raised-button
+          class="button-close"
+          aria-label="Close"
+          (click)="d('Cross click')"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <h1>{{ edit.id }}</h1>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-outline-dark"
+          (click)="c('Save click')"
+        >
+          Save
+        </button>
+      </div>
+    </div>
+  </ng-template>
+</mat-drawer-container>

@@ -1,0 +1,29 @@
+<header><h2 mat-dialog-title>Add New Announcement</h2></header>
+<mat-card>
+  <div class="flex-column">
+    <label for="title">TITLE</label>
+    <input
+      [(ngModel)]="title"
+      name="title"
+      type="text"
+      placeholder="Some Title .."
+    />
+    <label for="date">DATE</label>
+    <input [(ngModel)]="date" name="date" type="date" />
+    <label for="description">DESCRIPTION</label>
+    <textarea
+      [(ngModel)]="description"
+      name="description"
+      placeholder="Some Description .."
+    ></textarea>
+    <input
+      id="img"
+      class="custom-file-input"
+      type="file"
+      (change)="setPhoto($event)"
+      style="width: 200px; background-color: transparent; border: transparent"
+    />
+    <img *ngIf="img" src="{{ img }}" class="img" />
+  </div>
+  <button class="save" (click)="addNewAnnouncement()">save</button>
+</mat-card>

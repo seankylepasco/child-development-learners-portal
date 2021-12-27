@@ -1,0 +1,19 @@
+<div class="con">
+  <div class="flex-column">
+    <div class="center">
+      <img
+        src="assets/img/signup/user.jpg"
+        *ngIf="profile.img === empty"
+      />
+      <img src="{{ profile.img }}" *ngIf="profile.img != empty" />
+    </div>
+    <div class="user">
+      <div class="center">
+        <h1>{{ profile.firstname }} {{ profile.lastname }}</h1>
+        <button (click)="toProfile()" class="button-1" mat-dialog-close>
+          Edit Profile
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

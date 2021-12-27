@@ -1,0 +1,62 @@
+<div class="con">
+  <button mat-raised-button (click)="back()">Back</button>
+  <div class="flex-row">
+    <div>
+      <div class="con">
+        <div class="flex-row">
+          <div>
+            <div class="flex">
+              <h1>{{ title }}</h1>
+            </div>
+          </div>
+          <img src="assets/img/activities/book.png" />
+        </div>
+        <h3><b>Instructions:</b> {{ description }}</h3>
+        <hr />
+        <div>
+          <a
+            *ngIf="file_name"
+            mat-button
+            class="button-1"
+            [href]="file"
+            download="{{ file_name }}"
+            >Download</a
+          >
+          <input
+            (change)="setPDF($event)"
+            type="file"
+            name="file"
+            id="file"
+            class="inputfile"
+          />
+          <label for="file">
+            <mat-icon inline="true"> attach_file</mat-icon> Attach your
+            activity</label
+          >
+          <br /><br />
+          <button (click)="sendPDF()" *ngIf="submit" class="button-red">
+            <mat-icon inline="true">send</mat-icon> Submit
+          </button>
+        </div>
+        <div
+          *ngFor="let complete of completed"
+          class="completed-con flex-column"
+        >
+          <mat-card class="flex-row">
+            <h4>
+              {{ complete.file_name }}
+              &nbsp;
+              <button mat-raised-button (click)="remove(complete)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </h4>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+    <img
+      style="height: auto; width: auto"
+      src="https://img.freepik.com/free-vector/cute-boy-sitting-table-working-with-computer-home-e-class-online-education-concept-e-learning-flat-cartoon-illustration_255592-11.jpg?size=626&ext=jpg"
+    />
+  </div>
+</div>

@@ -1,0 +1,104 @@
+<div class="con">
+  <button (click)="toActivityPost()" mat-raised-button>back</button>
+  <div class="flex-row">
+    <mat-card class="mat-con">
+      <h1>Edit Activity</h1>
+      <form (submit)="updateModule()">
+        <mat-label>TITLE</mat-label>&nbsp;<BR />
+        <mat-form-field appearance="fill" class="inputtitle">
+          <input matInput name="title" [(ngModel)]="module.title" />
+          <mat-label>Activity No 1 .. </mat-label>
+        </mat-form-field>
+        <br />
+        <mat-label>DESCRIPTION</mat-label>
+        &nbsp;<br />
+        <mat-form-field appearance="fill" class="descript">
+          <mat-label>Follow these instructions .. </mat-label>
+          <textarea
+            matInput
+            name="description"
+            [(ngModel)]="module.description"
+          ></textarea>
+        </mat-form-field>
+        <br />
+        <mat-label>Total Score</mat-label>
+        &nbsp;<br />
+        <mat-form-field appearance="fill" class="descript">
+          <mat-label>10/10 .. </mat-label>
+          <textarea
+            matInput
+            name="total_score"
+            [(ngModel)]="module.total_score"
+          ></textarea>
+        </mat-form-field>
+        <br />
+        <mat-label>VIDEO URL</mat-label>
+        &nbsp;<br />
+        <mat-form-field appearance="fill" class="descript">
+          <mat-label>Google Drive video link .. </mat-label>
+          <textarea
+            matInput
+            name="video_url"
+            [(ngModel)]="module.video_url"
+          ></textarea>
+        </mat-form-field>
+        <br />
+        <div class="flex-column">
+          <mat-label>DEADLINE</mat-label>
+          <input
+            name="deadline"
+            type="date"
+            [(ngModel)]="module.deadline"
+            class="input"
+          />
+          <b>File:</b> {{ module.file_name }}
+          <input
+            type="file"
+            class="custom-file-input"
+            style="
+              width: 200px;
+              background-color: transparent;
+              border: transparent;
+            "
+            (change)="setPDF($event)"
+          />
+        </div>
+        <div class="center">
+          <button (click)="deleteModule()" class="red" type="button">
+            <mat-icon inline="true">delete</mat-icon>&nbsp;Delete
+          </button>
+          <button class="blue-save" type="submit">
+            <mat-icon inline="true">check_circle</mat-icon>&nbsp;Save
+          </button>
+        </div>
+      </form>
+    </mat-card>
+    <div class="flex-column">
+      <div class="con">
+        <h2><mat-icon>list</mat-icon>&nbsp;List of Completed</h2>
+      </div>
+      <mat-card *ngIf="!completed">
+        <h2>
+          <mat-icon> cancel_presentation</mat-icon>&nbsp;Students are not
+          finished with the activity .. ..
+        </h2>
+      </mat-card>
+      <mat-card *ngFor="let complete of completed">
+        <div class="flex-row">
+          <img
+            *ngIf="complete.img"
+            src="{{ complete.img }}"
+            style="width: 100px; height: 100px"
+          />
+          <div style="margin-right: auto">
+            {{ complete.firstname }} {{ complete.lastname }}
+          </div>
+          <button class="red" (click)="openScoreActivity(complete)">
+            <mat-icon>remove_red_eye</mat-icon> &nbsp;
+            <p>view</p>
+          </button>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</div>

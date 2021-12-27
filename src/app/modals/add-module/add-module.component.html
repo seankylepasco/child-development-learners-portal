@@ -1,0 +1,32 @@
+<header><h2 mat-dialog-title>Add Activity</h2></header>
+<mat-card>
+  <form (submit)="addActivity($event)">
+    <label>Activity Title</label>
+    <input name="title" placeholder="Activity 1" />
+    <label>Instructions</label>
+    <textarea name="description" placeholder="Description"></textarea>
+    <label>Total Score</label>
+    <input type="number" name="total_score" placeholder="100" />
+    <label>Video Link</label>
+    <input
+      type="url"
+      name="video_url"
+      placeholder="https://drive.google.com/drive/my-drive"
+    />
+    <div class="flex-column">
+      <label>Dealine of Activity</label>
+      <input name="deadline" type="date" class="input" />
+      <input
+        type="file"
+        class="custom-file-input"
+        style="width: 200px; background-color: transparent; border: transparent"
+        (change)="setPDF($event)"
+      />
+    </div>
+    <div class="flex-column">
+      <button class="save" type="submit">
+        <mat-icon>check_circle</mat-icon>&nbsp;Save
+      </button>
+    </div>
+  </form>
+</mat-card>

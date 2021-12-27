@@ -1,0 +1,70 @@
+<div class="con main">
+  <button mat-raised-button (click)="goBack()">back</button>
+  <div class="flex-row">
+    <mat-card>
+      <div class="flex-column">
+        <div *ngIf="!active" class="center">
+          <img *ngIf="!profile.img" src="{{ img }}" class="img" />
+          <img *ngIf="profile.img" src="{{ profile.img }}" class="img" />
+        </div>
+        <div class="center">
+          <img src="{{ photo }}" *ngIf="active" class="img" />
+        </div>
+        <label for="firstname">firstname</label>
+        <input id="firstname" type="text" [(ngModel)]="profile.firstname" />
+        <label for="lastname">lastname</label>
+        <input id="lastname" type="text" [(ngModel)]="profile.lastname" />
+        <label for="email">email</label>
+        <input id="email" type="text" [(ngModel)]="profile.email" />
+        <label for="phone">phone</label>
+        <input id="phone" type="text" [(ngModel)]="profile.phone" />
+        <label for="address">address</label>
+        <input id="address" type="text" [(ngModel)]="profile.address" />
+        <label for="gender">gender</label>
+        <select name="gender" [(ngModel)]="profile.gender">
+          <option value="boy">boy</option>
+          <option value="girl">girl</option>
+        </select>
+        <label for="birthdate">birthdate</label>
+        <input id="birthdate" type="date" [(ngModel)]="profile.birthdate" />
+        <label for="photo">photo</label>
+        <input
+          id="photo"
+          class="custom-file-input"
+          type="file"
+          style="
+            width: 200px;
+            background-color: transparent;
+            border: transparent;
+          "
+          (change)="setPhoto($event)"
+        />
+        <label for="psa">PSA</label>
+        <input
+          id="psa"
+          class="psa-file-input"
+          type="file"
+          style="
+            width: 200px;
+            background-color: transparent;
+            border: transparent;
+          "
+          (change)="setPSA($event)"
+        />
+        <button class="red" (click)="updateProfile()">
+          <mat-icon>check_circle</mat-icon>&nbsp;Save
+        </button>
+        <button class="blue" (click)="openChangePassword()">
+          <mat-icon>lock_open</mat-icon>&nbsp;Change password
+        </button>
+      </div>
+    </mat-card>
+    <div>
+      <img
+        src="../../../assets/img/profile/profile.jpg"
+        alt="Dress Up Kids!"
+        style="width: 100%"
+      />
+    </div>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+<header><h2 mat-dialog-title>Add Announcement</h2></header>
+<mat-card>
+  <form (submit)="addAnnouncement($event)">
+    <img *ngIf="img" src="{{ img }}">
+    <br>
+    <label>Announcement Title</label>
+    <input type="text" name="title" placeholder="Announcement title .. " />
+    <label>Event Details</label>
+    <textarea name="descript" placeholder="Some details .."></textarea>
+    <label>Date Of Event</label>
+    <input type="date" name="date" />
+    <input
+      type="file"
+      style="margin-bottom: auto"
+      class="custom-file-input"
+      style="width: 200px; background-color: transparent; border: transparent"
+      (change)="setImage($event)"
+    />
+    <div class="flex-column"  style="margin-top: 70px">
+      <button class="save" type="submit">
+        <mat-icon>check_circle</mat-icon>&nbsp;Save
+      </button>
+    </div>
+  </form>
+</mat-card>

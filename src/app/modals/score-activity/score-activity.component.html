@@ -1,0 +1,20 @@
+<div class="con">
+  <div class="flex-column">
+    Name:
+    <h1>{{ module.firstname }} {{ module.lastname }}</h1>
+    <br /><br />
+    Activity:
+    <a [href]="file" download="{{ module.file_name }}">{{
+      module.file_name
+    }}</a>
+    <br /><br />
+    Score:
+    <input [(ngModel)]="module.score" type="number" />
+    <br /><br />
+    Total Score:
+    <h2>{{ module.score }} / {{ module.total_score }}</h2>
+    <button (click)="updateCompletedScore()" class="red">
+      <mat-icon>check_circle</mat-icon> Save
+    </button>
+  </div>
+</div>

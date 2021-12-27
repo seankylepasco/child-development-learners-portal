@@ -1,0 +1,34 @@
+<header><h2 mat-dialog-title>Edit Announcement</h2></header>
+<mat-card>
+  <div class="flex-column">
+    <img *ngIf="img" src="{{ img }}" class="img" />
+    <label for="title">TITLE</label>
+    <input
+      [(ngModel)]="title"
+      name="title"
+      type="text"
+      placeholder="Some Title .."
+    />
+    <label for="date">DATE</label>
+    <input [(ngModel)]="date" name="date" type="date" />
+    <label for="description">DESCRIPTION</label>
+    <textarea
+      [(ngModel)]="description"
+      name="description"
+      placeholder="Some Description .."
+    ></textarea>
+    <input
+      id="img"
+      class="custom-file-input"
+      type="file"
+      (change)="setPhoto($event)"
+      style="width: 200px; background-color: transparent; border: transparent"
+    />
+  </div>
+  <button class="save" (click)="updateAnnouncement()">
+    <mat-icon>check_circle</mat-icon>&nbsp;save
+  </button>
+  <button class="blue" (click)="deleteAnnouncement()">
+    <mat-icon>delete</mat-icon>&nbsp;delete
+  </button>
+</mat-card>

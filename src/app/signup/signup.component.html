@@ -1,0 +1,181 @@
+<div id="container">
+  <div class="header">
+    <h1>STUDENT ENROLLMENT</h1>
+  </div>
+  <form (submit)="register($event)">
+    <div class="card">
+      <div class="photo">
+        <h2>{{ year.year }}</h2>
+        <div class="img-container">
+          <img src="assets/img/signup/user.png" *ngIf="!active" />
+          <img src="{{ photo }}" *ngIf="active" />
+        </div>
+        <div class="img-bottom">
+          <input
+            type="file"
+            class="custom-file-input"
+            style="
+              width: 200px;
+              background-color: transparent;
+              border: transparent;
+            "
+            (change)="setPhoto($event)"
+          />
+          <input
+            type="file"
+            class="custom-psa-input"
+            style="
+              width: 200px;
+              background-color: transparent;
+              border: transparent;
+            "
+            (change)="setPSA($event)"
+          />
+        </div>
+      </div>
+      <div class="form">
+        <div class="flex-row">
+          <div class="flex-column">
+            <p *ngIf="mfname" class="red" color="red">*Missing first name</p>
+            <input
+              id="firstname"
+              type="text"
+              placeholder="first name"
+              required
+            />
+          </div>
+          <div class="flex-column">
+            <input
+              id="middlename"
+              type="text"
+              placeholder="middle name"
+              required
+            />
+          </div>
+        </div>
+        <div class="flex-row">
+          <div class="flex-column">
+            <p *ngIf="mlname" class="red">*Missing last name</p>
+            <input
+              name="lastname"
+              type="text"
+              placeholder="last name"
+              required
+            />
+          </div>
+        </div>
+        <hr />
+        <div class="row-2">
+          <div class="row-2-container-3">
+            <p><i class="fas fa-venus-mars"></i></p>
+            <div class="row-2-container-4">
+              <h2>Gender</h2>
+              <p *ngIf="mgender" class="red">*Missing Gender</p>
+              <div class="row-2-container-2">
+                <input
+                  type="radio"
+                  value="boy"
+                  id="boy"
+                  name="gender"
+                  required
+                />
+                <label for="boy">boy</label>
+                <input
+                  type="radio"
+                  value="girl"
+                  id="girl"
+                  name="gender"
+                  required
+                />
+                <label for="girl">girl</label>
+              </div>
+            </div>
+          </div>
+          <div class="row-2-container-5">
+            <p><i class="fas fa-birthday-cake"></i></p>
+            <div class="row-2-container-4">
+              <h2>Birthdate</h2>
+              <p *ngIf="mbdate" class="red">*Missing birthdate</p>
+              <input name="birthdate" type="date" id="birthdate" required />
+            </div>
+          </div>
+        </div>
+        <hr />
+        <div class="row-2">
+          <p><i class="fas fa-phone-alt"></i></p>
+          <div class="row-2-container-4">
+            <h2>Phone Number</h2>
+            <input
+              name="phone"
+              type="number"
+              placeholder="phone number"
+              required
+            />
+          </div>
+          <p><i class="fas fa-address-card"></i></p>
+          <div class="row-2-container-4">
+            <h2>Address</h2>
+            <p *ngIf="maddress" class="red">*Missing address</p>
+            <input
+              name="address"
+              type="address"
+              placeholder="address"
+              required
+            />
+          </div>
+        </div>
+        <hr />
+        <div class="row-2">
+          <p><i class="fas fa-envelope-square"></i></p>
+          <div class="row-2-container-4">
+            <p *ngIf="memail" class="red">*Missing email</p>
+            <h2>Email</h2>
+            <input
+              [(ngModel)]="email"
+              (input)="getUser()"
+              name="email"
+              type="email"
+              placeholder="email"
+              required
+            />
+          </div>
+          <p><i class="fas fa-key"></i></p>
+          <div class="row-2-container-4">
+            <p *ngIf="mpassword" class="red">*Missing password</p>
+            <h2>Password</h2>
+            <div class="flex-row">
+              <input
+                name="password"
+                type="{{ password }}"
+                placeholder="password"
+                required
+              />
+              <button
+                (click)="passwordToggle()"
+                *ngIf="viewpass"
+                class="submit"
+                style="width: fit-content"
+              >
+                <mat-icon>remove_red_eye</mat-icon>
+              </button>
+
+              <button
+                (click)="passwordToggle()"
+                *ngIf="hidepass"
+                class="return"
+                style="width: fit-content"
+              >
+                <mat-icon>remove_red_eye</mat-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+        <hr />
+        <div>
+          <button class="submit" type="submit">register now</button>
+          <button class="return" type="button" (click)="goBack()">back</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,55 @@
+<mat-drawer-container>
+  <div class="con">
+    <button mat-raised-button (click)="back()">Back</button>
+    <div class="row-2">
+      <div class="flex-column">
+        <div class="con">
+          <button class="red" (click)="openNewAnnouncement()">
+            <mat-icon inline="true">add</mat-icon>Add Announcement
+          </button>
+          <mat-card
+            id="announcement"
+            *ngFor="let announcement of announcements"
+          >
+            <img
+              *ngIf="announcement.img"
+              src="{{ announcement.img }}"
+              alt=""
+            />
+            <img
+              *ngIf="!announcement.img"
+              src="https://i.pinimg.com/originals/38/6b/ba/386bbacc541b90e6576e3d25df506272.png"
+              alt=""
+            />
+            <div class="con">
+              <div class="flex-column">
+                <h1>{{ announcement.title }}</h1>
+                <br />
+                <h3>{{ announcement.description }}</h3>
+                <br />
+                <h4 *ngIf="announcement.date != '0000-00-00'">
+                  {{ announcement.date }}
+                </h4>
+                <button
+                  *ngIf="announcement.user_id === id"
+                  (click)="deleteAnnouncement(announcement.id)"
+                  class="red"
+                >
+                  delete
+                </button>
+              </div>
+            </div>
+          </mat-card>
+        </div>
+      </div>
+      <div class="flex-column">
+        <div id="accomplished">
+          <img
+            class="announce-img"
+            src="assets/img/announcement/announcement.jpg"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</mat-drawer-container>

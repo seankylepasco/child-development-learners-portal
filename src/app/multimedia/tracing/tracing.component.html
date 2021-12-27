@@ -1,0 +1,27 @@
+<div class='containerColor'>
+    <div class="con">
+        <button mat-raised-button (click)='goBack()'>Back</button>
+        <br><br>
+        <div class='flex-row'>
+            <div id='canvasContainer'>
+                <canvas id='colorCanvas'></canvas>
+            </div>
+            <div class="flex-row">
+                <div class="col-colors">
+                    <button (click)="changeColor('red')" class="button-colors" style='background-color: red;'></button>
+                    <button (click)="changeColor('orange')" class="button-colors" style="background-color: orange;"></button>
+                    <button (click)="changeColor('green')" class="button-colors" style="background-color: green;"></button>
+                    <button (click)="changeColor('blue')" class="button-colors" style="background-color: blue;"></button>
+                    <button (click)="changeColor('indigo')" class="button-colors" style="background-color: indigo;"></button>
+                    <button (click)="changeColor('violet')" class="button-colors" style="background-color: violet;"></button>
+                    <button (click)="removePath()" class="button-1 button-others"> Undo </button>
+                    <button (click)="clear()" class="button-1 button-others"> Clear </button>
+                    <button (click)="print()" class="button-1 button-others"> Print </button>
+                </div>
+                <div>
+                    <img src="assets/img/tracing/kid-pencil.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

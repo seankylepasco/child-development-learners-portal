@@ -1,0 +1,13 @@
+mat-card {
+  background-color: #ffff;
+}
+
+button {
+  margin: 10px;
+}
+
+img {
+  width: 300px;
+  height: auto;
+  object-fit: contain;
+}

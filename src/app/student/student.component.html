@@ -1,0 +1,84 @@
+<mat-drawer-container autosize>
+  <mat-drawer #drawer mode="side" opened="true">
+    <div class="flex-row end-obj">
+      <button class="button-44 none" (click)="drawer.toggle()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+    <div class="center">
+      <img *ngIf="!profile.img" src="assets/img/signup/user.jpg" />
+      <img *ngIf="profile.img" appLazyLoad src="{{ profile.img }}" />
+    </div>
+    <div class="user">Hello {{ profile.firstname }}!</div>
+    <div class="profile">
+      <button (click)="toStudent()" class="red-active">
+        <mat-icon>home</mat-icon>&nbsp;Dashboard
+      </button>
+      <button (click)="toActivities()" class="red">
+        <mat-icon>list</mat-icon>&nbsp;Activities
+      </button>
+      <button (click)="toAnnouncement()" class="red">
+        <mat-icon>announcement</mat-icon>&nbsp;Announcement
+      </button>
+      <button (click)="openSettings()" class="red">
+        <mat-icon>settings</mat-icon>&nbsp;Settings
+      </button>
+    </div>
+    <div class="logout" (click)="openLogout()">
+      <button class="blue">&nbsp;Logout</button>
+    </div>
+  </mat-drawer>
+  <header>
+    <button (click)="drawer.toggle()"><mat-icon>menu</mat-icon></button>
+    <h1>Student Dashboard</h1>
+  </header>
+  <div class="flex-column">
+    <div class="flex-row">
+      <div class="flex-column">
+        <section class="section-right">
+          <div class="flex-row">
+            <div class="flex-column">
+              <mat-card (click)="toTracing()">
+                <h1 class="center">
+                  <mat-icon> border_color</mat-icon>Tracing Form
+                </h1>
+                <img class="end-obj" src="assets/img/home/drawingkid.jpeg" />
+              </mat-card>
+              <mat-card style="margin: 10px" (click)="toAlphabet()">
+                <h1 class="center">
+                  <mat-icon>sort_by_alpha</mat-icon>ABC Alphabet
+                </h1>
+                <img class="end-obj" src="assets/img/home/abc.png" />
+              </mat-card>
+              <mat-card style="margin: 10px" (click)="toRhymes()">
+                <h1 class="center">
+                  <mat-icon>volume_up</mat-icon>Nursery Rhymes
+                </h1>
+                <img class="end-obj" src="assets/img/home/nursery.jpeg" />
+              </mat-card>
+            </div>
+
+            <div class="flex-column">
+              <mat-card style="margin: 10px" (click)="toColoring()">
+                <h1 class="center"><mat-icon>color_lens</mat-icon>Coloring</h1>
+                <img class="end-obj" src="assets/img/home/coloring.jpg" />
+              </mat-card>
+              <mat-card style="margin: 10px" (click)="toNumbers()">
+                <h1 class="center">
+                  <mat-icon> format_list_numbered</mat-icon> Numbers
+                </h1>
+                <img class="end-obj" src="assets/img/home/numbers.png" />
+              </mat-card>
+              <mat-card style="margin: 10px" (click)="toStories()">
+                <h1 class="center">
+                  <mat-icon>library_books</mat-icon> Story Telling
+                </h1>
+                <img class="end-obj" src="assets/img/home/story.jpg" />
+              </mat-card>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</mat-drawer-container>

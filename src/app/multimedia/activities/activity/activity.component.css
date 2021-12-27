@@ -1,0 +1,72 @@
+a {
+  text-decoration: none;
+}
+h1 {
+  font-size: 30px;
+  width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.description-con {
+  width: fit-content;
+}
+img {
+  height: 200px;
+  width: 200px;
+  object-fit: contain;
+}
+.activity-container {
+  background-color: #ffff;
+}
+#title {
+  width: 300px;
+  overflow: auto;
+}
+.inputfile {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+.inputfile + label {
+  font-size: 1.25em;
+  font-weight: 700;
+  color: white;
+  background-color: #252a34;
+  padding: 10px;
+  display: inline-block;
+  cursor: pointer;
+}
+.inputfile:focus + label,
+.inputfile + label:hover {
+  background-color: #ff2e63;
+}
+.completed-con {
+  width: auto;
+}
+mat-card {
+  width: fit-content;
+}
+.button-red {
+  text-decoration: none;
+  color: #ffff;
+  padding: 10px;
+  background-color: #ff2e63;
+  border: none;
+  font-size: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%),
+    0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
+}
+@media (max-width: 800px) {
+  h2 {
+    font-size: 18px;
+  }
+  img {
+    width: auto;
+    height: auto;
+  }
+}

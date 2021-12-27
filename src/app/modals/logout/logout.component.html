@@ -1,0 +1,23 @@
+<div class="center">
+  <div class="con">
+    <mat-card>
+      <div class="con">
+        <img
+        src="assets/img/logout/kid-shocked.jpg"
+        alt=""
+      />
+      </div>
+      <mat-dialog-content>
+        <h1>Are you sure?</h1>
+      </mat-dialog-content>
+      <div mat-dialog-actions class="center">
+        <button mat-raised-button [mat-dialog-close] (click)="logout()">
+          yes
+        </button>
+        <button mat-raised-button [mat-dialog-close] (click)="closeDialog()">
+          no
+        </button>
+      </div>
+    </mat-card>
+  </div>
+</div>

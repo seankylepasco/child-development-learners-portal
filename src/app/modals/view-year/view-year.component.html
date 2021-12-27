@@ -1,0 +1,12 @@
+<header><h2 mat-dialog-title>Edit Academic Year</h2></header>
+<mat-card>
+  <div class="flex-column">
+    <label for="year">Edit Academic Year</label>
+    <input
+      [(ngModel)]="year.year"
+      name="year"
+      type="text"
+    />
+  </div>
+  <button class="save" (click)="updateYear()">save</button>
+</mat-card>

@@ -1,0 +1,50 @@
+<mat-drawer-container>
+  <div class="con">
+    <button mat-raised-button (click)="back()">Back</button>
+    <div class="row-2">
+      <div class="flex-column">
+        <div class="con">
+          <mat-card *ngIf="!announcements">
+            <h2>
+              <mat-icon> cancel_presentation</mat-icon>&nbsp;No Announcements!
+            </h2>
+          </mat-card>
+          <mat-card
+            id="announcement"
+            *ngFor="let announcement of announcements"
+          >
+            <img
+              *ngIf="announcement.img"
+              class="img"
+              src="{{ announcement.img }}"
+              alt=""
+            />
+            <img
+              *ngIf="!announcement.img"
+              class="img"
+              src="https://i.pinimg.com/originals/38/6b/ba/386bbacc541b90e6576e3d25df506272.png"
+              alt=""
+            />
+            <div class="con">
+              <div class="flex-column">
+                <h1>{{ announcement.title }}</h1>
+                <br />
+                <h3>{{ announcement.description }}</h3>
+                <br />
+                <h4 *ngIf="announcement.date">{{ announcement.date }}</h4>
+              </div>
+            </div>
+          </mat-card>
+        </div>
+      </div>
+      <div class="flex-column">
+        <div id="accomplished">
+          <img
+            class="announce-img"
+            src="assets/img/announcement/announcement.jpg"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</mat-drawer-container>

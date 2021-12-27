@@ -1,0 +1,116 @@
+mat-card {
+  width: 30%;
+  background-color: #ffff;
+}
+.img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: contain;
+}
+input {
+  padding: 20px;
+  font-size: 20px;
+  background-color: whitesmoke;
+  border-color: #e5e4e2;
+  border-width: thin;
+  border-style: solid;
+  outline: none;
+  margin: 5px;
+}
+select {
+  padding: 20px;
+  font-size: 20px;
+  background-color: whitesmoke;
+  border-color: #e5e4e2;
+  border-width: thin;
+  border-style: solid;
+  outline: none;
+  margin: 5px;
+}
+.red {
+  width: auto;
+  height: 60px;
+  border: none;
+  margin: 5px;
+  border-radius: 5px;
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+  background-color: #ff2e63;
+}
+.blue {
+  width: auto;
+  height: 60px;
+  border: none;
+  margin: 5px;
+  border-radius: 5px;
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+  background-color: #08d9d6;
+}
+.main {
+  height: 100%;
+}
+.custom-file-input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+.custom-file-input::before {
+  content: "Change your Profile Photo";
+  display: inline-block;
+  background-color: #ff2e63;
+  padding: 10px;
+  outline: none;
+  border-radius: 5px;
+  white-space: nowrap;
+  cursor: pointer;
+  color: white;
+  font-weight: 700;
+  font-size: 10pt;
+}
+.custom-file-input:hover::before {
+  border-color: black;
+}
+.custom-file-input:active::before {
+  background-color: transparent;
+  color: #ff2e63;
+}
+.psa-file-input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+.psa-file-input::before {
+  content: "Change your PSA";
+  display: inline-block;
+  background-color: #ff2e63;
+  padding: 10px;
+  outline: none;
+  border-radius: 5px;
+  white-space: nowrap;
+  cursor: pointer;
+  color: white;
+  font-weight: 700;
+  font-size: 10pt;
+}
+.psa-file-input:hover::before {
+  border-color: black;
+}
+.psa-file-input:active::before {
+  background-color: transparent;
+  color: #ff2e63;
+}
+@media (max-width: 800px) {
+  mat-card {
+    width: auto;
+  }
+  input {
+    padding: 20px;
+    background-color: white;
+    border-style: solid;
+  }
+  .main {
+    height: auto;
+  }
+}

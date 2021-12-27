@@ -1,0 +1,127 @@
+@import "~bootstrap/dist/css/bootstrap.min.css";
+body,
+html {
+  margin: auto;
+  height: 100%;
+  width: 100%;
+}
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #353a46;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #25fffb;
+}
+h1,
+h2,
+h3,
+h4,
+p,
+.mat-typography p {
+  padding: 0px !important;
+  margin: 0px;
+}
+iframe {
+  display: flex;
+  flex: 1;
+  width: auto;
+  height: 210px;
+}
+canvas {
+  border: 1px solid;
+}
+.my-pagination /deep/ .ngx-pagination .current {
+  background: #08d9d6;
+}
+.center {
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+.con {
+  padding: 20px;
+}
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+}
+.flex-row-end {
+  display: flex;
+  justify-content: flex-end;
+  flex: 1;
+}
+.cdk-global-overlay-wrapper {
+  padding: 20px !important;
+}
+mat-card {
+  margin: 10px;
+  cursor: pointer;
+}
+mat-drawer {
+  width: 20%;
+  background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+mat-icon {
+  display: inline;
+}
+mat-drawer-container {
+  background-color: #ffff !important;
+  height: 100%;
+}
+mat-dialog-container {
+  padding: 0 !important;
+  width: 500px !important;
+  background-color: #fff;
+  border-radius: 10px !important;
+}
+.button-1 {
+  background-color: rgba(51, 51, 51, 0.05);
+  border-radius: 8px;
+  border-width: 0;
+  color: #333333;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 10px 12px;
+  text-align: center;
+  transition: all 200ms;
+  vertical-align: baseline;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+@media (max-width: 800px) {
+  .flex-column,
+  .flex-row {
+    flex-direction: column !important;
+    width: 100%;
+  }
+  iframe {
+    width: 100%;
+    height: 500px;
+  }
+  mat-drawer {
+    width: 65%;
+  }
+}

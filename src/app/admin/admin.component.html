@@ -1,0 +1,174 @@
+<mat-drawer-container autosize>
+  <mat-drawer #drawer mode="side" opened="true">
+    <div class="row end-obj">
+      <button (click)="drawer.toggle()" class="button-44 none">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+    <div class="center">
+      <img src="assets/img/signup/user.jpeg" *ngIf="!profile.img" />
+      <img appLazyLoad src="{{ profile.img }}" *ngIf="profile.img" />
+    </div>
+    <div class="user">Hello {{ profile.firstname }}!</div>
+    <div class="profile">
+      <button class="blue"><mat-icon>home</mat-icon> Dashboard</button>
+      <button (click)="toAddAnnouncement()" class="red">
+        <mat-icon>announcement</mat-icon> Announcement
+      </button>
+      <button (click)="toYears()" class="red">
+        <mat-icon>calendar_today</mat-icon> Academic Year
+      </button>
+      <!-- <button (click)="toSuggestions()" class="red">
+        <mat-icon> chat_bubble</mat-icon> Suggestions
+      </button> -->
+    </div>
+    <div (click)="openLogout()" class="logout">
+      <button (click)="openLogout()" class="blue">Logout</button>
+    </div>
+  </mat-drawer>
+  <header>
+    <button (click)="drawer.toggle()"><mat-icon>menu</mat-icon></button>
+    <h1>Admin Dashboard</h1>
+  </header>
+  <div class="flex-column">
+    <div class="flex-row">
+      <mat-card>
+        <img src="assets/img/admin/num-users.png" />
+        &nbsp;
+        <div class="flex-column">
+          <h1>No. Users</h1>
+          <div class="center">
+            <div *ngIf="!totalLength">
+              <h2 class="numbers">0</h2>
+            </div>
+            <div *ngIf="totalLength">
+              <h2 class="numbers">{{ totalLength }}</h2>
+            </div>
+          </div>
+        </div>
+      </mat-card>
+
+      <mat-card>
+        <img src="assets/img/admin/stud-users.png" />
+        <div class="flex-column">
+          <h1>No. Enrollees</h1>
+          <div class="center">
+            <div *ngIf="!totalEnrollees">
+              <h2 class="numbers">0</h2>
+            </div>
+            <div *ngIf="totalEnrollees">
+              <h2 class="numbers">{{ totalEnrollees }}</h2>
+            </div>
+          </div>
+        </div>
+      </mat-card>
+
+      <mat-card>
+        <img src="assets/img/admin/settings-user.png" />
+        <div class="flex-column">
+          <h1>No. Students</h1>
+          <div class="center">
+            <div *ngIf="!totalStudents">
+              <h2 class="numbers">0</h2>
+            </div>
+            <div *ngIf="totalStudents">
+              <h2 class="numbers">{{ totalStudents }}</h2>
+            </div>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+
+    <section class="section-right">
+      <div class="flex-row">
+        <div class="flex-column">
+          <div class="flex-row-end">
+            <input
+              [(ngModel)]="search"
+              (input)="getUsers()"
+              type="text"
+              name="search"
+              id="search"
+              placeholder="Search"
+            />
+            <button class="search">
+              <mat-icon>search</mat-icon>
+            </button>
+          </div>
+          <div class="card-table">
+            <table>
+              <tr>
+                <th>Name</th>
+                <th>Status</th>
+                <th>Address</th>
+                <th>Contact No</th>
+                <th>Actions</th>
+              </tr>
+              <tr
+                *ngFor="
+                  let user of users
+                    | paginate
+                      : {
+                          itemsPerPage: 4,
+                          currentPage: page,
+                          totalItems: totalLength
+                        }
+                "
+              >
+                <td>{{ user.firstname }} &nbsp; {{ user.lastname }}</td>
+                <td>{{ user.type }}</td>
+                <td>{{ user.address }}</td>
+                <td>{{ user.phone }}</td>
+                <td class="flex-row">
+                  <button (click)="toEditUsers(user)" class="blue">
+                    <mat-icon>edit</mat-icon> edit
+                  </button>
+                  &nbsp;
+                  <button (click)="remove(user)" class="red">
+                    <mat-icon>delete</mat-icon> delete
+                  </button>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="center">
+            <pagination-controls
+              class="my-pagination"
+              (pageChange)="page = $event"
+            ></pagination-controls>
+          </div>
+        </div>
+
+        <div
+          class="card-students flex-column"
+          *ngFor="
+            let user of users
+              | paginate
+                : {
+                    itemsPerPage: 4,
+                    currentPage: page,
+                    totalItems: totalLength
+                  }
+          "
+        >
+          <mat-card>
+            <div class="con flex-column">
+              <h2>{{ user.firstname }} &nbsp; {{ user.lastname }}</h2>
+              <h3>{{ user.type }}</h3>
+              <h3>{{ user.address }}</h3>
+              <h3>{{ user.phone }}</h3>
+              <div class="flex-row">
+                <button (click)="toEditUsers(user)" class="blue">
+                  <mat-icon>edit</mat-icon> edit
+                </button>
+                <button (click)="remove(user)" class="red">
+                  <mat-icon>delete</mat-icon> delete
+                </button>
+              </div>
+            </div>
+          </mat-card>
+        </div>
+      </div>
+    </section>
+  </div>
+</mat-drawer-container>
