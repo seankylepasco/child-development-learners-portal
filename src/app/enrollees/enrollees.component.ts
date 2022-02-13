@@ -24,7 +24,7 @@ export class EnrolleesComponent implements OnInit {
   type: any;
   total: any;
   page = 1;
-
+  Date : Date = new Date();
   constructor(
     private datepipe: DatePipe,
     private router: Router,

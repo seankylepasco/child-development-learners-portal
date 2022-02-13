@@ -273,3 +273,7 @@ th {
   display: grid;
   grid-template-columns: auto auto auto;
 }
+.dates{
+  margin-left: 34em;
+  font-size: 20px;
+  }

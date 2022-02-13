@@ -25,7 +25,7 @@ export class MasterlistComponent implements OnInit {
   userInput: any = {};
   info: any = {};
   user: any = {};
-
+  Date : Date = new Date();
   constructor(
     private dialog: MatDialog,
     private datepipe: DatePipe,

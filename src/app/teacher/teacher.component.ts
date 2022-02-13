@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { DataService } from 'src/app/services/data.service';
 import { LogoutComponent } from '../modals/logout/logout.component';
 import { SuccessComponent } from '../modals/success/success.component';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-teacher',
@@ -24,13 +25,17 @@ export class TeacherComponent implements OnInit {
   teacher: any = 'teacher';
   userArray: any = ([] = []);
   windowScrolled = false;
+  Date : Date = new Date();
 
   constructor(
+    public datepipe: DatePipe,
     private router: Router,
     private data: DataService,
     private dialog: MatDialog
+
   ) {}
   ngOnInit(): void {
+
     this.checkifLoggedIn();
     window.addEventListener('scroll', () => {
       this.windowScrolled = window.pageYOffset !== 0;

@@ -25,6 +25,7 @@ export class AddActivityComponent implements OnInit {
   info: any = {};
   userArray: any = ([] = []);
   profile: any = '';
+  Date : Date = new Date();
   constructor(
     private router: Router,
     private data: DataService,

@@ -23,6 +23,7 @@ export class AnnouncepostComponent implements OnInit {
   userArray: any = ([] = []);
   profile: any = '';
   submit: boolean = false;
+  Date : Date = new Date();
   constructor(
     private router: Router,
     private data: DataService,
