@@ -1,4 +1,5 @@
 <mat-drawer-container autosize>
+ <audio autoplay="" src="./assets/bgmusic.mp3"></audio>
   <mat-drawer #drawer mode="side" opened="true">
     <div class="flex-row end-obj">
       <button class="button-44 none" (click)="drawer.toggle()">
@@ -38,19 +39,19 @@
         <section class="section-right">
           <div class="flex-row">
             <div class="flex-column">
-              <mat-card (click)="toTracing()">
+              <mat-card (click)="toTracing()" class="contentcard">
                 <h1 class="center">
                   <mat-icon> border_color</mat-icon>Tracing Form
                 </h1>
                 <img class="end-obj" src="assets/img/home/drawingkid.jpeg" />
               </mat-card>
-              <mat-card style="margin: 10px" (click)="toAlphabet()">
+              <mat-card style="margin: 10px" (click)="toAlphabet()" class="contentcard">
                 <h1 class="center">
                   <mat-icon>sort_by_alpha</mat-icon>ABC Alphabet
                 </h1>
                 <img class="end-obj" src="assets/img/home/abc.png" />
               </mat-card>
-              <mat-card style="margin: 10px" (click)="toRhymes()">
+              <mat-card style="margin: 10px" (click)="toRhymes()" class="contentcard">
                 <h1 class="center">
                   <mat-icon>volume_up</mat-icon>Nursery Rhymes
                 </h1>
@@ -59,17 +60,17 @@
             </div>
 
             <div class="flex-column">
-              <mat-card style="margin: 10px" (click)="toColoring()">
+              <mat-card style="margin: 10px" (click)="toColoring()" class="contentcard">
                 <h1 class="center"><mat-icon>color_lens</mat-icon>Coloring</h1>
                 <img class="end-obj" src="assets/img/home/coloring.jpg" />
               </mat-card>
-              <mat-card style="margin: 10px" (click)="toNumbers()">
+              <mat-card style="margin: 10px" (click)="toNumbers()" class="contentcard">
                 <h1 class="center">
                   <mat-icon> format_list_numbered</mat-icon> Numbers
                 </h1>
                 <img class="end-obj" src="assets/img/home/numbers.png" />
               </mat-card>
-              <mat-card style="margin: 10px" (click)="toStories()">
+              <mat-card style="margin: 10px" (click)="toStories()" class="contentcard">
                 <h1 class="center">
                   <mat-icon>library_books</mat-icon> Story Telling
                 </h1>
