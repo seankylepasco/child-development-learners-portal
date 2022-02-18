@@ -90,7 +90,7 @@ body{
 .image{
     width: 500px;
 }
-@media (max-width: 680px) {
+@media (max-width: 740px) {
   .container{
       margin-top: 40px;
       display: block;
@@ -112,5 +112,15 @@ body{
     font-size: 35px;
     font-weight: 800;
     text-align: center;
+  }
+}
+@keyframes slideInFromBottom {
+  0% {
+      overflow: hidden;
+      transform: translateY(100%);
+  }
+  100% {
+      overflow: hidden;
+      transform: translateY(0);
   }
 }
