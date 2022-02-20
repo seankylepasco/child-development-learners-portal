@@ -28,7 +28,16 @@ export class LoginComponent implements OnInit {
   back(): void {
     this.router.navigate(['welcome']);
   }
+
+  BtnSound():void{
+    let audio = new Audio();
+     audio.src = "assets/click.mp3";
+      audio.load();
+      audio.play();
+  }
+
   forgot() {
+    this.BtnSound();
     if (!this.email) {
       alert('Enter an email so i can send your password..');
     } else {
@@ -44,6 +53,7 @@ export class LoginComponent implements OnInit {
     }
   }
   login() {
+    this.BtnSound();
     if (this.email === '') {
       this.mEmail = true;
       this.mPassword = false;

@@ -39,6 +39,13 @@ export class StudentComponent implements OnInit {
       this.windowScrolled = window.pageYOffset !== 0;
     });
   }
+  BtnSound():void{
+    let audio = new Audio();
+     audio.src = "assets/click.mp3";
+      audio.load();
+      audio.play();
+  }
+
   checkifLoggedIn(): void {
     this.info = JSON.parse(localStorage.getItem('user') || '{}');
     this.userArray.push(this.info);
@@ -78,21 +85,27 @@ export class StudentComponent implements OnInit {
     window.scrollTo(0, 0);
   }
   toStudent(): void {
+    this.BtnSound();
     this.router.navigate(['student']);
   }
   toStories(): void {
+    this.BtnSound();
     this.router.navigate(['stories']);
   }
   toRhymes(): void {
+    this.BtnSound();
     this.router.navigate(['rhymes']);
   }
   toNumbers(): void {
+    this.BtnSound();
     this.router.navigate(['numbers']);
   }
   toActivities(): void {
+    this.BtnSound();
     this.router.navigate(['activities']);
   }
   toAlphabet(): void {
+    this.BtnSound();
     this.router.navigate(['alphabet']);
   }
   @HostListener('window:resize', ['$event'])
@@ -101,20 +114,25 @@ export class StudentComponent implements OnInit {
     this.screenWidth = window.innerWidth;
   }
   toTracing(): void {
+    this.BtnSound();
     this.router.navigate(['tracing']);
   }
   toColoring(): void {
+    this.BtnSound();
     this.router.navigate(['coloring']);
   }
   toAnnouncement(): void {
+    this.BtnSound();
     this.router.navigate(['announcement']);
   }
   openSettings(): void {
+    this.BtnSound();
     this.dialog.open(SettingsComponent, {
       width: '400px',
     });
   }
   openLogout(): void {
+    this.BtnSound();
     this.dialog.open(LogoutComponent, {
       height: 'fit-content',
       width: 'fit-content',

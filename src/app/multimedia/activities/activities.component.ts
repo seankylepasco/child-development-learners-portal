@@ -33,6 +33,14 @@ export class ActivitiesComponent implements OnInit {
   ngOnInit(): void {
     this.getAll();
   }
+  BtnSound():void{
+    let audio = new Audio();
+     audio.src = "assets/click.mp3";
+      audio.load();
+      audio.play();
+  }
+
+
   getAll(): void {
     this.data.fetchData('modules', '').subscribe((response: any) => {
       this.modules = response.payload;
@@ -90,45 +98,58 @@ export class ActivitiesComponent implements OnInit {
       });
   }
   goBack(): void {
+    this.BtnSound();
     this.router.navigate(['home']);
   }
   goToActivity(activity: any): void {
+    this.BtnSound();
     this.router.navigate(['activity']);
     localStorage.setItem('activity', JSON.stringify(activity));
   }
   toStudent(): void {
+    this.BtnSound();
     this.router.navigate(['student']);
   }
   toStories(): void {
+    this.BtnSound();
     this.router.navigate(['stories']);
   }
   toRhymes(): void {
+    this.BtnSound();
     this.router.navigate(['rhymes']);
   }
   toNumbers(): void {
+    this.BtnSound();
     this.router.navigate(['numbers']);
   }
   toActivities(): void {
+    this.BtnSound();
     this.router.navigate(['activities']);
   }
   toAlphabet(): void {
+    this.BtnSound();
     this.router.navigate(['alphabet']);
   }
   toTracing(): void {
+    this.BtnSound();
     this.router.navigate(['tracing']);
   }
   toColoring(): void {
+    this.BtnSound();
     this.router.navigate(['coloring']);
   }
   toAnnouncement(): void {
+    this.BtnSound();
     this.router.navigate(['announcement']);
   }
   openSettings(): void {
+    this.BtnSound();
     this.dialog.open(SettingsComponent, {
       width: '400px',
     });
   }
   openLogout(): void {
+    this.BtnSound();
     this.dialog.open(LogoutComponent, {
       height: 'fit-content',
       width: 'fit-content',
