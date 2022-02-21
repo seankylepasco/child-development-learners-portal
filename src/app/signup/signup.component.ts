@@ -19,6 +19,7 @@ export class SignupComponent implements OnInit {
   userInput: any = {};
 
   active: boolean = false;
+  mpname: boolean = false;
   mfname: boolean = false;
   mlname: boolean = false;
   mgender: boolean = false;
@@ -98,8 +99,18 @@ export class SignupComponent implements OnInit {
       this.maddress = false;
       this.memail = false;
       this.mpassword = true;
+    } else if (event.target.parentname.value === '') {
+      this.mpname = true;
+      this.mfname = false;
+      this.mlname = false;
+      this.mgender = false;
+      this.mbdate = false;
+      this.maddress = false;
+      this.memail = false;
+      this.mpassword = false;
     } else {
       this.userInput.img = this.photo;
+      this.userInput.parentname = event.target.parentname.value;
       this.userInput.firstname = event.target.firstname.value;
       this.userInput.middlename = event.target.middlename.value;
       this.userInput.lastname = event.target.lastname.value;

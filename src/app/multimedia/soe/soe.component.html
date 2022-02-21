@@ -1,0 +1,44 @@
+<div class="con">
+  <button mat-raised-button (click)="back()">Back</button>
+</div>
+<div class="con">
+  <h1>
+    <b> <mat-icon>calendar_today</mat-icon>&nbsp;SOE CALENDAR OF ACTIVITIES</b>
+  </h1>
+</div>
+<div class="card-table">
+  <div class="con">
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Venue</th>
+          <th>Activities</th>
+        </tr>
+      </thead>
+      <tbody>
+        <div *ngIf="!soe" class="center">
+          <h2><mat-icon> cancel_presentation</mat-icon>&nbsp;No Data!</h2>
+        </div>
+        <tr *ngFor="let soe of soe">
+          <td style="width: 200px">{{ soe.date | date: "fullDate" }}</td>
+          <td>{{ soe.time }}</td>
+          <td>{{ soe.venue }}</td>
+          <td>{{ soe.activities }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="card-soe flex-column" *ngFor="let soe of soe">
+  <mat-card>
+    <div class="con flex-column">
+      <h2>{{ soe.date | date: "fullDate" }}</h2>
+      <h3>{{ soe.time }}</h3>
+      <h3>{{ soe.venue }}</h3>
+      <h3>{{ soe.activities }}</h3>
+    </div>
+  </mat-card>
+</div>

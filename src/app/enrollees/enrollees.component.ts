@@ -94,6 +94,9 @@ export class EnrolleesComponent implements OnInit {
   toTeacher(): void {
     this.router.navigate(['teacher']);
   }
+  toScore(): void {
+    this.router.navigate(['scores']);
+  }
   toAnnouncementPost(): void {
     this.router.navigate(['announcepost']);
   }

@@ -9,13 +9,15 @@
       <img src="assets/img/signup/user.jpg" *ngIf="!profile.img" />
       <img appLazyLoad src="{{ profile.img }}" *ngIf="profile.img" />
     </div>
-    <div class="user">Hello {{ profile.firstname }}!</div>
 
+    <div class="user">Hello {{ profile.firstname }}!</div>
     <div class="profile">
       <button (click)="toTeacher()" class="red">
         <mat-icon>home</mat-icon>&nbsp;Dashboard
       </button>
-      <button class="blue"><mat-icon>list</mat-icon>&nbsp;Master List</button>
+      <button (click)="toMasterList()" class="red">
+        <mat-icon>list</mat-icon>&nbsp;Master List
+      </button>
       <button (click)="toEnrollees()" class="red">
         <mat-icon>list</mat-icon>&nbsp;Incoming Enrollees
       </button>
@@ -23,51 +25,52 @@
         <mat-icon>announcement</mat-icon>&nbsp;Post announcement
       </button>
       <button (click)="toActivityPost()" class="red">
-        <mat-icon> attach_file</mat-icon>&nbsp;Post Activity
+        <mat-icon>attach_file</mat-icon>&nbsp;Post Activity
       </button>
-      <button (click)="toScore()" class="red">
+      <button (click)="toScore()" class="blue">
         <mat-icon>score</mat-icon>&nbsp;Scores
       </button>
     </div>
 
     <div class="logout">
-      <button (click)="openLogout()" class="blue">&nbsp;Logout</button>
+      <button (click)="openLogout()" class="blue">Logout</button>
     </div>
   </mat-drawer>
   <header>
     <button (click)="drawer.toggle()"><mat-icon>menu</mat-icon></button>
-    <h1>Master List</h1>
+    <h1>Scores</h1>
     &nbsp;
     <h1 class="dates">{{ Date | date: "medium" }}</h1>
   </header>
-  <div class="flex-column con">
-    <div class="flex-row-end">
-      <input
-        [(ngModel)]="search"
-        (input)="searchStudents()"
-        type="text"
-        name="search"
-        id="search"
-        placeholder="Search"
-        class="search_input"
-      />
-      <button class="search">
-        <mat-icon>search</mat-icon>
-      </button>
-    </div>
+  <div class="flex-column">
     <section class="section-right">
       <div class="flex-row">
-        <div class="flex-column">
+        <div class="flex-column con">
+          <div class="flex-row-end">
+            <input
+              [(ngModel)]="search"
+              (input)="searchStudents()"
+              type="text"
+              name="search"
+              id="search"
+              placeholder="Search"
+              class="search_input"
+            />
+            <button class="search">
+              <mat-icon>search</mat-icon>
+            </button>
+          </div>
+
           <div class="card-table">
             <div class="con">
               <table>
                 <thead>
                   <tr>
                     <th>Name</th>
-                    <th>Status</th>
-                    <th>Address</th>
-                    <th>Contact No</th>
-                    <th>Actions</th>
+                    <th>Score</th>
+                    <th>Total Score</th>
+                    <th>Activity Title</th>
+                    <th>Stud No.</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -82,38 +85,25 @@
                       let student of students
                         | paginate
                           : {
-                              itemsPerPage: 4,
+                              itemsPerPage: 6,
                               currentPage: page,
-                              totalItems: total
+                              totalItems: totalStudents
                             }
                     "
                   >
                     <td>
                       {{ student.firstname }} &nbsp; {{ student.lastname }}
                     </td>
-                    <td>{{ student.type }}</td>
-                    <td>{{ student.address }}</td>
-                    <td>{{ student.phone }}</td>
-                    <td *ngIf="!student.psa" class="flex-row">
-                      <h3>No PSA</h3>
-                    </td>
-                    <td *ngIf="student.psa" class="flex-row">
-                      &nbsp;
-                      <a
-                        [href]="student.psa"
-                        download="PSA-{{ student.firstname }}-{{
-                          student.lastname
-                        }}"
-                        class="download"
-                      >
-                        <mat-icon inline="true"> attach_file</mat-icon>&nbsp;PSA
-                      </a>
-                    </td>
+                    <td>{{ student.score }}</td>
+                    <td>{{ student.total_score }}</td>
+                    <td>{{ student.title }}</td>
+                    <td>{{ student.student_id }}</td>
                   </tr>
                 </tbody>
               </table>
             </div>
           </div>
+
           <div class="center" *ngIf="students">
             <pagination-controls
               class="my-pagination"
@@ -130,7 +120,7 @@
                 : {
                     itemsPerPage: 2,
                     currentPage: page,
-                    totalItems: total
+                    totalItems: totalStudents
                   }
           "
         >
@@ -140,6 +130,11 @@
               <h3>{{ student.type }}</h3>
               <h3>{{ student.address }}</h3>
               <h3>{{ student.phone }}</h3>
+              <div class="flex-row">
+                <button (click)="updateToEnrollee(student)" class="red">
+                  <mat-icon>delete</mat-icon> Enrollee
+                </button>
+              </div>
             </div>
           </mat-card>
         </div>

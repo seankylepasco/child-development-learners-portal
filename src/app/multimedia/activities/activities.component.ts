@@ -87,6 +87,7 @@ export class ActivitiesComponent implements OnInit {
       .fetchData('completed/' + file_id + '/' + stud_id, '')
       .subscribe((response: any) => {
         this.arr.push(response.payload[0]);
+        console.log(response.payload);
       });
   }
   goBack(): void {
@@ -101,6 +102,9 @@ export class ActivitiesComponent implements OnInit {
   }
   toStories(): void {
     this.router.navigate(['stories']);
+  }
+  toSoe(): void {
+    this.router.navigate(['soe']);
   }
   toRhymes(): void {
     this.router.navigate(['rhymes']);

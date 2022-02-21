@@ -50,6 +50,8 @@ import { AddYearComponent } from './modals/add-year/add-year.component';
 import { ViewYearComponent } from './modals/view-year/view-year.component';
 import { AddModuleComponent } from './modals/add-module/add-module.component';
 import { CreateAnnouncementComponent } from './modals/create-announcement/create-announcement.component';
+import { ScoresComponent } from './multimedia/scores/scores.component';
+import { SoeComponent } from './multimedia/soe/soe.component';
 
 @NgModule({
   declarations: [
@@ -92,6 +94,8 @@ import { CreateAnnouncementComponent } from './modals/create-announcement/create
     ViewYearComponent,
     AddModuleComponent,
     CreateAnnouncementComponent,
+    ScoresComponent,
+    SoeComponent,
   ],
   imports: [
     BrowserModule,

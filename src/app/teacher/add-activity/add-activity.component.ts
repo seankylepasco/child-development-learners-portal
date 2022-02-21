@@ -95,6 +95,9 @@ export class AddActivityComponent implements OnInit {
   toMasterList(): void {
     this.router.navigate(['masterlist']);
   }
+  toScore(): void {
+    this.router.navigate(['scores']);
+  }
   toEnrollees(): void {
     this.router.navigate(['enrollees']);
   }

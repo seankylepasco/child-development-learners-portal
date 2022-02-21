@@ -2,16 +2,16 @@ import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DataService } from 'src/app/services/data.service';
-import { LogoutComponent } from '../modals/logout/logout.component';
-import { SuccessComponent } from '../modals/success/success.component';
+import { LogoutComponent } from '../../modals/logout/logout.component';
+import { SuccessComponent } from '../../modals/success/success.component';
 import { DatePipe } from '@angular/common';
 
 @Component({
-  selector: 'app-teacher',
-  templateUrl: './teacher.component.html',
-  styleUrls: ['./teacher.component.css'],
+  selector: 'app-scores',
+  templateUrl: './scores.component.html',
+  styleUrls: ['./scores.component.css'],
 })
-export class TeacherComponent implements OnInit {
+export class ScoresComponent implements OnInit {
   type: any;
   students: any;
   totalStudents: any;
@@ -58,24 +58,18 @@ export class TeacherComponent implements OnInit {
     }
   }
   getStudents(): void {
-    this.data.fetchData('students', '').subscribe((response: any) => {
+    this.data.fetchData('scores', '').subscribe((response: any) => {
+      console.log(response.payload);
       this.students = response.payload;
-      this.totalStudents = response.payload.length;
     });
   }
   searchStudents(): void {
     this.students = [];
     this.data
-      .fetchData('search_students/' + this.search, '')
+      .fetchData('scores/' + this.search, '')
       .subscribe((response: any) => {
         this.students = response.payload;
       });
-  }
-  getEnrollees(): void {
-    this.data.fetchData('enrollees', '').subscribe((response: any) => {
-      if (response.payload === null) this.totalEnrollees = 0;
-      else this.totalEnrollees = response.payload.length;
-    });
   }
   getProfile(): void {
     this.data
@@ -87,21 +81,20 @@ export class TeacherComponent implements OnInit {
         }
       });
   }
-  checkifLoggedIn() {
+  async checkifLoggedIn() {
     this.info = JSON.parse(localStorage.getItem('user') || '{}');
     this.userArray.push(this.info);
     let type = this.getFields(this.userArray, 'type');
     this.type = type.toString();
-    this.getProfile();
-    this.getStudents();
-    this.getEnrollees();
+    await this.getProfile();
+    await this.getStudents();
     if (Object.keys(this.info).length === 0) {
       this.router.navigate(['welcome']);
     } else if (this.type === 'admin') {
       this.router.navigate(['admin']);
     } else if (this.type === 'student') {
     } else if (this.type === 'teacher') {
-      this.router.navigate(['teacher']);
+      this.router.navigate(['scores']);
     } else if (this.type === 'enrollee') {
       this.router.navigate(['home']);
     } else {
@@ -112,6 +105,9 @@ export class TeacherComponent implements OnInit {
     var output = [];
     for (var i = 0; i < input.length; ++i) output.push(input[i][field]);
     return output;
+  }
+  toTeacher(): void {
+    this.router.navigate(['teacher']);
   }
   toMasterList(): void {
     this.router.navigate(['masterlist']);

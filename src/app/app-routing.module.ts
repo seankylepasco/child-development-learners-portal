@@ -26,6 +26,8 @@ import { SuggestionsComponent } from './admin/suggestions/suggestions.component'
 import { AddActivityComponent } from './teacher/add-activity/add-activity.component';
 import { ViewActivityComponent } from './teacher/view-activity/view-activity.component';
 import { YearsComponent } from './admin/years/years.component';
+import { ScoresComponent } from './multimedia/scores/scores.component';
+import { SoeComponent } from './multimedia/soe/soe.component';
 const routes: Routes = [
   {
     path: '',
@@ -134,6 +136,14 @@ const routes: Routes = [
   {
     path: 'years',
     component: YearsComponent,
+  },
+  {
+    path: 'scores',
+    component: ScoresComponent,
+  },
+  {
+    path: 'soe',
+    component: SoeComponent,
   },
 ];
 

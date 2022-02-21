@@ -30,6 +30,25 @@ header h1 {
   letter-spacing: 3px;
   margin-top: 20px;
 }
+.search {
+  border: none;
+  font-size: 20px;
+  margin-right: 20px;
+  height: 60px;
+  background-color: transparent;
+}
+.search_input {
+  padding: 20px;
+  font-size: 20px;
+  background-color: whitesmoke;
+  border-color: #e5e4e2;
+  border-width: thin;
+  border-style: solid;
+  outline: none;
+  margin: 5px;
+  width: -moz-fit-content;
+  width: fit-content;
+}
 .center {
   display: flex;
   padding-top: 30px;
@@ -500,7 +519,7 @@ th {
   margin-left: 50px;
   width: 15em;
 }
-.dates{
+.dates {
   margin-left: 34em;
   font-size: 20px;
-  }
+}

@@ -34,6 +34,18 @@
         </div>
       </div>
       <div class="form">
+        <h1>Parent/ Guardian Information</h1>
+        <div class="flex-column">
+          <p *ngIf="mpname" class="red" color="red">*Missing parent name</p>
+          <input
+            id="parentname"
+            type="text"
+            placeholder="parent/guardian name"
+            required
+          />
+        </div>
+        <hr />
+        <h1>Student Information</h1>
         <div class="flex-row">
           <div class="flex-column">
             <p *ngIf="mfname" class="red" color="red">*Missing first name</p>
@@ -172,8 +184,8 @@
         </div>
         <hr />
         <div>
-          <button class="submit" type="submit">register now</button>
           <button class="return" type="button" (click)="goBack()">back</button>
+          <button class="submit" type="submit">register now</button>
         </div>
       </div>
     </div>

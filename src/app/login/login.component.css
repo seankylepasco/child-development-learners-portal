@@ -1,26 +1,24 @@
-body{
-    margin-right: 300px;
-
-    width: 90em;
-    background-image: url(/assets/3.jpg);
-    background-repeat: no-repeat;
+body {
+  height: 100%;
+  background-image: url(/assets/3.jpg);
+  background-repeat: no-repeat;
 }
-input{
-    padding: 20px;
-    font-size: 20px;
-    background-color: whitesmoke;
-    border-color: #e5e4e2;
-    border-width: thin;
-    border-style: solid;
-    outline: none;
-    margin: 5px;
+input {
+  padding: 20px;
+  font-size: 20px;
+  background-color: whitesmoke;
+  border-color: #e5e4e2;
+  border-width: thin;
+  border-style: solid;
+  outline: none;
+  margin: 5px;
 }
-a{
-    font-size: 20px;
-    font-weight: 300;
+a {
+  font-size: 20px;
+  font-weight: 300;
 }
 a:hover {
-    color: lightgrey;
+  color: lightgrey;
 }
 h1 {
   font-size: 30px;
@@ -30,176 +28,184 @@ h1 {
   text-overflow: ellipsis;
 }
 .title {
-    font-weight: 300;
-    padding-top: 20px;
-    text-align: center;
-    font-size: 30px;
-    margin-bottom: 40px;
+  font-weight: 300;
+  padding-top: 20px;
+  text-align: center;
+  font-size: 30px;
+  margin-bottom: 40px;
 }
 
 .center {
-    margin: auto;
-    width: 30%;
+  margin: auto;
+  width: 30%;
 }
-.logo-container{
-   
-padding-bottom: 20px;
-   margin-left: 75px;
-   height: 140px;
-
+.logo-container {
+  padding-bottom: 20px;
+  margin-left: 75px;
+  height: 140px;
 }
-.logo-container img{
-    padding-top: 10px;
-    width: 180px;
-    margin-left: 15px;
-    margin-right: 20px;
+.logo-container img {
+  padding-top: 10px;
+  width: 180px;
+  margin-left: 15px;
+  margin-right: 20px;
 }
 .card-center {
-    display: flex;
-    flex: 1;
-    justify-content: center;
-    align-items: center;
-
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
 }
 .card {
-    width: 30em;
-    flex: 1;
-    background-color: white;
+  width: 30em;
+  flex: 1;
+  background-color: white;
   margin-right: 400em;
-    padding: 20px;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2)
+  padding: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 .card-student-login {
-    width: 100px;
-    text-align: center;
-    margin-top: 10px;
-    margin-right: 160px;
-    padding: 10px;
-    padding-bottom: 0px;
+  width: 100px;
+  text-align: center;
+  margin-top: 10px;
+  margin-right: 160px;
+  padding: 10px;
+  padding-bottom: 0px;
 }
-.content{
-    display: flex;
-    flex-direction: column;
+.content {
+  display: flex;
+  flex-direction: column;
 }
 
-button{
-    width: 100%;
-    height: 60px;
-    border: none;
-    margin: 5px;
-    border-radius: 5px;
-    color: white;
-    font-size: 20px;
-    font-weight: 700;
+button {
+  width: 100%;
+  height: 60px;
+  border: none;
+  margin: 5px;
+  border-radius: 5px;
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
 }
-button:hover{
-    background-color: transparent;
-    color: #FF2E63;
+button:hover {
+  background-color: transparent;
+  color: #ff2e63;
 }
-.login{
-    background-color: #FF2E63;
+.login {
+  background-color: #ff2e63;
 }
-.forgot_password{
-    background-color: #08D9D6;
+.forgot_password {
+  background-color: #08d9d6;
 }
 .modal {
-    display: flex;
-    position: fixed;
-    z-index: 1;
-    padding-top: 100px;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0,0.4);
+  display: flex;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
 }
 .modal-content {
-    position: relative;
-    background-color: #fefefe;
-    margin: auto;
-    padding: 0;
-    border: 1px solid #888;
-    width: 30%;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-    -webkit-animation-name: animatetop;
-    -webkit-animation-duration: 0.4s;
-    animation-name: animatetop;
-    animation-duration: 0.4s
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #888;
+  width: 30%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s;
 }
-.modal-content img{
-    width: 100%;
-    height: 100%;
+.modal-content img {
+  width: 100%;
+  height: 100%;
 }
 .close {
-    color: white;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-  }
+  color: white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
 
 .close:hover,
 .close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
 }
-.modal-body {padding: 2px 16px;}
-.modal-footer{
-    text-align: center;
+.modal-body {
+  padding: 2px 16px;
 }
-.red{
-    color: red;
-    font-weight: 400;
+.modal-footer {
+  text-align: center;
+}
+.red {
+  color: red;
+  font-weight: 400;
 }
 
-.image{
-    width: 200em;
+.image {
+  width: 200em;
 }
 @-webkit-keyframes animatetop {
-    from {top:-300px; opacity:0}
-    to {top:0; opacity:1}
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
 }
 
 @keyframes animatetop {
-    from {top:-300px; opacity:0}
-    to {top:0; opacity:1}
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
 }
 @media (max-width: 800px) {
-    body{
-        width: 30em;
-        height: 50em;
-    }
-    .center {
-        margin: 0px;
-        width: 100%;
-        height: 100%;
-    }
-    .card{
-        width: 19em;
-        box-shadow: none;
-    }
-    .card-center{
-      
-    
-    }
-    .logo-container{
-display: block;
-margin-right: 1000em;
-margin-left: 50px;
-    }
-    .modal-content{
-        width: 100%;
-    }
-    button{
-        width: auto;
-    }
-    .title {
-        font-size: 20px;
-    }
-    .card-student-login{
-        margin-right: 370px;
-    }
-    
+  body {
+    width: 30em;
+    height: 50em;
+  }
+  .center {
+    margin: 0px;
+    width: 100%;
+    height: 100%;
+  }
+  .card {
+    width: 19em;
+    box-shadow: none;
+  }
+  .card-center {
+  }
+  .logo-container {
+    display: block;
+    margin-right: 1000em;
+    margin-left: 50px;
+  }
+  .modal-content {
+    width: 100%;
+  }
+  button {
+    width: auto;
+  }
+  .title {
+    font-size: 20px;
+  }
+  .card-student-login {
+    margin-right: 370px;
+  }
 }

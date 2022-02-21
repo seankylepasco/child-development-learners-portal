@@ -27,6 +27,9 @@
       <button class="blue">
         <mat-icon> attach_file</mat-icon>&nbsp;Post Activity
       </button>
+      <button (click)="toScore()" class="red">
+        <mat-icon>score</mat-icon>&nbsp;Scores
+      </button>
     </div>
 
     <div class="logout">
@@ -35,8 +38,9 @@
   </mat-drawer>
   <header>
     <button (click)="drawer.toggle()"><mat-icon>menu</mat-icon></button>
-    <h1>Activities</h1>&nbsp;
-    <h1 class="dates">{{Date | date:'medium'}}</h1>
+    <h1>Activities</h1>
+    &nbsp;
+    <h1 class="dates">{{ Date | date: "medium" }}</h1>
   </header>
   <div class="col">
     <div class="con">

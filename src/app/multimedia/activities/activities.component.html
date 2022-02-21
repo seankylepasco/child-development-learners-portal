@@ -29,6 +29,9 @@
       <button (click)="toAnnouncement()" class="red">
         <mat-icon>announcement</mat-icon>&nbsp;Announcement
       </button>
+      <button (click)="toSoe()" class="red">
+        <mat-icon>calendar_today</mat-icon>&nbsp;SOE
+      </button>
       <button (click)="openSettings()" class="red">
         <mat-icon>settings</mat-icon>&nbsp;Settings
       </button>
@@ -61,6 +64,7 @@
                     </h2>
                   </div>
                   <div *ngFor="let complete of arr">
+                    <h2>{{ complete.score }} / {{ module.total_score }}</h2>
                     <div *ngIf="module.id === complete.file_id">
                       <mat-icon id="check">check_circle</mat-icon>
                       Done

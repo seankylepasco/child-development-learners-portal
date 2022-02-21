@@ -29,6 +29,22 @@ switch ($_SERVER['REQUEST_METHOD']) {
         }
         break;
 
+      case 'soe':
+        if (count($req) > 1) {
+          echo json_encode($get->get_common('tbl_soe'));
+        } else {
+          echo json_encode($get->get_common('tbl_soe'));
+        }
+        break;
+
+      case 'scores':
+        if (count($req) > 1) {
+          echo json_encode($get->get_query('SELECT tbl_completed.*, tbl_users.firstname, tbl_users.lastname, tbl_modules.title, tbl_modules.total_score FROM `tbl_completed` INNER JOIN tbl_users ON tbl_completed.student_id = tbl_users.id LEFT JOIN tbl_modules ON tbl_completed.file_id = tbl_modules.id WHERE firstname LIKE "%' . $req[1] . '%" OR lastname LIKE "%' . $req[1] . '%"'));
+        } else {
+          echo json_encode($get->get_query('SELECT tbl_completed.*, tbl_users.firstname, tbl_users.lastname, tbl_modules.title, tbl_modules.total_score FROM `tbl_completed` INNER JOIN tbl_users ON tbl_completed.student_id = tbl_users.id LEFT JOIN tbl_modules ON tbl_completed.file_id = tbl_modules.id ORDER BY tbl_completed.student_id DESC'));
+        }
+        break;
+
       case 'years':
         if (count($req) > 1) {
           echo json_encode($get->get_common('tbl_year', 'id = ' . $req[1]));
@@ -76,6 +92,14 @@ switch ($_SERVER['REQUEST_METHOD']) {
       case 'students':
         if (count($req) > 1) {
           echo json_encode($get->get_common('tbl_users', 'id = ' . $req[1]));
+        } else {
+          echo json_encode($get->get_common('tbl_users', 'type = "student" '));
+        }
+        break;
+
+      case 'search_students':
+        if (count($req) > 1) {
+          echo json_encode($get->get_common('tbl_users', ' type = "student" AND firstname LIKE "%' . $req[1] . '%" '));
         } else {
           echo json_encode($get->get_common('tbl_users', 'type = "student" '));
         }

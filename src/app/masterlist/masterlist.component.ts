@@ -17,6 +17,7 @@ export class MasterlistComponent implements OnInit {
   psa: any = [];
   page: number = 1;
   profile: any = '';
+  search: any = '';
   type: any;
   students: any;
   total: any;
@@ -25,7 +26,7 @@ export class MasterlistComponent implements OnInit {
   userInput: any = {};
   info: any = {};
   user: any = {};
-  Date : Date = new Date();
+  Date: Date = new Date();
   constructor(
     private dialog: MatDialog,
     private datepipe: DatePipe,
@@ -51,6 +52,14 @@ export class MasterlistComponent implements OnInit {
     if (Object.keys(this.info).length === 0) {
       this.router.navigate(['welcome']);
     }
+  }
+  searchStudents(): void {
+    this.students = [];
+    this.data
+      .fetchData('search_students/' + this.search, '')
+      .subscribe((response: any) => {
+        this.students = response.payload;
+      });
   }
   getProfile(): void {
     this.data
@@ -81,6 +90,9 @@ export class MasterlistComponent implements OnInit {
   }
   transform(url: any) {
     return this.domSanitizer.bypassSecurityTrustResourceUrl(url);
+  }
+  toScore(): void {
+    this.router.navigate(['scores']);
   }
   toTeacher(): void {
     this.router.navigate(['teacher']);

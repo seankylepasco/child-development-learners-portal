@@ -80,6 +80,9 @@ export class StudentComponent implements OnInit {
   toStudent(): void {
     this.router.navigate(['student']);
   }
+  toSoe(): void {
+    this.router.navigate(['soe']);
+  }
   toStories(): void {
     this.router.navigate(['stories']);
   }

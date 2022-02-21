@@ -23,7 +23,7 @@ export class AnnouncepostComponent implements OnInit {
   userArray: any = ([] = []);
   profile: any = '';
   submit: boolean = false;
-  Date : Date = new Date();
+  Date: Date = new Date();
   constructor(
     private router: Router,
     private data: DataService,
@@ -127,6 +127,9 @@ export class AnnouncepostComponent implements OnInit {
   }
   toMasterList(): void {
     this.router.navigate(['masterlist']);
+  }
+  toScore(): void {
+    this.router.navigate(['scores']);
   }
   toEnrollees(): void {
     this.router.navigate(['enrollees']);
