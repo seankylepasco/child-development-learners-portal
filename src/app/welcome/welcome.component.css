@@ -13,7 +13,7 @@ body {
   }
 }
 .pushable {
-  background: #ff2e63;
+  background: #cc244e;
   border: none;
   border-radius: 12px;
   padding: 0;
@@ -35,7 +35,7 @@ body {
 }
 
 .pushable2 {
-  background: #08d9d6;
+  background: #24c4c1;
   border: none;
   border-radius: 12px;
   padding: 0;
@@ -109,5 +109,15 @@ body {
     font-size: 35px;
     font-weight: 800;
     text-align: center;
+  }
+}
+@keyframes slideInFromBottom {
+  0% {
+      overflow: hidden;
+      transform: translateY(100%);
+  }
+  100% {
+      overflow: hidden;
+      transform: translateY(0);
   }
 }

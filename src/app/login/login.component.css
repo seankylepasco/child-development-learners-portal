@@ -186,11 +186,10 @@ button:hover {
     height: 100%;
   }
   .card {
-    width: 19em;
+    width: 21em;
     box-shadow: none;
   }
-  .card-center {
-  }
+
   .logo-container {
     display: block;
     margin-right: 1000em;

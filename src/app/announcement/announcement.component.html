@@ -1,6 +1,51 @@
-<mat-drawer-container>
+<mat-drawer-container autosize>
+  <mat-drawer #drawer mode="side" opened="true">
+    <div class="flex-row end-obj">
+      <button class="button-44 none" (click)="drawer.toggle()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+    <div class="center">
+      <img
+        *ngIf="!profile.img"
+        src="assets/img/signup/user.jpg"
+        class="profile-img"
+      />
+      <img
+        *ngIf="profile.img"
+        appLazyLoad
+        src="{{ profile.img }}"
+        class="profile-img"
+      />
+    </div>
+    <div class="user">Hello {{ profile.firstname }}!</div>
+    <div class="profile">
+      <button (click)="toStudent()" class="red">
+        <mat-icon>home</mat-icon>&nbsp;Dashboard
+      </button>
+      <button (click)="toActivities()" class="red">
+        <mat-icon>list</mat-icon>&nbsp;Activities
+      </button>
+      <button (click)="toAnnouncement()" class="red-active">
+        <mat-icon>announcement</mat-icon>&nbsp;Announcement
+      </button>
+      <button (click)="toSoe()" class="red">
+        <mat-icon>calendar_today</mat-icon>&nbsp;SOE
+      </button>
+      <button (click)="openSettings()" class="red">
+        <mat-icon>settings</mat-icon>&nbsp;Settings
+      </button>
+    </div>
+    <div class="logout" (click)="openLogout()">
+      <button class="blue">&nbsp;Logout</button>
+    </div>
+  </mat-drawer>
+  <header>
+    <button (click)="drawer.toggle()"><mat-icon>menu</mat-icon></button>
+    <h1>Announcements</h1>
+  </header>
+
   <div class="con">
-    <button mat-raised-button (click)="back()">Back</button>
     <div class="row-2">
       <div class="flex-column">
         <div class="con">
@@ -15,13 +60,13 @@
           >
             <img
               *ngIf="announcement.img"
-              class="img"
+              class="announce-img"
               src="{{ announcement.img }}"
               alt=""
             />
             <img
               *ngIf="!announcement.img"
-              class="img"
+              class="announce-img"
               src="https://i.pinimg.com/originals/38/6b/ba/386bbacc541b90e6576e3d25df506272.png"
               alt=""
             />
