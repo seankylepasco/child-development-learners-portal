@@ -2,6 +2,7 @@
   <button mat-raised-button (click)="back()">Back</button>
   <div class="flex-row">
     <div>
+      <mat-card>
       <div class="con">
         <div class="flex-row">
           <div>
@@ -43,7 +44,7 @@
           class="completed-con flex-column"
         >
           <mat-card class="flex-row">
-            <h4>
+            <h4 class="filename">
               {{ complete.file_name }}
               &nbsp;
               <button mat-raised-button (click)="remove(complete)">
@@ -53,10 +54,8 @@
           </mat-card>
         </div>
       </div>
+    </mat-card>
     </div>
-    <img
-      style="height: auto; width: auto"
-      src="https://img.freepik.com/free-vector/cute-boy-sitting-table-working-with-computer-home-e-class-online-education-concept-e-learning-flat-cartoon-illustration_255592-11.jpg?size=626&ext=jpg"
-    />
+  
   </div>
 </div>

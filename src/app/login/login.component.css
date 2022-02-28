@@ -92,10 +92,10 @@ button:hover {
   color: #ff2e63;
 }
 .login {
-  background-color: #ff2e63;
+  background-color: #da0000;
 }
 .forgot_password {
-  background-color: #08d9d6;
+  background-color: #1400c5;
 }
 .modal {
   display: flex;

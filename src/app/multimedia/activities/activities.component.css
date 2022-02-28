@@ -225,6 +225,30 @@ button:hover {
   .img-bg {
     width: 100%;
   }
+  .mod-title{
+    font-size: 15px;
+
+  }
+  .mod-score{
+    font-size: 15px;
+  }
+  .button-end {
+    text-decoration: none;
+    color: #ffff;
+    padding: 10px;
+    display: flex;
+    margin-left: auto;
+    background-color: #ff2e63;
+    border: none;
+    font-size: 15px;
+    border-radius: 5px;
+    box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%),
+      0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
+  }
+  .scores{
+    display: flex;
+    margin: 5px;
+  }
 }
 
 @media (max-height: 680px) {

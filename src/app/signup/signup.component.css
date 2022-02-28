@@ -105,10 +105,10 @@ h2 {
   margin-left: 20px;
 }
 .submit {
-  background-color: #ff2e63;
+  background-color: #eb0000;
 }
 .return {
-  background-color: #08d9d6;
+  background-color: #1103cf;
 }
 .custom-file-input::-webkit-file-upload-button {
   visibility: hidden;

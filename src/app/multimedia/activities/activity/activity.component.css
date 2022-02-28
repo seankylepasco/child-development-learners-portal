@@ -35,7 +35,7 @@ img {
   font-size: 1.25em;
   font-weight: 700;
   color: white;
-  background-color: #252a34;
+  background-color: #003eb9;
   padding: 10px;
   display: inline-block;
   cursor: pointer;
@@ -61,11 +61,32 @@ mat-card {
   box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%),
     0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
 }
+.filename{
+  color: #df033a;
+}
 @media (max-width: 800px) {
   h2 {
     font-size: 18px;
   }
   img {
+    width: auto;
+    height: auto;
+  }
+  .con{
+    width: 250px;
+  }
+  .flex-row{
+    width: 200px;
+  }
+
+}
+@media (max-height: 680px) {
+  .profile button {
+    width: auto;
+  }
+}
+@media (max-height: 570px) {
+  .profile button {
     width: auto;
     height: auto;
   }

@@ -1,9 +1,53 @@
-<div class="con">
-  <button mat-raised-button (click)="back()">Back</button>
-</div>
+<mat-drawer-container autosize>
+  <mat-drawer #drawer mode="side" opened="true">
+    <div class="flex-row end-obj">
+      <button class="button-44 none" (click)="drawer.toggle()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+    <div class="center">
+      <img
+        src="../../assets/img/signup/user.jpg"
+        *ngIf="!profile.img"
+        class="img"
+      />
+      <img
+        appLazyLoad
+        src="{{ profile.img }}"
+        *ngIf="profile.img"
+        class="img"
+      />
+    </div>
+    <div class="user">Hello {{ profile.firstname }}!</div>
+    <div class="profile">
+      <button (click)="toStudent()" class="red">
+        <mat-icon>home</mat-icon>&nbsp;Dashboard
+      </button>
+      <button (click)="toActivities()" class="red-active">
+        <mat-icon>list</mat-icon>&nbsp;Activities
+      </button>
+      <button (click)="toAnnouncement()" class="red">
+        <mat-icon>announcement</mat-icon>&nbsp;Announcement
+      </button>
+      <button (click)="toSoe()" class="red">
+        <mat-icon>calendar_today</mat-icon>&nbsp;SOE
+      </button>
+      <button (click)="openSettings()" class="red">
+        <mat-icon>settings</mat-icon>&nbsp;Settings
+      </button>
+    </div>
+    <div class="logout" (click)="openLogout()">
+      <button class="blue">&nbsp;Logout</button>
+    </div>
+  </mat-drawer>
+  <header>
+    <button (click)="drawer.toggle()"><mat-icon>menu</mat-icon></button>
+    <h1>Student Activities</h1>
+  </header>
+
 <div class="con">
   <h1>
-    <b> <mat-icon>calendar_today</mat-icon>&nbsp;SOE CALENDAR OF ACTIVITIES</b>
+    <b> <mat-icon>calendar_today</mat-icon>&nbsp;CALENDAR OF ACTIVITIES</b>
   </h1>
 </div>
 <div class="card-table">
@@ -42,3 +86,4 @@
     </div>
   </mat-card>
 </div>
+</mat-drawer-container>

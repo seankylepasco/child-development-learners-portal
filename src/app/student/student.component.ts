@@ -89,6 +89,7 @@ export class StudentComponent implements OnInit {
     this.router.navigate(['student']);
   }
   toSoe(): void {
+    this.BtnSound();
     this.router.navigate(['soe']);
   }
   toStories(): void {

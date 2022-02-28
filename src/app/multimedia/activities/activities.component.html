@@ -50,42 +50,39 @@
         <div class="con">
           <div id="row">
             <div class="flex-column">
-              <br />
+              <br /><mat-card>
               <mat-card *ngIf="!modules">
                 <h2>
                   <mat-icon> cancel_presentation</mat-icon>&nbsp;No modules!
                 </h2>
               </mat-card>
+             
               <mat-list *ngFor="let module of modules">
                 <mat-list-item>
                   <div id="title">
-                    <h2>
-                      <mat-icon>insert_drive_file</mat-icon> {{ module.title }}
+                    <h2 class="mod-title">
+                    Activity Title: <br>{{ module.title }}
                     </h2>
                   </div>
-                  <div *ngFor="let complete of arr">
-                    <h2>{{ complete.score }} / {{ module.total_score }}</h2>
+                  <div *ngFor="let complete of arr"  class="scores">
+                    <div>
+                    <h2 class="mod-score">Score: {{ complete.score }} / {{ module.total_score }}</h2>
+                    </div>
                     <div *ngIf="module.id === complete.file_id">
                       <mat-icon id="check">check_circle</mat-icon>
-                      Done
+                    
                     </div>
                   </div>
                   &nbsp;
                   <button (click)="goToActivity(module)" class="button-end">
-                    <mat-icon inline="true">remove_red_eye</mat-icon> &nbsp;
+                  <mat-icon inline="true">remove_red_eye</mat-icon> &nbsp;
                     <p>view</p>
                   </button>
                 </mat-list-item>
               </mat-list>
+            </mat-card>
             </div>
-            <div class="flex-column">
-              <div id="accomplished">
-                <img
-                  src="assets/img/activities/teacher-kids.jpg"
-                  class="img-bg"
-                />
-              </div>
-            </div>
+           
           </div>
         </div>
       </div>
