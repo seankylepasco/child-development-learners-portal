@@ -104,7 +104,6 @@ body {
     width: 200px;
   }
   .title {
-    color: #000;
     padding: 10px;
     font-size: 35px;
     font-weight: 800;
@@ -113,11 +112,11 @@ body {
 }
 @keyframes slideInFromBottom {
   0% {
-      overflow: hidden;
-      transform: translateY(100%);
+    overflow: hidden;
+    transform: translateY(100%);
   }
   100% {
-      overflow: hidden;
-      transform: translateY(0);
+    overflow: hidden;
+    transform: translateY(0);
   }
 }

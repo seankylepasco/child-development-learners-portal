@@ -33,13 +33,12 @@ export class ActivitiesComponent implements OnInit {
   ngOnInit(): void {
     this.getAll();
   }
-  BtnSound():void{
+  BtnSound(): void {
     let audio = new Audio();
-     audio.src = "assets/click.mp3";
-      audio.load();
-      audio.play();
+    audio.src = 'assets/click.mp3';
+    audio.load();
+    audio.play();
   }
-
 
   getAll(): void {
     this.data.fetchData('modules', '').subscribe((response: any) => {
@@ -95,7 +94,6 @@ export class ActivitiesComponent implements OnInit {
       .fetchData('completed/' + file_id + '/' + stud_id, '')
       .subscribe((response: any) => {
         this.arr.push(response.payload[0]);
-        console.log(response.payload);
       });
   }
   goBack(): void {

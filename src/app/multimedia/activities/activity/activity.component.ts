@@ -30,6 +30,7 @@ export class ActivityComponent implements OnInit {
   title: any;
   description: any;
   file: any;
+  url: any;
   file_name: any;
   stud_id: any;
   completed: any;
@@ -43,13 +44,13 @@ export class ActivityComponent implements OnInit {
 
   ngOnInit(): void {
     this.activity = JSON.parse(localStorage.getItem('activity') || '{}');
-
     this.id = this.activity.id;
     this.title = this.activity.title;
     this.description = this.activity.description;
     this.file = this.domSanitizer.bypassSecurityTrustResourceUrl(
       this.activity.file
     );
+    this.url = this.activity.video_url;
     this.file_name = this.activity.file_name;
 
     this.user = JSON.parse(localStorage.getItem('user') || '{}');

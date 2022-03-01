@@ -6,13 +6,14 @@ import { DeleteComponent } from 'src/app/modals/delete/delete.component';
 import { LogoutComponent } from 'src/app/modals/logout/logout.component';
 import { AddYearComponent } from 'src/app/modals/add-year/add-year.component';
 import { ViewYearComponent } from 'src/app/modals/view-year/view-year.component';
+
 @Component({
-  selector: 'app-years',
-  templateUrl: './years.component.html',
-  styleUrls: ['./years.component.css'],
+  selector: 'app-reports',
+  templateUrl: './reports.component.html',
+  styleUrls: ['./reports.component.css'],
 })
-export class YearsComponent implements OnInit {
-  years: any;
+export class ReportsComponent implements OnInit {
+  reports: any;
   type: any;
   user: any = {};
   profile: any = '';
@@ -47,25 +48,16 @@ export class YearsComponent implements OnInit {
     if (Object.keys(this.user).length === 0) {
       this.router.navigate(['welcome']);
     }
-    this.getYears();
+    this.getReports();
   }
   getFields(input: any, field: any) {
     var output = [];
     for (var i = 0; i < input.length; ++i) output.push(input[i][field]);
     return output;
   }
-  getYears(): void {
-    this.data.fetchData('years', '').subscribe((response: any) => {
-      this.years = response.payload;
-    });
-  }
-  toViewYear(id: any): void {
-    localStorage.setItem('year_id', id);
-    this.dialog.open(ViewYearComponent, {
-      height: 'fit-content',
-      width: '500px',
-      autoFocus: false,
-      restoreFocus: false,
+  getReports(): void {
+    this.data.fetchData('reports', '').subscribe((response: any) => {
+      this.reports = response.payload;
     });
   }
   toDashboard(): void {
@@ -74,25 +66,18 @@ export class YearsComponent implements OnInit {
   toAddAnnouncement(): void {
     this.router.navigate(['add-announcement']);
   }
-  toSuggestions(): void {
-    this.router.navigate(['suggestion']);
-  }
-  toEditUsers(user: any): void {
-    localStorage.setItem('edit-user', JSON.stringify(user));
-    this.router.navigate(['edit-users']);
-  }
   toYears(): void {
     this.router.navigate(['years']);
   }
   toReports(): void {
     this.router.navigate(['reports']);
   }
-  deleteYear(id: any): void {
+  deleteReport(id: any): void {
     if (confirm('are you sure to remove this year')) {
       this.data
-        .fetchData('delete_year/' + id, '')
+        .fetchData('delete_report/' + id, '')
         .subscribe((response: any) => {
-          localStorage.setItem('page', 'years');
+          localStorage.setItem('page', 'reports');
           this.dialog.open(DeleteComponent, {
             height: 'fit-content',
             width: '500px',

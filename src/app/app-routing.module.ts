@@ -28,6 +28,7 @@ import { ViewActivityComponent } from './teacher/view-activity/view-activity.com
 import { YearsComponent } from './admin/years/years.component';
 import { ScoresComponent } from './multimedia/scores/scores.component';
 import { SoeComponent } from './multimedia/soe/soe.component';
+import { ReportsComponent } from './admin/reports/reports.component';
 const routes: Routes = [
   {
     path: '',
@@ -144,6 +145,10 @@ const routes: Routes = [
   {
     path: 'soe',
     component: SoeComponent,
+  },
+  {
+    path: 'reports',
+    component: ReportsComponent,
   },
 ];
 

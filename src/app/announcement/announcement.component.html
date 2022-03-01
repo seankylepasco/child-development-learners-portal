@@ -7,15 +7,15 @@
     </div>
     <div class="center">
       <img
+        src="../../assets/img/signup/user.jpg"
         *ngIf="!profile.img"
-        src="assets/img/signup/user.jpg"
-        class="profile-img"
+        class="img"
       />
       <img
-        *ngIf="profile.img"
         appLazyLoad
         src="{{ profile.img }}"
-        class="profile-img"
+        *ngIf="profile.img"
+        class="img"
       />
     </div>
     <div class="user">Hello {{ profile.firstname }}!</div>
@@ -48,7 +48,12 @@
   <div class="con">
     <div class="row-2">
       <div class="flex-column">
-        <div class="con">
+        <div>
+          <div class="flex-column">
+            <div>
+              <img class="banner" src="assets/img/student/announcement.png" />
+            </div>
+          </div>
           <mat-card *ngIf="!announcements">
             <h2>
               <mat-icon> cancel_presentation</mat-icon>&nbsp;No Announcements!
@@ -58,36 +63,32 @@
             id="announcement"
             *ngFor="let announcement of announcements"
           >
-            <img
-              *ngIf="announcement.img"
-              class="announce-img"
-              src="{{ announcement.img }}"
-              alt=""
-            />
-            <img
-              *ngIf="!announcement.img"
-              class="announce-img"
-              src="https://i.pinimg.com/originals/38/6b/ba/386bbacc541b90e6576e3d25df506272.png"
-              alt=""
-            />
-            <div class="con">
-              <div class="flex-column">
-                <h1>{{ announcement.title }}</h1>
-                <br />
-                <h3>{{ announcement.description }}</h3>
-                <br />
-                <h4 *ngIf="announcement.date">{{ announcement.date }}</h4>
+            <div class="flex-row con">
+              <div class="img-container">
+                <img
+                  *ngIf="announcement.img"
+                  class="announce-img"
+                  src="{{ announcement.img }}"
+                  alt=""
+                />
+                <img
+                  *ngIf="!announcement.img"
+                  class="announce-img"
+                  src="https://i.pinimg.com/originals/38/6b/ba/386bbacc541b90e6576e3d25df506272.png"
+                  alt=""
+                />
+              </div>
+              <div class="con-1">
+                <div class="flex-column">
+                  <h2>{{ announcement.title }}</h2>
+                  <br />
+                  <h3>{{ announcement.description }}</h3>
+                  <br />
+                  <h4 *ngIf="announcement.date">{{ announcement.date }}</h4>
+                </div>
               </div>
             </div>
           </mat-card>
-        </div>
-      </div>
-      <div class="flex-column">
-        <div id="accomplished">
-          <img
-            class="announce-img"
-            src="assets/img/announcement/announcement.jpg"
-          />
         </div>
       </div>
     </div>

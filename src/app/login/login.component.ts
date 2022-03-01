@@ -29,11 +29,11 @@ export class LoginComponent implements OnInit {
     this.router.navigate(['welcome']);
   }
 
-  BtnSound():void{
+  BtnSound(): void {
     let audio = new Audio();
-     audio.src = "assets/click.mp3";
-      audio.load();
-      audio.play();
+    audio.src = 'assets/click.mp3';
+    audio.load();
+    audio.play();
   }
 
   forgot() {
@@ -41,15 +41,20 @@ export class LoginComponent implements OnInit {
     if (!this.email) {
       alert('Enter an email so i can send your password..');
     } else {
-      this.data
-        .fetchData('user_exists/' + this.email, '')
-        .subscribe((response: any) => {
-          if (response.status.remarks === 'success') {
-            this.data
-              .fetchData('forgot', this.userInput)
-              .subscribe((response: any) => {});
-          }
-        });
+      const object = {
+        email: this.email,
+      };
+      const sample = {
+        email: this.email,
+        status: 'pending!',
+      };
+      this.data.fetchData('user_exists', object).subscribe((response: any) => {
+        if (response.status.remarks === 'success') {
+          this.data.fetchData('send', sample).subscribe((response: any) => {
+            alert('Report Sent!');
+          });
+        }
+      });
     }
   }
   login() {
@@ -96,9 +101,7 @@ export class LoginComponent implements OnInit {
               this.failTimer();
             }
           });
-      } catch (error) {
-        console.log(error);
-      }
+      } catch (error) {}
     }
   }
   getFields(input: any, field: any) {

@@ -11,16 +11,18 @@
     </div>
     <div class="user">Hello {{ profile.firstname }}!</div>
     <div class="profile">
-      <button class="blue"><mat-icon>home</mat-icon> Dashboard</button>
+      <button (click)="toDashboard()" class="blue">
+        <mat-icon>home</mat-icon> Dashboard
+      </button>
       <button (click)="toAddAnnouncement()" class="red">
         <mat-icon>announcement</mat-icon> Announcement
       </button>
       <button (click)="toYears()" class="red">
         <mat-icon>calendar_today</mat-icon> Academic Year
       </button>
-      <!-- <button (click)="toSuggestions()" class="red">
-        <mat-icon> chat_bubble</mat-icon> Suggestions
-      </button> -->
+      <button (click)="toReports()" class="red">
+        <mat-icon> chat_bubble</mat-icon> Reports
+      </button>
     </div>
     <div (click)="openLogout()" class="logout">
       <button (click)="openLogout()" class="blue">Logout</button>
@@ -30,7 +32,7 @@
     <button (click)="drawer.toggle()"><mat-icon>menu</mat-icon></button>
     <h1>Admin Dashboard</h1>
   </header>
-  <div class="flex-column">
+  <div class="flex-column con">
     <div class="flex-row">
       <mat-card>
         <img src="assets/img/admin/num-users.png" />
@@ -80,7 +82,7 @@
     </div>
 
     <section class="section-right">
-      <div class="flex-row">
+      <div class="flex-row con">
         <div class="flex-column">
           <div class="flex-row-end">
             <input

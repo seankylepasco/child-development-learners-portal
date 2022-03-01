@@ -83,7 +83,6 @@ export class ColoringComponent implements OnInit {
   }
   changeWidth(): void {
     this.canvas.freeDrawingBrush.width = this.brushWidthRange;
-    console.log(this.brushWidthRange);
   }
   goBack(): void {
     this.router.navigate(['student']);

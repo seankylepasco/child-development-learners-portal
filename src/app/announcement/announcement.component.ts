@@ -66,7 +66,6 @@ export class AnnouncementComponent implements OnInit {
       .subscribe((response: any) => {
         this.user = response.payload;
         this.profile = this.user[0];
-        console.log(this.profile);
       });
   }
 

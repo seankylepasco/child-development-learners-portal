@@ -52,6 +52,7 @@ import { AddModuleComponent } from './modals/add-module/add-module.component';
 import { CreateAnnouncementComponent } from './modals/create-announcement/create-announcement.component';
 import { ScoresComponent } from './multimedia/scores/scores.component';
 import { SoeComponent } from './multimedia/soe/soe.component';
+import { ReportsComponent } from './admin/reports/reports.component';
 
 @NgModule({
   declarations: [
@@ -96,6 +97,7 @@ import { SoeComponent } from './multimedia/soe/soe.component';
     CreateAnnouncementComponent,
     ScoresComponent,
     SoeComponent,
+    ReportsComponent,
   ],
   imports: [
     BrowserModule,

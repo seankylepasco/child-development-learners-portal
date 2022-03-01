@@ -108,6 +108,9 @@ export class AdminComponent implements OnInit {
       this.router.navigate(['welcome']);
     }
   }
+  toDashboard(): void {
+    this.router.navigate(['admin']);
+  }
   toAddAnnouncement(): void {
     this.router.navigate(['add-announcement']);
   }
@@ -120,6 +123,9 @@ export class AdminComponent implements OnInit {
   }
   toYears(): void {
     this.router.navigate(['years']);
+  }
+  toReports(): void {
+    this.router.navigate(['reports']);
   }
   getFields(input: any, field: any) {
     var output = [];

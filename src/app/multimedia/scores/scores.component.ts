@@ -59,7 +59,6 @@ export class ScoresComponent implements OnInit {
   }
   getStudents(): void {
     this.data.fetchData('scores', '').subscribe((response: any) => {
-      console.log(response.payload);
       this.students = response.payload;
     });
   }

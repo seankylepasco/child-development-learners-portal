@@ -139,7 +139,6 @@ export class SignupComponent implements OnInit {
     const object = {
       email: this.email,
     };
-    console.log(object);
     this.data.fetchData('user_exists', object).subscribe((response: any) => {
       if (response.status.remarks === 'success') {
         alert(this.email + ' is not available! try another');

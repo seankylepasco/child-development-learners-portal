@@ -9,7 +9,7 @@
   height: 600px;
   overflow: auto;
 }
-.con{
+.con {
   width: auto;
 }
 table {
@@ -182,6 +182,7 @@ h1 {
   font-weight: 700;
   text-align: center;
 }
+
 .img {
   width: 150px;
   height: 150px;
@@ -254,4 +255,5 @@ button:hover {
 
 .button-44:hover {
   border-bottom-style: none;
-  border-color: #dadada;}
+  border-color: #dadada;
+}

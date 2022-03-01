@@ -50,39 +50,45 @@
         <div class="con">
           <div id="row">
             <div class="flex-column">
+              <div>
+                <img
+                  class="banner"
+                  src="assets/img/student/activities.png"
+                />
+              </div>
               <br /><mat-card>
-              <mat-card *ngIf="!modules">
-                <h2>
-                  <mat-icon> cancel_presentation</mat-icon>&nbsp;No modules!
-                </h2>
+                <mat-card *ngIf="!modules">
+                  <h2>
+                    <mat-icon> cancel_presentation</mat-icon>&nbsp;No modules!
+                  </h2>
+                </mat-card>
+
+                <mat-list *ngFor="let module of modules">
+                  <mat-list-item>
+                    <div id="title">
+                      <h2 class="mod-title">
+                        Activity Title: <br />{{ module.title }}
+                      </h2>
+                    </div>
+                    <div *ngFor="let complete of arr" class="scores">
+                      <div>
+                        <h2 class="mod-score">
+                          Score: {{ complete.score }} / {{ module.total_score }}
+                        </h2>
+                      </div>
+                      <div *ngIf="module.id === complete.file_id">
+                        <mat-icon id="check">check_circle</mat-icon>
+                      </div>
+                    </div>
+                    &nbsp;
+                    <button (click)="goToActivity(module)" class="button-end">
+                      <mat-icon inline="true">remove_red_eye</mat-icon> &nbsp;
+                      <p>view</p>
+                    </button>
+                  </mat-list-item>
+                </mat-list>
               </mat-card>
-             
-              <mat-list *ngFor="let module of modules">
-                <mat-list-item>
-                  <div id="title">
-                    <h2 class="mod-title">
-                    Activity Title: <br>{{ module.title }}
-                    </h2>
-                  </div>
-                  <div *ngFor="let complete of arr"  class="scores">
-                    <div>
-                    <h2 class="mod-score">Score: {{ complete.score }} / {{ module.total_score }}</h2>
-                    </div>
-                    <div *ngIf="module.id === complete.file_id">
-                      <mat-icon id="check">check_circle</mat-icon>
-                    
-                    </div>
-                  </div>
-                  &nbsp;
-                  <button (click)="goToActivity(module)" class="button-end">
-                  <mat-icon inline="true">remove_red_eye</mat-icon> &nbsp;
-                    <p>view</p>
-                  </button>
-                </mat-list-item>
-              </mat-list>
-            </mat-card>
             </div>
-           
           </div>
         </div>
       </div>

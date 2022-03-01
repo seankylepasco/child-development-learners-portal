@@ -5,27 +5,58 @@ import { DataService } from 'src/app/services/data.service';
 import { LogoutComponent } from '../../modals/logout/logout.component';
 import { SettingsComponent } from '../../modals/settings/settings.component';
 
-
 @Component({
   selector: 'app-soe',
   templateUrl: './soe.component.html',
   styleUrls: ['./soe.component.css'],
 })
 export class SoeComponent implements OnInit {
+  type: any;
   soe: any;
   user: any = {};
   info: any = {};
   profile: any = '';
-  constructor(private data: DataService, private router: Router,  private dialog: MatDialog) {}
+  userArray: any = ([] = []);
+  constructor(
+    private data: DataService,
+    private router: Router,
+    private dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
+    this.checkifLoggedIn();
     this.getSEO();
   }
-  BtnSound():void{
+  BtnSound(): void {
     let audio = new Audio();
-     audio.src = "assets/click.mp3";
-      audio.load();
-      audio.play();
+    audio.src = 'assets/click.mp3';
+    audio.load();
+    audio.play();
+  }
+  checkifLoggedIn(): void {
+    this.info = JSON.parse(localStorage.getItem('user') || '{}');
+    this.userArray.push(this.info);
+    let type = this.getFields(this.userArray, 'type');
+    this.type = type.toString();
+    this.getProfile();
+    if (Object.keys(this.info).length === 0) {
+      this.router.navigate(['welcome']);
+    } else if (this.type === 'admin') {
+      this.router.navigate(['admin']);
+    } else if (this.type === 'student') {
+    } else if (this.type === 'teacher') {
+      this.router.navigate(['teacher']);
+    } else if (this.type === 'guest') {
+      this.router.navigate(['home']);
+    } else {
+      this.router.navigate(['welcome']);
+    }
+  }
+  getFields(input: any, field: any) {
+    let output = [];
+    for (let index = 0; index < input.length; index++)
+      output.push(input[index][field]);
+    return output;
   }
   getProfile(): void {
     this.data
@@ -33,13 +64,11 @@ export class SoeComponent implements OnInit {
       .subscribe((response: any) => {
         this.user = response.payload;
         this.profile = this.user[0];
-        console.log(this.profile);
       });
   }
 
   getSEO(): void {
     this.data.fetchData('soe', '').subscribe((response: any) => {
-      console.log(response.payload);
       this.soe = response.payload;
     });
   }
