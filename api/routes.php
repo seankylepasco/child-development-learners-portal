@@ -23,7 +23,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
       case 'users':
         if (count($req) > 1) {
-          echo json_encode($get->get_common('tbl_users', 'firstname LIKE "%' . $req[1] . '%" OR lastname LIKE "%' . $req[1] . '%" '));
+          echo json_encode($get->get_common('tbl_users', 'firstname LIKE "%' . $req[1] . '%" OR lastname LIKE "%' . $req[1] . '%" OR email LIKE "%' . $req[1] . '%"'));
         } else {
           echo json_encode($get->get_common('tbl_users'));
         }
