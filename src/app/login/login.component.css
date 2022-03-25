@@ -1,6 +1,7 @@
 body {
   height: 100%;
-  background-image: url(/assets/3.jpg);
+  background-image: url("/assets/img/background/body.png");
+  /* background-image: url(/assets/3.jpg); */
   background-repeat: no-repeat;
 }
 input {
@@ -87,15 +88,17 @@ button {
   font-size: 20px;
   font-weight: 700;
 }
-button:hover {
-  background-color: transparent;
-  color: #ff2e63;
-}
 .login {
-  background-color: #da0000;
+  background-color: #EF4036;
+}
+.login:hover {
+  background-color: #c92d25;
 }
 .forgot_password {
-  background-color: #1400c5;
+  background-color: #0E74BB;
+}
+.forgot_password:hover {
+  background-color: #0f619b;
 }
 .modal {
   display: flex;
@@ -147,7 +150,7 @@ button:hover {
   text-align: center;
 }
 .red {
-  color: red;
+  color: #EF4036;
   font-weight: 400;
 }
 

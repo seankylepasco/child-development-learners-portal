@@ -1,6 +1,6 @@
 <div id="container">
   <div class="header">
-    <h1>STUDENT ENROLLMENT</h1>
+    <h1><mat-icon>person_add</mat-icon> Student Enrollment</h1>
   </div>
   <form (submit)="register($event)">
     <div class="card">
@@ -140,14 +140,14 @@
         <div class="row-2">
           <p><i class="fas fa-envelope-square"></i></p>
           <div class="row-2-container-4">
-            <p *ngIf="memail" class="red">*Missing email</p>
-            <h2>Email</h2>
+            <p *ngIf="memail" class="red">*Missing username</p>
+            <h2>Username</h2>
             <input
               [(ngModel)]="email"
               (input)="getUser()"
               name="email"
               type="email"
-              placeholder="email"
+              placeholder="username"
               required
             />
           </div>

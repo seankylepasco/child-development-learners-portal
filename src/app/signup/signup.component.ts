@@ -178,6 +178,7 @@ export class SignupComponent implements OnInit {
         this.PSA = event.target.result;
       };
       reader.readAsDataURL(this.PSA);
+      alert("PSA uploaded!")
     } else {
       alert('Not a pdf file!');
       window.location.reload();

@@ -57,10 +57,6 @@ button {
   font-size: 20px;
   font-weight: 700;
 }
-button:hover {
-  background-color: transparent;
-  color: #ff2e63;
-}
 .row-2 {
   display: flex;
   flex-direction: row;
@@ -105,10 +101,16 @@ h2 {
   margin-left: 20px;
 }
 .submit {
-  background-color: #eb0000;
+  background-color: #EF4036;
+}
+.submit:hover{
+  background-color: #cc3931;
 }
 .return {
-  background-color: #1103cf;
+  background-color: #0E74BB;
+}
+.return:hover {
+  background-color: #0e66a5;
 }
 .custom-file-input::-webkit-file-upload-button {
   visibility: hidden;
@@ -116,7 +118,7 @@ h2 {
 .custom-file-input::before {
   content: "Upload your Profile Photo";
   display: inline-block;
-  background-color: #ff2e63;
+  background-color: #EF4036;
   padding: 10px;
   outline: none;
   border-radius: 5px;
@@ -131,15 +133,15 @@ h2 {
 }
 .custom-file-input:active::before {
   background-color: transparent;
-  color: #ff2e63;
+  color: #EF4036;
 }
 .custom-psa-input::-webkit-file-upload-button {
   visibility: hidden;
 }
 .custom-psa-input::before {
-  content: "Upload your PSA Photo";
+  content: "Upload your PSA";
   display: inline-block;
-  background-color: #ff2e63;
+  background-color: #EF4036;
   padding: 10px;
   outline: none;
   border-radius: 5px;
@@ -154,7 +156,7 @@ h2 {
 }
 .custom-psa-input:active::before {
   background-color: transparent;
-  color: #ff2e63;
+  color: #EF4036;
 }
 .red {
   color: red !important;

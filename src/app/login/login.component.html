@@ -1,65 +1,66 @@
 <body>
-<div>
-  <div class="container">
-    <div class="center">
-      <div class="logo-container">
-
-        <img src="assets/icon.png"  class="image"/>
-      </div>
-      <div class="card-center">
-        <div class="card-student-login"><br>
-          <h1>Welcome Back!</h1>
+  <div>
+    <div class="container">
+      <div class="center">
+        <div class="logo-container">
+          <img src="assets/icon.png" class="image" />
         </div>
-      </div><br>
-      <div class="card">
-        <div class="content">
-          <p class="title">Login to your account</p>
-          <p *ngIf="mEmail" class="red">*Missing email</p>
-          <input
-            name="email"
-            type="text"
-            placeholder="Email"
-            [(ngModel)]="email"
-          />
-          <p *ngIf="mPassword" class="red">*Missing password</p>
-          <input
-            name="password"
-            type="password"
-            placeholder="Password"
-            [(ngModel)]="password"
-          />
-          <button type="button" class="login" (click)="login()">login</button>
-          <button type="button" class="forgot_password" (click)="forgot()">
-            forgot password?
-          </button>
-          <a style="text-align: center" (click)="back()">back</a>
+        <div class="card-center">
+          <div class="card-student-login">
+            <br />
+            <h1>Welcome Back!</h1>
+          </div>
+        </div>
+        <br />
+        <div class="card">
+          <div class="content">
+            <p class="title">Login to your account</p>
+            <p *ngIf="mEmail" class="red">*Missing username</p>
+            <input
+              name="email"
+              type="text"
+              placeholder="Username"
+              [(ngModel)]="email"
+            />
+            <p *ngIf="mPassword" class="red">*Missing password</p>
+            <input
+              name="password"
+              type="password"
+              placeholder="Password"
+              [(ngModel)]="password"
+            />
+            <button type="button" class="login" (click)="login()">login</button>
+            <button type="button" class="forgot_password" (click)="forgot()">
+              forgot password?
+            </button>
+            <a style="text-align: center" (click)="back()">back</a>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 
-<div class="modal center" *ngIf="successModal">
-  <div class="modal-content">
-    <div class="modal-body">
-      <img src="assets/img/login/kid.gif" />
-    </div>
-    <div class="modal-footer center">
-      <div *ngFor="let userArray of userArray">
-        <h1>Hello {{ userArray?.firstname }}!</h1>
+  <div class="modal center" *ngIf="successModal">
+    <div class="modal-content">
+      <div class="modal-body">
+        <img src="assets/img/login/kid.gif" />
+      </div>
+      <div class="modal-footer center">
+        <div *ngFor="let userArray of userArray">
+          <h1>Hello {{ userArray?.firstname }}!</h1>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<div class="modal" *ngIf="failModal">
-  <div class="modal-content">
-    <div class="modal-body">
-      <img src="assets/img/login/sad.gif" />
-    </div>
-    <div class="flex-row con">
-      <h2>wrong email | password | no user found</h2>
+  <div class="modal" *ngIf="failModal">
+    <div class="modal-content">
+      <div class="modal-body">
+        <img src="assets/img/login/sad.gif" />
+      </div>
+      <div class="flex-row con">
+        <h2>wrong email | password | no user found</h2>
+      </div>
     </div>
   </div>
-</div>
 </body>

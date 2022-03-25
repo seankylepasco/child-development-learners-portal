@@ -1,6 +1,7 @@
 body {
   margin-right: 300px;
-  background-image: url(/assets/3.jpg);
+  background-image: url("/assets/img/background/body.png");
+  /* background-image: url(/assets/3.jpg); */
   background-repeat: no-repeat;
   animation: 1s ease-out 0s 1 slideInFromLeft;
 }
@@ -13,7 +14,7 @@ body {
   }
 }
 .pushable {
-  background: #a00028;
+  background: #d33830;
   border: none;
   border-radius: 12px;
   padding: 0;
@@ -22,11 +23,12 @@ body {
 }
 .front {
   width: 8em;
+  font-weight: bold;
   display: block;
   padding: 12px 42px;
   border-radius: 12px;
   font-size: 2.25rem;
-  background: #eb0000;
+  background: #EF4036;
   color: white;
   transform: translateY(-6px);
 }
@@ -35,7 +37,7 @@ body {
 }
 
 .pushable2 {
-  background: #0300a8;
+  background: #0d5a91;
   border: none;
   border-radius: 12px;
   padding: 0;
@@ -44,11 +46,12 @@ body {
 }
 .front2 {
   width: 8em;
+  font-weight: bold;
   display: block;
   padding: 12px 42px;
   border-radius: 12px;
   font-size: 2.25rem;
-  background: #0050e6;
+  background: #0E74BB;
   color: white;
   transform: translateY(-6px);
 }
@@ -78,7 +81,7 @@ body {
   margin-left: 10px;
 }
 .title {
-  color: rgb(255, 133, 62);
+  color: white;
   font-size: 50px;
   font-weight: 800;
   text-align: center;
