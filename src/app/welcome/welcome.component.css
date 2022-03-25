@@ -14,7 +14,7 @@ body {
   }
 }
 .pushable {
-  background: #d33830;
+  background: #d32551;
   border: none;
   border-radius: 12px;
   padding: 0;
@@ -28,7 +28,7 @@ body {
   padding: 12px 42px;
   border-radius: 12px;
   font-size: 2.25rem;
-  background: #EF4036;
+  background: #ff2e63;
   color: white;
   transform: translateY(-6px);
 }
@@ -37,7 +37,7 @@ body {
 }
 
 .pushable2 {
-  background: #0d5a91;
+  background: #0bc0bd;
   border: none;
   border-radius: 12px;
   padding: 0;
@@ -51,7 +51,7 @@ body {
   padding: 12px 42px;
   border-radius: 12px;
   font-size: 2.25rem;
-  background: #0E74BB;
+  background: #08d9d6;
   color: white;
   transform: translateY(-6px);
 }

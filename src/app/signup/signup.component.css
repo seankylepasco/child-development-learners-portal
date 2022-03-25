@@ -101,16 +101,16 @@ h2 {
   margin-left: 20px;
 }
 .submit {
-  background-color: #EF4036;
+  background-color: #ff2e63;
 }
 .submit:hover{
-  background-color: #cc3931;
+  background-color: #d32551;
 }
 .return {
-  background-color: #0E74BB;
+  background-color: #08d9d6;
 }
 .return:hover {
-  background-color: #0e66a5;
+  background-color: #0bc0bd;
 }
 .custom-file-input::-webkit-file-upload-button {
   visibility: hidden;
@@ -118,7 +118,7 @@ h2 {
 .custom-file-input::before {
   content: "Upload your Profile Photo";
   display: inline-block;
-  background-color: #EF4036;
+  background-color: #ff2e63;
   padding: 10px;
   outline: none;
   border-radius: 5px;
@@ -133,7 +133,7 @@ h2 {
 }
 .custom-file-input:active::before {
   background-color: transparent;
-  color: #EF4036;
+  color: #ff2e63;
 }
 .custom-psa-input::-webkit-file-upload-button {
   visibility: hidden;
@@ -141,7 +141,7 @@ h2 {
 .custom-psa-input::before {
   content: "Upload your PSA";
   display: inline-block;
-  background-color: #EF4036;
+  background-color: #ff2e63;
   padding: 10px;
   outline: none;
   border-radius: 5px;
@@ -156,7 +156,7 @@ h2 {
 }
 .custom-psa-input:active::before {
   background-color: transparent;
-  color: #EF4036;
+  color: #ff2e63;
 }
 .red {
   color: red !important;

@@ -89,16 +89,16 @@ button {
   font-weight: 700;
 }
 .login {
-  background-color: #EF4036;
+  background-color: #ff2e63;
 }
 .login:hover {
-  background-color: #c92d25;
+  background-color: #d32551;
 }
 .forgot_password {
-  background-color: #0E74BB;
+  background-color: #08d9d6;
 }
 .forgot_password:hover {
-  background-color: #0f619b;
+  background-color: #0bc0bd;
 }
 .modal {
   display: flex;
