@@ -8,6 +8,11 @@ mat-card {
   border-radius: 50%;
   object-fit: contain;
 }
+.imgsettings{
+  margin-left: 100px;
+  justify-content: center;
+
+}
 input {
   padding: 20px;
   font-size: 20px;
@@ -55,6 +60,7 @@ select {
 .main {
   height: 100%;
 }
+
 .custom-file-input::-webkit-file-upload-button {
   visibility: hidden;
 }
