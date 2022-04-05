@@ -76,7 +76,15 @@
                   "
                 >
                   <td>{{ student.firstname }} &nbsp; {{ student.lastname }}</td>
-                  <td>{{ student.type }}</td>
+                  <td *ngIf="student.psa" class="flex-row"><a
+                    [href]="student.psa"
+                    download="PSA-{{ student.firstname }}-{{
+                      student.lastname
+                    }}"
+                    class="download"
+                  >
+                    <mat-icon>download</mat-icon>&nbsp;PSA
+                  </a></td>
                   <td>{{ student.address }}</td>
                   <td>{{ student.phone }}</td>
                   <td class="flex-row">

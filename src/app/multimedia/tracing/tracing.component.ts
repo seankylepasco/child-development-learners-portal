@@ -11,7 +11,7 @@ export class TracingComponent implements OnInit {
   canvas: any;
   paths: any = [];
   img: any = '../../../assets/img/tracing/tracing.jpg';
-
+  brushWidthRange: any;
   constructor(private router: Router) {}
 
   @HostListener('window:keydown', ['$event'])
@@ -45,6 +45,9 @@ export class TracingComponent implements OnInit {
   }
   changeColor(color: any): void {
     this.canvas.freeDrawingBrush.color = color;
+  }
+  changeWidth(): void {
+    this.canvas.freeDrawingBrush.width = this.brushWidthRange;
   }
   removePath(): void {
     let array = this.paths;

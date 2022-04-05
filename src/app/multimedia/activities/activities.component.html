@@ -70,6 +70,7 @@
                         Activity Title: <br />{{ module.title }}
                       </h2>
                     </div>
+                  <a *ngIf="module.video_url" href="{{module.video_url}}">Video URL</a>
                     <div *ngFor="let complete of arr" class="scores">
                       <div>
                         <h2 class="mod-score">

@@ -1,6 +1,12 @@
 mat-card {
-  width: 30%;
+
+  width: 100%;
   background-color: #ffff;
+}
+.box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .img {
   width: 150px;
@@ -9,7 +15,7 @@ mat-card {
   object-fit: contain;
 }
 .imgsettings{
-  margin-left: 100px;
+
   justify-content: center;
 
 }
@@ -108,6 +114,11 @@ select {
   color: #ff2e63;
 }
 @media (max-width: 800px) {
+  .box {
+    display:block;
+    align-items:baseline;
+    justify-content:baseline;
+  }
   mat-card {
     width: auto;
   }
@@ -117,6 +128,10 @@ select {
     border-style: solid;
   }
   .main {
+    height: auto;
+  }
+  .banner{
+    width: 325px;
     height: auto;
   }
 }

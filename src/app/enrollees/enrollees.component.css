@@ -7,6 +7,19 @@ header {
   background-color: #252a34;
   color: #ffff;
 }
+.download {
+  text-decoration: none;
+  background-color: #ff2e63;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  margin: 5px;
+  border-radius: 5px;
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+}
 header button {
   background-color: transparent;
   color: #fff;

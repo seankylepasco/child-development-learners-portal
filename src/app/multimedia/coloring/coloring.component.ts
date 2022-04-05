@@ -13,7 +13,7 @@ export class ColoringComponent implements OnInit {
   brushWidthRange: any;
   color: any;
   img: any =
-    'https://i.pinimg.com/originals/dc/a7/a8/dca7a8a26e2d9eff0f519f549b4eb705.jpg';
+    '../assets/Fruits.jpg';
 
   constructor(private router: Router) {}
 
@@ -45,8 +45,8 @@ export class ColoringComponent implements OnInit {
       this.img,
       this.canvas.renderAll.bind(this.canvas),
       {
-        scaleX: this.canvas.width / 700,
-        scaleY: this.canvas.height / 700,
+        scaleX: this.canvas.width / 1200,
+        scaleY: this.canvas.height / 1300,
       }
     );
   }
@@ -73,8 +73,8 @@ export class ColoringComponent implements OnInit {
       this.img,
       this.canvas.renderAll.bind(this.canvas),
       {
-        scaleX: this.canvas.width / 700,
-        scaleY: this.canvas.height / 700,
+        scaleX: this.canvas.width / 1200,
+        scaleY: this.canvas.height / 1300,
       }
     );
   }
