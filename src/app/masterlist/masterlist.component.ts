@@ -84,6 +84,7 @@ export class MasterlistComponent implements OnInit {
         if (results[i].psa) {
           results[i].psa = this.transform(results[i].psa);
         }
+        console.log(results.psa);
       }
       this.students = results;
     });

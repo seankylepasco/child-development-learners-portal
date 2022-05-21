@@ -13,7 +13,7 @@ export class ColoringComponent implements OnInit {
   brushWidthRange: any;
   color: any;
   img: any =
-    '../assets/Fruits.jpg';
+    'assets/Fruits.jpg';
 
   constructor(private router: Router) {}
 

@@ -40,9 +40,7 @@ header h1 {
   display: flex;
   justify-content: center;
 }
-.my-pagination /deep/ .ngx-pagination .current {
-  background: #08d9d6;
-}
+
 .user {
   color: white;
   text-align: center;

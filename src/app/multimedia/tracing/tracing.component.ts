@@ -10,7 +10,7 @@ import { Component, OnInit, HostListener } from '@angular/core';
 export class TracingComponent implements OnInit {
   canvas: any;
   paths: any = [];
-  img: any = '../../../assets/img/tracing/tracing.jpg';
+  img: any = 'assets/img/tracing/tracing.jpg';
   brushWidthRange: any;
   constructor(private router: Router) {}
 

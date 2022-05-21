@@ -53,6 +53,7 @@ import { CreateAnnouncementComponent } from './modals/create-announcement/create
 import { ScoresComponent } from './multimedia/scores/scores.component';
 import { SoeComponent } from './multimedia/soe/soe.component';
 import { ReportsComponent } from './admin/reports/reports.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -116,7 +117,7 @@ import { ReportsComponent } from './admin/reports/reports.component';
     }),
     NgbModule,
   ],
-  providers: [DatePipe],
+  providers: [DatePipe, {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
