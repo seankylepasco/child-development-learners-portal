@@ -54,6 +54,22 @@ import { ScoresComponent } from './multimedia/scores/scores.component';
 import { SoeComponent } from './multimedia/soe/soe.component';
 import { ReportsComponent } from './admin/reports/reports.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { Tracing1Component } from './multimedia/tracing/tracing1/tracing1.component';
+import { Tracing2Component } from './multimedia/tracing/tracing2/tracing2.component';
+import { Tracing3Component } from './multimedia/tracing/tracing3/tracing3.component';
+import { Tracing4Component } from './multimedia/tracing/tracing4/tracing4.component';
+import { Tracing5Component } from './multimedia/tracing/tracing5/tracing5.component';
+import { Tracing6Component } from './multimedia/tracing/tracing6/tracing6.component';
+import { Tracing7Component } from './multimedia/tracing/tracing7/tracing7.component';
+import { Tracing8Component } from './multimedia/tracing/tracing8/tracing8.component';
+import { Coloring1Component } from './multimedia/coloring/coloring1/coloring1.component';
+import { Coloring2Component } from './multimedia/coloring/coloring2/coloring2.component';
+import { Coloring3Component } from './multimedia/coloring/coloring3/coloring3.component';
+import { Coloring4Component } from './multimedia/coloring/coloring4/coloring4.component';
+import { Coloring5Component } from './multimedia/coloring/coloring5/coloring5.component';
+import { Coloring6Component } from './multimedia/coloring/coloring6/coloring6.component';
+import { Coloring7Component } from './multimedia/coloring/coloring7/coloring7.component';
+import { Coloring8Component } from './multimedia/coloring/coloring8/coloring8.component';
 
 @NgModule({
   declarations: [
@@ -99,6 +115,22 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     ScoresComponent,
     SoeComponent,
     ReportsComponent,
+    Tracing1Component,
+    Tracing2Component,
+    Tracing3Component,
+    Tracing4Component,
+    Tracing5Component,
+    Tracing6Component,
+    Tracing7Component,
+    Tracing8Component,
+    Coloring1Component,
+    Coloring2Component,
+    Coloring3Component,
+    Coloring4Component,
+    Coloring5Component,
+    Coloring6Component,
+    Coloring7Component,
+    Coloring8Component,
   ],
   imports: [
     BrowserModule,

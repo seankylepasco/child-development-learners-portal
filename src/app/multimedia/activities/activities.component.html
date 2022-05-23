@@ -40,22 +40,27 @@
       <button class="blue">&nbsp;Logout</button>
     </div>
   </mat-drawer>
+  
   <header>
     <button (click)="drawer.toggle()"><mat-icon>menu</mat-icon></button>
     <h1>Student Activities</h1>
+    
   </header>
+  <img
+                  class="banner"
+                  src="assets/img/activities/act.png"
+                />
   <div class="flex-column">
+      
     <div class="flex-row">
       <div class="flex-column">
         <div class="con">
           <div id="row">
             <div class="flex-column">
-              <div>
-                <img
-                  class="banner"
-                  src="assets/img/student/activities.png"
-                />
-              </div>
+
+            
+              
+           
               <br /><mat-card>
                 <mat-card *ngIf="!modules">
                   <h2>

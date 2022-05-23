@@ -1,29 +1,79 @@
-<audio autoplay="" src="./assets/coloring.mp3"></audio>
-<div class='containerColor'>
+<mat-drawer-container>
+      <header>
+        <button mat-raised-button class="btn" (click)="goBack()">&nbsp;Back</button>
+        <h1 class="title">Tracing Activities</h1>
+      </header>
     <div class="con">
-        <button mat-raised-button (click)='goBack()'>Back</button>
-        <br><br>
-        <div class='flex-row'>
-            <div id='canvasContainer'>
-                <canvas id='colorCanvas'></canvas>
-            </div>
-            <div class="flex-row">
-                <div class="col-colors">
-                    <button (click)="changeColor('red')" class="button-colors" style='background-color: red;'></button>
-                    <button (click)="changeColor('orange')" class="button-colors" style="background-color: orange;"></button>
-                    <button (click)="changeColor('green')" class="button-colors" style="background-color: green;"></button>
-                    <button (click)="changeColor('blue')" class="button-colors" style="background-color: blue;"></button>
-                    <button (click)="changeColor('indigo')" class="button-colors" style="background-color: indigo;"></button>
-                    <button (click)="changeColor('violet')" class="button-colors" style="background-color: violet;"></button>
-                    <button (click)="removePath()" class="button-1 button-others"> Undo </button>
-                    <button (click)="clear()" class="button-1 button-others"> Clear </button>
-                    <button (click)="print()" class="button-1 button-others"> Print </button>
-                    <input type="range" id="brushWidthRange" min='1' max='20' [(ngModel)]='brushWidthRange' (input)='changeWidth()'>
-                </div>
-                <div>
-                    <img src="assets/img/tracing/kid-pencil.jpg" alt="">
-                </div>
-            </div>
-        </div>
+     
+     <div class="main">
+        <mat-card  (click)="totracing1()" class="box">
+            <img
+            id="hide"
+            src="assets/img/tracing/heart.png"
+            alt=""
+          />
+          
+        </mat-card>
+        <mat-card (click)="totracing2()" class="box">
+            <img
+            id="hide"
+            src="assets/img/tracing/star.png"
+            alt=""
+          />
+         
+        </mat-card>
+        <mat-card (click)="totracing3()" class="box">
+            <img
+            id="hide"
+            src="assets/img/tracing/circle.png"
+            alt=""
+          />
+        
+        </mat-card>
+        <mat-card (click)="totracing4()" class="box">
+            <img
+            id="hide"
+            src="assets/img/tracing/square.png"
+            alt=""
+          />
+         
+        </mat-card>
+      </div>
+  <br>
+      <div class="main">
+        <mat-card (click)="totracing5()" class="box">
+            <img
+            id="hide"
+            src="assets/img/tracing/triangle.png"
+            alt=""
+          />
+         
+        </mat-card >
+        <mat-card (click)="totracing6()" class="box">
+            <img
+            id="hide"
+            src="assets/img/tracing/oval.png"
+            alt=""
+          />
+         
+        </mat-card >
+        <mat-card (click)="totracing7()" class="box">
+            <img
+            id="hide"
+            src="assets/img/tracing/diamond.png"
+            alt=""
+          />
+         
+        </mat-card>
+        <mat-card (click)="totracing8()" class="box">
+            <img
+            id="hide"
+            src="assets/img/tracing/octagon.png"
+            alt=""
+          />
+          
+        </mat-card>
+      </div>
     </div>
-</div>
+  </mat-drawer-container>
+  

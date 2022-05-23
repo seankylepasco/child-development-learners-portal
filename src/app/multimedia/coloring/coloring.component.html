@@ -1,28 +1,79 @@
-<audio autoplay="" src="./assets/coloring.mp3"></audio>
-<div class='containerColor'>
-    <button mat-raised-button (click)='goBack()'>Back</button>
-    <br><br>
-    <div class='flex-row'>
-        <div id='canvasContainer'>
-            <canvas id='colorCanvas'></canvas>
-        </div>
-        <div class="flex-row">
-            <div class="col-colors">
-                <button (click)="changeColor('red')" class="button-colors" style='background-color: red;'></button>
-                <button (click)="changeColor('orange')" class="button-colors" style="background-color: orange;"></button>
-                <button (click)="changeColor('green')" class="button-colors" style="background-color: green;"></button>
-                <button (click)="changeColor('blue')" class="button-colors" style="background-color: blue;"></button>
-                <button (click)="changeColor('indigo')" class="button-colors" style="background-color: indigo;"></button>
-                <button (click)="changeColor('violet')" class="button-colors" style="background-color: violet;"></button>
-                <input (input)='colorInput()' [(ngModel)]='color' type="color" class="button-colors color-picker">
-                <button (click)="removePath()" class="button-1 button-others"> Undo </button>
-                <button (click)="clear()" class="button-1 button-others"> Clear </button>
-                <button (click)="print()" class="button-1 button-others"> Print </button>
-                <input type="range" id="brushWidthRange" min='1' max='20' [(ngModel)]='brushWidthRange' (input)='changeWidth()'>
-            </div>
-            <div>
-                <img src="assets/img/coloring/kid-coloring.jpg" alt="Kid Color">
-            </div>
-        </div>
+<mat-drawer-container>
+    <header>
+      <button mat-raised-button class="btn" (click)="goBack()">&nbsp;Back</button>
+      <h1 class="title">Coloring Activities</h1>
+    </header>
+  <div class="con">
+   
+   <div class="main">
+      <mat-card  (click)="tocoloring1()" class="box1">
+          <img
+          id="hide"
+          src="assets/img/coloring/apple.png"
+          alt=""
+        />
+        
+        <mat-card-title class="apple">Apple</mat-card-title>
+      </mat-card>
+      <mat-card (click)="tocoloring2()" class="box2">
+          <img
+          id="hide"
+          src="assets/img/coloring/mango.png"
+          alt=""
+        />
+        <mat-card-title class="mango">Mango</mat-card-title>
+      </mat-card>
+      <mat-card (click)="tocoloring3()" class="box3">
+          <img
+          id="hide"
+          src="assets/img/coloring/banana.png"
+          alt=""
+        />
+        <mat-card-title class="banana">Banana</mat-card-title>
+      </mat-card>
+      <mat-card (click)="tocoloring4()" class="box4">
+          <img
+          id="hide"
+          src="assets/img/coloring/orange.png"
+          alt=""
+        />
+        <mat-card-title class="orange">Orange</mat-card-title>
+      </mat-card>
     </div>
-</div>
+<br>
+    <div class="main">
+      <mat-card (click)="tocoloring5()" class="box5">
+          <img
+          id="hide"
+          src="assets/img/coloring/grape.png"
+          alt=""
+        />
+        <mat-card-title class="grapes">Grapes</mat-card-title>
+      </mat-card >
+      <mat-card (click)="tocoloring6()" class="box6">
+          <img
+          id="hide"
+          src="assets/img/coloring/strawberry.png"
+          alt=""
+        />
+        <mat-card-title class="strawberry">strawberry</mat-card-title>
+      </mat-card >
+      <mat-card (click)="tocoloring7()" class="box7">
+          <img
+          id="hide"
+          src="assets/img/coloring/watermelon.png"
+          alt=""
+        />
+        <mat-card-title class="watermelon">Watermelon</mat-card-title>
+      </mat-card>
+      <mat-card (click)="tocoloring8()" class="box8">
+          <img
+          id="hide"
+          src="assets/img/coloring/avocado.png"
+          alt=""
+        />
+        <mat-card-title class="avocado">Avocado</mat-card-title>
+      </mat-card>
+    </div>
+  </div>
+</mat-drawer-container>

@@ -135,3 +135,17 @@ select {
     height: auto;
   }
 }
+header {
+  display: flex;
+  background-color: #252a34;
+  color: #ffff;
+}
+.title{
+    margin-top: 20px;
+    margin-left: 20px;
+}
+.btn{
+  font-size: large;
+  font-weight: 700;
+margin: 10px;
+}

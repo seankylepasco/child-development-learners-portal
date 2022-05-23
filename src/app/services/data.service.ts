@@ -5,8 +5,8 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class DataService {
- // URL: any = 'http://localhost/child-development-learners-portal/api/';
-  URL: any = 'http://cdlp-portal.com/api/';
+ URL: any = 'http://localhost/child-development-learners-portal/api/';
+  //URL: any = 'http://cdlp-portal.com/api/';
   constructor(private http: HttpClient) {}
 
   public fetchData(endpoint: any, results: any) {

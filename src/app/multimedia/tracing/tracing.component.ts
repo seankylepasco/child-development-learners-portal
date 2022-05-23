@@ -22,6 +22,12 @@ export class TracingComponent implements OnInit {
   ngOnInit(): void {
     this.createCanvas();
   }
+  BtnSound():void{
+    let audio = new Audio();
+     audio.src = "assets/click.mp3";
+      audio.load();
+      audio.play();
+  }
   createCanvas(): void {
     let parent = document.getElementById('canvasContainer');
     this.canvas = new fabric.Canvas('colorCanvas', { isDrawingMode: true });
@@ -77,4 +83,32 @@ export class TracingComponent implements OnInit {
   goBack(): void {
     this.router.navigate(['student']);
   }
+  totracing1(): void {
+    this.BtnSound();
+    this.router.navigate(['tracing1']);
+  }
+  totracing2(): void {
+    this.BtnSound();
+    this.router.navigate(['tracing2']);
+  } totracing3(): void {
+    this.BtnSound();
+    this.router.navigate(['tracing3']);
+  } totracing4(): void {
+    this.BtnSound();
+    this.router.navigate(['tracing4']);
+  } totracing5(): void {
+    this.BtnSound();
+    this.router.navigate(['tracing5']);
+  } totracing6(): void {
+    this.BtnSound();
+    this.router.navigate(['tracing6']);
+  } totracing7(): void {
+    this.BtnSound();
+    this.router.navigate(['tracing7']);
+  } totracing8(): void {
+    this.BtnSound();
+    this.router.navigate(['tracing8']);
+  }
+
+
 }

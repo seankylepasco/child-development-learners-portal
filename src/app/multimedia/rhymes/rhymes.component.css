@@ -1,9 +1,18 @@
+.main{
+
+  display: flex;
+  justify-content: space-between;
+  
+}
 img {
-  height: 300px;
-  width: 300px;
+ 
+  width: fit-content;
   object-fit: contain;
 }
 mat-card {
+  width: fit-content;
+}
+#hide{
   width: fit-content;
 }
 @media (max-width: 800px) {
@@ -17,4 +26,28 @@ mat-card {
   #hide {
     display: none;
   }
+  .main{
+
+    display: block;
+    
+    
+  }
 }
+
+header {
+  display: flex;
+  background-color: #252a34;
+  color: #ffff;
+}
+.title{
+    margin-top: 20px;
+    margin-left: 20px;
+}
+.btn{
+  font-size: large;
+  font-weight: 700;
+margin: 10px;
+}
+.card{
+  background-color: #c2bfbf;
+ }
