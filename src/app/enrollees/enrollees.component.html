@@ -59,10 +59,12 @@
                   <th>Contact No</th>
                   <th>Actions</th>
                 </tr>
-                <div *ngIf="!students" class="center">
-                  <h2>
-                    <mat-icon> cancel_presentation</mat-icon>&nbsp;No Enrollees!
-                  </h2>
+                <div *ngIf="!students " class="center">
+                  <div *ngIf="!students" class="center">
+                    <div class="loading">
+                    <img src="assets/loading.gif" />
+                    </div>
+                  </div>
                 </div>
                 <tr
                   *ngFor="

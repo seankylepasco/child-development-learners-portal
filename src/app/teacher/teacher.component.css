@@ -52,6 +52,7 @@ header h1 {
   letter-spacing: 3px;
   margin-top: 20px;
 }
+
 .center {
   display: flex;
   padding-top: 30px;
@@ -60,6 +61,10 @@ header h1 {
   justify-content: center;
   text-align: center;
   align-items: center;
+}
+.loading{
+  margin-top: 50px;
+  margin-left: 400px;
 }
 .row {
   display: flex;
