@@ -13,6 +13,7 @@ import { CreateAnnouncementComponent } from '../modals/create-announcement/creat
 })
 export class AnnouncepostComponent implements OnInit {
   announcements: any;
+  something = false;
   stud_id: any;
   img: any;
   type: any;
@@ -23,6 +24,8 @@ export class AnnouncepostComponent implements OnInit {
   userArray: any = ([] = []);
   profile: any = '';
   submit: boolean = false;
+  isLoading = true;
+  isEmpty = false;
   Date: Date = new Date();
   constructor(
     private router: Router,
@@ -57,11 +60,21 @@ export class AnnouncepostComponent implements OnInit {
     });
   }
   getAnnouncements(): void {
-    this.data
-      .fetchData('teacher_announcements/' + this.info.id, '')
-      .subscribe((response: any) => {
+    this.data.fetchData('teacher_announcements/' + this.info.id, '').subscribe(
+      (response: any) => {
+        this.isLoading = false;
         this.announcements = response.payload;
-      });
+      },
+      (error: any) => {
+        console.log(error.status);
+        if ((error.status = 404)) {
+          this.isLoading = false;
+          this.isEmpty = true;
+          console.log('change to none');
+          console.log(this.isEmpty);
+        }
+      }
+    );
   }
   checkifLoggedIn(): void {
     this.info = JSON.parse(localStorage.getItem('user') || '{}');
@@ -127,6 +140,9 @@ export class AnnouncepostComponent implements OnInit {
   }
   toMasterList(): void {
     this.router.navigate(['masterlist']);
+  }
+  toClasses(): void {
+    this.router.navigate(['classes']);
   }
   toScore(): void {
     this.router.navigate(['scores']);

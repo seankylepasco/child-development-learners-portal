@@ -25,7 +25,9 @@ export class EnrolleesComponent implements OnInit {
   type: any;
   total: any;
   page = 1;
-  Date : Date = new Date();
+  isLoading = true;
+  isEmpty = false;
+  Date: Date = new Date();
   constructor(
     private datepipe: DatePipe,
     private router: Router,
@@ -58,7 +60,8 @@ export class EnrolleesComponent implements OnInit {
         });
       });
     } else {
-    }console.log(data);
+    }
+    console.log(data);
   }
   checkifLoggedIn(): void {
     this.info = JSON.parse(localStorage.getItem('user') || '{}');
@@ -86,22 +89,37 @@ export class EnrolleesComponent implements OnInit {
       });
   }
   getStudents(): void {
-    this.data.fetchData('enrollees', '').subscribe((response: any) => {
-      const results = response.payload;
-      for (let i = 0; i < response.payload.length; i++) {
-        if (results[i].psa) {
-          results[i].psa = this.transform(results[i].psa);
+    this.data.fetchData('enrollees', '').subscribe(
+      (response: any) => {
+        this.isLoading = false;
+        const results = response.payload;
+        for (let i = 0; i < response.payload.length; i++) {
+          if (results[i].psa) {
+            results[i].psa = this.transform(results[i].psa);
+          }
+        }
+        this.total = response.payload.length;
+        this.students = results;
+      },
+      (error: any) => {
+        console.log(error.status);
+        if ((error.status = 404)) {
+          this.isLoading = false;
+          this.isEmpty = true;
+          console.log('change to none');
+          console.log(this.isEmpty);
         }
       }
-      this.total = response.payload.length;
-      this.students = results;
-    });
+    );
   }
   transform(url: any) {
     return this.domSanitizer.bypassSecurityTrustResourceUrl(url);
   }
   toMasterList(): void {
     this.router.navigate(['masterlist']);
+  }
+  toClasses(): void {
+    this.router.navigate(['classes']);
   }
   toTeacher(): void {
     this.router.navigate(['teacher']);

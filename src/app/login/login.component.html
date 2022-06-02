@@ -5,9 +5,8 @@
         <div class="logo-container">
           <img src="assets/icon.png" class="image" />
         </div>
-        <div class="card-center">
-          <div class="card-student-login">
-            <br />
+        <div class="card-student-login">
+          <div class="card-center ">
             <h1>Welcome Back!</h1>
           </div>
         </div>
@@ -15,14 +14,14 @@
         <div class="card">
           <div class="content">
             <p class="title">Login to your account</p>
-            <p *ngIf="mEmail" class="red">*Missing username</p>
+            <p *ngIf="mEmail" class="red">*Missing Email</p>
             <input
               name="email"
               type="text"
-              placeholder="Username"
+              placeholder="Email"
               [(ngModel)]="email"
             />
-            <p *ngIf="mPassword" class="red">*Missing password</p>
+            <p *ngIf="mPassword" class="red">*Missing Password</p>
             <input
               name="password"
               type="password"
@@ -40,7 +39,7 @@
     </div>
   </div>
 
-  <div class="modal center" *ngIf="successModal">
+  <!-- <div class="modal center" *ngIf="successModal">
     <div class="modal-content">
       <div class="modal-body">
         <img src="assets/img/login/kid.gif" />
@@ -51,9 +50,9 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
-  <div class="modal" *ngIf="failModal">
+  <!-- <div class="modal" *ngIf="failModal">
     <div class="modal-content">
       <div class="modal-body">
         <img src="assets/img/login/sad.gif" />
@@ -62,5 +61,5 @@
         <h2>wrong email | password | no user found</h2>
       </div>
     </div>
-  </div>
+  </div> -->
 </body>

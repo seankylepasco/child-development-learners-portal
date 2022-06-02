@@ -45,6 +45,14 @@ switch ($_SERVER['REQUEST_METHOD']) {
         }
         break;
 
+      case 'classes': // HERE
+        if (count($req) > 1) {
+          echo json_encode($get->get_query('SELECT * FROM `tbl_users` WHERE type = "student" && year = "'. $req[1] .'"'));
+        } else {
+          echo json_encode($get->get_query('SELECT * FROM `tbl_users` WHERE type = "student" && year ="' . $req[1] . "'"));
+        }
+        break;
+
       case 'delete_report':
         echo json_encode($global->delete('tbl_reports', 'id = ' . $req[1]));
         break;

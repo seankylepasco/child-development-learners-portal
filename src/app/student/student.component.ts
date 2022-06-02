@@ -21,7 +21,7 @@ export class StudentComponent implements OnInit {
   info: any = {};
   userArray: any = ([] = []);
   windowScrolled = false;
-
+  static playSound = true;
   constructor(
     private router: Router,
     private data: DataService,
@@ -38,12 +38,17 @@ export class StudentComponent implements OnInit {
     window.addEventListener('scroll', () => {
       this.windowScrolled = window.pageYOffset !== 0;
     });
+
   }
-  BtnSound():void{
+  get staticUrlArray() {
+    return StudentComponent.playSound;
+  }
+
+  BtnSound(): void {
     let audio = new Audio();
-     audio.src = "assets/click.mp3";
-      audio.load();
-      audio.play();
+    audio.src = 'assets/click.mp3';
+    audio.load();
+    audio.play();
   }
 
   checkifLoggedIn(): void {

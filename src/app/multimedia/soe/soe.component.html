@@ -5,6 +5,7 @@
         <mat-icon>close</mat-icon>
       </button>
     </div>
+
     <div class="center">
       <img
         src="../../assets/img/signup/user.jpg"
@@ -18,7 +19,11 @@
         class="img"
       />
     </div>
-    <div class="user">Hello {{ profile.firstname }}!</div>
+
+
+    <div class="user" *ngIf="profile.firstname">Hello {{ profile.firstname }}!</div>
+    <div class="user" *ngIf="!profile.firstname">Loading..</div>
+
     <div class="profile">
       <button (click)="toStudent()" class="red">
         <mat-icon>home</mat-icon>&nbsp;Dashboard
@@ -72,13 +77,15 @@
   </div>
 
   <div class="card-soe flex-column" *ngFor="let soe of soe">
-    <mat-card>
-      <div class="con flex-column">
-        <h2>{{ soe.date | date: "fullDate" }}</h2>
-        <h3>{{ soe.time }}</h3>
-        <h3>{{ soe.venue }}</h3>
-        <h3>{{ soe.activities }}</h3>
-      </div>
-    </mat-card>
+    <div class="center">
+      <mat-card>
+        <div class="con flex-column">
+          <h2>{{ soe.date | date: "fullDate" }}</h2>
+          <h3>{{ soe.time }}</h3>
+          <h3>{{ soe.venue }}</h3>
+          <h3>{{ soe.activities }}</h3>
+        </div>
+      </mat-card>
+    </div>
   </div>
 </mat-drawer-container>

@@ -26,6 +26,8 @@ export class ScoresComponent implements OnInit {
   teacher: any = 'teacher';
   userArray: any = ([] = []);
   windowScrolled = false;
+  isLoading = true;
+  isEmpty = false;
   Date: Date = new Date();
 
   constructor(
@@ -58,9 +60,21 @@ export class ScoresComponent implements OnInit {
     }
   }
   getStudents(): void {
-    this.data.fetchData('scores', '').subscribe((response: any) => {
-      this.students = response.payload;
-    });
+    this.data.fetchData('scores', '').subscribe(
+      (response: any) => {
+        this.isLoading = false;
+        this.students = response.payload;
+      },
+      (error: any) => {
+        console.log(error.status);
+        if ((error.status = 404)) {
+          this.isLoading = false;
+          this.isEmpty = true;
+          console.log('change to none');
+          console.log(this.isEmpty);
+        }
+      }
+    );
   }
   searchStudents(): void {
     this.students = [];
@@ -110,6 +124,9 @@ export class ScoresComponent implements OnInit {
   }
   toMasterList(): void {
     this.router.navigate(['masterlist']);
+  }
+  toClasses(): void {
+    this.router.navigate(['classes']);
   }
   toEnrollees(): void {
     this.router.navigate(['enrollees']);

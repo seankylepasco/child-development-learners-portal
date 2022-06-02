@@ -26,6 +26,8 @@ export class AdminComponent implements OnInit {
   windowScrolled = false;
   profile: any = '';
   search: any = '';
+  isLoading = true;
+  isEmpty = false;
   constructor(
     private router: Router,
     private data: DataService,
@@ -58,13 +60,23 @@ export class AdminComponent implements OnInit {
     });
   }
   getUsers(): void {
-    this.data
-      .fetchData('users/' + this.search, '')
-      .subscribe((response: any) => {
+    this.data.fetchData('users/' + this.search, '').subscribe(
+      (response: any) => {
+        this.isLoading = false;
         this.users = response.payload;
         if (response.payload === null) this.totalLength = 0;
         else this.totalLength = response.payload.length;
-      });
+      },
+      (error: any) => {
+        console.log(error.status);
+        if ((error.status = 404)) {
+          this.isLoading = false;
+          this.isEmpty = true;
+          console.log('change to none');
+          console.log(this.isEmpty);
+        }
+      }
+    );
   }
   getEnrollees(): void {
     this.data.fetchData('enrollees', '').subscribe((response: any) => {

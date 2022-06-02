@@ -1,7 +1,9 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
-
+import { MatDialog } from '@angular/material/dialog';
+import { LoginComponentModal } from '../modals/login/login.component';
+import { LoginfailComponent } from '../modals/loginfail/loginfail.component';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -22,7 +24,11 @@ export class LoginComponent implements OnInit {
   password: string = '';
   timeLeft: number = 2;
 
-  constructor(private router: Router, private data: DataService) {}
+  constructor(
+    private router: Router,
+    private data: DataService,
+    private dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {}
   back(): void {
@@ -78,9 +84,11 @@ export class LoginComponent implements OnInit {
               this.userArray.push(this.user);
               let type = this.getFields(this.userArray, 'type');
               this.type = type.toString();
-              this.successModal = true;
+              this.openLoginResult();
+              // this.successModal = true;
               if (Object.keys(this.user).length === 0) {
-                this.successModal = true;
+                this.openLoginResult();
+                // this.successModal = true;
                 this.router.navigate(['welcome']);
               } else if (this.type === 'admin') {
                 this.startTimerAdmin();
@@ -94,11 +102,13 @@ export class LoginComponent implements OnInit {
                 this.router.navigate(['welcome']);
               }
             } else if (response.status.remarks === 'failed') {
-              this.failModal = true;
-              this.failTimer();
+              this.openLoginFailed();
+              // this.failModal = true;
+              // this.failTimer();
             } else {
-              this.failModal = true;
-              this.failTimer();
+              // this.failModal = true;
+              this.openLoginFailed();
+              // this.failTimer();
             }
           });
       } catch (error) {}
@@ -108,6 +118,18 @@ export class LoginComponent implements OnInit {
     var output = [];
     for (var i = 0; i < input.length; i++) output.push(input[i][field]);
     return output;
+  }
+  openLoginResult(): void {
+    this.BtnSound();
+    this.dialog.open(LoginComponentModal, {
+      width: '400px',
+    });
+  }
+  openLoginFailed(): void {
+    this.BtnSound();
+    this.dialog.open(LoginfailComponent, {
+      width: '400px',
+    });
   }
   startTimer(): void {
     setTimeout(this.toHome.bind(this), 2000);
@@ -138,5 +160,8 @@ export class LoginComponent implements OnInit {
   }
   toLogin(): void {
     location.reload();
+  }
+  closeDialog(): void {
+    this.dialog.closeAll();
   }
 }

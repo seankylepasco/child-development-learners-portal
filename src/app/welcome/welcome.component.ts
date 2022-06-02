@@ -7,7 +7,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./welcome.component.css'],
 })
 export class WelcomeComponent implements OnInit {
-  
   type: any;
   user: any = {};
   userArray: any = ([] = []);
@@ -16,14 +15,14 @@ export class WelcomeComponent implements OnInit {
   ngOnInit(): void {
     this.checkifLoggedIn();
   }
-   BtnSound():void{
+  BtnSound(): void {
     let audio = new Audio();
-     audio.src = "assets/click.mp3";
-      audio.load();
-      audio.play();
+    audio.src = 'assets/click.mp3';
+    audio.load();
+    audio.play();
   }
   login(): void {
-   this.BtnSound();
+    this.BtnSound();
     this.router.navigate(['login']);
   }
   register(): void {
@@ -48,14 +47,10 @@ export class WelcomeComponent implements OnInit {
     } else {
       this.router.navigate(['welcome']);
     }
-  } 
-   
+  }
   getFields(input: any, field: any) {
     var output = [];
     for (var i = 0; i < input.length; ++i) output.push(input[i][field]);
     return output;
   }
-  
- 
-    
 }

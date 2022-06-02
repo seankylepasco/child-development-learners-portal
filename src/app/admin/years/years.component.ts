@@ -17,6 +17,8 @@ export class YearsComponent implements OnInit {
   user: any = {};
   profile: any = '';
   userArray: any = ([] = []);
+  isLoading = true;
+  isEmpty = false;
 
   constructor(
     private router: Router,
@@ -55,9 +57,21 @@ export class YearsComponent implements OnInit {
     return output;
   }
   getYears(): void {
-    this.data.fetchData('years', '').subscribe((response: any) => {
-      this.years = response.payload;
-    });
+    this.data.fetchData('years', '').subscribe(
+      (response: any) => {
+        this.isLoading = false;
+        this.years = response.payload;
+      },
+      (error: any) => {
+        console.log(error.status);
+        if ((error.status = 404)) {
+          this.isLoading = false;
+          this.isEmpty = true;
+          console.log('change to none');
+          console.log(this.isEmpty);
+        }
+      }
+    );
   }
   toViewYear(id: any): void {
     localStorage.setItem('year_id', id);

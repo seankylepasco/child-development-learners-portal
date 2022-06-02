@@ -1,10 +1,7 @@
 <div class="con">
   <div class="flex-column">
     <div class="center">
-      <img
-        src="assets/img/signup/user.jpg"
-        *ngIf="profile.img === empty"
-      />
+      <img src="assets/img/signup/user.jpg" *ngIf="profile.img === empty" />
       <img src="{{ profile.img }}" *ngIf="profile.img != empty" />
     </div>
     <div class="user">
@@ -12,6 +9,11 @@
         <h1>{{ profile.firstname }} {{ profile.lastname }}</h1>
         <button (click)="toProfile()" class="button-1" mat-dialog-close>
           Edit Profile
+        </button>
+        <br />
+        <br />
+        <button (click)="offSounds()" class="button-1" mat-dialog-close>
+          <mat-icon inline="true">music_note</mat-icon> Sounds
         </button>
       </div>
     </div>

@@ -1,5 +1,5 @@
 <mat-drawer-container autosize>
-  <audio autoplay="" src="./assets/bgmusic.mp3"></audio>
+  <audio *ngIf="staticUrlArray" autoplay="" src="./assets/bgmusic.mp3"></audio>
   <mat-drawer #drawer mode="side" opened="true">
     <div class="flex-row end-obj">
       <button class="button-44 none" (click)="drawer.toggle()">
@@ -10,7 +10,12 @@
       <img *ngIf="!profile.img" src="assets/img/signup/user.jpg" />
       <img *ngIf="profile.img" appLazyLoad src="{{ profile.img }}" />
     </div>
-    <div class="user">Hello {{ profile.firstname }}!</div>
+
+    <div class="user" *ngIf="profile.firstname">
+      Hello {{ profile.firstname }}!
+    </div>
+    <div class="user" *ngIf="!profile.firstname">Loading..</div>
+
     <div class="profile">
       <button (click)="toStudent()" class="red-active">
         <mat-icon>home</mat-icon>&nbsp;Dashboard
@@ -97,7 +102,10 @@
                 <h1 class="center">
                   <mat-icon>library_books</mat-icon> Story Telling
                 </h1>
-                <img class="end-obj" src="assets/img/student/storytelling.png" />
+                <img
+                  class="end-obj"
+                  src="assets/img/student/storytelling.png"
+                />
               </mat-card>
             </div>
           </div>

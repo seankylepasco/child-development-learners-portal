@@ -26,6 +26,8 @@ export class MasterlistComponent implements OnInit {
   userInput: any = {};
   info: any = {};
   user: any = {};
+  isLoading = true;
+  isEmpty = false;
   Date: Date = new Date();
   constructor(
     private dialog: MatDialog,
@@ -77,20 +79,35 @@ export class MasterlistComponent implements OnInit {
     return output;
   }
   getStudents(): void {
-    this.data.fetchData('students', '').subscribe((response: any) => {
-      const results = response.payload;
-      this.total = results.length;
-      for (let i = 0; i < response.payload.length; i++) {
-        if (results[i].psa) {
-          results[i].psa = this.transform(results[i].psa);
+    this.data.fetchData('students', '').subscribe(
+      (response: any) => {
+        this.isLoading = false;
+        const results = response.payload;
+        this.total = results.length;
+        for (let i = 0; i < response.payload.length; i++) {
+          if (results[i].psa) {
+            results[i].psa = this.transform(results[i].psa);
+          }
+          console.log(results.psa);
         }
-        console.log(results.psa);
+        this.students = results;
+      },
+      (error: any) => {
+        console.log(error.status);
+        if ((error.status = 404)) {
+          this.isLoading = false;
+          this.isEmpty = true;
+          console.log('change to none');
+          console.log(this.isEmpty);
+        }
       }
-      this.students = results;
-    });
+    );
   }
   transform(url: any) {
     return this.domSanitizer.bypassSecurityTrustResourceUrl(url);
+  }
+  toClasses(): void {
+    this.router.navigate(['classes']);
   }
   toScore(): void {
     this.router.navigate(['scores']);

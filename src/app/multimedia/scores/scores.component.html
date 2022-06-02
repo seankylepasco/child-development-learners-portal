@@ -10,10 +10,17 @@
       <img appLazyLoad src="{{ profile.img }}" *ngIf="profile.img" />
     </div>
 
-    <div class="user">Hello {{ profile.firstname }}!</div>
+    <div class="user" *ngIf="profile.firstname">
+      Hello {{ profile.firstname }}!
+    </div>
+    <div class="user" *ngIf="!profile.firstname">Loading..</div>
+
     <div class="profile">
       <button (click)="toTeacher()" class="red">
         <mat-icon>home</mat-icon>&nbsp;Dashboard
+      </button>
+      <button (click)="toClasses()" class="red">
+        <mat-icon>home</mat-icon>&nbsp;Classes
       </button>
       <button (click)="toMasterList()" class="red">
         <mat-icon>list</mat-icon>&nbsp;Master List
@@ -61,6 +68,13 @@
             </button>
           </div>
 
+          <img
+            class="loading"
+            *ngIf="isLoading"
+            src="assets/img/loading/loading.gif"
+          />
+          <h2 *ngIf="isLoading">Loading ...</h2>
+
           <div class="card-table">
             <div class="con">
               <table>
@@ -76,8 +90,8 @@
                 <tbody>
                   <div *ngIf="!students" class="center">
                     <h2>
-                      <mat-icon> cancel_presentation</mat-icon>&nbsp;No
-                      Students!
+                      <mat-icon> cancel_presentation</mat-icon>&nbsp;No Scores
+                      Yet!
                     </h2>
                   </div>
                   <tr
@@ -106,37 +120,45 @@
 
           <div class="center" *ngIf="students">
             <pagination-controls
+              *ngIf="totalStudents > 6"
               class="my-pagination"
               (pageChange)="page = $event"
             ></pagination-controls>
           </div>
         </div>
 
-        <div
-          class="card-students flex-column"
-          *ngFor="
-            let student of students
-              | paginate
-                : {
-                    itemsPerPage: 2,
-                    currentPage: page,
-                    totalItems: totalStudents
-                  }
-          "
-        >
-          <mat-card>
-            <div class="con flex-column">
-              <h2>{{ student.firstname }} &nbsp; {{ student.lastname }}</h2>
-              <h3>{{ student.type }}</h3>
-              <h3>{{ student.address }}</h3>
-              <h3>{{ student.phone }}</h3>
-              <div class="flex-row">
-                <button (click)="updateToEnrollee(student)" class="red">
-                  <mat-icon>delete</mat-icon> Enrollee
-                </button>
+        <div class="mobile">
+          <div *ngIf="isEmpty" class="center">
+            <h2>
+              <mat-icon> cancel_presentation</mat-icon>&nbsp;No Scores Yet!
+            </h2>
+          </div>
+          <div
+            class="card-students flex-column"
+            *ngFor="
+              let student of students
+                | paginate
+                  : {
+                      itemsPerPage: 2,
+                      currentPage: page,
+                      totalItems: totalStudents
+                    }
+            "
+          >
+            <mat-card>
+              <div class="con flex-column">
+                <h2>{{ student.firstname }} &nbsp; {{ student.lastname }}</h2>
+                <h3>{{ student.type }}</h3>
+                <h3>{{ student.address }}</h3>
+                <h3>{{ student.phone }}</h3>
+                <div class="flex-row">
+                  <button (click)="updateToEnrollee(student)" class="red">
+                    <mat-icon>delete</mat-icon> Enrollee
+                  </button>
+                </div>
               </div>
-            </div>
-          </mat-card>
+            </mat-card>
+          </div>
         </div>
       </div>
     </section>

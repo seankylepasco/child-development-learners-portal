@@ -9,7 +9,10 @@
       <img src="assets/img/signup/user.jpeg" *ngIf="!profile.img" />
       <img appLazyLoad src="{{ profile.img }}" *ngIf="profile.img" />
     </div>
-    <div class="user">Hello {{ profile.firstname }}!</div>
+    <div class="user" *ngIf="profile.firstname">
+      Hello {{ profile.firstname }}!
+    </div>
+    <div class="user" *ngIf="!profile.firstname">Loading..</div>
     <div class="profile">
       <button (click)="toDashboard()" class="blue">
         <mat-icon>home</mat-icon> Dashboard
@@ -97,12 +100,27 @@
               <mat-icon>search</mat-icon>
             </button>
           </div>
+
+          <img
+            class="loading"
+            *ngIf="isLoading"
+            src="assets/img/loading/loading.gif"
+          />
+          <h2 *ngIf="isLoading">Loading ...</h2>
+
+          <div *ngIf="isEmpty" class="center">
+            <h2>
+              <mat-icon> cancel_presentation</mat-icon>&nbsp;No
+              Students!
+            </h2>
+          </div>
+
           <div class="card-table">
             <table>
               <tr>
                 <th>Name</th>
                 <th>Email</th>
-                <th>Status</th>
+                <th>Role</th>
                 <th>Address</th>
                 <th>Contact No</th>
                 <th>Actions</th>
@@ -135,14 +153,13 @@
               </tr>
             </table>
           </div>
-          <div class="center">
+          <div class="center" *ngIf="totalLength > 4">
             <pagination-controls
               class="my-pagination"
               (pageChange)="page = $event"
             ></pagination-controls>
           </div>
         </div>
-
         <div
           class="card-students flex-column"
           *ngFor="

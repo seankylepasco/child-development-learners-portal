@@ -70,6 +70,9 @@ import { Coloring5Component } from './multimedia/coloring/coloring5/coloring5.co
 import { Coloring6Component } from './multimedia/coloring/coloring6/coloring6.component';
 import { Coloring7Component } from './multimedia/coloring/coloring7/coloring7.component';
 import { Coloring8Component } from './multimedia/coloring/coloring8/coloring8.component';
+import { ClassesComponent } from './teacher/classes/classes.component';
+import { YearComponent } from './teacher/classes/year/year.component';
+import { LoginfailComponent } from './modals/loginfail/loginfail.component';
 
 @NgModule({
   declarations: [
@@ -131,6 +134,9 @@ import { Coloring8Component } from './multimedia/coloring/coloring8/coloring8.co
     Coloring6Component,
     Coloring7Component,
     Coloring8Component,
+    ClassesComponent,
+    YearComponent,
+    LoginfailComponent,
   ],
   imports: [
     BrowserModule,
@@ -149,7 +155,10 @@ import { Coloring8Component } from './multimedia/coloring/coloring8/coloring8.co
     }),
     NgbModule,
   ],
-  providers: [DatePipe, {provide: LocationStrategy, useClass: HashLocationStrategy}],
+  providers: [
+    DatePipe,
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

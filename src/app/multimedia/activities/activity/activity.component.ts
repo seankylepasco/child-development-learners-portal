@@ -6,7 +6,6 @@ import { Component, OnInit, HostBinding } from '@angular/core';
 import { LogoutComponent } from 'src/app/modals/logout/logout.component';
 import { DeleteComponent } from 'src/app/modals/delete/delete.component';
 import { SuccessComponent } from 'src/app/modals/success/success.component';
-
 @Component({
   selector: 'app-activity',
   templateUrl: './activity.component.html',
@@ -50,15 +49,19 @@ export class ActivityComponent implements OnInit {
     this.file = this.domSanitizer.bypassSecurityTrustResourceUrl(
       this.activity.file
     );
-    this.url = this.activity.video_url;
+    this.url = this.domSanitizer.bypassSecurityTrustHtml(
+      this.activity.video_url
+    );
     this.file_name = this.activity.file_name;
-
     this.user = JSON.parse(localStorage.getItem('user') || '{}');
     this.userArray.push(this.user);
     let array = this.userArray;
     let id = array.find((x: { id: string }) => x.id === x.id).id;
     this.stud_id = id;
     this.getCompleted();
+  }
+  transform(url: any) {
+    return this.domSanitizer.bypassSecurityTrustResourceUrl(url);
   }
   getCompleted(): void {
     this.data

@@ -1,0 +1,144 @@
+<mat-drawer-container autosize>
+  <mat-drawer #drawer mode="side" opened="true">
+    <div class="flex-row end-obj">
+      <button class="button-44 none" (click)="drawer.toggle()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+    <div class="center">
+      <img src="assets/img/signup/user.jpg" *ngIf="!profile.img" />
+      <img appLazyLoad src="{{ profile.img }}" *ngIf="profile.img" />
+    </div>
+
+    <div class="user" *ngIf="profile.firstname">
+      Hello {{ profile.firstname }}!
+    </div>
+    <div class="user" *ngIf="!profile.firstname">Loading..</div>
+    <div class="profile">
+      <button (click)="toTeacher()" class="red">
+        <mat-icon>home</mat-icon>&nbsp;Dashboard
+      </button>
+      <button class="blue"><mat-icon>home</mat-icon>&nbsp;Classes</button>
+      <button (click)="toMasterList()" class="red">
+        <mat-icon>list</mat-icon>&nbsp;Master List
+      </button>
+      <button (click)="toEnrollees()" class="red">
+        <mat-icon>list</mat-icon>&nbsp;Incoming Enrollees
+      </button>
+      <button (click)="toAnnouncementPost()" class="red">
+        <mat-icon>announcement</mat-icon>&nbsp;Post announcement
+      </button>
+      <button (click)="toActivityPost()" class="red">
+        <mat-icon>attach_file</mat-icon>&nbsp;Post Activity
+      </button>
+      <button (click)="toScore()" class="red">
+        <mat-icon>score</mat-icon>&nbsp;Scores
+      </button>
+    </div>
+
+    <div class="logout">
+      <button (click)="openLogout()" class="blue">Logout</button>
+    </div>
+  </mat-drawer>
+  <header>
+    <button (click)="drawer.toggle()"><mat-icon>menu</mat-icon></button>
+    <h1>Classes</h1>
+    &nbsp;
+    <h1 class="dates">{{ Date | date: "medium" }}</h1>
+  </header>
+  <div class="flex-column">
+    <section class="section-right">
+      <div class="flex-row">
+        <div class="flex-column con">
+          <img
+            class="loading"
+            *ngIf="isLoading"
+            src="assets/img/loading/loading.gif"
+          />
+          <h2 *ngIf="isLoading">Loading ...</h2>
+          <div class="card-table">
+            <div class="con">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Year</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <div *ngIf="isEmpty" class="center">
+                    <h2>
+                      <mat-icon> cancel_presentation</mat-icon>&nbsp;No
+                      Students!
+                    </h2>
+                  </div>
+                  <tr
+                    *ngFor="
+                      let year of years
+                        | paginate
+                          : {
+                              itemsPerPage: 3,
+                              currentPage: page,
+                              totalItems: totalYears
+                            }
+                    "
+                  >
+                    <td>
+                      {{ year.year }}
+                    </td>
+                    <td class="flex-row">
+                      &nbsp;
+                      <div class="center">
+                        <button
+                          (click)="toClassYear(year.year)"
+                          class="red-view"
+                        >
+                          <mat-icon>remove_red_eye</mat-icon> &nbsp; view
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="center" *ngIf="years">
+            <pagination-controls
+              *ngIf="totalYears > 3"
+              class="my-pagination"
+              (pageChange)="page = $event"
+            ></pagination-controls>
+          </div>
+        </div>
+
+        <div *ngIf="isEmpty" class="mobile center">
+          <h2><mat-icon> cancel_presentation</mat-icon>&nbsp;No Students!</h2>
+        </div>
+
+        <div
+          class="card-students flex-column"
+          *ngFor="
+            let year of years
+              | paginate
+                : {
+                    itemsPerPage: 2,
+                    currentPage: page,
+                    totalItems: totalYears
+                  }
+          "
+        >
+          <mat-card>
+            <div class="con flex-column">
+              <h2>{{ year.year }}</h2>
+              <div class="flex-row">
+                <button (click)="toClassYear(year.year)" class="red-view">
+                  <mat-icon>remove_red_eye</mat-icon> &nbsp; view
+                </button>
+              </div>
+            </div>
+          </mat-card>
+        </div>
+      </div>
+    </section>
+  </div>
+</mat-drawer-container>

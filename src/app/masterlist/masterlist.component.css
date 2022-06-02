@@ -3,6 +3,16 @@ header {
   background-color: #252a34;
   color: #ffff;
 }
+
+.mobile {
+  display: none !important;
+}
+
+.loading {
+  width: 30px !important;
+  height: 30px !important;
+}
+
 header button {
   background-color: transparent;
   color: #fff;
@@ -14,15 +24,18 @@ header button {
   font-weight: 700;
   text-align: center;
 }
+
 header button:hover {
   background-color: #353a46;
 }
+
 header h1 {
   margin-top: auto;
   margin-bottom: auto;
   display: flex;
   justify-content: center;
 }
+
 .user {
   color: white;
   text-align: center;
@@ -30,6 +43,7 @@ header h1 {
   letter-spacing: 3px;
   margin-top: 20px;
 }
+
 .search {
   border: none;
   font-size: 20px;
@@ -37,6 +51,7 @@ header h1 {
   height: 60px;
   background-color: transparent;
 }
+
 .search_input {
   padding: 20px;
   font-size: 20px;
@@ -49,6 +64,7 @@ header h1 {
   width: -moz-fit-content;
   width: fit-content;
 }
+
 .center {
   display: flex;
   padding-top: 30px;
@@ -58,25 +74,30 @@ header h1 {
   text-align: center;
   align-items: center;
 }
+
 .row {
   display: flex;
   flex-direction: row;
   flex: 1;
 }
+
 .section-right {
   display: flex;
   flex-direction: column;
   flex: 1;
   height: 100%;
 }
+
 .col {
   display: flex;
   flex-direction: column;
   flex: 1;
 }
+
 .none {
   display: none;
 }
+
 .card-top {
   display: flex;
   padding: 55px;
@@ -85,10 +106,12 @@ header h1 {
   background-color: #ffff;
   margin: 10px;
 }
+
 .card-top img {
   width: 70px;
   height: 70px;
 }
+
 .card {
   display: flex;
   padding: 55px;
@@ -97,14 +120,17 @@ header h1 {
   background-color: #ffff;
   margin: 10px;
 }
+
 .card h1 {
   color: #252a34;
   letter-spacing: 1px;
   font-weight: bold;
 }
+
 .card:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
+
 .profile {
   display: flex;
   padding: 20px;
@@ -124,9 +150,11 @@ header h1 {
   justify-content: flex-end;
   margin-top: auto;
 }
+
 .logout {
   padding: 20px;
 }
+
 .logout button {
   width: 100%;
   height: 60px;
@@ -138,16 +166,19 @@ header h1 {
   font-weight: 700;
   text-align: center;
 }
+
 img {
   width: 150px;
   height: 150px;
   object-fit: cover;
   border-radius: 50%;
 }
+
 button:hover {
   background-color: transparent;
   color: white;
 }
+
 .download {
   text-decoration: none;
   background-color: #ff2e63;
@@ -161,6 +192,7 @@ button:hover {
   font-weight: 700;
   text-align: center;
 }
+
 .red {
   background-color: #ff2e63;
   width: 100%;
@@ -173,6 +205,7 @@ button:hover {
   font-weight: 700;
   text-align: center;
 }
+
 .blue {
   background-color: #08d9d6;
   width: 100%;
@@ -185,6 +218,7 @@ button:hover {
   font-weight: 700;
   text-align: center;
 }
+
 .to-top {
   display: none;
   bottom: 0;
@@ -331,6 +365,7 @@ table {
   font-size: 18px;
   width: 100%;
 }
+
 td {
   padding: 30px;
 }
@@ -338,6 +373,7 @@ td {
 tr:nth-child(even) {
   background-color: #f2f2f2;
 }
+
 tr:hover {
   background-color: #ddd;
 }
@@ -350,52 +386,82 @@ th {
   font-size: 20px;
   font-weight: 400;
 }
+
 .card-students {
   display: none;
   margin-bottom: 30px;
 }
+
+.dates {
+  margin-left: auto;
+  font-size: 20px;
+  padding-right: 10px !important;
+}
+
 @media (max-width: 800px) {
+  .mobile {
+    display: block !important;
+  }
+
+  .dates {
+    display: none !important;
+  }
+
+  .loading {
+    width: 30px !important;
+    height: 30px !important;
+  }
+
   .container,
   .section-right {
     flex-direction: column;
     width: 100%;
     height: auto;
   }
+
   .blue,
   .red {
     width: auto;
     padding-right: 0px;
     padding-left: 0px;
   }
+
   header {
     width: 100%;
     padding: 0px;
   }
+
   .card-table {
     display: none;
   }
+
   .card-students {
     display: block;
     background-color: #fff;
     padding-bottom: 10px;
     width: auto;
   }
+
   .section-right {
     margin-top: 30px;
   }
+
   .col,
   .row {
     display: flex;
     flex-direction: column;
     width: 100%;
   }
+
   .profile,
   .logout {
     margin: 0px;
   }
+
   .to-top {
     display: block;
   }
+
   .button-44 {
     display: block;
   }
@@ -404,16 +470,20 @@ th {
 .inputtitle {
   width: 50%;
 }
+
 .descript {
   width: 100%;
 }
+
 .mat {
   margin-top: 50x;
   height: 100%;
 }
+
 .divcon {
   margin-bottom: 350px;
 }
+
 .submit {
   margin-left: 85%;
 }
@@ -424,12 +494,15 @@ th {
   margin-right: 100px;
   margin-top: 100px;
 }
+
 @media (max-height: 680px) {
+
   .profile,
   .logout {
     margin: 0px;
     padding: 0px;
   }
+
   .profile button,
   .logout button {
     width: auto;
@@ -437,11 +510,13 @@ th {
 }
 
 @media (max-height: 570px) {
+
   .profile,
   .logout {
     margin: 0px;
     padding: 0px;
   }
+
   .profile button,
   .logout button {
     width: auto;
@@ -454,12 +529,15 @@ th {
   margin-left: 40em;
   margin-top: 10px;
 }
+
 #searchfield {
   width: 20em;
 }
+
 .modaledit {
   width: 500px;
 }
+
 #container {
   display: flex;
   flex-direction: column;
@@ -477,47 +555,54 @@ th {
   height: 250px;
   padding: auto;
 }
+
 .con1 {
   width: 50%;
   height: 50%;
   padding: 10px;
   margin-top: 1em;
 }
+
 .con2 {
   width: 50%;
   height: 50%;
   padding: 10px;
   margin-top: 1em;
 }
+
 .img-container {
   margin-left: 23em;
 }
+
 .img-bottom {
   margin-top: 10px;
   margin-left: 23em;
 }
+
 .label {
   font-size: 20px;
   font-weight: 400;
   color: rgb(61, 61, 61);
   margin-left: 5px;
 }
+
 #modal-basic-title {
   font-size: 15px;
   font-weight: 600px;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
+
 ::placeholder {
   color: rgb(0, 0, 0);
-  opacity: 1; /* Firefox */
+  opacity: 1;
+  /* Firefox */
 }
+
 #gender {
   background-color: rgb(4, 149, 160);
   margin-left: 50px;
   width: 15em;
 }
-.dates {
-  margin-left: 34em;
-  font-size: 20px;
-}
+
+

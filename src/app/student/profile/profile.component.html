@@ -2,82 +2,77 @@
   <button mat-raised-button class="btn" (click)="goBack()">&nbsp;Back</button>
   <h1 class="title">Activity</h1>
 </header>
- 
- <div class="con">
- 
-</div>
+
+<div class="con"></div>
 <div class="box">
-<div class="con main">
- 
-  <div class="imgsettings">
-  <img
+  <div class="con main">
+    <div class="imgsettings">
+      <img
         src="../../../assets/img/student/settings.png"
         alt="Dress Up Kids!"
         class="banner"
       />
     </div>
-  <div class="flex-row con">
-    <mat-card>
-      <div class="flex-column">
-        <div *ngIf="!active" class="center">
-          <img *ngIf="!profile.img" src="{{ img }}" class="img" />
-          <img *ngIf="profile.img" src="{{ profile.img }}" class="img" />
+    <div class="flex-row con">
+      <mat-card>
+        <div class="flex-column">
+          <div *ngIf="!active" class="center">
+            <img *ngIf="!profile.img" src="{{ img }}" class="img" />
+            <img *ngIf="profile.img" src="{{ profile.img }}" class="img" />
+          </div>
+          <div class="center">
+            <img src="{{ photo }}" *ngIf="active" class="img" />
+          </div>
+          <label for="firstname">firstname</label>
+          <input id="firstname" type="text" [(ngModel)]="profile.firstname" />
+          <label for="lastname">lastname</label>
+          <input id="lastname" type="text" [(ngModel)]="profile.lastname" />
+          <label for="email">email</label>
+          <input id="email" type="text" [(ngModel)]="profile.email" />
+          <label for="phone">phone</label>
+          <input id="phone" type="text" [(ngModel)]="profile.phone" />
+          <label for="address">address</label>
+          <input id="address" type="text" [(ngModel)]="profile.address" />
+          <label for="gender">gender</label>
+          <select name="gender" [(ngModel)]="profile.gender">
+            <option value="boy">boy</option>
+            <option value="girl">girl</option>
+          </select>
+          <label for="birthdate">birthdate</label>
+          <input id="birthdate" type="date" [(ngModel)]="profile.birthdate" />
+          <label for="photo">photo</label>
+          <input
+            id="photo"
+            class="custom-file-input"
+            type="file"
+            style="
+              width: 200px;
+              background-color: transparent;
+              border: transparent;
+            "
+            (change)="setPhoto($event)"
+          />
+          <label for="psa">PSA</label>
+          <input
+            id="psa"
+            class="psa-file-input"
+            type="file"
+            style="
+              width: 200px;
+              background-color: transparent;
+              border: transparent;
+            "
+            (change)="setPSA($event)"
+          />
+          <button class="red" (click)="updateProfile()">
+            <mat-icon>check_circle</mat-icon>&nbsp;Save
+          </button>
+          <button class="blue" (click)="openChangePassword()">
+            <mat-icon>lock_open</mat-icon>&nbsp;Change password
+          </button>
         </div>
-        <div class="center">
-          <img src="{{ photo }}" *ngIf="active" class="img" />
-        </div>
-        <label for="firstname">firstname</label>
-        <input id="firstname" type="text" [(ngModel)]="profile.firstname" />
-        <label for="lastname">lastname</label>
-        <input id="lastname" type="text" [(ngModel)]="profile.lastname" />
-        <label for="email">email</label>
-        <input id="email" type="text" [(ngModel)]="profile.email" />
-        <label for="phone">phone</label>
-        <input id="phone" type="text" [(ngModel)]="profile.phone" />
-        <label for="address">address</label>
-        <input id="address" type="text" [(ngModel)]="profile.address" />
-        <label for="gender">gender</label>
-        <select name="gender" [(ngModel)]="profile.gender">
-          <option value="boy">boy</option>
-          <option value="girl">girl</option>
-        </select>
-        <label for="birthdate">birthdate</label>
-        <input id="birthdate" type="date" [(ngModel)]="profile.birthdate" />
-        <label for="photo">photo</label>
-        <input
-          id="photo"
-          class="custom-file-input"
-          type="file"
-          style="
-            width: 200px;
-            background-color: transparent;
-            border: transparent;
-          "
-          (change)="setPhoto($event)"
-        />
-        <label for="psa">PSA</label>
-        <input
-          id="psa"
-          class="psa-file-input"
-          type="file"
-          style="
-            width: 200px;
-            background-color: transparent;
-            border: transparent;
-          "
-          (change)="setPSA($event)"
-        />
-        <button class="red" (click)="updateProfile()">
-          <mat-icon>check_circle</mat-icon>&nbsp;Save
-        </button>
-        <button class="blue" (click)="openChangePassword()">
-          <mat-icon>lock_open</mat-icon>&nbsp;Change password
-        </button>
-      </div>
-    </mat-card>
-    <div>
-     
+      </mat-card>
+      <div></div>
     </div>
   </div>
-</div>
 </div>

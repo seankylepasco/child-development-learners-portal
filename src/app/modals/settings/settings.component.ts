@@ -1,6 +1,7 @@
 import { Router } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
 import { Component, OnInit, HostBinding } from '@angular/core';
+import { StudentComponent } from 'src/app/student/student.component';
 @Component({
   selector: 'app-settings',
   templateUrl: './settings.component.html',
@@ -16,8 +17,11 @@ export class SettingsComponent implements OnInit {
   firstname: any;
   editMode: boolean = false;
   isDark: boolean = false;
+  status: any;
 
-  constructor(private router: Router, private data: DataService) {}
+  constructor(private router: Router, private data: DataService) {
+    console.log(StudentComponent.playSound);
+  }
 
   @HostBinding('class')
   get ThemeMode() {
@@ -26,6 +30,10 @@ export class SettingsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getProfile();
+  }
+
+  offSounds(): void {
+    StudentComponent.playSound = !StudentComponent.playSound;
   }
   darkMode(): void {}
   getProfile(): void {

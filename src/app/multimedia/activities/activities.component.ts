@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { DataService } from 'src/app/services/data.service';
 import { LogoutComponent } from '../../modals/logout/logout.component';
 import { SettingsComponent } from '../../modals/settings/settings.component';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-activities',
@@ -24,10 +25,13 @@ export class ActivitiesComponent implements OnInit {
   completed: any;
   arr: any = [];
   urlPDF: any = [];
+  isLoading = true;
+  isEmpty = false;
   constructor(
     private data: DataService,
     private router: Router,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private domSanitizer: DomSanitizer
   ) {}
 
   ngOnInit(): void {
@@ -41,10 +45,22 @@ export class ActivitiesComponent implements OnInit {
   }
 
   getAll(): void {
-    this.data.fetchData('modules', '').subscribe((response: any) => {
-      this.modules = response.payload;
-      localStorage.setItem('modules', JSON.stringify(this.modules));
-    });
+    this.data.fetchData('modules', '').subscribe(
+      (response: any) => {
+        this.isLoading = false;
+        this.modules = response.payload;
+        localStorage.setItem('modules', JSON.stringify(this.modules));
+      },
+      (error: any) => {
+        console.log(error.status);
+        if ((error.status = 404)) {
+          this.isLoading = false;
+          this.isEmpty = true;
+          console.log('change to none');
+          console.log(this.isEmpty);
+        }
+      }
+    );
     const modules = JSON.parse(localStorage.getItem('modules')!);
 
     if (modules) {

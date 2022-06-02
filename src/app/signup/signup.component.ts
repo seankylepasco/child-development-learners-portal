@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { DataService } from 'src/app/services/data.service';
-
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -19,20 +19,30 @@ export class SignupComponent implements OnInit {
   userInput: any = {};
 
   active: boolean = false;
-  mpname: boolean = false;
-  mfname: boolean = false;
-  mlname: boolean = false;
-  mgender: boolean = false;
-  mbdate: boolean = false;
-  maddress: boolean = false;
-  memail: boolean = false;
-  mpassword: boolean = false;
+  // mpname: boolean = false;
+  // mfname: boolean = false;
+  // mlname: boolean = false;
+  // mgender: boolean = false;
+  // mbdate: boolean = false;
+  // maddress: boolean = false;
+  // memail: boolean = false;
+  // mpassword: boolean = false;
   viewpass: boolean = true;
   hidepass: boolean = false;
 
-  constructor(private router: Router, private data: DataService) {}
+  constructor(
+    private router: Router,
+    private data: DataService,
+    public snackBar: MatSnackBar
+  ) {}
   ngOnInit(): void {
     this.getYear();
+  }
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 2000,
+      panelClass: ['snack-bar'],
+    });
   }
   getYear(): void {
     this.data.fetchData('years', '').subscribe((response: any) => {
@@ -44,70 +54,28 @@ export class SignupComponent implements OnInit {
   }
   register(event: any): void {
     if (event.target.firstname.value === '') {
-      this.mfname = true;
-      this.mlname = false;
-      this.mgender = false;
-      this.mbdate = false;
-      this.maddress = false;
-      this.memail = false;
-      this.mpassword = false;
+      this.openSnackBar('Missing firstname!', 'close');
+      // this.mfname = true;
+      // this.mlname = false;
+      // this.mgender = false;
+      // this.mbdate = false;
+      // this.maddress = false;
+      // this.memail = false;
+      // this.mpassword = false;
     } else if (event.target.lastname.value === '') {
-      this.mfname = false;
-      this.mlname = true;
-      this.mgender = false;
-      this.mbdate = false;
-      this.maddress = false;
-      this.memail = false;
-      this.mpassword = false;
+      this.openSnackBar('Missing lastname!', 'close');
     } else if (event.target.gender.value === '') {
-      this.mfname = false;
-      this.mlname = false;
-      this.mgender = true;
-      this.mbdate = false;
-      this.maddress = false;
-      this.memail = false;
-      this.mpassword = false;
+      this.openSnackBar('Missing gender!', 'close');
     } else if (event.target.birthdate.value === '') {
-      this.mfname = false;
-      this.mlname = false;
-      this.mgender = false;
-      this.mbdate = true;
-      this.maddress = false;
-      this.memail = false;
-      this.mpassword = false;
+      this.openSnackBar('Missing birthdate!', 'close');
     } else if (event.target.address.value === '') {
-      this.mfname = false;
-      this.mlname = false;
-      this.mgender = false;
-      this.mbdate = false;
-      this.maddress = true;
-      this.memail = false;
-      this.mpassword = false;
+      this.openSnackBar('Missing address!', 'close');
     } else if (event.target.email.value === '') {
-      this.mfname = false;
-      this.mlname = false;
-      this.mgender = false;
-      this.mbdate = false;
-      this.maddress = false;
-      this.memail = true;
-      this.mpassword = false;
+      this.openSnackBar('Missing email!', 'close');
     } else if (event.target.password.value === '') {
-      this.mfname = false;
-      this.mlname = false;
-      this.mgender = false;
-      this.mbdate = false;
-      this.maddress = false;
-      this.memail = false;
-      this.mpassword = true;
+      this.openSnackBar('Missing password!', 'close');
     } else if (event.target.parentname.value === '') {
-      this.mpname = true;
-      this.mfname = false;
-      this.mlname = false;
-      this.mgender = false;
-      this.mbdate = false;
-      this.maddress = false;
-      this.memail = false;
-      this.mpassword = false;
+      this.openSnackBar('Missing parent name!', 'close');
     } else {
       this.userInput.img = this.photo;
       this.userInput.parentname = event.target.parentname.value;
@@ -178,7 +146,7 @@ export class SignupComponent implements OnInit {
         this.PSA = event.target.result;
       };
       reader.readAsDataURL(this.PSA);
-      alert("PSA uploaded!")
+      alert('PSA uploaded!');
     } else {
       alert('Not a pdf file!');
       window.location.reload();

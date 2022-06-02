@@ -12,6 +12,7 @@ import { DatePipe } from '@angular/common';
   styleUrls: ['./teacher.component.css'],
 })
 export class TeacherComponent implements OnInit {
+  isEmpty = false;
   type: any;
   students: any;
   totalStudents: any;
@@ -26,6 +27,7 @@ export class TeacherComponent implements OnInit {
   teacher: any = 'teacher';
   userArray: any = ([] = []);
   windowScrolled = false;
+  isLoading = true;
   Date: Date = new Date();
 
   constructor(
@@ -58,10 +60,22 @@ export class TeacherComponent implements OnInit {
     }
   }
   getStudents(): void {
-    this.data.fetchData('students', '').subscribe((response: any) => {
-      this.students = response.payload;
-      this.totalStudents = response.payload.length;
-    });
+    this.data.fetchData('students', '').subscribe(
+      (response: any) => {
+        this.isLoading = false;
+        this.students = response.payload;
+        this.totalStudents = response.payload.length;
+      },
+      (error: any) => {
+        console.log(error.status);
+        if ((error.status = 404)) {
+          this.isLoading = false;
+          this.isEmpty = true;
+          console.log('change to none');
+          console.log(this.isEmpty);
+        }
+      }
+    );
   }
   searchStudents(): void {
     this.students = [];
@@ -115,6 +129,9 @@ export class TeacherComponent implements OnInit {
   }
   toMasterList(): void {
     this.router.navigate(['masterlist']);
+  }
+  toClasses(): void {
+    this.router.navigate(['classes']);
   }
   toEnrollees(): void {
     this.router.navigate(['enrollees']);

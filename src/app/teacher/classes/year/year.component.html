@@ -1,0 +1,111 @@
+<mat-drawer-container autosize>
+  <mat-drawer #drawer mode="side" opened="true">
+    <div class="flex-row end-obj">
+      <button class="button-44 none" (click)="drawer.toggle()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+    <div class="center">
+      <img src="assets/img/signup/user.jpg" *ngIf="!profile.img" />
+      <img appLazyLoad src="{{ profile.img }}" *ngIf="profile.img" />
+    </div>
+
+    <div class="user">Hello {{ profile.firstname }}!</div>
+    <div class="profile">
+      <button (click)="toTeacher()" class="red">
+        <mat-icon>home</mat-icon>&nbsp;Dashboard
+      </button>
+      <button (click)="toClasses()" class="blue">
+        <mat-icon>home</mat-icon>&nbsp;Classes
+      </button>
+      <button (click)="toMasterList()" class="red">
+        <mat-icon>list</mat-icon>&nbsp;Master List
+      </button>
+      <button (click)="toEnrollees()" class="red">
+        <mat-icon>list</mat-icon>&nbsp;Incoming Enrollees
+      </button>
+      <button (click)="toAnnouncementPost()" class="red">
+        <mat-icon>announcement</mat-icon>&nbsp;Post announcement
+      </button>
+      <button (click)="toActivityPost()" class="red">
+        <mat-icon>attach_file</mat-icon>&nbsp;Post Activity
+      </button>
+      <button (click)="toScore()" class="red">
+        <mat-icon>score</mat-icon>&nbsp;Scores
+      </button>
+    </div>
+
+    <div class="logout">
+      <button (click)="openLogout()" class="blue">Logout</button>
+    </div>
+  </mat-drawer>
+  <header>
+    <button (click)="drawer.toggle()"><mat-icon>menu</mat-icon></button>
+    <h1>Class {{ class_year }}</h1>
+    &nbsp;
+    <h1 class="dates">{{ Date | date: "medium" }}</h1>
+  </header>
+
+  <div class="flex-column con">
+    <div>
+      <button (click)="toClasses()" class="blue-save" type="submit">
+        <mat-icon inline="true">keyboard_backspace</mat-icon>&nbsp;Back
+      </button>
+    </div>
+
+    <section class="section-right">
+      <div class="flex-row">
+        <div class="flex-column con">
+          <img
+            class="loading"
+            *ngIf="isLoading"
+            src="assets/img/loading/loading.gif"
+          />
+          <h2 *ngIf="isLoading">Loading ...</h2>
+
+          <div class="card-table">
+            <div class="con">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Mobile Number</th>
+                    <th>Parent Name</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <div *ngIf="isEmpty" class="center">
+                    <h2>
+                      <mat-icon> cancel_presentation</mat-icon>&nbsp;No
+                      Students!
+                    </h2>
+                  </div>
+                  <tr *ngFor="let year of years">
+                    <td>{{ year.firstname }} {{ year.lastname }}</td>
+                    <td>{{ year.phone }}</td>
+                    <td class="flex-row">
+                      {{ year.parentname }}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="isEmpty" class="center mobile">
+          <h2><mat-icon> cancel_presentation</mat-icon>&nbsp;No Students!</h2>
+        </div>
+        <div class="card-students flex-column" *ngFor="let year of years">
+          <mat-card>
+            <div class="con flex-column">
+              <b>Student Name:</b> {{ year.firstname }} {{ year.lastname }}
+              <br />
+              <b>Mobile Number:</b> {{ year.phone }}
+              <div class="flex-row"><b>Parent :</b> {{ year.parentname }}</div>
+            </div>
+          </mat-card>
+        </div>
+      </div>
+    </section>
+  </div>
+</mat-drawer-container>

@@ -18,6 +18,8 @@ export class ReportsComponent implements OnInit {
   user: any = {};
   profile: any = '';
   userArray: any = ([] = []);
+  isLoading = true;
+  isEmpty = false;
 
   constructor(
     private router: Router,
@@ -56,9 +58,20 @@ export class ReportsComponent implements OnInit {
     return output;
   }
   getReports(): void {
-    this.data.fetchData('reports', '').subscribe((response: any) => {
-      this.reports = response.payload;
-    });
+    this.data.fetchData('reports', '').subscribe(
+      (response: any) => {
+        this.reports = response.payload;
+      },
+      (error: any) => {
+        console.log(error.status);
+        if ((error.status = 404)) {
+          this.isLoading = false;
+          this.isEmpty = true;
+          console.log('change to none');
+          console.log(this.isEmpty);
+        }
+      }
+    );
   }
   toDashboard(): void {
     this.router.navigate(['admin']);

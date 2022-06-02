@@ -25,7 +25,9 @@ export class AddActivityComponent implements OnInit {
   info: any = {};
   userArray: any = ([] = []);
   profile: any = '';
-  Date : Date = new Date();
+  isLoading = true;
+  isEmpty = false;
+  Date: Date = new Date();
   constructor(
     private router: Router,
     private data: DataService,
@@ -36,12 +38,22 @@ export class AddActivityComponent implements OnInit {
     this.checkifLoggedIn();
   }
   getTeacherModules(): void {
-    this.data
-      .fetchData('modules_teacher/' + this.info.id, '')
-      .subscribe((response: any) => {
+    this.data.fetchData('modules_teacher/' + this.info.id, '').subscribe(
+      (response: any) => {
+        this.isLoading = false;
         this.teacher_modules = response.payload;
         this.total = response.payload.length;
-      });
+      },
+      (error: any) => {
+        console.log(error.status);
+        if ((error.status = 404)) {
+          this.isLoading = false;
+          this.isEmpty = true;
+          console.log('change to none');
+          console.log(this.isEmpty);
+        }
+      }
+    );
   }
   getFields(input: any, field: any) {
     var output = [];
@@ -94,6 +106,9 @@ export class AddActivityComponent implements OnInit {
   }
   toMasterList(): void {
     this.router.navigate(['masterlist']);
+  }
+  toClasses(): void {
+    this.router.navigate(['classes']);
   }
   toScore(): void {
     this.router.navigate(['scores']);

@@ -61,7 +61,7 @@ export class AddModuleComponent implements OnInit {
       const object = {
         title: event.target.title.value,
         description: event.target.description.value,
-        total_score: event.target.total_score.value,
+        // total_score: event.target.total_score.value,
         video_url: event.target.video_url.value,
         deadline: event.target.deadline.value,
         file: this.pdf,
@@ -69,7 +69,7 @@ export class AddModuleComponent implements OnInit {
         teacher_id: this.info.id,
       };
       if (!event.target.deadline.value) event.target.deadline.value = '';
-      if (!event.target.total_score.value) event.target.deadline.value = 10;
+      // if (!event.target.total_score.value) event.target.deadline.value = 10;
 
       this.data.fetchData('add_module', object).subscribe((response: any) => {
         localStorage.setItem('page', 'teacher-activity');

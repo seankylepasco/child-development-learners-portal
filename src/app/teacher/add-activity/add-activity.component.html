@@ -10,10 +10,17 @@
       <img appLazyLoad src="{{ profile.img }}" *ngIf="profile.img" />
     </div>
 
-    <div class="user">Hello {{ profile.firstname }}!</div>
+    <div class="user" *ngIf="profile.firstname">
+      Hello {{ profile.firstname }}!
+    </div>
+    <div class="user" *ngIf="!profile.firstname">Loading..</div>
+
     <div class="profile">
       <button (click)="toTeacher()" class="red">
         <mat-icon>home</mat-icon>&nbsp;Dashboard
+      </button>
+      <button (click)="toClasses()" class="red">
+        <mat-icon>home</mat-icon>&nbsp;Classes
       </button>
       <button (click)="toMasterList()" class="red">
         <mat-icon>list</mat-icon>&nbsp;Master List
@@ -53,7 +60,14 @@
           <h1><mat-icon>list</mat-icon>&nbsp;List of Activities</h1>
         </div>
 
-        <mat-card *ngIf="!teacher_modules">
+        <img
+          class="loading"
+          *ngIf="isLoading"
+          src="assets/img/loading/loading.gif"
+        />
+        <h2 *ngIf="isLoading">Loading ...</h2>
+
+        <mat-card *ngIf="isEmpty">
           <h2>
             <mat-icon> cancel_presentation</mat-icon>&nbsp;No modules created
             yet!
@@ -81,6 +95,7 @@
         </mat-card>
         <div class="center" *ngIf="teacher_modules">
           <pagination-controls
+            *ngIf="total > 10"
             class="my-pagination"
             (pageChange)="page = $event"
           ></pagination-controls>

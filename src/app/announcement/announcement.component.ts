@@ -19,6 +19,8 @@ export class AnnouncementComponent implements OnInit {
   info: any = {};
   profile: any = '';
   arr: any = [];
+  isEmpty = false;
+  isLoading = true;
   constructor(
     private data: DataService,
     private router: Router,
@@ -70,15 +72,27 @@ export class AnnouncementComponent implements OnInit {
   }
 
   getAnnouncements() {
-    this.data.fetchData('announcements', '').subscribe((response: any) => {
-      let array = [];
-      let results = response.payload;
-      for (let i = 0; i < results.length; i++) {
-        if (results[i].date === '0000-00-00') results[i].date = '';
-        array.push(results[i]);
+    this.data.fetchData('announcements', '').subscribe(
+      (response: any) => {
+        let array = [];
+        let results = response.payload;
+        for (let i = 0; i < results.length; i++) {
+          if (results[i].date === '0000-00-00') results[i].date = '';
+          array.push(results[i]);
+        }
+        this.announcements = array;
+        this.isLoading = false;
+      },
+      (error: any) => {
+        console.log(error.status);
+        if ((error.status = 404)) {
+          this.isLoading = false;
+          this.isEmpty = true;
+          console.log('change to none');
+          console.log(this.isEmpty);
+        }
       }
-      this.announcements = array;
-    });
+    );
   }
   back(): void {
     this.router.navigate(['student']);

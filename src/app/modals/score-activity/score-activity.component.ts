@@ -23,9 +23,9 @@ export class ScoreActivityComponent implements OnInit {
     );
   }
   updateCompletedScore(): void {
-    if (this.module.score > this.module.total_score)
-      alert('Greater than total!');
-    else {
+    // if (this.module.score > this.module.total_score)
+    //   alert('Greater than total!');
+    // else {
       const object = {
         id: this.module.id,
         score: this.module.score,
@@ -36,6 +36,6 @@ export class ScoreActivityComponent implements OnInit {
           alert('Score Updated!');
           window.location.reload();
         });
-    }
+    // }
   }
 }

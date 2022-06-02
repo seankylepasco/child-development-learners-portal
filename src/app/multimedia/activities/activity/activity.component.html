@@ -3,8 +3,7 @@
   <h1 class="title">Activity</h1>
 </header>
 <div class="con">
-  
-  <div class="flex-row con">
+  <div class="flex-row con center">
     <mat-card>
       <div class="con">
         <div class="flex-row">
@@ -17,6 +16,9 @@
         </div>
         <a href=""></a>
         <h3><b>Instructions:</b> {{ description }}</h3>
+        <div *ngIf="url" class="center">
+          <div [innerHTML]="url"></div>
+        </div>
         <hr />
         <div>
           <a

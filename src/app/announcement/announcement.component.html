@@ -18,7 +18,12 @@
         class="img"
       />
     </div>
-    <div class="user">Hello {{ profile.firstname }}!</div>
+
+    <div class="user" *ngIf="profile.firstname">
+      Hello {{ profile.firstname }}!
+    </div>
+    <div class="user" *ngIf="!profile.firstname">Loading..</div>
+
     <div class="profile">
       <button (click)="toStudent()" class="red">
         <mat-icon>home</mat-icon>&nbsp;Dashboard
@@ -44,17 +49,19 @@
     <button (click)="drawer.toggle()"><mat-icon>menu</mat-icon></button>
     <h1>Announcements</h1>
   </header>
-   <img class="banner" src="assets/img/announcement/ann.png" />
-           
+  <img class="banner" src="assets/img/announcement/ann.png" />
+
   <div class="con">
     <div class="row-2">
       <div class="flex-column">
         <div>
-          
-            
-           
-         
-          <mat-card *ngIf="!announcements">
+          <img
+            class="loading"
+            *ngIf="isLoading"
+            src="assets/img/loading/loading.gif"
+          />
+          <h2 *ngIf="isLoading">Loading ...</h2>
+          <mat-card *ngIf="isEmpty">
             <h2>
               <mat-icon> cancel_presentation</mat-icon>&nbsp;No Announcements!
             </h2>

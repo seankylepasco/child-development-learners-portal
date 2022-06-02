@@ -10,11 +10,17 @@
       <img appLazyLoad src="{{ profile.img }}" *ngIf="profile.img" />
     </div>
 
-    <div class="user">Hello {{ profile.firstname }}!</div>
+    <div class="user" *ngIf="profile.firstname">
+      Hello {{ profile.firstname }}!
+    </div>
+    <div class="user" *ngIf="!profile.firstname">Loading..</div>
 
     <div class="profile">
       <button (click)="toTeacher()" class="red">
         <mat-icon>home</mat-icon>&nbsp;Dashboard
+      </button>
+      <button (click)="toClasses()" class="red">
+        <mat-icon>home</mat-icon>&nbsp;Classes
       </button>
       <button (click)="toMasterList()" class="red">
         <mat-icon>list</mat-icon>&nbsp;Master List
@@ -41,25 +47,31 @@
     <button (click)="drawer.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
-    <h1>Announcements</h1>&nbsp;
-    <h1 class="dates">{{Date | date:'medium'}}</h1>
+    <h1>Announcements</h1>
+    &nbsp;
+    <h1 class="dates">{{ Date | date: "medium" }}</h1>
   </header>
   <div class="flex-column">
     <div class="con">
       <button (click)="openAddAnnouncement()" class="blue-save" type="submit">
         <mat-icon inline="true">add</mat-icon>&nbsp;Add Announcement
       </button>
-
       <div class="flex-column">
         <div class="con">
           <h1><mat-icon>list</mat-icon>&nbsp;List of Announcements</h1>
         </div>
-        <mat-card *ngIf="!announcements">
-          <h2>
-            <mat-icon> cancel_presentation</mat-icon>&nbsp;No announcements
-            created yet!
-          </h2>
-        </mat-card>
+
+        <img
+          class="loading"
+          *ngIf="isLoading"
+          src="assets/img/loading/loading.gif"
+        />
+        <h2 *ngIf="isLoading">Loading ...</h2>
+
+        <h2 *ngIf="isEmpty">
+          <mat-icon> cancel_presentation</mat-icon>&nbsp;No announcements
+          created yet!
+        </h2>
 
         <div *ngIf="announcements">
           <mat-card *ngFor="let announcement of announcements">

@@ -18,7 +18,12 @@
         class="img"
       />
     </div>
-    <div class="user">Hello {{ profile.firstname }}!</div>
+
+    <div class="user" *ngIf="profile.firstname">
+      Hello {{ profile.firstname }}!
+    </div>
+    <div class="user" *ngIf="!profile.firstname">Loading..</div>
+
     <div class="profile">
       <button (click)="toStudent()" class="red">
         <mat-icon>home</mat-icon>&nbsp;Dashboard
@@ -40,50 +45,85 @@
       <button class="blue">&nbsp;Logout</button>
     </div>
   </mat-drawer>
-  
+
   <header>
     <button (click)="drawer.toggle()"><mat-icon>menu</mat-icon></button>
     <h1>Student Activities</h1>
-    
   </header>
-  <img
-                  class="banner"
-                  src="assets/img/activities/act.png"
-                />
+  <img class="banner" src="assets/img/activities/act.png" />
   <div class="flex-column">
-      
     <div class="flex-row">
       <div class="flex-column">
         <div class="con">
           <div id="row">
             <div class="flex-column">
+              <br />
 
-            
-              
-           
-              <br /><mat-card>
-                <mat-card *ngIf="!modules">
-                  <h2>
-                    <mat-icon> cancel_presentation</mat-icon>&nbsp;No modules!
-                  </h2>
-                </mat-card>
+              <img
+                class="loading"
+                *ngIf="isLoading"
+                src="assets/img/loading/loading.gif"
+              />
+              <h2 *ngIf="isLoading">Loading ...</h2>
 
-                <mat-list *ngFor="let module of modules">
+              <mat-card *ngIf="isEmpty">
+                <h2>
+                  <mat-icon> cancel_presentation</mat-icon>&nbsp;No modules!
+                </h2>
+              </mat-card>
+
+              <mat-list *ngFor="let module of modules">
+                <mat-card>
                   <mat-list-item>
                     <div id="title">
                       <h2 class="mod-title">
                         Activity Title: <br />{{ module.title }}
                       </h2>
                     </div>
-                  <a *ngIf="module.video_url" href="{{module.video_url}}">Video URL</a>
+                    <!-- <a *ngIf="module.video_url" href="{{ module.video_url }}"
+                      >Video URL</a
+                    > -->
                     <div *ngFor="let complete of arr" class="scores">
                       <div>
                         <h2 class="mod-score">
-                          Score: {{ complete.score }} / {{ module.total_score }}
+                          <!-- Score: {{ complete.score }} / -->
+                          <!-- {{ module.total_score }} -->
                         </h2>
                       </div>
+                      <!-- <div *ngIf="module.id === complete.file_id">
+                        <h3 id="check">
+                          <mat-icon inline="true">check_circle</mat-icon>
+                          Done
+                        </h3>
+                      </div> -->
                       <div *ngIf="module.id === complete.file_id">
-                        <mat-icon id="check">check_circle</mat-icon>
+                        <!-- {{ module.id }} === {{ complete.file_id }} -->
+                        <div *ngIf="complete.score === 0">
+                          <h2 style="color: rgb(69, 69, 69)">
+                            <mat-icon inline="true">check_circle</mat-icon> Done
+                          </h2>
+                        </div>
+                        <div *ngIf="complete.score === 1">
+                          <h2 style="color: red">
+                            <mat-icon inline="true">mood_bad</mat-icon> Bad
+                          </h2>
+                        </div>
+                        <div *ngIf="complete.score === 2">
+                          <h2 style="color: orange">
+                            <mat-icon inline="true">mood</mat-icon> Good
+                          </h2>
+                        </div>
+                        <div *ngIf="complete.score === 3">
+                          <h2 style="color: rgb(21, 195, 21)">
+                            <mat-icon inline="true">cake</mat-icon> Very Good
+                          </h2>
+                        </div>
+                        <div *ngIf="complete.score === 4">
+                          <h2 style="color: #09c9c6">
+                            <mat-icon inline="true">star</mat-icon> Excellent
+                          </h2>
+                        </div>
+                        <!-- <mat-icon id="check">check_circle</mat-icon> -->
                       </div>
                     </div>
                     &nbsp;
@@ -92,8 +132,8 @@
                       <p>view</p>
                     </button>
                   </mat-list-item>
-                </mat-list>
-              </mat-card>
+                </mat-card>
+              </mat-list>
             </div>
           </div>
         </div>

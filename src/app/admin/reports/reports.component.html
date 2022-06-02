@@ -11,7 +11,10 @@
       <img appLazyLoad src="{{ profile.img }}" *ngIf="profile.img" />
     </div>
 
-    <div class="user">Hello {{ profile.firstname }}!</div>
+    <div class="user" *ngIf="profile.firstname">
+      Hello {{ profile.firstname }}!
+    </div>
+    <div class="user" *ngIf="!profile.firstname">Loading..</div>
 
     <div class="profile">
       <button (click)="toDashboard()" class="red">
@@ -41,6 +44,12 @@
     <div class="flex-row">
       <div class="flex-column">
         <div class="con">
+          <img
+            class="loading"
+            *ngIf="isLoading"
+            src="assets/img/loading/loading.gif"
+          />
+          <h2 *ngIf="isLoading">Loading ...</h2>
           <div *ngIf="!reports">
             <h2>No Reports!</h2>
           </div>

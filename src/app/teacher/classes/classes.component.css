@@ -1,0 +1,512 @@
+mat-dialog-container {
+  border-radius: 20px !important;
+}
+
+.mobile {
+  display: none !important;
+}
+
+.loading {
+  width: 30px !important;
+  height: 30px !important;
+}
+
+.red-view {
+  display: flex;
+  background-color: #ff2e63;
+  width: auto;
+  padding: 20px;
+  height: fit-content;
+  border: none;
+  margin: 5px;
+  border-radius: 5px;
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.search {
+  border: none;
+  font-size: 20px;
+  margin-right: 20px;
+  height: 60px;
+  background-color: transparent;
+}
+
+.search_input {
+  padding: 20px;
+  font-size: 20px;
+  background-color: whitesmoke;
+  border-color: #e5e4e2;
+  border-width: thin;
+  border-style: solid;
+  outline: none;
+  margin: 5px;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+header {
+  display: flex;
+  background-color: #252a34;
+  color: #ffff;
+}
+
+header button {
+  background-color: transparent;
+  color: #fff;
+  height: 60px;
+  border: none;
+  margin: 5px;
+  border-radius: 5px;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+}
+
+header button:hover {
+  background-color: #353a46;
+}
+
+header h1 {
+  margin-top: auto;
+  margin-bottom: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.user {
+  color: white;
+  text-align: center;
+  font-weight: 700px;
+  letter-spacing: 3px;
+  margin-top: 20px;
+}
+
+.center {
+  display: flex;
+  padding-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+}
+
+.section-right {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 100%;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.none {
+  display: none;
+}
+
+.card {
+  display: flex;
+  padding: 55px;
+  width: 100%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  background-color: #ffff;
+}
+
+.card h1 {
+  color: #252a34;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.profile {
+  display: flex;
+  padding: 20px;
+  margin-bottom: 20px;
+  flex-direction: column;
+}
+
+.end-obj {
+  margin: auto;
+  display: flex;
+  align-items: flex-end;
+}
+
+.logout {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin-top: auto;
+}
+
+.logout {
+  padding: 20px;
+}
+
+.logout button {
+  width: 100%;
+  height: 60px;
+  border: none;
+  margin: 5px;
+  border-radius: 5px;
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+}
+
+img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+button:hover {
+  background-color: transparent;
+  color: white;
+}
+
+.red {
+  background-color: #ff2e63;
+  width: 100%;
+  height: 60px;
+  border: none;
+  margin: 5px;
+  border-radius: 5px;
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.blue {
+  background-color: #08d9d6;
+  width: 100%;
+  height: 60px;
+  border: none;
+  margin: 5px;
+  border-radius: 5px;
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.to-top {
+  display: none;
+  bottom: 0;
+  cursor: pointer;
+  margin: 0 8px 12px 0;
+  position: fixed;
+  left: 0;
+  opacity: 1 !important;
+  transition: all 0.2s ease-in-out;
+}
+
+.button-17 {
+  align-items: center;
+  appearance: none;
+  background-color: #fff;
+  border-radius: 24px;
+  border-style: none;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 3px 5px -1px,
+    rgba(0, 0, 0, 0.14) 0 6px 10px 0, rgba(0, 0, 0, 0.12) 0 1px 18px 0;
+  box-sizing: border-box;
+  color: #3c4043;
+  cursor: pointer;
+  display: inline-flex;
+  fill: currentcolor;
+  font-family: "Google Sans", Roboto, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  height: 48px;
+  justify-content: center;
+  letter-spacing: 0.25px;
+  line-height: normal;
+  max-width: 100%;
+  overflow: visible;
+  padding: 2px 24px;
+  position: relative;
+  text-align: center;
+  text-transform: none;
+  transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 15ms linear 30ms, transform 270ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: auto;
+  will-change: transform, opacity;
+  z-index: 0;
+}
+
+.button-17:hover {
+  background: #f6f9fe;
+  color: #174ea6;
+}
+
+.button-17:active {
+  box-shadow: 0 4px 4px 0 rgb(60 64 67 / 30%),
+    0 8px 12px 6px rgb(60 64 67 / 15%);
+  outline: none;
+}
+
+.button-17:focus {
+  outline: none;
+  border: 2px solid #4285f4;
+}
+
+.button-17:not(:disabled) {
+  box-shadow: rgba(60, 64, 67, 0.3) 0 1px 3px 0,
+    rgba(60, 64, 67, 0.15) 0 4px 8px 3px;
+}
+
+.button-17:not(:disabled):hover {
+  box-shadow: rgba(60, 64, 67, 0.3) 0 2px 3px 0,
+    rgba(60, 64, 67, 0.15) 0 6px 10px 4px;
+}
+
+.button-17:not(:disabled):focus {
+  box-shadow: rgba(60, 64, 67, 0.3) 0 1px 3px 0,
+    rgba(60, 64, 67, 0.15) 0 4px 8px 3px;
+}
+
+.button-17:not(:disabled):active {
+  box-shadow: rgba(60, 64, 67, 0.3) 0 4px 4px 0,
+    rgba(60, 64, 67, 0.15) 0 8px 12px 6px;
+}
+
+.button-17:disabled {
+  box-shadow: rgba(60, 64, 67, 0.3) 0 1px 3px 0,
+    rgba(60, 64, 67, 0.15) 0 4px 8px 3px;
+}
+
+.button-44 {
+  opacity: 0.3;
+  background: #e62143;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: none;
+  font-family: Mija, -apple-system, BlinkMacSystemFont, Roboto, "Roboto Slab",
+    "Droid Serif", "Segoe UI", system-ui, Arial, sans-serif;
+  font-size: 1.15em;
+  font-weight: 700;
+  justify-content: center;
+  line-height: 33.4929px;
+  padding: 0.8em 1em;
+  text-align: center;
+  text-decoration: none;
+  text-decoration-skip-ink: auto;
+  text-shadow: rgba(0, 0, 0, 0.3) 1px 1px 1px;
+  text-underline-offset: 1px;
+  transition: all 0.2s ease-in-out;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 100%;
+  word-break: break-word;
+  border: 0;
+}
+
+.button-44:active,
+.button-44:focus {
+  border-bottom-style: none;
+  border-color: #dadada;
+  box-shadow: rgba(0, 0, 0, 0.3) 0 3px 3px inset;
+  outline: 0;
+}
+
+.button-44:hover {
+  border-bottom-style: none;
+  border-color: #dadada;
+}
+
+.numbers {
+  color: rgb(24, 24, 24);
+  font-size: 30px;
+  font-weight: bolder;
+  border-radius: 50%;
+}
+
+.card-table {
+  display: flex;
+  flex-direction: column;
+  padding: 0px;
+  width: auto;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  background-color: #ffff;
+  margin: 10px;
+  height: 500px;
+  overflow: auto;
+}
+
+table {
+  border-collapse: collapse;
+  font-size: 18px;
+  width: 100%;
+}
+
+mat-card {
+  display: flex;
+  flex: 1;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tr:hover {
+  background-color: #ddd;
+}
+
+td {
+  padding: 10px;
+  text-align: center;
+}
+
+th {
+  padding: 20px;
+  text-align: center;
+  background-color: #353a46;
+  color: white;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.card-students {
+  display: none;
+  margin-bottom: 30px;
+}
+
+.dates {
+  margin-left: auto;
+  font-size: 20px;
+  padding-right: 10px !important;
+}
+
+@media (max-width: 800px) {
+
+  .dates {
+    display: none !important;
+  }
+
+  .mobile {
+    display: block !important;
+  }
+
+  .loading {
+    width: 30px !important;
+    height: 30px !important;
+  }
+
+  .container,
+  .section-right {
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+  }
+
+  .blue,
+  .red {
+    width: auto;
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+
+  header {
+    width: 100%;
+    padding: 0px;
+  }
+
+  .card-table {
+    display: none;
+  }
+
+  .card-students {
+    display: block;
+    background-color: #fff;
+    padding-bottom: 10px;
+    width: auto;
+  }
+
+  .section-right {
+    margin-top: 30px;
+  }
+
+  .col,
+  .row {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .profile,
+  .logout {
+    margin: 0px;
+  }
+
+  .to-top {
+    display: block;
+  }
+
+  .button-44 {
+    display: block;
+  }
+}
+
+@media (max-height: 680px) {
+
+  .profile,
+  .logout {
+    margin: 0px;
+    padding: 0px;
+  }
+
+  .profile button,
+  .logout button {
+    width: auto;
+  }
+}
+
+@media (max-height: 570px) {
+
+  .profile,
+  .logout {
+    margin: 0px;
+    padding: 0px;
+  }
+
+  .profile button,
+  .logout button {
+    width: auto;
+    padding: 0px;
+    height: 40px;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+
+.count {
+  font-size: 40px;
+  margin-top: 60px;
+}
