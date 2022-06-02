@@ -132,6 +132,10 @@ button:hover {
   color: white;
 }
 
+.loading{
+  margin-top: 50px;
+  margin-left: 400px;
+}
 .red {
   background-color: #ff2e63;
   width: 100%;

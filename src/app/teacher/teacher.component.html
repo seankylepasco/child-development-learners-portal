@@ -10,7 +10,9 @@
       <img appLazyLoad src="{{ profile.img }}" *ngIf="profile.img" />
     </div>
 
-    <div class="user" *ngIf="profile.firstname">Hello {{ profile.firstname }}!</div>
+    <div class="user" *ngIf="profile.firstname">
+      Hello {{ profile.firstname }}!
+    </div>
     <div class="user" *ngIf="!profile.firstname">Loading..</div>
     <div class="profile">
       <button class="blue"><mat-icon>home</mat-icon>&nbsp;Dashboard</button>
@@ -107,6 +109,7 @@
                   <tr>
                     <th>Name</th>
                     <th>Role</th>
+                    <th>Type</th>
                     <th>Address</th>
                     <th>Contact No</th>
                     <th>Actions</th>
@@ -140,7 +143,10 @@
                     <td class="flex-row">
                       &nbsp;
                       <button (click)="updateToEnrollee(student)" class="red">
-                        <mat-icon>delete</mat-icon> Enrollee
+                        <<<<<<< HEAD
+                        <mat-icon>delete</mat-icon> Enrollee =======
+                        <mat-icon>delete</mat-icon>
+                        >>>>>>> 918b0d730992369cc40eb91235eb50750406e0aa
                       </button>
                     </td>
                   </tr>
@@ -149,11 +155,13 @@
             </div>
           </div>
           <div class="center" *ngIf="students">
+            <<<<<<< HEAD
             <pagination-controls
               *ngIf="totalStudents > 3"
               class="my-pagination"
               (pageChange)="page = $event"
             ></pagination-controls>
+            ======= >>>>>>> 918b0d730992369cc40eb91235eb50750406e0aa
           </div>
         </div>
         <div *ngIf="isEmpty" class="mobile center">

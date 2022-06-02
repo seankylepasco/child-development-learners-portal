@@ -78,7 +78,10 @@ header h1 {
   text-align: center;
   align-items: center;
 }
-
+.loading{
+  margin-top: 50px;
+  margin-left: 400px;
+}
 .row {
   display: flex;
   flex-direction: row;

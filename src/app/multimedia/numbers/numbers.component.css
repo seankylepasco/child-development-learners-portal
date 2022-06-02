@@ -1,11 +1,12 @@
-.main{
+.main {
 
   display: flex;
   justify-content: space-between;
-  
+
 }
+
 img {
-  
+
   width: fit-content;
   object-fit: contain;
 }
@@ -13,30 +14,36 @@ img {
 mat-card {
   width: fit-content;
 }
-.image{
+
+.image {
   width: fit-content;
 }
-#number{
+
+#number {
   width: 100em;
 }
+
 @media (max-width: 800px) {
   img {
     width: 100%;
     height: 100%;
   }
+
   mat-card {
     width: fit-content;
   }
+
   #number {
     display: none;
   }
-  .main{
+
+  .main {
 
     display: block;
- 
-    
+
+
   }
-  
+
 }
 
 
@@ -45,15 +52,18 @@ header {
   background-color: #252a34;
   color: #ffff;
 }
-.title{
-    margin-top: 20px;
-    margin-left: 20px;
+
+.title {
+  margin-top: 20px;
+  margin-left: 20px;
 }
-.btn{
+
+.btn {
   font-size: large;
   font-weight: 700;
-margin: 10px;
+  margin: 10px;
 }
-.card{
+
+.card {
   background-color: #c2bfbf;
- }
+}

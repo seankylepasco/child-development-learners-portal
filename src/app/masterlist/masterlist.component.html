@@ -48,7 +48,15 @@
     <h1 class="dates">{{ Date | date: "medium" }}</h1>
   </header>
   <div class="flex-column con">
-    <div class="flex-row-end">
+    <div class="consearch">
+      <div ngbDropdown class="drop">
+        <button type="button" class="drop" id="dropdownBasic1" ngbDropdownToggle>Student years</button>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+          <button ngbDropdownItem>2021-2020</button>
+
+        </div>
+      </div>
+      <div>
       <input
         [(ngModel)]="search"
         (input)="searchStudents()"
@@ -59,8 +67,9 @@
         class="search_input"
       />
       <button class="search">
-        <mat-icon>search</mat-icon>
+        <mat-icon class="sear">search</mat-icon>
       </button>
+      </div>
     </div>
     <img
       class="loading"

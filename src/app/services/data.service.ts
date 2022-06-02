@@ -6,7 +6,6 @@ import { HttpClient } from '@angular/common/http';
 })
 export class DataService {
   URL: any = 'http://localhost/child-development-learners-portal/api/';
-
   //URL: any = 'http://cdlp-portal.com/api/';
 
   constructor(private http: HttpClient) {}
