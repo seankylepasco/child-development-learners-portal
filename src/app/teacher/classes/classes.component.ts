@@ -12,7 +12,7 @@ import { DatePipe } from '@angular/common';
 })
 export class ClassesComponent implements OnInit {
   type: any;
-  years: any;
+  years: any = 'select years';
   totalYears: any;
   user: any = {};
   info: any = {};
@@ -49,12 +49,9 @@ export class ClassesComponent implements OnInit {
         this.totalYears = response.payload.length;
       },
       (error: any) => {
-        console.log(error.status);
         if ((error.status = 404)) {
           this.isLoading = false;
           this.isEmpty = true;
-          console.log('change to none');
-          console.log(this.isEmpty);
         }
       }
     );

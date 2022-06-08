@@ -66,12 +66,9 @@ export class ScoresComponent implements OnInit {
         this.students = response.payload;
       },
       (error: any) => {
-        console.log(error.status);
         if ((error.status = 404)) {
           this.isLoading = false;
           this.isEmpty = true;
-          console.log('change to none');
-          console.log(this.isEmpty);
         }
       }
     );

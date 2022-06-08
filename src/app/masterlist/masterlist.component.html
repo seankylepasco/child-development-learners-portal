@@ -11,7 +11,7 @@
       </button>
     </div>
     <div class="center">
-      <img src="assets/img/signup/user.jpg" *ngIf="!profile.img" />
+      <img src="assets/img/student/no-pic-user.png" *ngIf="!profile.img" />
       <img appLazyLoad src="{{ profile.img }}" *ngIf="profile.img" />
     </div>
 
@@ -54,19 +54,16 @@
   </header>
   <div class="flex-column con">
     <div class="flex-row">
-      <div ngbDropdown class="drop">
-        <button
-          type="button"
-          class="drop"
-          id="dropdownBasic1"
-          ngbDropdownToggle
-        >
-          <mat-icon>sort</mat-icon> Student years
-        </button>
-        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-          <button ngbDropdownItem>2021-2020</button>
-        </div>
-      </div>
+      <select
+        [(ngModel)]="yearSelected"
+        (change)="onChange(yearSelected)"
+        class="drop"
+      >
+        <option *ngFor="let year of years" value="{{ year.year }}">
+          {{ year.year }}
+        </option>
+      </select>
+
       <div class="flex-row-end">
         <input
           [(ngModel)]="search"

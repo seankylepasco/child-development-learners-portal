@@ -61,7 +61,6 @@ export class EnrolleesComponent implements OnInit {
       });
     } else {
     }
-    console.log(data);
   }
   checkifLoggedIn(): void {
     this.info = JSON.parse(localStorage.getItem('user') || '{}');
@@ -102,12 +101,9 @@ export class EnrolleesComponent implements OnInit {
         this.students = results;
       },
       (error: any) => {
-        console.log(error.status);
         if ((error.status = 404)) {
           this.isLoading = false;
           this.isEmpty = true;
-          console.log('change to none');
-          console.log(this.isEmpty);
         }
       }
     );

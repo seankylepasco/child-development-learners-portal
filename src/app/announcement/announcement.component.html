@@ -1,3 +1,9 @@
+<head>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap");
+  </style>
+</head>
+
 <mat-drawer-container autosize>
   <audio *ngIf="staticUrlArray" autoplay="" src="./assets/bgmusic.mp3"></audio>
   <mat-drawer #drawer mode="side" opened="true">
@@ -8,7 +14,7 @@
     </div>
     <div class="center">
       <img
-        src="../../assets/img/signup/user.jpg"
+        src="assets/img/student/no-pic-user.png"
         *ngIf="!profile.img"
         class="img"
       />

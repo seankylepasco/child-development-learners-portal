@@ -14,8 +14,10 @@ import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
   providers: [NgbModalConfig, NgbModal],
 })
 export class MasterlistComponent implements OnInit {
+  yearSelected: any = '2021-2022';
   psa: any = [];
   page: number = 1;
+  years: any;
   profile: any = '';
   search: any = '';
   type: any;
@@ -31,11 +33,9 @@ export class MasterlistComponent implements OnInit {
   Date: Date = new Date();
   constructor(
     private dialog: MatDialog,
-    private datepipe: DatePipe,
     private router: Router,
     private data: DataService,
     config: NgbModalConfig,
-    private modalService: NgbModal,
     private domSanitizer: DomSanitizer
   ) {
     config.backdrop = 'static';
@@ -44,6 +44,7 @@ export class MasterlistComponent implements OnInit {
   ngOnInit(): void {
     this.checkifLoggedIn();
     this.getStudents();
+    this.getYears();
   }
   checkifLoggedIn(): void {
     this.info = JSON.parse(localStorage.getItem('user') || '{}');
@@ -55,6 +56,10 @@ export class MasterlistComponent implements OnInit {
       this.router.navigate(['welcome']);
     }
   }
+  onChange(value: any): void {
+    this.students = [];
+    this.getYearsStudent(value);
+  }
   searchStudents(): void {
     this.students = [];
     this.data.fetchData('search_students/' + this.search, '').subscribe(
@@ -63,12 +68,9 @@ export class MasterlistComponent implements OnInit {
         this.isLoading = false;
       },
       (error: any) => {
-        console.log(error.status);
         if ((error.status = 404)) {
           this.isLoading = false;
           this.isEmpty = true;
-          console.log('change to none');
-          console.log(this.isEmpty);
         }
       }
     );
@@ -98,21 +100,55 @@ export class MasterlistComponent implements OnInit {
           if (results[i].psa) {
             results[i].psa = this.transform(results[i].psa);
           }
-          console.log(results.psa);
         }
         this.students = results;
       },
       (error: any) => {
-        console.log(error.status);
         if ((error.status = 404)) {
           this.isLoading = false;
           this.isEmpty = true;
-          console.log('change to none');
-          console.log(this.isEmpty);
         }
       }
     );
   }
+  getYears(): void {
+    this.data.fetchData('years', '').subscribe(
+      (response: any) => {
+        this.isLoading = false;
+        this.years = response.payload;
+      },
+      (error: any) => {
+        if ((error.status = 404)) {
+          this.isLoading = false;
+          this.isEmpty = true;
+        }
+      }
+    );
+  }
+
+  getYearsStudent(class_year: any): void {
+    this.data.fetchData('classes/' + class_year, '').subscribe(
+      (response: any) => {
+        this.isLoading = false;
+        const results = response.payload;
+        this.total = results.length;
+        for (let i = 0; i < response.payload.length; i++) {
+          if (results[i].psa) {
+            results[i].psa = this.transform(results[i].psa);
+          }
+        }
+        this.students = results;
+        this.isEmpty = false;
+      },
+      (error: any) => {
+        if ((error.status = 404)) {
+          this.isLoading = false;
+          this.isEmpty = true;
+        }
+      }
+    );
+  }
+
   transform(url: any) {
     return this.domSanitizer.bypassSecurityTrustResourceUrl(url);
   }

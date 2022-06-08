@@ -13,7 +13,7 @@
       </button>
     </div>
     <div class="center">
-      <img *ngIf="!profile.img" src="assets/img/signup/user.jpg" />
+      <img src="assets/img/student/no-pic-user.png" *ngIf="!profile.img" />
       <img *ngIf="profile.img" appLazyLoad src="{{ profile.img }}" />
     </div>
 
