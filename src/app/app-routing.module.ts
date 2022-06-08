@@ -47,6 +47,8 @@ import { Coloring7Component } from './multimedia/coloring/coloring7/coloring7.co
 import { Coloring8Component } from './multimedia/coloring/coloring8/coloring8.component';
 import { ClassesComponent } from './teacher/classes/classes.component';
 import { YearComponent } from './teacher/classes/year/year.component';
+import { PrivacyComponent } from './privacy/privacy.component';
+import { TermsComponent } from './terms/terms.component';
 
 const routes: Routes = [
   {
@@ -242,6 +244,13 @@ const routes: Routes = [
     path: 'year',
     component: YearComponent,
   },
+  {
+    path: 'privacy',
+    component: PrivacyComponent,
+  },{
+    path: 'terms',
+    component: TermsComponent,
+  }
 ];
 
 @NgModule({

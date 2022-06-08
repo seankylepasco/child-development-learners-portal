@@ -132,16 +132,8 @@ body {
     font-weight: 800;
     text-align: center;
   }
-}
-
-@keyframes slideInFromBottom {
-  0% {
-    overflow: hidden;
-    transform: translateY(100%);
-  }
-
-  100% {
-    overflow: hidden;
-    transform: translateY(0);
+  .develop{
+    
   }
 }
+

@@ -2,6 +2,8 @@ import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DataService } from 'src/app/services/data.service';
+import { MatDialog } from '@angular/material/dialog';
+
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -33,7 +35,8 @@ export class SignupComponent implements OnInit {
   constructor(
     private router: Router,
     private data: DataService,
-    public snackBar: MatSnackBar
+    public snackBar: MatSnackBar,
+    private dialog: MatDialog
   ) {}
   ngOnInit(): void {
     this.getYear();

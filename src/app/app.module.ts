@@ -73,6 +73,11 @@ import { Coloring8Component } from './multimedia/coloring/coloring8/coloring8.co
 import { ClassesComponent } from './teacher/classes/classes.component';
 import { YearComponent } from './teacher/classes/year/year.component';
 import { LoginfailComponent } from './modals/loginfail/loginfail.component';
+import { PrivacyComponent } from './privacy/privacy.component';
+import { ForgotComponent } from './modals/forgot/forgot.component';
+import { NoemailComponent } from './modals/noemail/noemail.component';
+import { TermsComponent } from './terms/terms.component';
+
 
 @NgModule({
   declarations: [
@@ -137,6 +142,12 @@ import { LoginfailComponent } from './modals/loginfail/loginfail.component';
     ClassesComponent,
     YearComponent,
     LoginfailComponent,
+    PrivacyComponent,
+    ForgotComponent,
+    NoemailComponent,
+    TermsComponent,
+
+
   ],
   imports: [
     BrowserModule,

@@ -77,3 +77,16 @@ header {
 .card {
   background-color: #c2bfbf;
 }
+footer{
+  display: flex;
+  background-color: #252a34;
+  color: #ffff;
+ justify-content: center;
+}
+.titlefooter{
+  text-align: center;
+}
+.terms:hover{
+  color: rgb(0, 50, 187);
+  cursor: pointer;
+}
