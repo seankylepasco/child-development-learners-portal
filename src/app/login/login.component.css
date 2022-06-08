@@ -8,11 +8,11 @@ body {
 
 @keyframes slideInFromLeft {
   0% {
-    transform: translateY(-100%);
+    transform: translateY(100%);
   }
 
   100% {
-    transform: translateY(0);
+    transform: translateY(100);
   }
 }
 
@@ -111,7 +111,7 @@ button {
 }
 
 .login {
-  background-color: #ff2e63;
+  background-color: #f00f47;
 }
 
 .login:hover {
@@ -119,7 +119,7 @@ button {
 }
 
 .forgot_password {
-  background-color: #08d9d6;
+  background-color: #15a3a1;
 }
 
 .forgot_password:hover {
@@ -189,7 +189,12 @@ button {
 .image {
   width: 200em;
 }
-
+.btun{
+  margin-left: 150px;
+  background-color: #f538c5;
+  width: 30%;
+  height: 30%;
+}
 @-webkit-keyframes animatetop {
   from {
     top: -300px;
@@ -250,5 +255,8 @@ button {
     box-shadow: none;
     margin-left: 0px;
     margin-right: 0px;
+  }
+  .btun{
+    margin-left: 120px;
   }
 }

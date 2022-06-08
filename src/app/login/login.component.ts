@@ -4,6 +4,9 @@ import { DataService } from 'src/app/services/data.service';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginComponentModal } from '../modals/login/login.component';
 import { LoginfailComponent } from '../modals/loginfail/loginfail.component';
+import { ForgotComponent } from '../modals/forgot/forgot.component';
+import { NoemailComponent } from '../modals/noemail/noemail.component';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -42,10 +45,20 @@ export class LoginComponent implements OnInit {
     audio.play();
   }
 
+  BtnSound2(): void {
+    let audio = new Audio();
+    audio.src = 'assets/404.mp3';
+    audio.load();
+    audio.play();
+  }
+
   forgot() {
     this.BtnSound();
     if (!this.email) {
-      alert('Enter an email so i can send your password..');
+        this.BtnSound2();
+      this.dialog.open(NoemailComponent, {
+        width: '400px',
+      });
     } else {
       const object = {
         email: this.email,
@@ -57,7 +70,10 @@ export class LoginComponent implements OnInit {
       this.data.fetchData('user_exists', object).subscribe((response: any) => {
         if (response.status.remarks === 'success') {
           this.data.fetchData('send', sample).subscribe((response: any) => {
-            alert('Report Sent!');
+          
+            this.dialog.open(ForgotComponent, {
+              width: '400px',
+            });
           });
         }
       });
@@ -120,7 +136,7 @@ export class LoginComponent implements OnInit {
     return output;
   }
   openLoginResult(): void {
-    this.BtnSound();
+
     this.dialog.open(LoginComponentModal, {
       width: '400px',
     });

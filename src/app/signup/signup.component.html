@@ -8,8 +8,8 @@
         <h2>{{ year.year }}</h2>
         <div class="img-container">
           <img src="assets/img/signup/user.png" *ngIf="!active" />
-          <img src="{{ photo }}" *ngIf="active" />
-        </div>
+          <img src="{{ photo }}" *ngIf="active" />  
+        </div>   
         <div class="img-bottom">
           <input
             type="file"
@@ -30,7 +30,7 @@
               border: transparent;
             "
             (change)="setPSA($event)"
-          />
+          /><br><span style="margin-left: 50px; font-style: italic;">(max. 3MB file only)</span>
         </div>
       </div>
       <div class="form">
@@ -141,7 +141,7 @@
           <p><i class="fas fa-envelope-square"></i></p>
           <div class="row-2-container-4">
             <!-- <p *ngIf="memail" class="red">*Missing username</p> -->
-            <h2>Username</h2>
+            <h2>Email</h2>
             <input
               [(ngModel)]="email"
               (input)="getUser()"

@@ -58,4 +58,7 @@ export class SettingsComponent implements OnInit {
   toProfile(): void {
     this.router.navigate(['student-profile']);
   }
+  toPrivacy(): void {
+    this.router.navigate(['privacy']);
+  }
 }

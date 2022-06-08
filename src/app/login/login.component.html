@@ -5,11 +5,7 @@
         <div class="logo-container">
           <img src="assets/icon.png" class="image" />
         </div>
-        <div class="card-student-login">
-          <div class="card-center ">
-            <h1>Welcome Back!</h1>
-          </div>
-        </div>
+        <br>
         <br />
         <div class="card">
           <div class="content">
@@ -23,16 +19,18 @@
             />
             <p *ngIf="mPassword" class="red">*Missing Password</p>
             <input
+            
               name="password"
               type="password"
-              placeholder="Password"
+              placeholder="Password "
               [(ngModel)]="password"
+              
             />
             <button type="button" class="login" (click)="login()">login</button>
             <button type="button" class="forgot_password" (click)="forgot()">
               forgot password?
             </button>
-            <a style="text-align: center" (click)="back()">back</a>
+            <button class="btun" style="text-align: center" (click)="back()">back</button>
           </div>
         </div>
       </div>
