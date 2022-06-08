@@ -31,7 +31,9 @@ export class SettingsComponent implements OnInit {
   ngOnInit(): void {
     this.getProfile();
   }
-
+  get staticUrlArray() {
+    return StudentComponent.playSound;
+  }
   offSounds(): void {
     StudentComponent.playSound = !StudentComponent.playSound;
   }

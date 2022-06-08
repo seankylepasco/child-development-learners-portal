@@ -1,3 +1,8 @@
+<head>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap");
+  </style>
+</head>
 <mat-drawer-container autosize>
   <mat-drawer #drawer mode="side" opened="true">
     <div class="flex-row end-obj">
@@ -17,25 +22,25 @@
 
     <div class="profile">
       <button (click)="toTeacher()" class="red">
-        <mat-icon>home</mat-icon>&nbsp;Dashboard
+        <mat-icon>home</mat-icon>&nbsp; Home
       </button>
       <button (click)="toClasses()" class="red">
-        <mat-icon>home</mat-icon>&nbsp;Classes
+        <mat-icon>home</mat-icon>&nbsp; Classes
       </button>
       <button (click)="toMasterList()" class="red">
-        <mat-icon>list</mat-icon>&nbsp;Master List
+        <mat-icon>list</mat-icon>&nbsp; Master List
       </button>
       <button (click)="toEnrollees()" class="red">
-        <mat-icon>list</mat-icon>&nbsp;Incoming Enrollees
+        <mat-icon>list</mat-icon>&nbsp; Enrollees
       </button>
       <button (click)="toAnnouncementPost()" class="red">
-        <mat-icon>announcement</mat-icon>&nbsp;Post announcement
+        <mat-icon>announcement</mat-icon>&nbsp; Announcement
       </button>
       <button class="blue">
-        <mat-icon> attach_file</mat-icon>&nbsp;Post Activity
+        <mat-icon> attach_file</mat-icon>&nbsp; Post Activity
       </button>
       <button (click)="toScore()" class="red">
-        <mat-icon>score</mat-icon>&nbsp;Scores
+        <mat-icon>score</mat-icon>&nbsp; Scores
       </button>
     </div>
 

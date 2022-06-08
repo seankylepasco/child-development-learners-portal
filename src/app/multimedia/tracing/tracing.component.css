@@ -4,6 +4,16 @@
    color: #ffff;
  }
 
+ h1,
+ h2,
+ h3,
+ h4,
+ p,
+ button,
+ div {
+   font-family: 'Bubblegum Sans', cursive;
+ }
+
  mat-card {
    margin: 10px !important;
  }
@@ -44,6 +54,13 @@
    background-color: #252a34;
  }
 
+
+ mat-card-title {
+   text-align: center;
+   font-size: 40px;
+   height: 50px;
+ }
+
  .box:hover {
    box-shadow: 0 0 21px rgba(33, 33, 33, .2);
    background-color: #e4e4e4;
@@ -65,9 +82,7 @@
    }
 
    mat-card {
-
      width: fit-content;
-
    }
 
    mat-card-title {
@@ -75,12 +90,4 @@
      font-size: 40px;
      margin-bottom: 100px;
    }
- }
-
- mat-card-title {
-   text-align: center;
-   font-size: 40px;
-   height: 50px;
-
-
  }

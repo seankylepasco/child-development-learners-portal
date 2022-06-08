@@ -1,6 +1,10 @@
 .mat-con{
   flex: 1;
 }
+.loading {
+  width: 30px !important;
+  height: 30px !important;
+}
 header {
   display: flex;
   background-color: #252a34;

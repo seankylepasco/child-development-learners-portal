@@ -1,3 +1,56 @@
+h1,
+h2,
+h3,
+h4,
+p,
+button,
+div {
+  font-family: 'Bubblegum Sans', cursive;
+  color: #2c2f35;
+}
+
+.profile {
+  display: flex;
+  padding: 20px;
+  margin-bottom: auto;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile mat-icon {
+  font-size: 30px;
+}
+
+.profile button {
+  width: 150px !important;
+  height: 70px !important;
+  margin: 5px;
+  border-radius: 30px !important;
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+  border: 5px solid white !important;
+}
+
+.profile mat-icon {
+  font-size: 30px;
+}
+
+.logout button {
+  width: 100%;
+  height: 60px;
+  border: none;
+  margin: 5px;
+  border-radius: 30px !important;
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+  border: 5px solid white !important;
+  text-align: center;
+}
+
 #title {
   width: 600px;
   overflow: auto;
@@ -12,7 +65,6 @@
 
 .banner {
   width: 100%;
-
   object-fit: contain;
 }
 
@@ -50,7 +102,7 @@ mat-list-item {
 header {
   display: flex;
   background-color: #252a34;
-  color: #ffff;
+  color: #ffff !important;
 }
 
 header button {
@@ -73,6 +125,7 @@ header h1 {
   margin-top: auto;
   margin-bottom: auto;
   width: fit-content;
+  color: #ffff !important;
 }
 
 h1 {
@@ -111,13 +164,6 @@ h1 {
   display: none;
 }
 
-.profile {
-  display: flex;
-  padding: 20px;
-  margin-bottom: auto;
-  flex-direction: column;
-}
-
 .end-obj {
   margin: auto;
   display: flex;
@@ -130,28 +176,9 @@ h1 {
   padding: 20px;
 }
 
-.profile button {
-  width: 100%;
-  height: 60px;
-  border: none;
-  margin: 5px;
-  border-radius: 5px;
-  color: white;
-  font-size: 20px;
-  font-weight: 700;
-  text-align: center;
-}
 
-.logout button {
-  width: 100%;
-  height: 60px;
-  border: none;
-  margin: 5px;
-  border-radius: 5px;
-  color: white;
-  font-size: 20px;
-  font-weight: 700;
-  text-align: center;
+button p {
+  color: #ffff !important;
 }
 
 .img {
@@ -316,7 +343,14 @@ button:hover {
 }
 
 @media (max-width: 800px) {
+
   #row {
     flex-direction: column-reverse;
   }
+
+  .banner {
+    object-fit: cover;
+    height: 200px;
+  }
+
 }

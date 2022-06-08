@@ -1,4 +1,5 @@
 <mat-drawer-container autosize>
+  <audio *ngIf="staticUrlArray" autoplay="" src="./assets/bgmusic.mp3"></audio>
   <mat-drawer #drawer mode="side" opened="true">
     <div class="flex-row end-obj">
       <button class="button-44 none" (click)="drawer.toggle()">
@@ -26,19 +27,19 @@
 
     <div class="profile">
       <button (click)="toStudent()" class="red">
-        <mat-icon>home</mat-icon>&nbsp;Dashboard
+        <mat-icon>home</mat-icon>&nbsp; Home
       </button>
       <button (click)="toActivities()" class="red">
-        <mat-icon>list</mat-icon>&nbsp;Activities
+        <mat-icon>list</mat-icon>&nbsp; Activity
       </button>
       <button (click)="toAnnouncement()" class="red-active">
-        <mat-icon>announcement</mat-icon>&nbsp;Announcement
+        <mat-icon>announcement</mat-icon>&nbsp; News
       </button>
       <button (click)="toSoe()" class="red">
-        <mat-icon>calendar_today</mat-icon>&nbsp;SOE
+        <mat-icon>calendar_today</mat-icon>&nbsp; Soe
       </button>
       <button (click)="openSettings()" class="red">
-        <mat-icon>settings</mat-icon>&nbsp;Settings
+        <mat-icon>settings</mat-icon>&nbsp; Settings
       </button>
     </div>
     <div class="logout" (click)="openLogout()">

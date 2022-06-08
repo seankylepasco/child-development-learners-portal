@@ -1,3 +1,8 @@
+<head>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap");
+  </style>
+</head>
 <mat-drawer-container autosize>
   <mat-drawer #drawer mode="side" opened="true">
     <div class="flex-row end-obj">
@@ -15,24 +20,24 @@
     </div>
     <div class="user" *ngIf="!profile.firstname">Loading..</div>
     <div class="profile">
-      <button class="blue"><mat-icon>home</mat-icon>&nbsp;Dashboard</button>
+      <button class="blue"><mat-icon>home</mat-icon>&nbsp; Home</button>
       <button (click)="toClasses()" class="red">
-        <mat-icon>home</mat-icon>&nbsp;Classes
+        <mat-icon>home</mat-icon>&nbsp; Classes
       </button>
       <button (click)="toMasterList()" class="red">
-        <mat-icon>list</mat-icon>&nbsp;Master List
+        <mat-icon>list</mat-icon>&nbsp; Master List
       </button>
       <button (click)="toEnrollees()" class="red">
-        <mat-icon>list</mat-icon>&nbsp;Incoming Enrollees
+        <mat-icon>list</mat-icon>&nbsp; Enrollees
       </button>
       <button (click)="toAnnouncementPost()" class="red">
-        <mat-icon>announcement</mat-icon>&nbsp;Post announcement
+        <mat-icon>announcement</mat-icon>&nbsp; Announcement
       </button>
       <button (click)="toActivityPost()" class="red">
-        <mat-icon>attach_file</mat-icon>&nbsp;Post Activity
+        <mat-icon>attach_file</mat-icon>&nbsp; Post Activity
       </button>
       <button (click)="toScore()" class="red">
-        <mat-icon>score</mat-icon>&nbsp;Scores
+        <mat-icon>score</mat-icon>&nbsp; Scores
       </button>
     </div>
 
@@ -109,7 +114,6 @@
                   <tr>
                     <th>Name</th>
                     <th>Role</th>
-                    <th>Type</th>
                     <th>Address</th>
                     <th>Contact No</th>
                     <th>Actions</th>
@@ -135,7 +139,13 @@
                     "
                   >
                     <td>
-                      {{ student.firstname }} &nbsp; {{ student.lastname }}
+                      <img
+                        *ngIf="student.img"
+                        src="{{ student.img }}"
+                        style="width: 50px; height: 50px"
+                      />
+                      &nbsp; {{ student.firstname }} &nbsp;
+                      {{ student.lastname }}
                     </td>
                     <td>{{ student.type }}</td>
                     <td>{{ student.address }}</td>
@@ -143,10 +153,7 @@
                     <td class="flex-row">
                       &nbsp;
                       <button (click)="updateToEnrollee(student)" class="red">
-                        <<<<<<< HEAD
-                        <mat-icon>delete</mat-icon> Enrollee =======
-                        <mat-icon>delete</mat-icon>
-                        >>>>>>> 918b0d730992369cc40eb91235eb50750406e0aa
+                        <mat-icon>delete</mat-icon> Enrollee
                       </button>
                     </td>
                   </tr>
@@ -155,13 +162,11 @@
             </div>
           </div>
           <div class="center" *ngIf="students">
-            <<<<<<< HEAD
             <pagination-controls
               *ngIf="totalStudents > 3"
               class="my-pagination"
               (pageChange)="page = $event"
             ></pagination-controls>
-            ======= >>>>>>> 918b0d730992369cc40eb91235eb50750406e0aa
           </div>
         </div>
         <div *ngIf="isEmpty" class="mobile center">

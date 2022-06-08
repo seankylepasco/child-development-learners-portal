@@ -57,11 +57,21 @@ export class MasterlistComponent implements OnInit {
   }
   searchStudents(): void {
     this.students = [];
-    this.data
-      .fetchData('search_students/' + this.search, '')
-      .subscribe((response: any) => {
+    this.data.fetchData('search_students/' + this.search, '').subscribe(
+      (response: any) => {
         this.students = response.payload;
-      });
+        this.isLoading = false;
+      },
+      (error: any) => {
+        console.log(error.status);
+        if ((error.status = 404)) {
+          this.isLoading = false;
+          this.isEmpty = true;
+          console.log('change to none');
+          console.log(this.isEmpty);
+        }
+      }
+    );
   }
   getProfile(): void {
     this.data

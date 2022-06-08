@@ -1,3 +1,8 @@
+<head>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap");
+  </style>
+</head>
 <mat-drawer-container autosize>
   <mat-drawer #drawer mode="side" opened="true">
     <div class="flex-row end-obj">
@@ -17,25 +22,23 @@
 
     <div class="profile">
       <button (click)="toTeacher()" class="red">
-        <mat-icon>home</mat-icon>&nbsp;Dashboard
+        <mat-icon>home</mat-icon>&nbsp; Home
       </button>
       <button (click)="toClasses()" class="red">
-        <mat-icon>home</mat-icon>&nbsp;Classes
+        <mat-icon>home</mat-icon>&nbsp; Classes
       </button>
       <button (click)="toMasterList()" class="red">
-        <mat-icon>list</mat-icon>&nbsp;Master List
+        <mat-icon>list</mat-icon>&nbsp; Master List
       </button>
-      <button class="blue">
-        <mat-icon>list</mat-icon>&nbsp;Incoming Enrollees
-      </button>
+      <button class="blue"><mat-icon>list</mat-icon>&nbsp; Enrollees</button>
       <button (click)="toAnnouncementPost()" class="red">
-        <mat-icon>announcement</mat-icon>&nbsp;Post announcement
+        <mat-icon>announcement</mat-icon>&nbsp; Announcement
       </button>
       <button (click)="toActivityPost()" class="red">
-        <mat-icon> attach_file</mat-icon>&nbsp;Post Activity
+        <mat-icon> attach_file</mat-icon>&nbsp; Post Activity
       </button>
       <button (click)="toScore()" class="red">
-        <mat-icon>score</mat-icon>&nbsp;Scores
+        <mat-icon>score</mat-icon>&nbsp; Scores
       </button>
     </div>
 
@@ -88,7 +91,13 @@
                           }
                   "
                 >
-                  <td>{{ student.firstname }} &nbsp; {{ student.lastname }}</td>
+                  <td>
+                    <img
+                      *ngIf="student.img"
+                      src="{{ student.img }}"
+                      style="width: 50px; height: 50px"
+                    />{{ student.firstname }} &nbsp; {{ student.lastname }}
+                  </td>
                   <td *ngIf="student.psa" class="flex-row">
                     <a
                       [href]="student.psa"

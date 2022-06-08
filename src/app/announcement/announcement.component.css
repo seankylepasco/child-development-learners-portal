@@ -1,3 +1,57 @@
+h1,
+h2,
+h3,
+h4,
+p,
+button,
+div {
+  font-family: 'Bubblegum Sans', cursive;
+  color: #2c2f35;
+}
+
+.profile {
+  display: flex;
+  padding: 20px;
+  margin-bottom: auto;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile mat-icon {
+  font-size: 30px;
+}
+
+.profile button {
+  width: 150px !important;
+  height: 70px !important;
+  margin: 5px;
+  border-radius: 30px !important;
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+  border: 5px solid white !important;
+}
+
+.profile mat-icon {
+  font-size: 30px;
+}
+
+.logout button {
+  width: 100%;
+  height: 60px;
+  border: none;
+  margin: 5px;
+  border-radius: 30px !important;
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+  border: 5px solid white !important;
+  text-align: center;
+}
+
+
 .card-table {
   display: flex;
   flex-direction: column;
@@ -107,7 +161,6 @@ mat-list-item {
 header {
   display: flex;
   background-color: #252a34;
-  color: #ffff;
 }
 
 header button {
@@ -130,6 +183,7 @@ header h1 {
   margin-top: auto;
   margin-bottom: auto;
   width: fit-content;
+  color: #ffff !important;
 }
 
 h1 {
@@ -168,12 +222,12 @@ h1 {
   display: none;
 }
 
-.profile {
+/* .profile {
   display: flex;
   padding: 20px;
   margin-bottom: auto;
   flex-direction: column;
-}
+} */
 
 .end-obj {
   margin: auto;
@@ -187,7 +241,7 @@ h1 {
   padding: 20px;
 }
 
-.profile button {
+/* .profile button {
   width: 100%;
   height: 60px;
   border: none;
@@ -197,9 +251,9 @@ h1 {
   font-size: 20px;
   font-weight: 700;
   text-align: center;
-}
+} */
 
-.logout button {
+/* .logout button {
   width: 100%;
   height: 60px;
   border: none;
@@ -209,7 +263,7 @@ h1 {
   font-size: 20px;
   font-weight: 700;
   text-align: center;
-}
+} */
 
 .con-1 {
   padding: 20px;
@@ -298,6 +352,12 @@ button:hover {
 }
 
 @media (max-width: 800px) {
+
+  .banner {
+    object-fit: cover;
+    height: 200px;
+  }
+
   .card-soe {
     display: block;
     background-color: #fff;

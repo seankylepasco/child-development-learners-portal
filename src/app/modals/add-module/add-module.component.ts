@@ -61,7 +61,7 @@ export class AddModuleComponent implements OnInit {
       const object = {
         title: event.target.title.value,
         description: event.target.description.value,
-        // total_score: event.target.total_score.value,
+        total_score: 4,
         video_url: event.target.video_url.value,
         deadline: event.target.deadline.value,
         file: this.pdf,

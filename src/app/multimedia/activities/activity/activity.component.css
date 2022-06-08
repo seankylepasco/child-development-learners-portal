@@ -26,6 +26,16 @@ h4 {
   text-overflow: ellipsis;
 }
 
+h1,
+h2,
+h3,
+h4,
+p,
+button,
+div {
+  font-family: 'Bubblegum Sans', cursive;
+}
+
 .description-con {
   width: fit-content;
 }
@@ -111,6 +121,21 @@ header {
 }
 
 @media (max-width: 800px) {
+
+  iframe {
+    height: 200px !important;
+  }
+
+  .center {
+    display: flex;
+    padding-top: 30px;
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    justify-content: baseline !important;
+    text-align: left !important;
+    align-items: baseline !important;
+  }
+
   h2 {
     font-size: 18px;
   }

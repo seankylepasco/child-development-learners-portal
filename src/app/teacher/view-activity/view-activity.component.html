@@ -23,14 +23,6 @@
         <br />
         <mat-label>Total Score</mat-label>
         &nbsp;<br />
-        <!-- <mat-form-field appearance="fill" class="descript">
-          <mat-label>10/10 .. </mat-label>
-          <textarea
-            matInput
-            name="total_score"
-            [(ngModel)]="module.total_score"
-          ></textarea>
-        </mat-form-field> -->
         <br />
         <mat-label>VIDEO URL</mat-label>
         &nbsp;<br />
@@ -77,7 +69,13 @@
       <div class="con">
         <h2><mat-icon>list</mat-icon>&nbsp;List of Completed</h2>
       </div>
-      <mat-card *ngIf="!completed">
+      <img
+        class="loading"
+        *ngIf="isLoading"
+        src="assets/img/loading/loading.gif"
+      />
+      <h2 *ngIf="isLoading">Loading ...</h2>
+      <mat-card *ngIf="isEmpty">
         <h2>
           <mat-icon> cancel_presentation</mat-icon>&nbsp;Students are not
           finished with the activity .. ..

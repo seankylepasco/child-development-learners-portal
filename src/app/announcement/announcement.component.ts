@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DataService } from 'src/app/services/data.service';
 import { LogoutComponent } from '../modals/logout/logout.component';
+import { StudentComponent } from 'src/app/student/student.component';
 import { SettingsComponent } from '../modals/settings/settings.component';
 
 @Component({
@@ -30,6 +31,9 @@ export class AnnouncementComponent implements OnInit {
   ngOnInit(): void {
     this.getAnnouncements();
     this.checkifLoggedIn();
+  }
+  get staticUrlArray() {
+    return StudentComponent.playSound;
   }
   BtnSound(): void {
     let audio = new Audio();

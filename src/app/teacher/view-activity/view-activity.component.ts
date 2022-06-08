@@ -17,6 +17,8 @@ export class ViewActivityComponent implements OnInit {
   completed: any;
   submit: boolean = false;
   pdfUpload: any = {};
+  isLoading = true;
+  isEmpty = false;
 
   constructor(
     private router: Router,
@@ -37,11 +39,21 @@ export class ViewActivityComponent implements OnInit {
       });
   }
   getCompleted(data: any): void {
-    this.data
-      .fetchData('completed_students/' + data.id, '')
-      .subscribe((response: any) => {
+    this.data.fetchData('completed_students/' + data.id, '').subscribe(
+      (response: any) => {
         this.completed = response.payload;
-      });
+        this.isLoading = false;
+      },
+      (error: any) => {
+        console.log(error.status);
+        if ((error.status = 404)) {
+          this.isLoading = false;
+          this.isEmpty = true;
+          console.log('change to none');
+          console.log(this.isEmpty);
+        }
+      }
+    );
   }
   updateModule(): void {
     const object = {

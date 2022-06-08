@@ -1,10 +1,11 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { DomSanitizer } from '@angular/platform-browser';
 import { DataService } from 'src/app/services/data.service';
+import { StudentComponent } from 'src/app/student/student.component';
 import { LogoutComponent } from '../../modals/logout/logout.component';
 import { SettingsComponent } from '../../modals/settings/settings.component';
-import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-activities',
@@ -27,6 +28,7 @@ export class ActivitiesComponent implements OnInit {
   urlPDF: any = [];
   isLoading = true;
   isEmpty = false;
+
   constructor(
     private data: DataService,
     private router: Router,
@@ -43,7 +45,9 @@ export class ActivitiesComponent implements OnInit {
     audio.load();
     audio.play();
   }
-
+  get staticUrlArray() {
+    return StudentComponent.playSound;
+  }
   getAll(): void {
     this.data.fetchData('modules', '').subscribe(
       (response: any) => {

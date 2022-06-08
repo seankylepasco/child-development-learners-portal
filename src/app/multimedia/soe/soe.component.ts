@@ -2,6 +2,7 @@ import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DataService } from 'src/app/services/data.service';
+import { StudentComponent } from 'src/app/student/student.component';
 import { LogoutComponent } from '../../modals/logout/logout.component';
 import { SettingsComponent } from '../../modals/settings/settings.component';
 
@@ -26,6 +27,9 @@ export class SoeComponent implements OnInit {
   ngOnInit(): void {
     this.checkifLoggedIn();
     this.getSEO();
+  }
+  get staticUrlArray() {
+    return StudentComponent.playSound;
   }
   BtnSound(): void {
     let audio = new Audio();

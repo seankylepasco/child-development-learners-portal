@@ -14,6 +14,8 @@
         <br />
         <button (click)="offSounds()" class="button-1" mat-dialog-close>
           <mat-icon inline="true">music_note</mat-icon> Sounds
+          <p *ngIf="staticUrlArray" class="off">Off</p>
+          <p *ngIf="!staticUrlArray" class="on">On</p>
         </button>
       </div>
     </div>

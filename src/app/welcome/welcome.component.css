@@ -2,6 +2,7 @@ body {
   margin-right: 300px;
   padding-top: 10px;
   background-color: #caebea;
+  background-size: cover;
   background-image: url("/assets/img/background/body.png");
   background-repeat: no-repeat;
   animation: 1s ease-out 0s 1 slideInFromLeft;

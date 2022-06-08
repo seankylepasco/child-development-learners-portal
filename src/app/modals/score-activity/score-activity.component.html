@@ -8,11 +8,12 @@
       module.file_name
     }}</a>
     <br /><br />
-    <!-- Score:
-    <input [(ngModel)]="module.score" type="number" /> -->
+    Score:
+    <!-- <input [(ngModel)]="module.score" type="number" /> -->
     <select name="score" id="score" [(ngModel)]="module.score">
+      <option value="0">No Score Yet!</option>
       <option value="1">Bad</option>
-      <option value="2">Good</option>
+      <option value="2" >Good</option>
       <option value="3">Very Good</option>
       <option value="4">Excellent</option>
     </select>
