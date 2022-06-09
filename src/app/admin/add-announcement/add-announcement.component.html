@@ -1,21 +1,32 @@
+<head>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap");
+  </style>
+</head>
 <mat-drawer-container>
   <div class="con">
-    <button mat-raised-button (click)="back()">Back</button>
+    <button mat-raised-button (click)="back()">
+      <mat-icon>keyboard_backspace</mat-icon> Back
+    </button>
     <div class="row-2">
       <div class="flex-column">
         <div class="con">
           <button class="red" (click)="openNewAnnouncement()">
             <mat-icon inline="true">add</mat-icon>Add Announcement
           </button>
+          <br />
+          <img
+            class="loading"
+            *ngIf="isLoading"
+            src="assets/img/loading/loading.gif"
+          />
+          <h2 *ngIf="isLoading">Loading ...</h2>
+
           <mat-card
             id="announcement"
             *ngFor="let announcement of announcements"
           >
-            <img
-              *ngIf="announcement.img"
-              src="{{ announcement.img }}"
-              alt=""
-            />
+            <img *ngIf="announcement.img" src="{{ announcement.img }}" alt="" />
             <img
               *ngIf="!announcement.img"
               src="https://i.pinimg.com/originals/38/6b/ba/386bbacc541b90e6576e3d25df506272.png"
@@ -44,10 +55,7 @@
       </div>
       <div class="flex-column">
         <div id="accomplished">
-          <img
-            class="announce-img"
-            src="assets/img/admin/announcement.png"
-          />
+          <img class="announce-img" src="assets/img/admin/announcement.png" />
         </div>
       </div>
     </div>

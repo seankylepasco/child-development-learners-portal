@@ -1,3 +1,4 @@
+import compress from 'compress-base64';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
@@ -31,7 +32,6 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.checkifLoggedIn();
-    this.img = '../../../assets/img/signup/user.jpg';
   }
   goBack(): void {
     this.router.navigate(['student']);
@@ -100,21 +100,45 @@ export class ProfileComponent implements OnInit {
     if (event.target.files[0].type === 'image/png') {
       let reader = new FileReader();
       reader.onload = (event: any) => {
-        this.photo = event.target.result;
+        compress(event.target.result, {
+          width: 400,
+          type: 'image/png',
+          max: 200,
+          min: 20,
+          quality: 0.8,
+        }).then((result) => {
+          this.photo = result;
+        });
       };
       reader.readAsDataURL(this.photo);
       this.active = true;
     } else if (event.target.files[0].type === 'image/jpg') {
       let reader = new FileReader();
       reader.onload = (event: any) => {
-        this.photo = event.target.result;
+        compress(event.target.result, {
+          width: 400,
+          type: 'image/png',
+          max: 200,
+          min: 20,
+          quality: 0.8,
+        }).then((result) => {
+          this.photo = result;
+        });
       };
       reader.readAsDataURL(this.photo);
       this.active = true;
     } else if (event.target.files[0].type === 'image/jpeg') {
       let reader = new FileReader();
       reader.onload = (event: any) => {
-        this.photo = event.target.result;
+        compress(event.target.result, {
+          width: 400,
+          type: 'image/png',
+          max: 200,
+          min: 20,
+          quality: 0.8,
+        }).then((result) => {
+          this.photo = result;
+        });
       };
       reader.readAsDataURL(this.photo);
       this.active = true;

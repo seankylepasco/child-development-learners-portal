@@ -61,14 +61,12 @@ export class ReportsComponent implements OnInit {
     this.data.fetchData('reports', '').subscribe(
       (response: any) => {
         this.reports = response.payload;
+        this.isLoading = false;
       },
       (error: any) => {
-        console.log(error.status);
         if ((error.status = 404)) {
           this.isLoading = false;
           this.isEmpty = true;
-          console.log('change to none');
-          console.log(this.isEmpty);
         }
       }
     );

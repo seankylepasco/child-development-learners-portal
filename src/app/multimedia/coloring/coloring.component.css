@@ -48,6 +48,7 @@
    border-radius: 20px;
    width: fit-content;
    background-color: #252a34;
+   border-color: rgb(181, 181, 181);
  }
 
  .box1:hover {

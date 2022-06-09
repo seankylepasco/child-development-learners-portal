@@ -13,6 +13,8 @@ import { NewAnnouncementComponent } from 'src/app/modals/new-announcement/new-an
 export class AddAnnouncementComponent implements OnInit {
   announcements: any;
   id: any = '';
+  isLoading = true;
+  isEmpty = false;
 
   constructor(
     private data: DataService,
@@ -26,9 +28,18 @@ export class AddAnnouncementComponent implements OnInit {
     this.id = user.id;
   }
   getAnnouncements(): void {
-    this.data.fetchData('announcements', '').subscribe((results: any) => {
-      this.announcements = results.payload;
-    });
+    this.data.fetchData('announcements', '').subscribe(
+      (results: any) => {
+        this.announcements = results.payload;
+        this.isLoading = false;
+      },
+      (error: any) => {
+        if ((error.status = 404)) {
+          this.isLoading = false;
+          this.isEmpty = true;
+        }
+      }
+    );
   }
   back(): void {
     this.router.navigate(['student']);

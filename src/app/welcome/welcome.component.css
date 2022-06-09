@@ -1,11 +1,24 @@
 body {
   margin-right: 300px;
   padding-top: 10px;
+  height: 100%;
   background-color: #caebea;
   background-size: cover;
-  background-image: url("/assets/img/background/body.png");
+  background-image: url("/assets/img/background/body - before.png");
   background-repeat: no-repeat;
   animation: 1s ease-out 0s 1 slideInFromLeft;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+button,
+div {
+  letter-spacing: 2px;
+  font-family: 'Bubblegum Sans', cursive;
+  color: #2c2f35;
 }
 
 @keyframes slideInFromLeft {
@@ -19,6 +32,7 @@ body {
 }
 
 .pushable {
+  box-shadow: 0 3px 8px 0 rgb(255, 255, 255);
   background: #d32551;
   border: none;
   border-radius: 12px;
@@ -105,6 +119,28 @@ body {
   width: 500px;
 }
 
+@media (max-width: 990px) {
+  .container {
+    padding-left: 40px;
+    margin-top: 40px;
+    display: block;
+  }
+
+  .container1 {
+    margin-left: 100px;
+  }
+
+  .image {
+    width: 400px;
+  }
+
+  .title {
+    padding: 10px;
+    font-size: 35px;
+    font-weight: 800;
+    text-align: center;
+  }
+}
 @media (max-width: 680px) {
   .container {
     padding-left: 40px;
@@ -132,8 +168,5 @@ body {
     font-weight: 800;
     text-align: center;
   }
-  .develop{
-    
-  }
-}
 
+}

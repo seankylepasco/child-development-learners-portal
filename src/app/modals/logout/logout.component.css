@@ -4,6 +4,7 @@ mat-card {
 
 button {
   margin: 10px;
+  font-size: 20px;
 }
 
 img {
@@ -11,4 +12,19 @@ img {
   height: auto;
   padding-left: 20px;
   object-fit: contain;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+button,
+div {
+  font-family: 'Bubblegum Sans', cursive;
+  color: #2c2f35;
+}
+
+button:hover {
+  background-color: rgb(202, 202, 255);
 }

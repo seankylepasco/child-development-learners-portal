@@ -28,10 +28,12 @@ p {
 .off {
   color: #ff2e63;
 }
-button{
+
+button {
   font-size: 20px;
   font-weight: 400;
 }
-button:hover{
+
+button:hover {
   background-color: rgb(202, 202, 255);
 }

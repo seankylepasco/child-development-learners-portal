@@ -1,77 +1,51 @@
+<head>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap");
+  </style>
+</head>
 <mat-drawer-container>
-    <header>
-      <button mat-raised-button class="btn" (click)="goBack()">&nbsp;Back</button>
-      <h1 class="title">Coloring Activities</h1>
-    </header>
+  <header>
+    <button mat-raised-button class="btn" (click)="goBack()">
+      <mat-icon>keyboard_backspace</mat-icon> Back
+    </button>
+    <h1 class="title">Coloring Activities</h1>
+  </header>
   <div class="con">
-   
-   <div class="main">
-      <mat-card  (click)="tocoloring1()" class="box1">
-          <img
-          id="hide"
-          src="assets/img/coloring/apple.png"
-          alt=""
-        />
-        
+    <div class="main">
+      <mat-card (click)="tocoloring1()" class="box1">
+        <img id="hide" src="assets/img/coloring/apple.png" alt="" />
+
         <mat-card-title class="apple">Apple</mat-card-title>
       </mat-card>
       <mat-card (click)="tocoloring2()" class="box2">
-          <img
-          id="hide"
-          src="assets/img/coloring/mango.png"
-          alt=""
-        />
+        <img id="hide" src="assets/img/coloring/mango.png" alt="" />
         <mat-card-title class="mango">Mango</mat-card-title>
       </mat-card>
       <mat-card (click)="tocoloring3()" class="box3">
-          <img
-          id="hide"
-          src="assets/img/coloring/banana.png"
-          alt=""
-        />
+        <img id="hide" src="assets/img/coloring/banana.png" alt="" />
         <mat-card-title class="banana">Banana</mat-card-title>
       </mat-card>
       <mat-card (click)="tocoloring4()" class="box4">
-          <img
-          id="hide"
-          src="assets/img/coloring/orange.png"
-          alt=""
-        />
+        <img id="hide" src="assets/img/coloring/orange.png" alt="" />
         <mat-card-title class="orange">Orange</mat-card-title>
       </mat-card>
     </div>
-<br>
+    <br />
     <div class="main">
       <mat-card (click)="tocoloring5()" class="box5">
-          <img
-          id="hide"
-          src="assets/img/coloring/grape.png"
-          alt=""
-        />
+        <img id="hide" src="assets/img/coloring/grape.png" alt="" />
         <mat-card-title class="grapes">Grapes</mat-card-title>
-      </mat-card >
+      </mat-card>
       <mat-card (click)="tocoloring6()" class="box6">
-          <img
-          id="hide"
-          src="assets/img/coloring/strawberry.png"
-          alt=""
-        />
+        <img id="hide" src="assets/img/coloring/strawberry.png" alt="" />
         <mat-card-title class="strawberry">strawberry</mat-card-title>
-      </mat-card >
+      </mat-card>
       <mat-card (click)="tocoloring7()" class="box7">
-          <img
-          id="hide"
-          src="assets/img/coloring/watermelon.png"
-          alt=""
-        />
+        <img id="hide" src="assets/img/coloring/watermelon.png" alt="" />
         <mat-card-title class="watermelon">Watermelon</mat-card-title>
       </mat-card>
       <mat-card (click)="tocoloring8()" class="box8">
-          <img
-          id="hide"
-          src="assets/img/coloring/avocado.png"
-          alt=""
-        />
+        <img id="hide" src="assets/img/coloring/avocado.png" alt="" />
         <mat-card-title class="avocado">Avocado</mat-card-title>
       </mat-card>
     </div>

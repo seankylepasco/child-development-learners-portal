@@ -1,57 +1,73 @@
-<div class="con main">
-  <button mat-raised-button (click)="back()">back</button>
-  <div class="flex-row">
-    <mat-card>
-      <div class="flex-column">
-        <div class="center">
-          <img *ngIf="user.img" appLazyLoad src="{{ user.img }}" class="img" />
-          <img
-            *ngIf="!user.img"
-            appLazyLoad
-            src="assets/img/signup/user.jpg"
-            class="img"
+<body>
+  <head>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap");
+    </style>
+  </head>
+  <div class="con main">
+    <button mat-raised-button (click)="back()">
+      <mat-icon>keyboard_backspace</mat-icon> Back
+    </button>
+    <br /><br />
+
+    <div class="flex-row center-user">
+      <mat-card>
+        <div class="flex-column">
+          <div class="center">
+            <img
+              *ngIf="user.img"
+              appLazyLoad
+              src="{{ user.img }}"
+              class="img"
+            />
+            <img
+              *ngIf="!user.img"
+              appLazyLoad
+              src="assets/img/student/no-pic-user.png"
+              class="img"
+            />
+          </div>
+          <label for="firstname">firstname</label>
+          <input id="firstname" type="text" [(ngModel)]="user.firstname" />
+          <label for="lastname">lastname</label>
+          <input id="lastname" type="text" [(ngModel)]="user.lastname" />
+          <label for="email">email</label>
+          <input id="email" type="text" [(ngModel)]="user.email" />
+          <label for="email">type</label>
+          <select [(ngModel)]="user.type">
+            <option value="admin">admin</option>
+            <option value="enrollee">enrollee</option>
+            <option value="student">student</option>
+            <option value="teacher">teacher</option>
+          </select>
+          <label for="password">change password</label>
+          <input
+            id="passsword"
+            type="text"
+            [(ngModel)]="password"
+            placeholder="Change Password ..."
           />
+          <input
+            id="photo"
+            class="custom-file-input"
+            type="file"
+            style="
+              width: 200px;
+              background-color: transparent;
+              border: transparent;
+            "
+            (change)="setPhoto($event)"
+          />
+          <button class="save" (click)="updateUser()">save</button>
         </div>
-        <label for="firstname">firstname</label>
-        <input id="firstname" type="text" [(ngModel)]="user.firstname" />
-        <label for="lastname">lastname</label>
-        <input id="lastname" type="text" [(ngModel)]="user.lastname" />
-        <label for="email">email</label>
-        <input id="email" type="text" [(ngModel)]="user.email" />
-        <label for="email">type</label>
-        <select [(ngModel)]="user.type">
-          <option value="admin">admin</option>
-          <option value="enrollee">enrollee</option>
-          <option value="student">student</option>
-          <option value="teacher">teacher</option>
-        </select>
-        <label for="password">change password</label>
-        <input
-          id="passsword"
-          type="text"
-          [(ngModel)]="password"
-          placeholder="Change Password ..."
+      </mat-card>
+      <div>
+        <img
+          src="assets/img/admin/admin.png"
+          alt="Dress Up Kids!"
+          style="width: 100%"
         />
-        <input
-          id="photo"
-          class="custom-file-input"
-          type="file"
-          style="
-            width: 200px;
-            background-color: transparent;
-            border: transparent;
-          "
-          (change)="setPhoto($event)"
-        />
-        <button class="save" (click)="updateUser()">save</button>
       </div>
-    </mat-card>
-    <div>
-      <img
-        src="assets/img/admin/admin.jpg"
-        alt="Dress Up Kids!"
-        style="width: 100%"
-      />
     </div>
   </div>
-</div>
+</body>

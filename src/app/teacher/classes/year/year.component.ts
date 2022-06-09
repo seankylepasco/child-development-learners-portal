@@ -50,15 +50,11 @@ export class YearComponent implements OnInit {
         this.isLoading = false;
         this.years = response.payload;
         this.totalYears = response.payload.length;
-        console.log(this.years);
       },
       (error: any) => {
-        console.log(error.status);
         if ((error.status = 404)) {
           this.isLoading = false;
           this.isEmpty = true;
-          console.log('change to none');
-          console.log(this.isEmpty);
         }
       }
     );

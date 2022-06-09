@@ -1,14 +1,21 @@
+<head>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap");
+  </style>
+</head>
 <mat-drawer-container>
-  
+
     <header>
-      <button mat-raised-button class="btn" (click)="goBack()">&nbsp;Back</button>
+      <button mat-raised-button class="btn" (click)="goBack()">
+        <mat-icon>keyboard_backspace</mat-icon> Back
+      </button>
       <h1 class="title">Numbers Activities</h1>
     </header>
-    
-   
+
+
 <div class="con">
-   <div class="flex-column center">    
-      
+   <div class="flex-column center">
+
         <img id="number" src="assets/Numbers.png" alt="" />
        </div><br>
     <div class="main">
@@ -55,7 +62,7 @@
         ></iframe>
       </mat-card>
     </div>
-<br>
+    <br />
     <div class="main">
       <mat-card class="card">
         <iframe
@@ -103,7 +110,7 @@
       </mat-card>
     </div>
   </div>
-  <footer>  
+  <footer>
     <div class="titlefooter" >
        <h2 (click)="toterms()"  class="terms">Terms of Service</h2>
     </div>

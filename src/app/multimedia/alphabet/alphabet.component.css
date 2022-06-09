@@ -55,7 +55,7 @@ footer{
 }
 .terms:hover{
   padding: 20px;
-  color: rgb(0, 50, 187);
+  color:  #08d9d6;
   cursor: pointer;
 }
 .banner{
@@ -75,7 +75,7 @@ footer{
     display: block;
 }
 .main{
-  
+
     display: block;
 }
 

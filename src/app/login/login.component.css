@@ -1,9 +1,19 @@
 body {
   margin-right: 300px;
   background-color: #caebea;
-  background-image: url("/assets/img/background/body.png");
+  /* background-image: url("/assets/img/background/body.png"); */
+  background-image: url("/assets/img/background/body - before.png");
   background-repeat: no-repeat;
   animation: 1s ease-out 0s 1 slideInFromLeft;
+}
+
+
+.center-btn {
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
 }
 
 @keyframes slideInFromLeft {
@@ -52,10 +62,7 @@ h1 {
   margin-bottom: 40px;
 }
 
-.center {
-  margin: auto;
-  width: 30%;
-}
+
 
 .logo-container {
   padding-bottom: 20px;
@@ -77,6 +84,11 @@ h1 {
   align-items: center;
 }
 
+.center {
+  width: 33%;
+  margin: auto;
+}
+
 .card {
   width: 30em;
   flex: 1;
@@ -84,6 +96,7 @@ h1 {
   margin-right: 400em;
   padding: 20px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 40px !important;
 }
 
 .card-student-login {
@@ -110,8 +123,17 @@ button {
   font-weight: 700;
 }
 
+.btn {
+  padding: 10px !important;
+  font-family: 'Bubblegum Sans', cursive;
+  font-size: large;
+  font-weight: normal !important;
+  margin: 10px;
+  width: fit-content !important;
+}
+
 .login {
-  background-color: #f00f47;
+  background-color: #ff2e63;
 }
 
 .login:hover {
@@ -119,7 +141,7 @@ button {
 }
 
 .forgot_password {
-  background-color: #15a3a1;
+  background-color: #08d9d6;
 }
 
 .forgot_password:hover {
@@ -189,12 +211,14 @@ button {
 .image {
   width: 200em;
 }
-.btun{
+
+.btun {
   margin-left: 150px;
   background-color: #f538c5;
   width: 30%;
   height: 30%;
 }
+
 @-webkit-keyframes animatetop {
   from {
     top: -300px;
@@ -220,10 +244,13 @@ button {
 }
 
 @media (max-width: 800px) {
+  .center .logo-container {
+    margin-left: 0px !important;
+  }
 
   .center {
     margin: 0px;
-    width: 100%;
+    width: 100% !important;
     height: 100%;
   }
 
@@ -235,7 +262,7 @@ button {
   .logo-container {
     display: block;
     /* margin-right: 1000em; */
-    margin-left: 20px;
+    margin-left: 20px !important;
   }
 
   .modal-content {
@@ -256,7 +283,8 @@ button {
     margin-left: 0px;
     margin-right: 0px;
   }
-  .btun{
+
+  .btun {
     margin-left: 120px;
   }
 }

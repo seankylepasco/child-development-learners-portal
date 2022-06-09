@@ -143,7 +143,18 @@
           <h2><mat-icon> cancel_presentation</mat-icon>&nbsp;No Enrollees!</h2>
         </div>
 
-        <div class="card-students flex-column" *ngFor="let student of students">
+        <div
+          class="card-students flex-column"
+          *ngFor="
+            let student of students
+              | paginate
+                : {
+                    itemsPerPage: 3,
+                    currentPage: page,
+                    totalItems: total
+                  }
+          "
+        >
           <mat-card>
             <div class="con flex-column">
               <h2>{{ student.firstname }} &nbsp; {{ student.lastname }}</h2>

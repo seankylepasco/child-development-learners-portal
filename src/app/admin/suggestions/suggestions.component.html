@@ -1,4 +1,8 @@
-<mat-drawer-container autosize>
+<head>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap");
+  </style></head
+><mat-drawer-container autosize>
   <mat-drawer #drawer mode="side" opened="true">
     <div class="row end-obj">
       <button class="button-44 none" (click)="drawer.toggle()">
@@ -7,7 +11,7 @@
     </div>
 
     <div class="center">
-      <img src="assets/img/signup/user.jpeg" *ngIf="!profile.img" />
+      <img src="assets/img/student/no-pic-user.png" *ngIf="!profile.img" />
       <img appLazyLoad src="{{ profile.img }}" *ngIf="profile.img" />
     </div>
 

@@ -106,7 +106,7 @@ export class ActivityComponent implements OnInit {
         });
     }
   }
-  back(): void {
+  goBack(): void {
     this.router.navigate(['activities']);
     localStorage.removeItem('activity');
   }

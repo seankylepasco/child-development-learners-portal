@@ -1,3 +1,56 @@
+h1,
+h2,
+h3,
+h4,
+p,
+button,
+div {
+  font-family: 'Bubblegum Sans', cursive;
+  color: #2c2f35;
+}
+
+.profile mat-icon {
+  font-size: 30px;
+}
+
+.profile {
+  display: flex;
+  padding: 20px;
+  margin-bottom: auto;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile button {
+  width: 150px !important;
+  height: 70px !important;
+  margin: 5px;
+  border-radius: 30px !important;
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+  border: 5px solid white !important;
+}
+
+.profile mat-icon {
+  font-size: 30px;
+}
+
+.logout button {
+  width: 100%;
+  height: 60px;
+  border: none;
+  margin: 5px;
+  border-radius: 30px !important;
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+  border: 5px solid white !important;
+  text-align: center;
+}
+
 header {
   display: flex;
   background-color: #252a34;

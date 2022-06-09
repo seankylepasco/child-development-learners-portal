@@ -92,27 +92,13 @@
                         Activity Title: <br />{{ module.title }}
                       </h2>
                     </div>
-                    <!-- <a *ngIf="module.video_url" href="{{ module.video_url }}"
-                      >Video URL</a
-                    > -->
                     <div *ngFor="let complete of arr" class="scores">
-                      <div>
-                        <h2 class="mod-score">
-                          <!-- Score: {{ complete.score }} / -->
-                          <!-- {{ module.total_score }} -->
-                        </h2>
-                      </div>
-                      <!-- <div *ngIf="module.id === complete.file_id">
-                        <h3 id="check">
-                          <mat-icon inline="true">check_circle</mat-icon>
-                          Done
-                        </h3>
-                      </div> -->
+                      <div></div>
                       <div *ngIf="module.id === complete.file_id">
-                        <!-- {{ module.id }} === {{ complete.file_id }} -->
                         <div *ngIf="complete.score === 0">
                           <h2 style="color: rgb(69, 69, 69)">
-                            <mat-icon inline="true">check_circle</mat-icon> Done
+                            <mat-icon inline="true">check_circle</mat-icon>
+                            Done
                           </h2>
                         </div>
                         <div *ngIf="complete.score === 1">
@@ -121,21 +107,20 @@
                           </h2>
                         </div>
                         <div *ngIf="complete.score === 2">
-                          <h2 style="color: rgb(1, 68, 212)">
+                          <h2 style="color: #15b8b5">
                             <mat-icon inline="true">mood</mat-icon> Good
                           </h2>
                         </div>
                         <div *ngIf="complete.score === 3">
-                          <h2 style="color: rgb(216, 0, 0)">
+                          <h2 style="color:#ef3262">
                             <mat-icon inline="true">cake</mat-icon> Very Good
                           </h2>
                         </div>
                         <div *ngIf="complete.score === 4">
-                          <h2 style="color: #dbba00; font-size: 30px;">
+                          <h2 style="color: #dbba00">
                             <mat-icon inline="true">star</mat-icon> Excellent
                           </h2>
                         </div>
-                        <!-- <mat-icon id="check">check_circle</mat-icon> -->
                       </div>
                     </div>
                     &nbsp;

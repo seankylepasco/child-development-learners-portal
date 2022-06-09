@@ -1,64 +1,85 @@
+h1,
+h2,
+h3,
+h4,
+p,
+button,
+div {
+  font-family: 'Bubblegum Sans', cursive;
+}
+
 header {
-    display: flex;
-    background-color: #252a34;
-    color: #ffff;
-  }
-  .title{
-      margin-top: 20px;
-      margin-left: 20px;
-  }
-  .btn{
-    font-size: large;
-    font-weight: 700;
+  display: flex;
+  background-color: #252a34;
+  color: #ffff;
+}
+
+.title {
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.btn {
+  font-size: large;
+  font-weight: 700;
   margin: 10px;
-  }
+}
 
 .button-colors {
-    width: 50px;
-    padding: 20px;
-    border: none;
-    margin: 10px;
+  width: 50px;
+  padding: 20px;
+  border: none;
+  margin: 10px;
 }
-.button-colors:hover {
-    background-color: transparent !important;
-}
-.containerColor {
-    height: 100%;
-}
-.button-others {
-    width: fit-content;
-    margin: 10px;
-}
-.col-colors{
-    display: flex;
-    margin: 10px;
-    flex-direction: column;
-}
-#canvasContainer {
-    display: flex;
-    width: 50%;
-}
-img {
-    height: 100%;
-    width: 100%;
-    object-fit: contain;
-}
-@media (max-width: 800px){
-    .col-colors {
-        display: block;
-    }
-    #canvasContainer {
-        height: 400px;
-        width: auto !important;
-    }
-}
-@media print {
-    
-    button {
-        display: none;
-    }
 
-    img { 
-        display: none;
-    }
+.button-colors:hover {
+  background-color: transparent !important;
+}
+
+.containerColor {
+  height: 100%;
+}
+
+.button-others {
+  width: fit-content;
+  margin: 10px;
+}
+
+.col-colors {
+  display: flex;
+  margin: 10px;
+  flex-direction: column;
+}
+
+#canvasContainer {
+  display: flex;
+  width: 50%;
+}
+
+img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
+@media (max-width: 800px) {
+  .col-colors {
+    display: block;
+  }
+
+  #canvasContainer {
+    height: 400px;
+    width: auto !important;
+  }
+}
+
+@media print {
+
+  button {
+    display: none;
+  }
+
+  img {
+    display: none;
+  }
 }

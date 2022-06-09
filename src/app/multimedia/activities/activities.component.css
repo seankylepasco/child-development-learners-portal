@@ -9,6 +9,7 @@ div {
   color: #2c2f35;
 }
 
+
 .profile {
   display: flex;
   padding: 20px;
@@ -16,7 +17,14 @@ div {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  font-size: 10px;
 }
+
+.scroll {
+  height: 100% !important;
+  overflow: auto;
+}
+
 
 .profile mat-icon {
   font-size: 30px;
@@ -191,11 +199,6 @@ button p {
 .img-bg {
   height: 100%;
   width: 100%;
-}
-
-button:hover {
-  background-color: rgb(89, 89, 241);
-  color: rgb(255, 255, 255);
 }
 
 .red-active {

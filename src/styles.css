@@ -1,10 +1,21 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
 
+/* @import url('https://fonts.googleapis.com/css2?family=Sora:wght@100&display=swap'); */
 body,
 html {
   margin: auto;
   height: 100%;
   width: 100%;
+  /* background-color: #24328D; */
+}
+
+.btn-link {
+  margin-bottom: 0;
+  color: #333333 !important;
+  font-size: 1.2rem;
+  font-weight: normal;
+  background-color: transparent;
+  text-decoration: none !important;
 }
 
 ::-webkit-scrollbar {
@@ -31,6 +42,20 @@ p,
 .mat-typography p {
   padding: 0px !important;
   margin: 0px;
+  font-family: 'Bubblegum Sans' !important;
+  letter-spacing: 1.1px !important;
+}
+
+button,
+select,
+option,
+input,
+tr,
+td,
+label,
+textarea {
+  font-family: 'Bubblegum Sans' !important;
+  letter-spacing: 1.1px !important;
 }
 
 iframe {
@@ -49,6 +74,7 @@ canvas {
 }
 
 .center {
+
   margin-left: auto;
   margin-right: auto;
   justify-content: center;

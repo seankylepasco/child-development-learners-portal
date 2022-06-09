@@ -1,3 +1,4 @@
+import compress from 'compress-base64';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -86,29 +87,6 @@ export class SignupComponent implements OnInit {
     } else if (event.target.parentname.value === '') {
       this.openSnackBar('Missing parent name!', 'close');
     } else {
-      this.userInput.img = this.photo;
-      this.userInput.parentname = event.target.parentname.value;
-      this.userInput.firstname = event.target.firstname.value;
-      this.userInput.middlename = event.target.middlename.value;
-      this.userInput.lastname = event.target.lastname.value;
-      this.userInput.gender = event.target.gender.value;
-      this.userInput.birthdate = event.target.birthdate.value;
-      this.userInput.phone = event.target.phone.value;
-      this.userInput.address = event.target.address.value;
-      this.userInput.email = event.target.email.value;
-      this.userInput.password = event.target.password.value;
-      this.userInput.psa = this.PSA;
-      this.userInput.year = this.year.year;
-      this.dialog.open(SuccessComponent, {
-        height: 'fit-content',
-        width: '300px',
-        autoFocus: false,
-        restoreFocus: false,
-      });
-      this.data
-        .fetchData('register', this.userInput)
-        .subscribe((response: any) => {});
-      this.goBack();
       if (this.hasNumber(event.target.parentname.value)) {
         this.openSnackBar('Parent name has a number!', 'close');
       } else if (this.hasNumber(event.target.firstname.value)) {
@@ -166,7 +144,15 @@ export class SignupComponent implements OnInit {
     this.photo = event.target.files[0];
     var reader = new FileReader();
     reader.onload = (event: any) => {
-      this.photo = event.target.result;
+      compress(event.target.result, {
+        width: 400,
+        type: 'image/png',
+        max: 200,
+        min: 20,
+        quality: 0.8,
+      }).then((result) => {
+        this.photo = result;
+      });
     };
     reader.readAsDataURL(this.photo);
     this.active = true;

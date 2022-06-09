@@ -3,27 +3,39 @@
   color: #ffff;
   padding: 0px;
 }
+
+.loading {
+  width: 30px !important;
+  height: 30px !important;
+  border-radius: 50%;
+}
+
 img {
   width: 100%;
   object-fit: contain;
   margin-bottom: 10px;
   height: auto;
 }
+
 h1 {
   margin: 0px;
 }
+
 .row-2 {
   display: flex;
   flex-direction: row;
 }
+
 .announce-img {
   width: 100%;
   height: 400px;
   object-fit: contain;
 }
+
 .red:hover {
   background-color: rgba(212, 212, 212, 0.822);
 }
+
 .red {
   background-color: #ff2e63;
   width: fit-content;
@@ -36,10 +48,12 @@ h1 {
   font-weight: 700;
   text-align: center;
 }
+
 @media (max-width: 800px) {
   .row-2 {
     flex-direction: column-reverse;
   }
+
   img {
     width: 100%;
     height: 100%;

@@ -1,3 +1,8 @@
+<head>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap");
+  </style>
+</head>
 <mat-drawer-container autosize>
   <mat-drawer #drawer mode="side" opened="true">
     <div class="row end-obj">
@@ -7,7 +12,7 @@
     </div>
 
     <div class="center">
-      <img src="assets/img/signup/user.jpeg" *ngIf="!profile.img" />
+      <img src="assets/img/student/no-pic-user.png" *ngIf="!profile.img" />
       <img appLazyLoad src="{{ profile.img }}" *ngIf="profile.img" />
     </div>
 
@@ -18,16 +23,16 @@
 
     <div class="profile">
       <button (click)="toDashboard()" class="red">
-        <mat-icon>home</mat-icon> Dashboard
+        <mat-icon>home</mat-icon> &nbsp; Dashboard
       </button>
       <button (click)="toAddAnnouncement()" class="red">
-        <mat-icon>announcement</mat-icon> Announcement
+        <mat-icon>announcement</mat-icon> &nbsp; Announcement
       </button>
       <button (click)="toYears()" class="blue">
-        <mat-icon>calendar_today</mat-icon> Academic Year
+        <mat-icon>calendar_today</mat-icon> &nbsp; Year
       </button>
       <button (click)="toReports()" class="red">
-        <mat-icon> chat_bubble</mat-icon> Reports
+        <mat-icon> chat_bubble</mat-icon> &nbsp; Reports
       </button>
     </div>
 

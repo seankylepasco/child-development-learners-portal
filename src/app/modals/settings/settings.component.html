@@ -1,25 +1,32 @@
+<head>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap");
+  </style>
+</head>
 <div class="con">
   <div class="flex-column">
     <div class="center">
-      <img src="assets/img/signup/user.jpg" *ngIf="profile.img === empty" />
-      <img src="{{ profile.img }}" *ngIf="profile.img != empty" />
+      <img src="assets/img/student/no-pic-user.png" *ngIf="!profile.img" />
+      <img src="{{ profile.img }}" *ngIf="profile.img" />
     </div>
     <div class="user">
       <div class="center">
         <h1 *ngIf="!profile.firstname">Loading..</h1>
-        <h1>{{ profile.firstname }} {{ profile.lastname }}</h1>
+        <h2>{{ profile.firstname }} {{ profile.lastname }}</h2>
         <button (click)="toProfile()" class="button-1" mat-dialog-close>
-          Edit Profile
+          <mat-icon> person_pin</mat-icon> Edit Profile
         </button>
         <br />
-        <br>
+        <br />
         <button (click)="offSounds()" class="button-1" mat-dialog-close>
           <mat-icon inline="true">music_note</mat-icon> Sounds
           <p *ngIf="staticUrlArray" class="off">Off</p>
           <p *ngIf="!staticUrlArray" class="on">On</p>
-        </button><br><br>
+        </button>
+        <br />
+        <br />
         <button (click)="toPrivacy()" class="button-1" mat-dialog-close>
-          Privacy & Policy
+          <mat-icon> import_contacts</mat-icon> Privacy & Policy
         </button>
       </div>
     </div>

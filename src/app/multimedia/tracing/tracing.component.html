@@ -1,79 +1,44 @@
+<head>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap");
+  </style>
+</head>
 <mat-drawer-container>
-      <header>
-        <button mat-raised-button class="btn" (click)="goBack()">&nbsp;Back</button>
-        <h1 class="title">Tracing Activities</h1>
-      </header>
-    <div class="con">
-     
-     <div class="main">
-        <mat-card  (click)="totracing1()" class="box">
-            <img
-            id="hide"
-            src="assets/img/tracing/heart.png"
-            alt=""
-          />
-          
-        </mat-card>
-        <mat-card (click)="totracing2()" class="box">
-            <img
-            id="hide"
-            src="assets/img/tracing/star.png"
-            alt=""
-          />
-         
-        </mat-card>
-        <mat-card (click)="totracing3()" class="box">
-            <img
-            id="hide"
-            src="assets/img/tracing/circle.png"
-            alt=""
-          />
-        
-        </mat-card>
-        <mat-card (click)="totracing4()" class="box">
-            <img
-            id="hide"
-            src="assets/img/tracing/square.png"
-            alt=""
-          />
-         
-        </mat-card>
-      </div>
-  <br>
-      <div class="main">
-        <mat-card (click)="totracing5()" class="box">
-            <img
-            id="hide"
-            src="assets/img/tracing/triangle.png"
-            alt=""
-          />
-         
-        </mat-card >
-        <mat-card (click)="totracing6()" class="box">
-            <img
-            id="hide"
-            src="assets/img/tracing/oval.png"
-            alt=""
-          />
-         
-        </mat-card >
-        <mat-card (click)="totracing7()" class="box">
-            <img
-            id="hide"
-            src="assets/img/tracing/diamond.png"
-            alt=""
-          />
-         
-        </mat-card>
-        <mat-card (click)="totracing8()" class="box">
-            <img
-            id="hide"
-            src="assets/img/tracing/octagon.png"
-            alt=""
-          />
-          
-        </mat-card>
-      </div>
+  <header>
+    <button mat-raised-button class="btn" (click)="goBack()">
+      <mat-icon>keyboard_backspace</mat-icon> Back
+    </button>
+    <h1 class="title">Tracing Activities</h1>
+  </header>
+  <div class="con">
+    <div class="main">
+      <mat-card (click)="totracing1()" class="box">
+        <img id="hide" src="assets/img/tracing/heart.png" alt="" />
+      </mat-card>
+      <mat-card (click)="totracing2()" class="box">
+        <img id="hide" src="assets/img/tracing/star.png" alt="" />
+      </mat-card>
+      <mat-card (click)="totracing3()" class="box">
+        <img id="hide" src="assets/img/tracing/circle.png" alt="" />
+      </mat-card>
+      <mat-card (click)="totracing4()" class="box">
+        <img id="hide" src="assets/img/tracing/square.png" alt="" />
+      </mat-card>
     </div>
-  </mat-drawer-container>
-  
+    <br />
+    <div class="main">
+      <mat-card (click)="totracing5()" class="box">
+        <img id="hide" src="assets/img/tracing/triangle.png" alt="" />
+      </mat-card>
+      <mat-card (click)="totracing6()" class="box">
+        <img id="hide" src="assets/img/tracing/oval.png" alt="" />
+      </mat-card>
+      <mat-card (click)="totracing7()" class="box">
+        <img id="hide" src="assets/img/tracing/diamond.png" alt="" />
+      </mat-card>
+      <mat-card (click)="totracing8()" class="box">
+        <img id="hide" src="assets/img/tracing/octagon.png" alt="" />
+      </mat-card>
+    </div>
+  </div>
+</mat-drawer-container>

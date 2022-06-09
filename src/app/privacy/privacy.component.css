@@ -1,25 +1,34 @@
 header {
-    display: flex;
-    background-color: #252a34;
-    color: #ffff;
-  }
-  .title{
-      margin-top: 20px;
-      margin-left: 20px;
-  }
-  .btn{
-      font-size: large;
-      font-weight: 700;
-    margin: 10px;
-  }
- 
-.content{
+  display: flex;
+  background-color: #252a34;
+  color: #ffff;
+}
+
+h1{
+  font-family: 'Bubblegum Sans', cursive;
+  color: #ffff;
+}
+
+.title {
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.btn {
+  font-size: large;
+  font-weight: 700;
+  margin: 10px;
+}
+
+.content {
   padding: 50px;
 }
-.toggle{
- font-size: 50px;
+
+.toggle {
+  font-size: 50px;
 }
-ng-accordion{
+
+ng-accordion {
   background-color: black;
   color: black;
 }

@@ -1,13 +1,26 @@
+body {
+  background-color: white !important;
+  height: auto;
+}
+
 mat-card {
   width: 30%;
   background-color: #ffff;
 }
+
+.center-user{
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
 .img {
   width: 150px;
   height: 150px;
   object-fit: cover;
   border-radius: 50%;
 }
+
 select {
   padding: 20px;
   font-size: 20px;
@@ -18,6 +31,7 @@ select {
   outline: none;
   margin: 5px;
 }
+
 input {
   padding: 20px;
   font-size: 20px;
@@ -28,6 +42,7 @@ input {
   outline: none;
   margin: 5px;
 }
+
 .save {
   width: auto;
   height: 60px;
@@ -40,9 +55,11 @@ input {
   text-align: center;
   background-color: #ff2e63;
 }
+
 .custom-file-input::-webkit-file-upload-button {
   visibility: hidden;
 }
+
 .custom-file-input::before {
   content: "Change your Profile Photo";
   display: inline-block;
@@ -56,17 +73,21 @@ input {
   font-weight: 700;
   font-size: 10pt;
 }
+
 .custom-file-input:hover::before {
   border-color: black;
 }
+
 .custom-file-input:active::before {
   background-color: transparent;
   color: #ff2e63;
 }
+
 @media (max-width: 800px) {
   mat-card {
     width: auto;
   }
+
   input {
     padding: 20px;
     background-color: white;
