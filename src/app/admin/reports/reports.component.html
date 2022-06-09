@@ -64,7 +64,7 @@
                 {{ report.email }}
               </h2>
               <h3>
-                {{ report.status }}
+                <mat-icon inline="true">loop</mat-icon> {{ report.status }}
               </h3>
               <div style="margin-left: auto">
                 <button (click)="deleteReport(report.id)" class="red-action">
