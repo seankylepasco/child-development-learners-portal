@@ -37,6 +37,7 @@ export class YearComponent implements OnInit {
     private dialog: MatDialog
   ) {}
   ngOnInit(): void {
+    this.class_year = localStorage.getItem('class_year_id');
     this.checkifLoggedIn();
     window.addEventListener('scroll', () => {
       this.windowScrolled = window.pageYOffset !== 0;
@@ -44,12 +45,12 @@ export class YearComponent implements OnInit {
   }
 
   getYears(): void {
-    this.data.fetchData('classes/2021-2022', '').subscribe(
+    this.data.fetchData('classes/' + this.class_year, '').subscribe(
       (response: any) => {
         this.isLoading = false;
-        this.class_year = localStorage.getItem('class_year_id');
         this.years = response.payload;
         this.totalYears = response.payload.length;
+        console.log(this.years);
       },
       (error: any) => {
         console.log(error.status);

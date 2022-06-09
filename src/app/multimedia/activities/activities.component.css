@@ -354,3 +354,9 @@ button:hover {
   }
 
 }
+
+@media (max-height: 900px) {
+  #title {
+    width: 400px;
+  }
+}

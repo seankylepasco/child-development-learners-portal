@@ -6,6 +6,7 @@
     </div>
     <div class="user">
       <div class="center">
+        <h1 *ngIf="!profile.firstname">Loading..</h1>
         <h1>{{ profile.firstname }} {{ profile.lastname }}</h1>
         <button (click)="toProfile()" class="button-1" mat-dialog-close>
           Edit Profile

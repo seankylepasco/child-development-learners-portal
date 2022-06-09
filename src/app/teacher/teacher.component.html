@@ -11,7 +11,7 @@
       </button>
     </div>
     <div class="center">
-      <img src="assets/img/signup/user.jpg" *ngIf="!profile.img" />
+      <img src="assets/img/student/no-pic-user.png" *ngIf="!profile.img" />
       <img appLazyLoad src="{{ profile.img }}" *ngIf="profile.img" />
     </div>
 
@@ -54,7 +54,8 @@
   <div class="flex-column">
     <div class="flex-row">
       <mat-card>
-        <img src="assets/img/admin/students.png" />
+      
+        <img  src="assets/img/admin/students.png" />
         &nbsp;
         <div class="flex-column">
           <h1>No. Students</h1>

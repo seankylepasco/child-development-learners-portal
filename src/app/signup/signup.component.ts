@@ -42,6 +42,11 @@ export class SignupComponent implements OnInit {
   ngOnInit(): void {
     this.getYear();
   }
+
+  hasNumber(myString: any) {
+    return /\d/.test(myString);
+  }
+
   openSnackBar(message: string, action: string) {
     this.snackBar.open(message, action, {
       duration: 2000,
@@ -104,6 +109,40 @@ export class SignupComponent implements OnInit {
         .fetchData('register', this.userInput)
         .subscribe((response: any) => {});
       this.goBack();
+      if (this.hasNumber(event.target.parentname.value)) {
+        this.openSnackBar('Parent name has a number!', 'close');
+      } else if (this.hasNumber(event.target.firstname.value)) {
+        this.openSnackBar('First name has a number!', 'close');
+      } else if (this.hasNumber(event.target.middlename.value)) {
+        this.openSnackBar('Middle name has a number!', 'close');
+      } else if (this.hasNumber(event.target.lastname.value)) {
+        this.openSnackBar('Last name has a number!', 'close');
+      } else {
+        this.userInput.img = this.photo;
+        this.userInput.parentname = event.target.parentname.value;
+        this.userInput.firstname = event.target.firstname.value;
+        this.userInput.middlename = event.target.middlename.value;
+        this.userInput.lastname = event.target.lastname.value;
+        this.userInput.gender = event.target.gender.value;
+        this.userInput.birthdate = event.target.birthdate.value;
+        this.userInput.phone = event.target.phone.value;
+        this.userInput.address = event.target.address.value;
+        this.userInput.email = event.target.email.value;
+        this.userInput.password = event.target.password.value;
+        this.userInput.psa = this.PSA;
+        this.userInput.year = this.year.year;
+        alert(
+          'Hello, ' +
+            this.userInput.firstname +
+            ' ' +
+            this.userInput.lastname +
+            '! your account is now pending!'
+        );
+        this.data
+          .fetchData('register', this.userInput)
+          .subscribe((response: any) => {});
+        this.goBack();
+      }
     }
   }
   getUser(): void {

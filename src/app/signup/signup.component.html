@@ -7,9 +7,9 @@
       <div class="photo">
         <h2>{{ year.year }}</h2>
         <div class="img-container">
-          <img src="assets/img/signup/user.png" *ngIf="!active" />
-          <img src="{{ photo }}" *ngIf="active" />  
-        </div>   
+          <img src="assets/img/student/no-pic-user.png" *ngIf="!active" />
+          <img src="{{ photo }}" *ngIf="active" />
+        </div>
         <div class="img-bottom">
           <input
             type="file"
@@ -30,7 +30,9 @@
               border: transparent;
             "
             (change)="setPSA($event)"
-          /><br><span style="margin-left: 50px; font-style: italic;">(max. 3MB file only)</span>
+          /><br /><span style="margin-left: 50px; font-style: italic"
+            >(max. 3MB file only)</span
+          >
         </div>
       </div>
       <div class="form">
