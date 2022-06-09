@@ -42,7 +42,7 @@ export class AddAnnouncementComponent implements OnInit {
     );
   }
   back(): void {
-    this.router.navigate(['student']);
+    this.router.navigate(['admin']);
   }
   openNewAnnouncement(): void {
     this.dialog.open(NewAnnouncementComponent, {
