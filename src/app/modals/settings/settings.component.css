@@ -3,7 +3,7 @@ img {
   height: 150px;
   object-fit: cover;
   border-radius: 50%;
-  border: black 5px solid;
+  border: rgb(206, 93, 0) 5px solid;
 }
 
 h1,

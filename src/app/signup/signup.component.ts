@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DataService } from 'src/app/services/data.service';
 import { MatDialog } from '@angular/material/dialog';
+import { SuccessComponent } from '../modals/success/success.component';
 
 @Component({
   selector: 'app-signup',
@@ -93,13 +94,12 @@ export class SignupComponent implements OnInit {
       this.userInput.password = event.target.password.value;
       this.userInput.psa = this.PSA;
       this.userInput.year = this.year.year;
-      alert(
-        'Hello, ' +
-          this.userInput.firstname +
-          ' ' +
-          this.userInput.lastname +
-          '! your account is now pending!'
-      );
+      this.dialog.open(SuccessComponent, {
+        height: 'fit-content',
+        width: '300px',
+        autoFocus: false,
+        restoreFocus: false,
+      });
       this.data
         .fetchData('register', this.userInput)
         .subscribe((response: any) => {});

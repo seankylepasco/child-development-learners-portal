@@ -4,11 +4,6 @@
 
 }
 
-img {
-  height: 300px;
-  width: 300px;
-  object-fit: contain;
-}
 
 mat-card {
   width: fit-content;
@@ -25,7 +20,8 @@ div {
 }
 
 #hide {
-  width: fit-content;
+  width: 100em;
+  border-radius: 20px;
 }
 
 header {
@@ -58,8 +54,14 @@ footer{
   text-align: center;
 }
 .terms:hover{
+  padding: 20px;
   color: rgb(0, 50, 187);
   cursor: pointer;
+}
+.banner{
+  width: fit-content;
+  float: right;
+  border-top-left-radius: 80px;
 }
 @media (max-width: 800px) {
   img {

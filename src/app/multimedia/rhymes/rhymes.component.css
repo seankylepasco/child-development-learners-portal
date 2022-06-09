@@ -35,17 +35,16 @@ div {
 }
 
 img {
-  width: fit-content;
+  width: 100em;
   object-fit: contain;
+  border-radius: 20px;
 }
 
 mat-card {
   width: fit-content;
 }
 
-#hide {
-  width: fit-content;
-}
+
 
 @media (max-width: 800px) {
 

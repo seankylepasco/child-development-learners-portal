@@ -4,7 +4,6 @@
    color: #ffff;
  }
 
-<<<<<<< Updated upstream
  h1,
  h2,
  h3,
@@ -18,8 +17,6 @@
  mat-card {
    margin: 10px !important;
  }
-=======
->>>>>>> Stashed changes
 
  .title {
    margin-top: 20px;
@@ -54,7 +51,7 @@
    border-style: dashed;
 
    border-radius: 20px;
-   width: fit-content;
+   width: 350px;
    background-color: #252a34;
  }
 

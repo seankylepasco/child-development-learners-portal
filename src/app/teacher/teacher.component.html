@@ -54,7 +54,7 @@
   <div class="flex-column">
     <div class="flex-row">
       <mat-card>
-        <img src="assets/img/admin/num-users.png" />
+        <img src="assets/img/admin/students.png" />
         &nbsp;
         <div class="flex-column">
           <h1>No. Students</h1>
@@ -69,7 +69,7 @@
         </div>
       </mat-card>
       <mat-card>
-        <img src="assets/img/admin/stud-users.png" />
+        <img src="assets/img/admin/enrollee.png" />
         <div class="flex-column">
           <h1>No. Enrollees</h1>
           <div class="center">
@@ -114,10 +114,6 @@
                   <tr>
                     <th>Name</th>
                     <th>Role</th>
-<<<<<<< Updated upstream
-=======
-            
->>>>>>> Stashed changes
                     <th>Address</th>
                     <th>Contact No</th>
                     <th>Actions</th>
@@ -157,14 +153,7 @@
                     <td class="flex-row">
                       &nbsp;
                       <button (click)="updateToEnrollee(student)" class="red">
-<<<<<<< Updated upstream
                         <mat-icon>delete</mat-icon> Enrollee
-=======
-                        
-                        <mat-icon>delete</mat-icon>
-                        
-                        
->>>>>>> Stashed changes
                       </button>
                     </td>
                   </tr>
@@ -173,19 +162,11 @@
             </div>
           </div>
           <div class="center" *ngIf="students">
-<<<<<<< Updated upstream
-=======
-         
->>>>>>> Stashed changes
             <pagination-controls
               *ngIf="totalStudents > 3"
               class="my-pagination"
               (pageChange)="page = $event"
             ></pagination-controls>
-<<<<<<< Updated upstream
-=======
-        
->>>>>>> Stashed changes
           </div>
         </div>
         <div *ngIf="isEmpty" class="mobile center">

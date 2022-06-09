@@ -4,18 +4,16 @@
 }
 
 img {
-  height: 300px;
-  width: 300px;
+
+  width: 100em;
   object-fit: contain;
+  border-radius: 20px;
 }
 
 mat-card {
   width: fit-content;
 }
 
-#hide {
-  width: fit-content;
-}
 
 header {
   display: flex;
