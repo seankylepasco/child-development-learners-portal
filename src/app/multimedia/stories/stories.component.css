@@ -45,7 +45,20 @@ button,
 div {
   font-family: 'Bubblegum Sans', cursive;
 }
-
+footer{
+  display: flex;
+  background-color: #252a34;
+  color: #ffff;
+ justify-content: center;
+}
+.titlefooter{
+  text-align: center;
+}
+.terms:hover{
+  padding: 20px;
+  color: rgb(0, 50, 187);
+  cursor: pointer;
+}
 @media (max-width: 800px) {
 
   img {

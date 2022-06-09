@@ -135,7 +135,7 @@ img {
 }
 
 button:hover {
-  background-color: transparent;
+  background-color: rgb(252, 151, 151);
   color: white;
 }
 
@@ -233,7 +233,7 @@ button:hover {
 
 .button-44:hover {
   border-bottom-style: none;
-  border-color: #dadada;
+  border-color: #f88181;
 }
 
 .dates {
@@ -260,7 +260,9 @@ button:hover {
     margin-left: auto;
     padding: 10px;
   }
-
+.red-view:hover{
+  background-color: #e62143;
+}
   .blue,
   .blue-save,
   .red {

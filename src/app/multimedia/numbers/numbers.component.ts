@@ -14,4 +14,7 @@ export class NumbersComponent implements OnInit {
   goBack(): void {
     this.router.navigate(['home']);
   }
+  toterms(): void {
+    this.router.navigate(['terms']);
+  }
 }

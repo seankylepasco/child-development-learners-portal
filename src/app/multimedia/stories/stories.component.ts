@@ -14,4 +14,7 @@ export class StoriesComponent implements OnInit {
   goBack(): void {
     this.router.navigate(['student']);
   }
+  toterms(): void {
+    this.router.navigate(['terms']);
+  }
 }
