@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { DataService } from 'src/app/services/data.service';
 import { LogoutComponent } from '../../../modals/logout/logout.component';
 import { DatePipe } from '@angular/common';
+import { SuccessComponent } from '../../../modals/success/success.component';
 import { jsPDF } from 'jspdf';
 
 @Component({
@@ -42,6 +43,24 @@ export class YearComponent implements OnInit {
     window.addEventListener('scroll', () => {
       this.windowScrolled = window.pageYOffset !== 0;
     });
+  }
+
+  updateToArchive(data: any): void {
+    if (confirm('Are you sure to remove this?')) {
+      delete data.password;
+      data.type = 'archive';
+      this.data.fetchData('update_student', data).subscribe((response: any) => {
+        localStorage.setItem('page', 'teacher');
+        this.dialog.open(SuccessComponent, {
+          height: 'fit-content',
+          width: '300px',
+          autoFocus: false,
+          restoreFocus: false,
+        });
+        this.getYears();
+      });
+    } else {
+    }
   }
 
   getYears(): void {
@@ -94,6 +113,9 @@ export class YearComponent implements OnInit {
     var output = [];
     for (var i = 0; i < input.length; ++i) output.push(input[i][field]);
     return output;
+  }
+  toArchive(): void {
+    this.router.navigate(['archive']);
   }
   toMasterList(): void {
     this.router.navigate(['masterlist']);

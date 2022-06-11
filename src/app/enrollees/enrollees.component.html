@@ -40,6 +40,9 @@
       <button (click)="toScore()" class="red">
         <mat-icon>score</mat-icon>&nbsp; Scores
       </button>
+      <button (click)="toArchive()" class="red">
+        <mat-icon>delete</mat-icon>&nbsp; Archive
+      </button>
     </div>
 
     <div class="logout">
@@ -64,6 +67,11 @@
             src="assets/img/loading/loading.gif"
           />
           <h2 *ngIf="isLoading">Loading ...</h2>
+          <div class="flex-row-end">
+            <button (click)="downloadPDF()" class="blue-save" type="submit">
+              <mat-icon> insert_drive_file</mat-icon>&nbsp; Download Pdf
+            </button>
+          </div>
           <div class="card-table">
             <div class="con">
               <table>

@@ -29,6 +29,21 @@
   font-size: 30px;
 }
 
+.blue-save {
+  display: flex;
+  background-color: #08d9d6;
+  width: auto;
+  padding: 20px;
+  height: fit-content;
+  border: none;
+  margin: 5px;
+  border-radius: 5px;
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+}
+
 .logout button {
   width: 100%;
   height: 60px;
@@ -169,10 +184,11 @@ button:hover {
   color: white;
 }
 
-.loading{
+.loading {
   margin-top: 50px;
   margin-left: 400px;
 }
+
 .red {
   background-color: #ff2e63;
   width: 100%;
@@ -394,4 +410,3 @@ th {
   display: grid;
   grid-template-columns: auto auto auto;
 }
-

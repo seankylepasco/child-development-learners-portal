@@ -101,6 +101,9 @@ export class AddActivityComponent implements OnInit {
   toAnnouncementPost(): void {
     this.router.navigate(['announcepost']);
   }
+  toArchive(): void {
+    this.router.navigate(['archive']);
+  }
   toMasterList(): void {
     this.router.navigate(['masterlist']);
   }

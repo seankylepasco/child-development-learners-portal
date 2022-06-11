@@ -92,6 +92,9 @@ export class ClassesComponent implements OnInit {
     for (var i = 0; i < input.length; ++i) output.push(input[i][field]);
     return output;
   }
+  toArchive(): void {
+    this.router.navigate(['archive']);
+  }
   toMasterList(): void {
     this.router.navigate(['masterlist']);
   }

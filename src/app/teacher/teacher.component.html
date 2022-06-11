@@ -39,6 +39,9 @@
       <button (click)="toScore()" class="red">
         <mat-icon>score</mat-icon>&nbsp; Scores
       </button>
+      <button (click)="toArchive()" class="red">
+        <mat-icon>delete</mat-icon>&nbsp; Archive
+      </button>
     </div>
 
     <div class="logout">
@@ -54,8 +57,7 @@
   <div class="flex-column">
     <div class="flex-row">
       <mat-card>
-
-        <img  src="assets/img/admin/students.png" />
+        <img src="assets/img/admin/students.png" />
         &nbsp;
         <div class="flex-column">
           <h1>No. Students</h1>
@@ -152,6 +154,9 @@
                     <td>{{ student.address }}</td>
                     <td>{{ student.phone }}</td>
                     <td class="flex-row">
+                      <button (click)="toEditUsers(student)" class="blue">
+                        <mat-icon>edit</mat-icon> edit
+                      </button>
                       &nbsp;
                       <button (click)="updateToEnrollee(student)" class="red">
                         <mat-icon>delete</mat-icon> Enrollee
@@ -192,6 +197,9 @@
               <h3>{{ student.address }}</h3>
               <h3>{{ student.phone }}</h3>
               <div class="flex-row">
+                <button (click)="toEditUsers(student)" class="blue">
+                  <mat-icon>edit</mat-icon> edit
+                </button>
                 <button (click)="updateToEnrollee(student)" class="red">
                   <mat-icon>delete</mat-icon> Enrollee
                 </button>

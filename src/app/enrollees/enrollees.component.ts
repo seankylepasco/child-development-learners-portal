@@ -1,3 +1,6 @@
+import 'jspdf-autotable';
+import jsPDF from 'jspdf';
+import autoTable, { UserOptions } from 'jspdf-autotable';
 import { Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
@@ -44,6 +47,56 @@ export class EnrolleesComponent implements OnInit {
   ngOnInit(): void {
     this.checkifLoggedIn();
     this.getStudents();
+  }
+  downloadPDF(): void {
+    const doc = new jsPDF();
+    this.data.fetchData('enrollees', '').subscribe(
+      (response: any) => {
+        this.isLoading = false;
+        const arr = response.payload;
+        console.log(arr);
+        arr.forEach((object: any) => {
+          delete object['password'];
+          delete object['gender'];
+          delete object['img'];
+          delete object['psa'];
+          delete object['type'];
+          delete object['year'];
+        });
+        console.log(arr);
+        var output = arr.map(function (obj: any) {
+          return Object.keys(obj)
+            .sort()
+            .map(function (key) {
+              return obj[key];
+            });
+        });
+        console.log(output);
+        autoTable(doc, {
+          head: [
+            [
+              'address',
+              'birthdate',
+              'email',
+              'firstname',
+              'id',
+              'lastname',
+              'middlename',
+              'parent/guardian',
+              'mobile number',
+            ],
+          ],
+          body: output,
+        });
+        doc.save('enrollees');
+      },
+      (error: any) => {
+        if ((error.status = 404)) {
+          this.isLoading = false;
+          this.isEmpty = true;
+        }
+      }
+    );
   }
   updateToStudent(data: any): void {
     if (confirm('Are you sure to accept this?')) {
@@ -110,6 +163,9 @@ export class EnrolleesComponent implements OnInit {
   }
   transform(url: any) {
     return this.domSanitizer.bypassSecurityTrustResourceUrl(url);
+  }
+  toArchive(): void {
+    this.router.navigate(['archive']);
   }
   toMasterList(): void {
     this.router.navigate(['masterlist']);

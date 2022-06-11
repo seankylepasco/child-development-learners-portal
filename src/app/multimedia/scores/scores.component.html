@@ -42,6 +42,9 @@
       <button (click)="toScore()" class="blue">
         <mat-icon>score</mat-icon>&nbsp; Scores
       </button>
+      <button (click)="toArchive()" class="red">
+        <mat-icon>delete</mat-icon>&nbsp; Archive
+      </button>
     </div>
 
     <div class="logout">
@@ -59,6 +62,9 @@
       <div class="flex-row">
         <div class="flex-column con">
           <div class="flex-row-end">
+            <button (click)="downloadPDF()" class="blue-save" type="submit">
+              <mat-icon> insert_drive_file</mat-icon>&nbsp; Download Pdf
+            </button>
             <input
               [(ngModel)]="search"
               (input)="searchStudents()"
@@ -86,8 +92,8 @@
                 <thead>
                   <tr>
                     <th>Name</th>
-                    <th>Rating </th>
-      
+                    <th>Rating</th>
+
                     <th>Activity Title</th>
                     <th>Stud No.</th>
                   </tr>
@@ -114,7 +120,7 @@
                       {{ student.firstname }} &nbsp; {{ student.lastname }}
                     </td>
                     <td>{{ student.score }}/4</td>
-                
+
                     <td>{{ student.title }}</td>
                     <td>{{ student.student_id }}</td>
                   </tr>
@@ -153,14 +159,9 @@
             <mat-card>
               <div class="con flex-column">
                 <h2>{{ student.firstname }} &nbsp; {{ student.lastname }}</h2>
-                <h3>{{ student.type }}</h3>
-                <h3>{{ student.address }}</h3>
-                <h3>{{ student.phone }}</h3>
-                <div class="flex-row">
-                  <button (click)="updateToEnrollee(student)" class="red">
-                    <mat-icon>delete</mat-icon> Enrollee
-                  </button>
-                </div>
+                <h3>{{ student.score }}/4</h3>
+                <h3>{{ student.title }}</h3>
+                <h3>{{ student.student_id }}</h3>
               </div>
             </mat-card>
           </div>

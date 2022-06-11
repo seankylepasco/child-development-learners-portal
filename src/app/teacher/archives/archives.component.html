@@ -23,7 +23,7 @@
       <button (click)="toTeacher()" class="red">
         <mat-icon>home</mat-icon>&nbsp; Home
       </button>
-      <button (click)="toClasses()" class="blue">
+      <button (click)="toClasses()" class="red">
         <mat-icon>home</mat-icon>&nbsp; Classes
       </button>
       <button (click)="toMasterList()" class="red">
@@ -41,8 +41,8 @@
       <button (click)="toScore()" class="red">
         <mat-icon>score</mat-icon>&nbsp; Scores
       </button>
-      <button (click)="toArchive()" class="red">
-        <mat-icon>score</mat-icon>&nbsp; Archive
+      <button (click)="toArchive()" class="blue">
+        <mat-icon>delete</mat-icon>&nbsp; Archive
       </button>
     </div>
 
@@ -52,37 +52,44 @@
   </mat-drawer>
   <header>
     <button (click)="drawer.toggle()"><mat-icon>menu</mat-icon></button>
-    <h1>Class {{ class_year }}</h1>
+    <h1>Archives</h1>
     &nbsp;
     <h1 class="dates">{{ Date | date: "medium" }}</h1>
   </header>
-
-  <div class="flex-column con">
-    <div>
-      <button (click)="toClasses()" class="blue-save" type="submit">
-        <mat-icon inline="true">keyboard_backspace</mat-icon>&nbsp;Back
-      </button>
-    </div>
-
+  <div class="flex-column">
     <section class="section-right">
       <div class="flex-row">
         <div class="flex-column con">
+          <div class="flex-row-end">
+            <input
+              [(ngModel)]="search"
+              (input)="searchStudents()"
+              type="text"
+              name="search"
+              id="search"
+              placeholder="Search"
+              class="search_input"
+            />
+            <button class="search">
+              <mat-icon>search</mat-icon>
+            </button>
+          </div>
           <img
             class="loading"
             *ngIf="isLoading"
             src="assets/img/loading/loading.gif"
           />
           <h2 *ngIf="isLoading">Loading ...</h2>
-
           <div class="card-table">
             <div class="con">
               <table>
                 <thead>
                   <tr>
                     <th>Name</th>
-                    <th>Mobile Number</th>
-                    <th>Parent Name</th>
-                    <th></th>
+                    <th>Role</th>
+                    <th>Address</th>
+                    <th>Contact No</th>
+                    <th>Actions</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -92,22 +99,34 @@
                       Students!
                     </h2>
                   </div>
-                  <tr *ngFor="let year of years">
+
+                  <tr
+                    *ngFor="
+                      let student of students
+                        | paginate
+                          : {
+                              itemsPerPage: 3,
+                              currentPage: page,
+                              totalItems: totalStudents
+                            }
+                    "
+                  >
                     <td>
                       <img
-                        *ngIf="year.img"
-                        src="{{ year.img }}"
+                        *ngIf="student.img"
+                        src="{{ student.img }}"
                         style="width: 50px; height: 50px"
                       />
-                      &nbsp;{{ year.firstname }} {{ year.lastname }}
+                      &nbsp; {{ student.firstname }} &nbsp;
+                      {{ student.lastname }}
                     </td>
-                    <td>{{ year.phone }}</td>
+                    <td>{{ student.type }}</td>
+                    <td>{{ student.address }}</td>
+                    <td>{{ student.phone }}</td>
                     <td class="flex-row">
-                      {{ year.parentname }}
-                    </td>
-                    <td>
-                      <button (click)="updateToArchive(year)" class="red">
-                        <mat-icon>delete</mat-icon> Archive
+                      &nbsp;
+                      <button (click)="updateToStudent(student)" class="blue">
+                        <mat-icon>replay</mat-icon> Student
                       </button>
                     </td>
                   </tr>
@@ -115,20 +134,40 @@
               </table>
             </div>
           </div>
+          <div class="center" *ngIf="students">
+            <pagination-controls
+              *ngIf="totalStudents > 3"
+              class="my-pagination"
+              (pageChange)="page = $event"
+            ></pagination-controls>
+          </div>
         </div>
-        <div *ngIf="isEmpty" class="center mobile">
+        <div *ngIf="isEmpty" class="mobile center">
           <h2><mat-icon> cancel_presentation</mat-icon>&nbsp;No Students!</h2>
         </div>
-        <div class="card-students flex-column" *ngFor="let year of years">
+        <div
+          class="card-students flex-column"
+          *ngFor="
+            let student of students
+              | paginate
+                : {
+                    itemsPerPage: 3,
+                    currentPage: page,
+                    totalItems: totalStudents
+                  }
+          "
+        >
           <mat-card>
             <div class="con flex-column">
-              <b>Student Name:</b> {{ year.firstname }} {{ year.lastname }}
-              <br />
-              <b>Mobile Number:</b> {{ year.phone }}
-              <div class="flex-row"><b>Parent :</b> {{ year.parentname }}</div>
-              <button (click)="updateToArchive(student)" class="red">
-                <mat-icon>delete</mat-icon> Archive
-              </button>
+              <h2>{{ student.firstname }} &nbsp; {{ student.lastname }}</h2>
+              <h3>{{ student.type }}</h3>
+              <h3>{{ student.address }}</h3>
+              <h3>{{ student.phone }}</h3>
+              <div class="flex-row">
+                <button (click)="updateToStudent(student)" class="blue">
+                  <mat-icon>replay</mat-icon> Student
+                </button>
+              </div>
             </div>
           </mat-card>
         </div>

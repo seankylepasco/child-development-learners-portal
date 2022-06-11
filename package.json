@@ -30,6 +30,7 @@
     "fabric": "^4.6.0",
     "file-saver": "^2.0.5",
     "jspdf": "^2.5.1",
+    "jspdf-autotable": "^3.5.25",
     "multer": "^1.4.3",
     "ng2-file-upload": "^1.4.0",
     "ngx-image-cropper": "^5.0.1",

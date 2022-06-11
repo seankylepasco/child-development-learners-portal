@@ -66,6 +66,7 @@ export class MasterlistComponent implements OnInit {
       (response: any) => {
         this.students = response.payload;
         this.isLoading = false;
+        this.isEmpty = false;
       },
       (error: any) => {
         if ((error.status = 404)) {
@@ -96,6 +97,7 @@ export class MasterlistComponent implements OnInit {
         this.isLoading = false;
         const results = response.payload;
         this.total = results.length;
+        this.isEmpty = false;
         for (let i = 0; i < response.payload.length; i++) {
           if (results[i].psa) {
             results[i].psa = this.transform(results[i].psa);
@@ -151,6 +153,9 @@ export class MasterlistComponent implements OnInit {
 
   transform(url: any) {
     return this.domSanitizer.bypassSecurityTrustResourceUrl(url);
+  }
+  toArchive(): void {
+    this.router.navigate(['archive']);
   }
   toClasses(): void {
     this.router.navigate(['classes']);

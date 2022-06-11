@@ -1,11 +1,17 @@
+import 'jspdf-autotable';
+import jsPDF from 'jspdf';
+import autoTable, { UserOptions } from 'jspdf-autotable';
 import { Router } from '@angular/router';
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DataService } from 'src/app/services/data.service';
 import { LogoutComponent } from '../../modals/logout/logout.component';
 import { SuccessComponent } from '../../modals/success/success.component';
-import { DatePipe } from '@angular/common';
 
+interface jsPDFWithPlugin extends jsPDF {
+  autotable: (options: UserOptions) => jsPDF;
+}
 @Component({
   selector: 'app-scores',
   templateUrl: './scores.component.html',
@@ -41,6 +47,41 @@ export class ScoresComponent implements OnInit {
     window.addEventListener('scroll', () => {
       this.windowScrolled = window.pageYOffset !== 0;
     });
+  }
+  downloadPDF(): void {
+    const doc = new jsPDF();
+    this.data.fetchData('scores', '').subscribe(
+      (response: any) => {
+        this.isLoading = false;
+        const arr = response.payload;
+        arr.forEach((object: any) => {
+          delete object['date_created'];
+          delete object['file'];
+          delete object['file_id'];
+          delete object['file_name'];
+          delete object['date_created'];
+          delete object['id'];
+        });
+        var output = arr.map(function (obj: any) {
+          return Object.keys(obj)
+            .sort()
+            .map(function (key) {
+              return obj[key];
+            });
+        });
+        autoTable(doc, {
+          head: [['firstname', 'lastname', 'score', 'student number', 'activity', 'total score']],
+          body: output,
+        });
+        doc.save('scores');
+      },
+      (error: any) => {
+        if ((error.status = 404)) {
+          this.isLoading = false;
+          this.isEmpty = true;
+        }
+      }
+    );
   }
   updateToEnrollee(data: any): void {
     if (confirm('Are you sure to remove this?')) {
@@ -118,6 +159,9 @@ export class ScoresComponent implements OnInit {
   }
   toTeacher(): void {
     this.router.navigate(['teacher']);
+  }
+  toArchive(): void {
+    this.router.navigate(['archive']);
   }
   toMasterList(): void {
     this.router.navigate(['masterlist']);

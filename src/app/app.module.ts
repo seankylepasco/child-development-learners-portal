@@ -77,6 +77,7 @@ import { PrivacyComponent } from './privacy/privacy.component';
 import { ForgotComponent } from './modals/forgot/forgot.component';
 import { NoemailComponent } from './modals/noemail/noemail.component';
 import { TermsComponent } from './terms/terms.component';
+import { ArchivesComponent } from './teacher/archives/archives.component';
 
 
 @NgModule({
@@ -146,6 +147,7 @@ import { TermsComponent } from './terms/terms.component';
     ForgotComponent,
     NoemailComponent,
     TermsComponent,
+    ArchivesComponent,
 
 
   ],

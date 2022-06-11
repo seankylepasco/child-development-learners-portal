@@ -119,6 +119,12 @@ div {
   width: 500px;
 }
 
+@media (max-width: 340px) {
+  .container {
+    padding-left: 0px !important;
+  }
+}
+
 @media (max-width: 990px) {
   .container {
     padding-left: 40px;
@@ -141,6 +147,7 @@ div {
     text-align: center;
   }
 }
+
 @media (max-width: 680px) {
   .container {
     padding-left: 40px;

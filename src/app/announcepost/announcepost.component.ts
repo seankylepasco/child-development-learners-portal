@@ -135,6 +135,9 @@ export class AnnouncepostComponent implements OnInit {
   toTeacher(): void {
     this.router.navigate(['teacher']);
   }
+  toArchive(): void {
+    this.router.navigate(['archive']);
+  }
   toMasterList(): void {
     this.router.navigate(['masterlist']);
   }

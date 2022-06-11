@@ -12,6 +12,8 @@ import { SuccessComponent } from '../../modals/success/success.component';
 export class EditUsersComponent implements OnInit {
   user: any = '';
   password: any;
+  type: any;
+  userArray: any = ([] = []);
 
   constructor(
     private router: Router,
@@ -20,6 +22,11 @@ export class EditUsersComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.user = JSON.parse(localStorage.getItem('user') || '{}');
+    this.userArray.push(this.user);
+    let type = this.getFields(this.userArray, 'type');
+    this.type = type.toString();
+    console.log(this.type);
     this.getUser();
   }
   getUser(): void {
@@ -27,6 +34,11 @@ export class EditUsersComponent implements OnInit {
     this.data.fetchData('user/' + object.id, '').subscribe((response: any) => {
       this.user = response.payload[0];
     });
+  }
+  getFields(input: any, field: any) {
+    var output = [];
+    for (var i = 0; i < input.length; ++i) output.push(input[i][field]);
+    return output;
   }
   updateUser(): void {
     if (!this.password) {
