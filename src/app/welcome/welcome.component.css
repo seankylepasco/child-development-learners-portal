@@ -127,9 +127,11 @@ div {
 
 @media (max-width: 990px) {
   .container {
-    padding-left: 40px;
+    padding-left: 0 !important;
     margin-top: 40px;
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .container1 {
@@ -148,21 +150,34 @@ div {
   }
 }
 
-@media (max-width: 680px) {
+@media (max-width: 940px) {
   .container {
     padding-left: 40px;
-    margin-top: 40px;
-    display: block;
+    margin-top: 0 !important;
+    display: flex;
+    flex-direction: column;
   }
 
   .container1 {
-    margin-top: 1px;
-    margin-left: 60px;
+    margin-top: 0;
+    margin-left: 0;
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 
   .container2 {
-    padding: 1px;
-    margin-left: 20px;
+    margin-top: 0;
+    margin-left: 0;
+    width: 0px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 
   .image {

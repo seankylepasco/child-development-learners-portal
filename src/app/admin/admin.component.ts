@@ -1,4 +1,5 @@
 import { Router } from '@angular/router';
+import { EncryptStorage } from 'encrypt-storage';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DataService } from 'src/app/services/data.service';
@@ -22,12 +23,16 @@ export class AdminComponent implements OnInit {
   admin: any = 'admin';
   teacher: any = 'teacher';
   user: any = {};
-  userArray: any = ([] = []);
   windowScrolled = false;
   profile: any = '';
   search: any = '';
   isLoading = true;
   isEmpty = false;
+
+  encryptStorage = new EncryptStorage('secret-key', {
+    prefix: '@instance1',
+  });
+
   constructor(
     private router: Router,
     private data: DataService,
@@ -68,12 +73,9 @@ export class AdminComponent implements OnInit {
         else this.totalLength = response.payload.length;
       },
       (error: any) => {
-        console.log(error.status);
         if ((error.status = 404)) {
           this.isLoading = false;
           this.isEmpty = true;
-          console.log('change to none');
-          console.log(this.isEmpty);
         }
       }
     );
@@ -101,10 +103,8 @@ export class AdminComponent implements OnInit {
     }
   }
   checkifLoggedIn(): void {
-    this.user = JSON.parse(localStorage.getItem('user') || '{}');
-    this.userArray.push(this.user);
-    let type = this.getFields(this.userArray, 'type');
-    this.type = type.toString();
+    this.user = this.encryptStorage.getItem<any>('user');
+    this.type = this.user.type;
     this.getProfile();
     if (Object.keys(this.user).length === 0) {
       this.router.navigate(['welcome']);
@@ -130,7 +130,7 @@ export class AdminComponent implements OnInit {
     this.router.navigate(['suggestion']);
   }
   toEditUsers(user: any): void {
-    localStorage.setItem('edit-user', JSON.stringify(user));
+    this.encryptStorage.setItem('edit-users', user);
     this.router.navigate(['edit-users']);
   }
   toYears(): void {
@@ -138,11 +138,6 @@ export class AdminComponent implements OnInit {
   }
   toReports(): void {
     this.router.navigate(['reports']);
-  }
-  getFields(input: any, field: any) {
-    var output = [];
-    for (var i = 0; i < input.length; ++i) output.push(input[i][field]);
-    return output;
   }
   openLogout(): void {
     const dialogRef = this.dialog.open(LogoutComponent, {

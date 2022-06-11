@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
+import { EncryptStorage } from 'encrypt-storage';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { DomSanitizer } from '@angular/platform-browser';
 import { DataService } from 'src/app/services/data.service';
 import { StudentComponent } from 'src/app/student/student.component';
 import { LogoutComponent } from '../../modals/logout/logout.component';
@@ -15,7 +15,6 @@ import { SettingsComponent } from '../../modals/settings/settings.component';
 export class ActivitiesComponent implements OnInit {
   results: any;
   profile: any = '';
-  userArray: any = ([] = []);
   info: any = {};
   user: any = {};
   pdfUpload: any = {};
@@ -29,11 +28,14 @@ export class ActivitiesComponent implements OnInit {
   isLoading = true;
   isEmpty = false;
 
+  encryptStorage = new EncryptStorage('secret-key', {
+    prefix: '@instance1',
+  });
+
   constructor(
     private data: DataService,
     private router: Router,
     private dialog: MatDialog,
-    private domSanitizer: DomSanitizer
   ) {}
 
   ngOnInit(): void {
@@ -48,12 +50,12 @@ export class ActivitiesComponent implements OnInit {
   get staticUrlArray() {
     return StudentComponent.playSound;
   }
-  getAll(): void {
-    this.data.fetchData('modules', '').subscribe(
+ async getAll() {
+    await this.data.fetchData('modules', '').subscribe(
       (response: any) => {
         this.isLoading = false;
         this.modules = response.payload;
-        localStorage.setItem('modules', JSON.stringify(this.modules));
+        this.encryptStorage.setItem('modules', this.modules);
       },
       (error: any) => {
         if ((error.status = 404)) {
@@ -62,7 +64,7 @@ export class ActivitiesComponent implements OnInit {
         }
       }
     );
-    const modules = JSON.parse(localStorage.getItem('modules')!);
+    const modules = this.encryptStorage.getItem<any>('modules');
 
     if (modules) {
       this.checkifLoggedIn(modules);
@@ -70,12 +72,10 @@ export class ActivitiesComponent implements OnInit {
       this.checkifLoggedIn('');
     }
   }
-  checkifLoggedIn(modules: any) {
-    this.info = JSON.parse(localStorage.getItem('user') || '{}');
-    this.userArray.push(this.info);
-    let type = this.getFields(this.userArray, 'type');
-    this.type = type.toString();
-    this.getProfile(modules);
+ async checkifLoggedIn(modules: any) {
+    this.info = this.encryptStorage.getItem<any>('user');
+    this.type = this.info.type;
+    await this.getProfile(modules);
     if (Object.keys(this.info).length === 0) {
       this.router.navigate(['welcome']);
     } else if (this.type === 'admin') {
@@ -120,7 +120,7 @@ export class ActivitiesComponent implements OnInit {
   goToActivity(activity: any): void {
     this.BtnSound();
     this.router.navigate(['activity']);
-    localStorage.setItem('activity', JSON.stringify(activity));
+    this.encryptStorage.setItem('activity', activity);
   }
   toStudent(): void {
     this.BtnSound();

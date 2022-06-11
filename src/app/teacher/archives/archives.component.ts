@@ -1,10 +1,11 @@
+import { DatePipe } from '@angular/common';
 import { Router } from '@angular/router';
+import { EncryptStorage } from 'encrypt-storage';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DataService } from 'src/app/services/data.service';
 import { LogoutComponent } from '../../modals/logout/logout.component';
 import { SuccessComponent } from '../../modals/success/success.component';
-import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-archives',
@@ -25,10 +26,13 @@ export class ArchivesComponent implements OnInit {
   student: any = 'student';
   admin: any = 'admin';
   teacher: any = 'teacher';
-  userArray: any = ([] = []);
   windowScrolled = false;
   isLoading = true;
   Date: Date = new Date();
+
+  encryptStorage = new EncryptStorage('secret-key', {
+    prefix: '@instance1',
+  });
 
   constructor(
     public datepipe: DatePipe,
@@ -38,16 +42,12 @@ export class ArchivesComponent implements OnInit {
   ) {}
   ngOnInit(): void {
     this.checkifLoggedIn();
-    window.addEventListener('scroll', () => {
-      this.windowScrolled = window.pageYOffset !== 0;
-    });
   }
   updateToStudent(data: any): void {
     if (confirm('Are you sure to remove this?')) {
       delete data.password;
       data.type = 'student';
       this.data.fetchData('update_student', data).subscribe((response: any) => {
-        localStorage.setItem('page', 'teacher');
         this.dialog.open(SuccessComponent, {
           height: 'fit-content',
           width: '300px',
@@ -58,8 +58,10 @@ export class ArchivesComponent implements OnInit {
       });
     } else {
     }
+    this.getStudents();
   }
   getStudents(): void {
+    this.students = [];
     this.data.fetchData('archived', '').subscribe(
       (response: any) => {
         this.isLoading = false;
@@ -92,12 +94,6 @@ export class ArchivesComponent implements OnInit {
       }
     );
   }
-  getEnrollees(): void {
-    this.data.fetchData('enrollees', '').subscribe((response: any) => {
-      if (response.payload === null) this.totalEnrollees = 0;
-      else this.totalEnrollees = response.payload.length;
-    });
-  }
   getProfile(): void {
     this.data
       .fetchData('user/' + this.info.id, '')
@@ -108,14 +104,11 @@ export class ArchivesComponent implements OnInit {
         }
       });
   }
-  checkifLoggedIn() {
-    this.info = JSON.parse(localStorage.getItem('user') || '{}');
-    this.userArray.push(this.info);
-    let type = this.getFields(this.userArray, 'type');
-    this.type = type.toString();
-    this.getProfile();
-    this.getStudents();
-    this.getEnrollees();
+  async checkifLoggedIn() {
+    this.info = this.encryptStorage.getItem<any>('user');
+    this.type = this.info.type;
+    await this.getStudents();
+    await this.getProfile();
     if (Object.keys(this.info).length === 0) {
       this.router.navigate(['welcome']);
     } else if (this.type === 'admin') {
@@ -129,14 +122,11 @@ export class ArchivesComponent implements OnInit {
       this.router.navigate(['welcome']);
     }
   }
-  getFields(input: any, field: any) {
-    var output = [];
-    for (var i = 0; i < input.length; ++i) output.push(input[i][field]);
-    return output;
-  }
-
   toTeacher(): void {
     this.router.navigate(['teacher']);
+  }
+  toReports(): void {
+    this.router.navigate(['teacher-reports']);
   }
   toArchive(): void {
     this.router.navigate(['archive']);

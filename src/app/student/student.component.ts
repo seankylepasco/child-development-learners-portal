@@ -1,5 +1,6 @@
 import { Router } from '@angular/router';
 import { HostListener } from '@angular/core';
+import { EncryptStorage } from 'encrypt-storage';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DataService } from 'src/app/services/data.service';
@@ -19,9 +20,13 @@ export class StudentComponent implements OnInit {
   teacher: any = 'teacher';
   user: any = {};
   info: any = {};
-  userArray: any = ([] = []);
   windowScrolled = false;
   static playSound = true;
+
+  encryptStorage = new EncryptStorage('secret-key', {
+    prefix: '@instance1',
+  });
+
   constructor(
     private router: Router,
     private data: DataService,
@@ -38,7 +43,6 @@ export class StudentComponent implements OnInit {
     window.addEventListener('scroll', () => {
       this.windowScrolled = window.pageYOffset !== 0;
     });
-
   }
   get staticUrlArray() {
     return StudentComponent.playSound;
@@ -51,12 +55,10 @@ export class StudentComponent implements OnInit {
     audio.play();
   }
 
-  checkifLoggedIn(): void {
-    this.info = JSON.parse(localStorage.getItem('user') || '{}');
-    this.userArray.push(this.info);
-    let type = this.getFields(this.userArray, 'type');
-    this.type = type.toString();
-    this.getProfile();
+  async checkifLoggedIn() {
+    this.info = this.encryptStorage.getItem<any>('user');
+    this.type = this.info.type;
+    await this.getProfile();
     if (Object.keys(this.info).length === 0) {
       this.router.navigate(['welcome']);
     } else if (this.type === 'admin') {
@@ -69,12 +71,6 @@ export class StudentComponent implements OnInit {
     } else {
       this.router.navigate(['welcome']);
     }
-  }
-  getFields(input: any, field: any) {
-    let output = [];
-    for (let index = 0; index < input.length; index++)
-      output.push(input[index][field]);
-    return output;
   }
   getProfile(): void {
     this.data

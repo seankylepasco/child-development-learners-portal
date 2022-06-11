@@ -1,4 +1,5 @@
 import { Router } from '@angular/router';
+import { EncryptStorage } from 'encrypt-storage';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DataService } from 'src/app/services/data.service';
@@ -10,10 +11,13 @@ import { SuccessComponent } from '../../modals/success/success.component';
   styleUrls: ['./edit-users.component.css'],
 })
 export class EditUsersComponent implements OnInit {
-  user: any = '';
+  user: any;
   password: any;
   type: any;
-  userArray: any = ([] = []);
+
+  encryptStorage = new EncryptStorage('secret-key', {
+    prefix: '@instance1',
+  });
 
   constructor(
     private router: Router,
@@ -22,18 +26,18 @@ export class EditUsersComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.user = JSON.parse(localStorage.getItem('user') || '{}');
-    this.userArray.push(this.user);
-    let type = this.getFields(this.userArray, 'type');
-    this.type = type.toString();
-    console.log(this.type);
+    this.user = this.encryptStorage.getItem<any>('user');
+    this.type = this.user.type;
     this.getUser();
   }
   getUser(): void {
-    const object = JSON.parse(localStorage.getItem('edit-user') || '{}');
+    const object = this.encryptStorage.getItem<any>('edit-users');
     this.data.fetchData('user/' + object.id, '').subscribe((response: any) => {
       this.user = response.payload[0];
     });
+    this.data
+      .fetchData('delete_report/' + object.report_id, '')
+      .subscribe((response: any) => {});
   }
   getFields(input: any, field: any) {
     var output = [];
@@ -70,8 +74,12 @@ export class EditUsersComponent implements OnInit {
     }
   }
   back(): void {
-    this.router.navigate(['admin']);
-    localStorage.removeItem('edit-user');
+    this.encryptStorage.removeItem('edit-users');
+    if (this.type === 'admin') {
+      this.router.navigate(['admin']);
+    } else if (this.type === 'teacher') {
+      this.router.navigate(['teacher-reports']);
+    }
   }
   setPhoto(event: any): void {
     this.user.img = event.target.files[0];

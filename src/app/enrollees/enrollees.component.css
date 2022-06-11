@@ -67,6 +67,7 @@ mat-card {
 }
 
 .loading {
+  margin: none !important;
   width: 30px !important;
   height: 30px !important;
 }
@@ -182,11 +183,6 @@ img {
 button:hover {
   background-color: transparent;
   color: white;
-}
-
-.loading {
-  margin-top: 50px;
-  margin-left: 400px;
 }
 
 .red {

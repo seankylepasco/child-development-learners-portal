@@ -66,15 +66,17 @@ h1 {
 
 .logo-container {
   padding-bottom: 20px;
-  margin-left: 75px;
+  width: 180px;
+  margin-left: auto;
+  margin-right: auto;
   height: 140px;
 }
 
 .logo-container img {
   padding-top: 10px;
   width: 180px;
-  margin-left: 15px;
-  margin-right: 20px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .card-center {
@@ -85,15 +87,16 @@ h1 {
 }
 
 .center {
-  width: 33%;
-  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .card {
   width: 30em;
-  flex: 1;
+  margin-top: 50px;
   background-color: white;
-  margin-right: 400em;
   padding: 20px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   border-radius: 40px !important;
@@ -244,25 +247,10 @@ button {
 }
 
 @media (max-width: 800px) {
-  .center .logo-container {
-    margin-left: 0px !important;
-  }
-
-  .center {
-    margin: 0px;
-    width: 100% !important;
-    height: 100%;
-  }
 
   .card {
     width: 100%;
     box-shadow: none;
-  }
-
-  .logo-container {
-    display: block;
-    /* margin-right: 1000em; */
-    margin-left: 20px !important;
   }
 
   .modal-content {

@@ -1,10 +1,11 @@
 import { Router } from '@angular/router';
+import { DatePipe } from '@angular/common';
+import { EncryptStorage } from 'encrypt-storage';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DataService } from 'src/app/services/data.service';
 import { LogoutComponent } from '../modals/logout/logout.component';
 import { SuccessComponent } from '../modals/success/success.component';
-import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-teacher',
@@ -25,10 +26,13 @@ export class TeacherComponent implements OnInit {
   student: any = 'student';
   admin: any = 'admin';
   teacher: any = 'teacher';
-  userArray: any = ([] = []);
   windowScrolled = false;
   isLoading = true;
   Date: Date = new Date();
+
+  encryptStorage = new EncryptStorage('secret-key', {
+    prefix: '@instance1',
+  });
 
   constructor(
     public datepipe: DatePipe,
@@ -47,7 +51,6 @@ export class TeacherComponent implements OnInit {
       delete data.password;
       data.type = 'enrollee';
       this.data.fetchData('update_student', data).subscribe((response: any) => {
-        localStorage.setItem('page', 'teacher');
         this.dialog.open(SuccessComponent, {
           height: 'fit-content',
           width: '300px',
@@ -58,10 +61,6 @@ export class TeacherComponent implements OnInit {
       });
     } else {
     }
-  }
-  toEditUsers(user: any): void {
-    localStorage.setItem('edit-user', JSON.stringify(user));
-    this.router.navigate(['edit-users']);
   }
   getStudents(): void {
     this.data.fetchData('students', '').subscribe(
@@ -103,10 +102,8 @@ export class TeacherComponent implements OnInit {
       });
   }
   checkifLoggedIn() {
-    this.info = JSON.parse(localStorage.getItem('user') || '{}');
-    this.userArray.push(this.info);
-    let type = this.getFields(this.userArray, 'type');
-    this.type = type.toString();
+    this.info = this.encryptStorage.getItem<any>('user');
+    this.type = this.info.type;
     this.getProfile();
     this.getStudents();
     this.getEnrollees();
@@ -123,10 +120,12 @@ export class TeacherComponent implements OnInit {
       this.router.navigate(['welcome']);
     }
   }
-  getFields(input: any, field: any) {
-    var output = [];
-    for (var i = 0; i < input.length; ++i) output.push(input[i][field]);
-    return output;
+  toEditUsers(user: any): void {
+    this.encryptStorage.setItem('edit-users', user);
+    this.router.navigate(['edit-users']);
+  }
+  toReports(): void {
+    this.router.navigate(['teacher-reports']);
   }
   toArchive(): void {
     this.router.navigate(['archive']);
@@ -156,8 +155,5 @@ export class TeacherComponent implements OnInit {
       autoFocus: false,
       restoreFocus: false,
     });
-  }
-  scrollToTop(): void {
-    window.scrollTo(0, 0);
   }
 }

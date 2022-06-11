@@ -1,9 +1,10 @@
 import { Router } from '@angular/router';
+import { DatePipe } from '@angular/common';
+import { EncryptStorage } from 'encrypt-storage';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DataService } from 'src/app/services/data.service';
 import { LogoutComponent } from '../../modals/logout/logout.component';
-import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-classes',
@@ -22,11 +23,15 @@ export class ClassesComponent implements OnInit {
   student: any = 'student';
   admin: any = 'admin';
   teacher: any = 'teacher';
-  userArray: any = ([] = []);
+
   windowScrolled = false;
   isEmpty = false;
   isLoading = true;
   Date: Date = new Date();
+
+  encryptStorage = new EncryptStorage('secret-key', {
+    prefix: '@instance1',
+  });
 
   constructor(
     public datepipe: DatePipe,
@@ -68,10 +73,8 @@ export class ClassesComponent implements OnInit {
       });
   }
   checkifLoggedIn() {
-    this.info = JSON.parse(localStorage.getItem('user') || '{}');
-    this.userArray.push(this.info);
-    let type = this.getFields(this.userArray, 'type');
-    this.type = type.toString();
+    this.info = this.encryptStorage.getItem<any>('user');
+    this.type = this.info.type;
     this.getProfile();
     this.getYears();
     if (Object.keys(this.info).length === 0) {
@@ -87,10 +90,8 @@ export class ClassesComponent implements OnInit {
       this.router.navigate(['welcome']);
     }
   }
-  getFields(input: any, field: any) {
-    var output = [];
-    for (var i = 0; i < input.length; ++i) output.push(input[i][field]);
-    return output;
+  toReports(): void {
+    this.router.navigate(['teacher-reports']);
   }
   toArchive(): void {
     this.router.navigate(['archive']);
@@ -99,7 +100,7 @@ export class ClassesComponent implements OnInit {
     this.router.navigate(['masterlist']);
   }
   toClassYear(id: any): void {
-    localStorage.setItem('class_year_id', id);
+    this.encryptStorage.setItem('class_year_id', id);
     this.router.navigate(['year']);
   }
   toEnrollees(): void {

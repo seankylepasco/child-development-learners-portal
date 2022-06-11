@@ -1,6 +1,7 @@
 import { Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { EncryptStorage } from 'encrypt-storage';
+import { Component, OnInit } from '@angular/core'
 import { MatDialog } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
 import { DataService } from 'src/app/services/data.service';
@@ -24,18 +25,22 @@ export class MasterlistComponent implements OnInit {
   students: any;
   total: any;
   student: any = 'student';
-  userArray: any = ([] = []);
   userInput: any = {};
   info: any = {};
   user: any = {};
   isLoading = true;
   isEmpty = false;
   Date: Date = new Date();
+
+  encryptStorage = new EncryptStorage('secret-key', {
+    prefix: '@instance1',
+  });
   constructor(
     private dialog: MatDialog,
     private router: Router,
     private data: DataService,
     config: NgbModalConfig,
+    public datepipe: DatePipe,
     private domSanitizer: DomSanitizer
   ) {
     config.backdrop = 'static';
@@ -47,10 +52,8 @@ export class MasterlistComponent implements OnInit {
     this.getYears();
   }
   checkifLoggedIn(): void {
-    this.info = JSON.parse(localStorage.getItem('user') || '{}');
-    this.userArray.push(this.info);
-    let type = this.getFields(this.userArray, 'type');
-    this.type = type.toString();
+    this.info = this.encryptStorage.getItem<any>('user');
+    this.type = this.info.type;
     this.getProfile();
     if (Object.keys(this.info).length === 0) {
       this.router.navigate(['welcome']);
@@ -85,11 +88,6 @@ export class MasterlistComponent implements OnInit {
           this.profile = this.user[index];
         }
       });
-  }
-  getFields(input: any, field: any) {
-    var output = [];
-    for (var i = 0; i < input.length; ++i) output.push(input[i][field]);
-    return output;
   }
   getStudents(): void {
     this.data.fetchData('students', '').subscribe(
@@ -153,6 +151,9 @@ export class MasterlistComponent implements OnInit {
 
   transform(url: any) {
     return this.domSanitizer.bypassSecurityTrustResourceUrl(url);
+  }
+  toReports(): void {
+    this.router.navigate(['teacher-reports']);
   }
   toArchive(): void {
     this.router.navigate(['archive']);

@@ -1,8 +1,8 @@
 import { Router } from '@angular/router';
+import { EncryptStorage } from 'encrypt-storage';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DataService } from 'src/app/services/data.service';
-import { LogoutComponent } from '../../modals/logout/logout.component';
 import { SuccessComponent } from '../../modals/success/success.component';
 
 @Component({
@@ -18,6 +18,11 @@ export class AddModuleComponent implements OnInit {
   user: any = {};
   pdfUpload: any = {};
   userArray: any = ([] = []);
+
+  encryptStorage = new EncryptStorage('secret-key', {
+    prefix: '@instance1',
+  });
+
   constructor(
     private router: Router,
     private data: DataService,
@@ -44,10 +49,8 @@ export class AddModuleComponent implements OnInit {
       });
   }
   checkifLoggedIn(): void {
-    this.info = JSON.parse(localStorage.getItem('user') || '{}');
-    this.userArray.push(this.info);
-    let type = this.getFields(this.userArray, 'type');
-    this.type = type.toString();
+    this.info = this.encryptStorage.getItem<any>('user');
+    this.type = this.info.type;
     this.getProfile();
     if (Object.keys(this.info).length === 0) {
       this.router.navigate(['welcome']);
@@ -69,10 +72,8 @@ export class AddModuleComponent implements OnInit {
         teacher_id: this.info.id,
       };
       if (!event.target.deadline.value) event.target.deadline.value = '';
-      // if (!event.target.total_score.value) event.target.deadline.value = 10;
 
       this.data.fetchData('add_module', object).subscribe((response: any) => {
-        localStorage.setItem('page', 'teacher-activity');
         this.dialog.open(SuccessComponent, {
           height: 'fit-content',
           width: '300px',

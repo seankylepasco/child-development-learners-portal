@@ -123,11 +123,6 @@ header h1 {
   align-items: center;
 }
 
-.loading {
-  margin-top: 50px;
-  margin-left: 400px;
-}
-
 .row {
   display: flex;
   flex-direction: row;

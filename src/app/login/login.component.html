@@ -5,50 +5,42 @@
 </head>
 <body>
   <div>
-    <div class="container">
-      <div class="center">
-        <div class="logo-container">
-          <img src="assets/icon.png" class="image" />
-        </div>
-        <br />
-        <br />
-
-          <div class="card">
-            <div class="content">
-              <p class="title">Login to your account</p>
-              <p *ngIf="mEmail" class="red">*Missing Email</p>
-              <input
-                name="email"
-                type="text"
-                placeholder="Email"
-                [(ngModel)]="email"
-              />
-              <p *ngIf="mPassword" class="red">*Missing Password</p>
-              <input
-                name="password"
-                type="password"
-                placeholder="Password "
-                [(ngModel)]="password"
-              />
-              <button type="button" class="login" (click)="login()">
-                login
-              </button>
-              <button type="button" class="forgot_password" (click)="forgot()">
-                forgot password?
-              </button>
-              <div class="center-btn">
-                <button
-                  mat-raised-button
-                  class="btn"
-                  style="text-align: center"
-                  (click)="back()"
-                >
-                  <mat-icon>keyboard_backspace</mat-icon> Back
-                </button>
-              </div>
-            </div>
+    <div class="container center">
+      <div class="logo-container">
+        <img src="assets/icon.png" class="image" />
+      </div>
+      <div class="card">
+        <div class="content">
+          <p class="title">Login to your account</p>
+          <p *ngIf="mEmail" class="red">*Missing Email</p>
+          <input
+            name="email"
+            type="text"
+            placeholder="Email"
+            [(ngModel)]="email"
+          />
+          <p *ngIf="mPassword" class="red">*Missing Password</p>
+          <input
+            name="password"
+            type="password"
+            placeholder="Password "
+            [(ngModel)]="password"
+          />
+          <button type="button" class="login" (click)="login()">login</button>
+          <button type="button" class="forgot_password" (click)="forgot()">
+            forgot password?
+          </button>
+          <div class="center-btn">
+            <button
+              mat-raised-button
+              class="btn"
+              style="text-align: center"
+              (click)="back()"
+            >
+              <mat-icon>keyboard_backspace</mat-icon> Back
+            </button>
           </div>
-
+        </div>
       </div>
     </div>
   </div>

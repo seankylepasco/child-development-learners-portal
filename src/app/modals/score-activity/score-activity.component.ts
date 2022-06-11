@@ -1,3 +1,4 @@
+import { EncryptStorage } from 'encrypt-storage';
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { DataService } from 'src/app/services/data.service';
@@ -8,8 +9,14 @@ import { DataService } from 'src/app/services/data.service';
   styleUrls: ['./score-activity.component.css'],
 })
 export class ScoreActivityComponent implements OnInit {
+
   file: any;
   module: any = {};
+
+  encryptStorage = new EncryptStorage('secret-key', {
+    prefix: '@instance1',
+  });
+
   constructor(private domSanitizer: DomSanitizer, private data: DataService) {}
 
   ngOnInit(): void {
@@ -17,25 +24,21 @@ export class ScoreActivityComponent implements OnInit {
   }
 
   getChosenModule(): void {
-    this.module = JSON.parse(localStorage.getItem('module_chosen') || '{}');
+    this.module = this.encryptStorage.getItem<any>('module_chosen');
     this.file = this.domSanitizer.bypassSecurityTrustResourceUrl(
       this.module.file
     );
   }
   updateCompletedScore(): void {
-    // if (this.module.score > this.module.total_score)
-    //   alert('Greater than total!');
-    // else {
-      const object = {
-        id: this.module.id,
-        score: this.module.score,
-      };
-      this.data
-        .fetchData('update_completed', object)
-        .subscribe((response: any) => {
-          alert('Score Updated!');
-          window.location.reload();
-        });
-    // }
+    const object = {
+      id: this.module.id,
+      score: this.module.score,
+    };
+    this.data
+      .fetchData('update_completed', object)
+      .subscribe((response: any) => {
+        alert('Score Updated!');
+        window.location.reload();
+      });
   }
 }

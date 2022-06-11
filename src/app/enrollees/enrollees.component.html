@@ -43,6 +43,9 @@
       <button (click)="toArchive()" class="red">
         <mat-icon>delete</mat-icon>&nbsp; Archive
       </button>
+      <button (click)="toReports()" class="red">
+        <mat-icon>question_answer</mat-icon>&nbsp; Reports
+      </button>
     </div>
 
     <div class="logout">
@@ -67,6 +70,7 @@
             src="assets/img/loading/loading.gif"
           />
           <h2 *ngIf="isLoading">Loading ...</h2>
+
           <div class="flex-row-end">
             <button (click)="downloadPDF()" class="blue-save" type="submit">
               <mat-icon> insert_drive_file</mat-icon>&nbsp; Download Pdf

@@ -1,11 +1,14 @@
+import 'jspdf-autotable';
+import jsPDF from 'jspdf';
+import autoTable from 'jspdf-autotable';
 import { Router } from '@angular/router';
+import { DatePipe } from '@angular/common';
+import { EncryptStorage } from 'encrypt-storage';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DataService } from 'src/app/services/data.service';
 import { LogoutComponent } from '../../../modals/logout/logout.component';
-import { DatePipe } from '@angular/common';
 import { SuccessComponent } from '../../../modals/success/success.component';
-import { jsPDF } from 'jspdf';
 
 @Component({
   selector: 'app-year',
@@ -25,11 +28,14 @@ export class YearComponent implements OnInit {
   student: any = 'student';
   admin: any = 'admin';
   teacher: any = 'teacher';
-  userArray: any = ([] = []);
   windowScrolled = false;
   isEmpty = false;
   isLoading = true;
   Date: Date = new Date();
+
+  encryptStorage = new EncryptStorage('secret-key', {
+    prefix: '@instance1',
+  });
 
   constructor(
     public datepipe: DatePipe,
@@ -38,11 +44,62 @@ export class YearComponent implements OnInit {
     private dialog: MatDialog
   ) {}
   ngOnInit(): void {
-    this.class_year = localStorage.getItem('class_year_id');
+    this.class_year = this.encryptStorage.getItem<any>('class_year_id');
     this.checkifLoggedIn();
     window.addEventListener('scroll', () => {
       this.windowScrolled = window.pageYOffset !== 0;
     });
+  }
+
+  downloadPDF(): void {
+    const doc = new jsPDF();
+    this.data.fetchData('classes/' + this.class_year, '').subscribe(
+      (response: any) => {
+        this.isLoading = false;
+        const arr = response.payload;
+        console.log(arr);
+        arr.forEach((object: any) => {
+          delete object['email'];
+          delete object['birthdate'];
+          delete object['address'];
+          delete object['password'];
+          delete object['gender'];
+          delete object['img'];
+          delete object['psa'];
+          delete object['type'];
+          delete object['year'];
+        });
+        console.log(arr);
+        var output = arr.map(function (obj: any) {
+          return Object.keys(obj)
+            .sort()
+            .map(function (key) {
+              return obj[key];
+            });
+        });
+        console.log(output);
+        autoTable(doc, {
+          head: [
+            [
+              'firstname',
+              'id',
+              'lastname',
+              'middlename',
+              'parent/guardian',
+              'mobile number',
+            ],
+          ],
+          body: output,
+        });
+        doc.save('class '+this.class_year);
+      },
+      (error: any) => {
+        if ((error.status = 404)) {
+          this.isLoading = false;
+          this.isEmpty = true;
+        }
+      }
+    );
   }
 
   updateToArchive(data: any): void {
@@ -67,6 +124,7 @@ export class YearComponent implements OnInit {
     this.data.fetchData('classes/' + this.class_year, '').subscribe(
       (response: any) => {
         this.isLoading = false;
+        console.log(response.payload)
         this.years = response.payload;
         this.totalYears = response.payload.length;
       },
@@ -90,10 +148,8 @@ export class YearComponent implements OnInit {
       });
   }
   checkifLoggedIn() {
-    this.info = JSON.parse(localStorage.getItem('user') || '{}');
-    this.userArray.push(this.info);
-    let type = this.getFields(this.userArray, 'type');
-    this.type = type.toString();
+    this.info = this.encryptStorage.getItem<any>('user');
+    this.type = this.info.type;
     this.getProfile();
     this.getYears();
     if (Object.keys(this.info).length === 0) {
@@ -109,10 +165,8 @@ export class YearComponent implements OnInit {
       this.router.navigate(['welcome']);
     }
   }
-  getFields(input: any, field: any) {
-    var output = [];
-    for (var i = 0; i < input.length; ++i) output.push(input[i][field]);
-    return output;
+  toReports(): void {
+    this.router.navigate(['teacher-reports']);
   }
   toArchive(): void {
     this.router.navigate(['archive']);
@@ -121,6 +175,7 @@ export class YearComponent implements OnInit {
     this.router.navigate(['masterlist']);
   }
   toClasses(): void {
+    this.encryptStorage.removeItem('class_year_id');
     this.router.navigate(['classes']);
   }
   toEnrollees(): void {

@@ -42,6 +42,9 @@
       <button (click)="toArchive()" class="red">
         <mat-icon>delete</mat-icon>&nbsp; Archive
       </button>
+      <button (click)="toReports()" class="red">
+        <mat-icon>question_answer</mat-icon>&nbsp; Reports
+      </button>
     </div>
 
     <div class="logout">
@@ -104,12 +107,14 @@
               <mat-icon>search</mat-icon>
             </button>
           </div>
-          <img
-            class="loading"
-            *ngIf="isLoading"
-            src="assets/img/loading/loading.gif"
-          />
-          <h2 *ngIf="isLoading">Loading ...</h2>
+          <div class="flex-column">
+            <img
+              class="loading"
+              *ngIf="isLoading"
+              src="assets/img/loading/loading.gif"
+            />
+            <h2 *ngIf="isLoading">Loading ...</h2>
+          </div>
           <div class="card-table">
             <div class="con">
               <table>

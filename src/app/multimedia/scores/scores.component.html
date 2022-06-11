@@ -45,6 +45,9 @@
       <button (click)="toArchive()" class="red">
         <mat-icon>delete</mat-icon>&nbsp; Archive
       </button>
+      <button (click)="toReports()" class="red">
+        <mat-icon>question_answer</mat-icon>&nbsp; Reports
+      </button>
     </div>
 
     <div class="logout">
@@ -99,7 +102,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <div *ngIf="!students" class="center">
+                  <div *ngIf="isEmpty" class="center">
                     <h2>
                       <mat-icon> cancel_presentation</mat-icon>&nbsp;No Scores
                       Yet!

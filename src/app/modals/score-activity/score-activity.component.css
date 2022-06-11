@@ -1,5 +1,37 @@
-* {
+mat-icon {
+  width: auto !important;
+}
+
+.download {
+  text-decoration: none;
+  background-color: #ff2e63;
+  width: 100%;
+  padding: 10px;
+  border: none;
   margin: 5px;
+  border-radius: 5px;
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.score {
+  text-decoration: none;
+  background-color: #08d9d6;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  margin: 5px;
+  border-radius: 5px;
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.score option {
+  background-color: #00b0ab;
 }
 
 .red {

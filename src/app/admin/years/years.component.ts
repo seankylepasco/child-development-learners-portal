@@ -1,4 +1,5 @@
 import { Router } from '@angular/router';
+import { EncryptStorage } from 'encrypt-storage';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DataService } from 'src/app/services/data.service';
@@ -16,9 +17,12 @@ export class YearsComponent implements OnInit {
   type: any;
   user: any = {};
   profile: any = '';
-  userArray: any = ([] = []);
   isLoading = true;
   isEmpty = false;
+
+  encryptStorage = new EncryptStorage('secret-key', {
+    prefix: '@instance1',
+  });
 
   constructor(
     private router: Router,
@@ -41,20 +45,13 @@ export class YearsComponent implements OnInit {
       });
   }
   checkifLoggedIn(): void {
-    this.user = JSON.parse(localStorage.getItem('user') || '{}');
-    this.userArray.push(this.user);
-    let type = this.getFields(this.userArray, 'type');
-    this.type = type.toString();
+    this.user = this.encryptStorage.getItem<any>('user');
+    this.type = this.user.type;
     this.getProfile();
     if (Object.keys(this.user).length === 0) {
       this.router.navigate(['welcome']);
     }
     this.getYears();
-  }
-  getFields(input: any, field: any) {
-    var output = [];
-    for (var i = 0; i < input.length; ++i) output.push(input[i][field]);
-    return output;
   }
   getYears(): void {
     this.data.fetchData('years', '').subscribe(
@@ -71,7 +68,7 @@ export class YearsComponent implements OnInit {
     );
   }
   toViewYear(id: any): void {
-    localStorage.setItem('year_id', id);
+    this.encryptStorage.setItem('year_id', id);
     this.dialog.open(ViewYearComponent, {
       height: 'fit-content',
       width: '500px',
@@ -89,7 +86,7 @@ export class YearsComponent implements OnInit {
     this.router.navigate(['suggestion']);
   }
   toEditUsers(user: any): void {
-    localStorage.setItem('edit-user', JSON.stringify(user));
+    this.encryptStorage.setItem('edit-user', user);
     this.router.navigate(['edit-users']);
   }
   toYears(): void {
@@ -103,7 +100,6 @@ export class YearsComponent implements OnInit {
       this.data
         .fetchData('delete_year/' + id, '')
         .subscribe((response: any) => {
-          localStorage.setItem('page', 'years');
           this.dialog.open(DeleteComponent, {
             height: 'fit-content',
             width: '500px',

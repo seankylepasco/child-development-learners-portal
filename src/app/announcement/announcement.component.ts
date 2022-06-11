@@ -1,4 +1,5 @@
 import { Router } from '@angular/router';
+import { EncryptStorage } from 'encrypt-storage';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DataService } from 'src/app/services/data.service';
@@ -22,6 +23,11 @@ export class AnnouncementComponent implements OnInit {
   arr: any = [];
   isEmpty = false;
   isLoading = true;
+
+  encryptStorage = new EncryptStorage('secret-key', {
+    prefix: '@instance1',
+  });
+
   constructor(
     private data: DataService,
     private router: Router,
@@ -41,12 +47,10 @@ export class AnnouncementComponent implements OnInit {
     audio.load();
     audio.play();
   }
-  checkifLoggedIn(): void {
-    this.info = JSON.parse(localStorage.getItem('user') || '{}');
-    this.userArray.push(this.info);
-    let type = this.getFields(this.userArray, 'type');
-    this.type = type.toString();
-    this.getProfile();
+ async checkifLoggedIn() {
+    this.info =  this.encryptStorage.getItem<any>('user');
+    this.type = this.info.type;
+    await this.getProfile();
     if (Object.keys(this.info).length === 0) {
       this.router.navigate(['welcome']);
     } else if (this.type === 'admin') {
