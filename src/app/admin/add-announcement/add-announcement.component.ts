@@ -1,4 +1,5 @@
 import { Router } from '@angular/router';
+import { EncryptStorage } from 'encrypt-storage';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DataService } from '../../services/data.service';
@@ -16,6 +17,10 @@ export class AddAnnouncementComponent implements OnInit {
   isLoading = true;
   isEmpty = false;
 
+  encryptStorage = new EncryptStorage('secret-key', {
+    prefix: '@instance1',
+  });
+
   constructor(
     private data: DataService,
     private router: Router,
@@ -24,7 +29,7 @@ export class AddAnnouncementComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAnnouncements();
-    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    const user = this.encryptStorage.getItem<any>('user');
     this.id = user.id;
   }
   getAnnouncements(): void {

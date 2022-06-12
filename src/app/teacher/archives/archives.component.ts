@@ -1,18 +1,18 @@
-import { Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
+import { Router } from '@angular/router';
 import { EncryptStorage } from 'encrypt-storage';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DataService } from 'src/app/services/data.service';
-import { LogoutComponent } from '../modals/logout/logout.component';
-import { SuccessComponent } from '../modals/success/success.component';
+import { LogoutComponent } from '../../modals/logout/logout.component';
+import { SuccessComponent } from '../../modals/success/success.component';
 
 @Component({
-  selector: 'app-teacher',
-  templateUrl: './teacher.component.html',
-  styleUrls: ['./teacher.component.css'],
+  selector: 'app-archives',
+  templateUrl: './archives.component.html',
+  styleUrls: ['./archives.component.css'],
 })
-export class TeacherComponent implements OnInit {
+export class ArchivesComponent implements OnInit {
   isEmpty = false;
   type: any;
   students: any;
@@ -42,14 +42,11 @@ export class TeacherComponent implements OnInit {
   ) {}
   ngOnInit(): void {
     this.checkifLoggedIn();
-    window.addEventListener('scroll', () => {
-      this.windowScrolled = window.pageYOffset !== 0;
-    });
   }
-  updateToEnrollee(data: any): void {
+  updateToStudent(data: any): void {
     if (confirm('Are you sure to remove this?')) {
       delete data.password;
-      data.type = 'enrollee';
+      data.type = 'student';
       this.data.fetchData('update_student', data).subscribe((response: any) => {
         this.dialog.open(SuccessComponent, {
           height: 'fit-content',
@@ -61,11 +58,15 @@ export class TeacherComponent implements OnInit {
       });
     } else {
     }
+    this.getStudents();
   }
   getStudents(): void {
-    this.data.fetchData('students', '').subscribe(
+    this.students = [];
+    this.data.fetchData('archived', '').subscribe(
       (response: any) => {
         this.isLoading = false;
+        this.isEmpty = false;
+        console.log(response.payload);
         this.students = response.payload;
         this.totalStudents = response.payload.length;
       },
@@ -79,17 +80,19 @@ export class TeacherComponent implements OnInit {
   }
   searchStudents(): void {
     this.students = [];
-    this.data
-      .fetchData('search_students/' + this.search, '')
-      .subscribe((response: any) => {
+    this.data;
+    this.data.fetchData('archived/' + this.search, '').subscribe(
+      (response: any) => {
+        this.isEmpty = false;
         this.students = response.payload;
-      });
-  }
-  getEnrollees(): void {
-    this.data.fetchData('enrollees', '').subscribe((response: any) => {
-      if (response.payload === null) this.totalEnrollees = 0;
-      else this.totalEnrollees = response.payload.length;
-    });
+      },
+      (error: any) => {
+        if ((error.status = 404)) {
+          this.isLoading = false;
+          this.isEmpty = true;
+        }
+      }
+    );
   }
   getProfile(): void {
     this.data
@@ -101,28 +104,26 @@ export class TeacherComponent implements OnInit {
         }
       });
   }
-  checkifLoggedIn() {
+  async checkifLoggedIn() {
     this.info = this.encryptStorage.getItem<any>('user');
     this.type = this.info.type;
-    this.getProfile();
-    this.getStudents();
-    this.getEnrollees();
+    await this.getStudents();
+    await this.getProfile();
     if (Object.keys(this.info).length === 0) {
       this.router.navigate(['welcome']);
     } else if (this.type === 'admin') {
       this.router.navigate(['admin']);
     } else if (this.type === 'student') {
     } else if (this.type === 'teacher') {
-      this.router.navigate(['teacher']);
+      this.router.navigate(['archive']);
     } else if (this.type === 'enrollee') {
       this.router.navigate(['home']);
     } else {
       this.router.navigate(['welcome']);
     }
   }
-  toEditUsers(user: any): void {
-    this.encryptStorage.setItem('edit-users', user);
-    this.router.navigate(['edit-users']);
+  toTeacher(): void {
+    this.router.navigate(['teacher']);
   }
   toReports(): void {
     this.router.navigate(['teacher-reports']);
@@ -155,5 +156,8 @@ export class TeacherComponent implements OnInit {
       autoFocus: false,
       restoreFocus: false,
     });
+  }
+  scrollToTop(): void {
+    window.scrollTo(0, 0);
   }
 }

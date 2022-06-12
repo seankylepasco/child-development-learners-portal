@@ -17,7 +17,6 @@ export class LogoutComponent implements OnInit {
 
   logout() {
     this.closeDialog();
-    localStorage.removeItem('user');
     localStorage.clear();
     this.router.navigate(['welcome']);
   }

@@ -17,7 +17,6 @@ export class AddYearComponent implements OnInit {
       year: this.year,
     };
     this.data.fetchData('add_year', object).subscribe((response: any) => {
-      localStorage.setItem('page', 'years');
       this.dialog.open(SuccessComponent, {
         height: 'fit-content',
         width: '300px',

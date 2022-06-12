@@ -1,3 +1,4 @@
+import { EncryptStorage } from 'encrypt-storage';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DataService } from 'src/app/services/data.service';
@@ -13,10 +14,14 @@ export class NewAnnouncementComponent implements OnInit {
   img: any;
   date: any;
   id: any = '';
+
+  encryptStorage = new EncryptStorage('secret-key', {
+    prefix: '@instance1',
+  });
   constructor(private data: DataService, private dialog: MatDialog) {}
 
   ngOnInit(): void {
-    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    const user = this.encryptStorage.getItem<any>('user');
     this.id = user.id;
   }
   setPhoto(event: any): void {

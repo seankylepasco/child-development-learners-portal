@@ -1,23 +1,24 @@
 import { Router } from '@angular/router';
+import { DatePipe } from '@angular/common';
 import { EncryptStorage } from 'encrypt-storage';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DataService } from 'src/app/services/data.service';
-import { DeleteComponent } from 'src/app/modals/delete/delete.component';
 import { LogoutComponent } from 'src/app/modals/logout/logout.component';
 
 @Component({
-  selector: 'app-reports',
-  templateUrl: './reports.component.html',
-  styleUrls: ['./reports.component.css'],
+  selector: 'app-teacher-reports',
+  templateUrl: './teacher-reports.component.html',
+  styleUrls: ['./teacher-reports.component.css'],
 })
-export class ReportsComponent implements OnInit {
+export class TeacherReportsComponent implements OnInit {
   reports: any;
   type: any;
   user: any = {};
   profile: any = '';
   isLoading = true;
   isEmpty = false;
+  Date: Date = new Date();
 
   encryptStorage = new EncryptStorage('secret-key', {
     prefix: '@instance1',
@@ -25,6 +26,7 @@ export class ReportsComponent implements OnInit {
 
   constructor(
     private router: Router,
+    public datepipe: DatePipe,
     private data: DataService,
     private dialog: MatDialog
   ) {}
@@ -56,6 +58,7 @@ export class ReportsComponent implements OnInit {
     this.data.fetchData('reports', '').subscribe(
       (response: any) => {
         this.reports = response.payload;
+        this.isEmpty = false;
         this.isLoading = false;
       },
       (error: any) => {
@@ -66,35 +69,39 @@ export class ReportsComponent implements OnInit {
       }
     );
   }
-  toDashboard(): void {
-    this.router.navigate(['admin'])
+  toEditUsers(stud_id: any): void {
+    this.encryptStorage.setItem('edit-users', stud_id);
+    this.router.navigate(['edit-users']);
   }
-  toAddAnnouncement(): void {
-    this.router.navigate(['add-announcement']);
+  toTeacher(): void {
+    this.router.navigate(['teacher']);
   }
-  toYears(): void {
-    this.router.navigate(['years']);
+  toArchive(): void {
+    this.router.navigate(['archive']);
   }
   toReports(): void {
-    this.router.navigate(['reports']);
+    this.router.navigate(['teacher-reports']);
   }
-  deleteReport(id: any): void {
-    if (confirm('are you sure to remove this year')) {
-      this.data
-        .fetchData('delete_report/' + id, '')
-        .subscribe((response: any) => {
-          localStorage.setItem('page', 'reports');
-          this.dialog.open(DeleteComponent, {
-            height: 'fit-content',
-            width: '500px',
-            autoFocus: false,
-            restoreFocus: false,
-          });
-        });
-    }
+  toMasterList(): void {
+    this.router.navigate(['masterlist']);
+  }
+  toClasses(): void {
+    this.router.navigate(['classes']);
+  }
+  toEnrollees(): void {
+    this.router.navigate(['enrollees']);
+  }
+  toAnnouncementPost(): void {
+    this.router.navigate(['announcepost']);
+  }
+  toActivityPost(): void {
+    this.router.navigate(['teacher-activity']);
+  }
+  toScore(): void {
+    this.router.navigate(['scores']);
   }
   openLogout(): void {
-    const dialogRef = this.dialog.open(LogoutComponent, {
+    this.dialog.open(LogoutComponent, {
       height: 'fit-content',
       width: 'fit-content',
       autoFocus: false,

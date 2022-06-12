@@ -49,6 +49,8 @@ import { ClassesComponent } from './teacher/classes/classes.component';
 import { YearComponent } from './teacher/classes/year/year.component';
 import { PrivacyComponent } from './privacy/privacy.component';
 import { TermsComponent } from './terms/terms.component';
+import { ArchivesComponent } from './teacher/archives/archives.component';
+import { TeacherReportsComponent } from './teacher/teacher-reports/teacher-reports.component';
 
 const routes: Routes = [
   {
@@ -247,9 +249,18 @@ const routes: Routes = [
   {
     path: 'privacy',
     component: PrivacyComponent,
-  },{
+  },
+  {
     path: 'terms',
     component: TermsComponent,
+  },
+  {
+    path: 'archive',
+    component: ArchivesComponent,
+  },
+  {
+    path: 'teacher-reports',
+    component: TeacherReportsComponent,
   }
 ];
 

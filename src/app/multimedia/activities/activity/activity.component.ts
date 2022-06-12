@@ -1,4 +1,5 @@
 import { Router } from '@angular/router';
+import { EncryptStorage } from 'encrypt-storage';
 import { MatDialog } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
 import { DataService } from 'src/app/services/data.service';
@@ -34,6 +35,10 @@ export class ActivityComponent implements OnInit {
   stud_id: any;
   completed: any;
 
+  encryptStorage = new EncryptStorage('secret-key', {
+    prefix: '@instance1',
+  });
+
   constructor(
     private data: DataService,
     private router: Router,
@@ -42,7 +47,7 @@ export class ActivityComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.activity = JSON.parse(localStorage.getItem('activity') || '{}');
+    this.activity = this.encryptStorage.getItem<any>('activity');
     this.id = this.activity.id;
     this.title = this.activity.title;
     this.description = this.activity.description;
@@ -53,7 +58,7 @@ export class ActivityComponent implements OnInit {
       this.activity.video_url
     );
     this.file_name = this.activity.file_name;
-    this.user = JSON.parse(localStorage.getItem('user') || '{}');
+    this.user = this.encryptStorage.getItem<any>('user');
     this.userArray.push(this.user);
     let array = this.userArray;
     let id = array.find((x: { id: string }) => x.id === x.id).id;
@@ -95,7 +100,6 @@ export class ActivityComponent implements OnInit {
       this.data
         .fetchData('add_completed', this.pdfUpload)
         .subscribe((response: any) => {
-          localStorage.setItem('page', 'activities');
           this.dialog.open(SuccessComponent, {
             height: 'fit-content',
             width: '300px',
@@ -108,14 +112,14 @@ export class ActivityComponent implements OnInit {
   }
   goBack(): void {
     this.router.navigate(['activities']);
-    localStorage.removeItem('activity');
+    this.encryptStorage.removeItem('activity');
+    this.encryptStorage.removeItem('modules');
   }
   remove(data: any): void {
     if (confirm('Are you sure to remove this?')) {
       this.data
         .fetchData('delete_completed/' + data.id, '')
         .subscribe((response: any) => {
-          localStorage.setItem('page', 'activity');
           this.dialog.open(DeleteComponent, {
             height: 'fit-content',
             width: '300px',
@@ -135,15 +139,3 @@ export class ActivityComponent implements OnInit {
     });
   }
 }
-
-// private route: ActivatedRoute
-
-// this.route.queryParams.subscribe((queryParams: any) => {
-//   this.id = queryParams.id;
-//   this.title = queryParams.title;
-//   this.description = queryParams.description;
-//   this.file = this.domSanitizer.bypassSecurityTrustResourceUrl(
-//     queryParams.file
-//   );
-//   this.file_name = queryParams.file_name;
-// });

@@ -40,6 +40,12 @@
       <button (click)="toScore()" class="red">
         <mat-icon>score</mat-icon>&nbsp; Scores
       </button>
+      <button (click)="toArchive()" class="red">
+        <mat-icon>delete</mat-icon>&nbsp; Archive
+      </button>
+      <button (click)="toReports()" class="red">
+        <mat-icon>question_answer</mat-icon>&nbsp; Reports
+      </button>
     </div>
 
     <div class="logout">
@@ -187,6 +193,14 @@
               <h3>{{ student.type }}</h3>
               <h3>{{ student.address }}</h3>
               <h3>{{ student.phone }}</h3>
+              <a
+                *ngIf="student.psa"
+                [href]="student.psa"
+                download="PSA-{{ student.firstname }}-{{ student.lastname }}"
+                class="download"
+              >
+                <mat-icon inline="true">download</mat-icon>&nbsp;PSA
+              </a>
             </div>
           </mat-card>
         </div>

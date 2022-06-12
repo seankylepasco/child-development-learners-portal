@@ -1,4 +1,5 @@
 import { Router } from '@angular/router';
+import { EncryptStorage } from 'encrypt-storage';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -12,16 +13,17 @@ export class HomeComponent implements OnInit {
   student: any = 'student';
   admin: any = 'admin';
   teacher: any = 'teacher';
-
   user: any = {};
   userArray: any = ([] = []);
-
   noData = '';
-
   windowScrolled = false;
   nav: boolean = false;
   close: boolean = false;
   open: boolean = true;
+
+  encryptStorage = new EncryptStorage('secret-key', {
+    prefix: '@instance1',
+  });
 
   constructor(private router: Router) {}
 
@@ -32,10 +34,8 @@ export class HomeComponent implements OnInit {
     });
   }
   checkifLoggedIn(): void {
-    this.user = JSON.parse(localStorage.getItem('user') || '{}');
-    this.userArray.push(this.user);
-    let type = this.getFields(this.userArray, 'type');
-    this.type = type.toString();
+    this.user =  this.encryptStorage.getItem<any>('user');
+    this.type = this.user.type;
     if (Object.keys(this.user).length === 0) {
       this.router.navigate(['welcome']);
     } else if (this.type === 'admin') {
@@ -58,7 +58,7 @@ export class HomeComponent implements OnInit {
   }
   logout(): void {
     this.router.navigate(['welcome']);
-    localStorage.clear();
+    this.encryptStorage.clear();
   }
   scrollToTop(): void {
     window.scrollTo(0, 0);

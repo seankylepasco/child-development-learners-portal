@@ -4,7 +4,7 @@ header {
   color: #ffff;
 }
 
-h1{
+h1 {
   font-family: 'Bubblegum Sans', cursive;
   color: #ffff;
 }
@@ -31,4 +31,11 @@ h1{
 ng-accordion {
   background-color: black;
   color: black;
+}
+
+@media(max-width: 800px) {
+  p {
+    font-size: 20px !important;
+    letter-spacing: 2px !important;
+  }
 }

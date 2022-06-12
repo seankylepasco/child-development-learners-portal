@@ -1,5 +1,6 @@
 import { Router } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
+import { EncryptStorage } from 'encrypt-storage';
 import { Component, OnInit, HostBinding } from '@angular/core';
 import { StudentComponent } from 'src/app/student/student.component';
 @Component({
@@ -18,6 +19,10 @@ export class SettingsComponent implements OnInit {
   editMode: boolean = false;
   isDark: boolean = false;
   status: any;
+
+  encryptStorage = new EncryptStorage('secret-key', {
+    prefix: '@instance1',
+  });
 
   constructor(private router: Router, private data: DataService) {
     console.log(StudentComponent.playSound);
@@ -39,7 +44,7 @@ export class SettingsComponent implements OnInit {
   }
   darkMode(): void {}
   getProfile(): void {
-    this.info = JSON.parse(localStorage.getItem('user') || '{}');
+    this.info = this.encryptStorage.getItem<any>('user');
     this.userArray.push(this.info);
     this.data
       .fetchData('user/' + this.info.id, '')

@@ -1,4 +1,5 @@
 import { Router } from '@angular/router';
+import { EncryptStorage } from 'encrypt-storage';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DataService } from 'src/app/services/data.service';
@@ -20,6 +21,10 @@ export class ViewActivityComponent implements OnInit {
   isLoading = true;
   isEmpty = false;
 
+  encryptStorage = new EncryptStorage('secret-key', {
+    prefix: '@instance1',
+  });
+
   constructor(
     private router: Router,
     private data: DataService,
@@ -30,7 +35,7 @@ export class ViewActivityComponent implements OnInit {
     this.getModule();
   }
   getModule(): void {
-    this.result = JSON.parse(localStorage.getItem('module') || '{}');
+    this.result = this.encryptStorage.getItem<any>('module');
     this.data
       .fetchData('modules/' + this.result.id, '')
       .subscribe((response: any) => {
@@ -66,7 +71,7 @@ export class ViewActivityComponent implements OnInit {
     if (!this.pdf || !this.pdfUpload.file_name) delete object.file;
     delete object.file_name;
     this.data.fetchData('update_module', object).subscribe((response: any) => {
-      localStorage.setItem('page', 'add-activity');
+      this.encryptStorage.setItem('page', 'add-activity');
       this.dialog.open(SuccessComponent, {
         height: 'fit-content',
         width: '300px',
@@ -87,9 +92,9 @@ export class ViewActivityComponent implements OnInit {
             .subscribe((response: any) => {});
         }
       }
-      localStorage.removeItem('module');
-      localStorage.removeItem('module_chosen');
-      localStorage.setItem('page', 'teacher-activity');
+      this.encryptStorage.removeItem('module');
+      this.encryptStorage.removeItem('module_chosen');
+      this.encryptStorage.setItem('page', 'teacher-activity');
       this.dialog.open(DeleteComponent, {
         height: 'fit-content',
         width: '300px',
@@ -100,7 +105,7 @@ export class ViewActivityComponent implements OnInit {
     }
   }
   openScoreActivity(data: any): void {
-    localStorage.setItem('module_chosen', JSON.stringify(data));
+    this.encryptStorage.setItem('module_chosen', data);
     this.dialog.open(ScoreActivityComponent, {
       height: 'fit-content',
       width: '500px',
@@ -125,6 +130,6 @@ export class ViewActivityComponent implements OnInit {
   }
   toActivityPost(): void {
     this.router.navigate(['teacher-activity']);
-    localStorage.removeItem('module');
+    this.encryptStorage.removeItem('module');
   }
 }

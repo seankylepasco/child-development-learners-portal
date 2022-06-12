@@ -39,17 +39,25 @@ switch ($_SERVER['REQUEST_METHOD']) {
 
       case 'reports':
         if (count($req) > 1) {
-          echo json_encode($get->get_common('tbl_reports', 'id = ' . $req[1]));
+          echo json_encode($get->get_query('SELECT tbl_reports.*, tbl_users.id FROM tbl_reports INNER JOIN tbl_users ON tbl_users.email = tbl_reports.email WHERE tbl_reports.email = "' . $req[1] . '"'));
         } else {
-          echo json_encode($get->get_common('tbl_reports', ''));
+          echo json_encode($get->get_query('SELECT tbl_reports.* ,tbl_reports.id AS report_id, tbl_users.id FROM tbl_reports INNER JOIN tbl_users ON tbl_users.email = tbl_reports.email WHERE tbl_reports.email = tbl_reports.email'));
         }
         break;
 
       case 'classes': // HERE
         if (count($req) > 1) {
-          echo json_encode($get->get_query('SELECT * FROM `tbl_users` WHERE type = "student" && year = "'. $req[1] .'"'));
+          echo json_encode($get->get_query('SELECT * FROM `tbl_users` WHERE type = "student" && year = "' . $req[1] . '"'));
         } else {
           echo json_encode($get->get_query('SELECT * FROM `tbl_users` WHERE type = "student" && year ="' . $req[1] . "'"));
+        }
+        break;
+
+      case 'archived':  // HERE NEW
+        if (count($req) > 1) {
+          echo json_encode($get->get_common('tbl_users', 'type = "archive" AND firstname LIKE "%' . $req[1] . '%" '));
+        } else {
+          echo json_encode($get->get_common('tbl_users', 'type = "archive" '));
         }
         break;
 

@@ -20,7 +20,9 @@
     </div>
     <div class="user" *ngIf="!profile.firstname">Loading..</div>
     <div class="profile">
-      <button class="blue"><mat-icon>home</mat-icon>&nbsp; Home</button>
+      <button (click)="toTeacher()" class="red">
+        <mat-icon>home</mat-icon>&nbsp; Home
+      </button>
       <button (click)="toClasses()" class="red">
         <mat-icon>home</mat-icon>&nbsp; Classes
       </button>
@@ -39,7 +41,7 @@
       <button (click)="toScore()" class="red">
         <mat-icon>score</mat-icon>&nbsp; Scores
       </button>
-      <button (click)="toArchive()" class="red">
+      <button (click)="toArchive()" class="blue">
         <mat-icon>delete</mat-icon>&nbsp; Archive
       </button>
       <button (click)="toReports()" class="red">
@@ -53,43 +55,11 @@
   </mat-drawer>
   <header>
     <button (click)="drawer.toggle()"><mat-icon>menu</mat-icon></button>
-    <h1>Dashboard</h1>
+    <h1>Archives</h1>
     &nbsp;
     <h1 class="dates">{{ Date | date: "medium" }}</h1>
   </header>
   <div class="flex-column">
-    <div class="flex-row">
-      <mat-card>
-        <img src="assets/img/admin/students.png" />
-        &nbsp;
-        <div class="flex-column">
-          <h1>No. Students</h1>
-          <div class="center">
-            <div *ngIf="!totalStudents">
-              <h2 class="numbers">0</h2>
-            </div>
-            <div *ngIf="totalStudents">
-              <h2 class="numbers">{{ totalStudents }}</h2>
-            </div>
-          </div>
-        </div>
-      </mat-card>
-      <mat-card>
-        <img src="assets/img/admin/enrollee.png" />
-        <div class="flex-column">
-          <h1>No. Enrollees</h1>
-          <div class="center">
-            <div *ngIf="!totalEnrollees">
-              <h2 class="numbers">0</h2>
-            </div>
-            <div *ngIf="totalEnrollees">
-              <h2 class="numbers">{{ totalEnrollees }}</h2>
-            </div>
-          </div>
-        </div>
-      </mat-card>
-    </div>
-
     <section class="section-right">
       <div class="flex-row">
         <div class="flex-column con">
@@ -107,14 +77,12 @@
               <mat-icon>search</mat-icon>
             </button>
           </div>
-          <div class="flex-column">
-            <img
-              class="loading"
-              *ngIf="isLoading"
-              src="assets/img/loading/loading.gif"
-            />
-            <h2 *ngIf="isLoading">Loading ...</h2>
-          </div>
+          <img
+            class="loading"
+            *ngIf="isLoading"
+            src="assets/img/loading/loading.gif"
+          />
+          <h2 *ngIf="isLoading">Loading ...</h2>
           <div class="card-table">
             <div class="con">
               <table>
@@ -159,12 +127,9 @@
                     <td>{{ student.address }}</td>
                     <td>{{ student.phone }}</td>
                     <td class="flex-row">
-                      <button (click)="toEditUsers(student)" class="blue">
-                        <mat-icon>edit</mat-icon> edit
-                      </button>
                       &nbsp;
-                      <button (click)="updateToEnrollee(student)" class="red">
-                        <mat-icon>delete</mat-icon> Enrollee
+                      <button (click)="updateToStudent(student)" class="blue">
+                        <mat-icon>replay</mat-icon> Student
                       </button>
                     </td>
                   </tr>
@@ -202,11 +167,8 @@
               <h3>{{ student.address }}</h3>
               <h3>{{ student.phone }}</h3>
               <div class="flex-row">
-                <button (click)="toEditUsers(student)" class="blue">
-                  <mat-icon>edit</mat-icon> edit
-                </button>
-                <button (click)="updateToEnrollee(student)" class="red">
-                  <mat-icon>delete</mat-icon> Enrollee
+                <button (click)="updateToStudent(student)" class="blue">
+                  <mat-icon>replay</mat-icon> Student
                 </button>
               </div>
             </div>

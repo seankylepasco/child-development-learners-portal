@@ -1,11 +1,12 @@
 import { Router } from '@angular/router';
+import { EncryptStorage } from 'encrypt-storage';
 import { Component, OnInit } from '@angular/core';
-import { DataService } from 'src/app/services/data.service';
 import { MatDialog } from '@angular/material/dialog';
-import { LoginComponentModal } from '../modals/login/login.component';
-import { LoginfailComponent } from '../modals/loginfail/loginfail.component';
+import { DataService } from 'src/app/services/data.service';
 import { ForgotComponent } from '../modals/forgot/forgot.component';
+import { LoginComponentModal } from '../modals/login/login.component';
 import { NoemailComponent } from '../modals/noemail/noemail.component';
+import { LoginfailComponent } from '../modals/loginfail/loginfail.component';
 
 @Component({
   selector: 'app-login',
@@ -27,6 +28,10 @@ export class LoginComponent implements OnInit {
   password: string = '';
   timeLeft: number = 2;
 
+  encryptStorage = new EncryptStorage('secret-key', {
+    prefix: '@instance1',
+  });
+
   constructor(
     private router: Router,
     private data: DataService,
@@ -34,6 +39,7 @@ export class LoginComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {}
+
   back(): void {
     this.router.navigate(['welcome']);
   }
@@ -55,7 +61,7 @@ export class LoginComponent implements OnInit {
   forgot() {
     this.BtnSound();
     if (!this.email) {
-        this.BtnSound2();
+      this.BtnSound2();
       this.dialog.open(NoemailComponent, {
         width: '400px',
       });
@@ -70,7 +76,6 @@ export class LoginComponent implements OnInit {
       this.data.fetchData('user_exists', object).subscribe((response: any) => {
         if (response.status.remarks === 'success') {
           this.data.fetchData('send', sample).subscribe((response: any) => {
-          
             this.dialog.open(ForgotComponent, {
               width: '400px',
             });
@@ -95,16 +100,12 @@ export class LoginComponent implements OnInit {
           .fetchData('login', this.userInput)
           .subscribe((response: any) => {
             if (response.status.remarks === 'success') {
-              localStorage.setItem('user', JSON.stringify(response.payload));
-              this.user = JSON.parse(localStorage.getItem('user') || '{}');
-              this.userArray.push(this.user);
-              let type = this.getFields(this.userArray, 'type');
-              this.type = type.toString();
+              this.encryptStorage.setItem('user', response.payload);
+              this.user = this.encryptStorage.getItem<any>('user');
+              this.type = this.user.type;
               this.openLoginResult();
-              // this.successModal = true;
               if (Object.keys(this.user).length === 0) {
                 this.openLoginResult();
-                // this.successModal = true;
                 this.router.navigate(['welcome']);
               } else if (this.type === 'admin') {
                 this.startTimerAdmin();
@@ -119,24 +120,14 @@ export class LoginComponent implements OnInit {
               }
             } else if (response.status.remarks === 'failed') {
               this.openLoginFailed();
-              // this.failModal = true;
-              // this.failTimer();
             } else {
-              // this.failModal = true;
               this.openLoginFailed();
-              // this.failTimer();
             }
           });
       } catch (error) {}
     }
   }
-  getFields(input: any, field: any) {
-    var output = [];
-    for (var i = 0; i < input.length; i++) output.push(input[i][field]);
-    return output;
-  }
   openLoginResult(): void {
-
     this.dialog.open(LoginComponentModal, {
       width: '400px',
     });

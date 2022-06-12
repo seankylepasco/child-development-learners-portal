@@ -1,4 +1,5 @@
 import { Router } from '@angular/router';
+import { EncryptStorage } from 'encrypt-storage'
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DataService } from 'src/app/services/data.service';
@@ -14,7 +15,11 @@ export class CreateAnnouncementComponent implements OnInit {
   profile: any = '';
   info: any = {};
   user: any = {};
-  userArray: any = ([] = []);
+
+
+  encryptStorage = new EncryptStorage('secret-key', {
+    prefix: '@instance1',
+  });
   constructor(
     private router: Router,
     private data: DataService,
@@ -40,10 +45,8 @@ export class CreateAnnouncementComponent implements OnInit {
       });
   }
   checkifLoggedIn(): void {
-    this.info = JSON.parse(localStorage.getItem('user') || '{}');
-    this.userArray.push(this.info);
-    let type = this.getFields(this.userArray, 'type');
-    this.type = type.toString();
+    this.info = this.encryptStorage.getItem<any>('user');
+    this.type = this.info.type;
     this.getProfile();
     if (Object.keys(this.info).length === 0) {
       this.router.navigate(['welcome']);

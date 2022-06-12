@@ -1,3 +1,4 @@
+import { EncryptStorage } from 'encrypt-storage';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteComponent } from '../delete/delete.component';
@@ -15,15 +16,18 @@ export class ViewAnnouncementComponent implements OnInit {
   img: any;
   date: any;
   id: any;
+
+  encryptStorage = new EncryptStorage('secret-key', {
+    prefix: '@instance1',
+  });
+
   constructor(private data: DataService, private dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.getAnnouncement();
   }
   getAnnouncement(): void {
-    const object = JSON.parse(
-      localStorage.getItem('chosen_announcement') || '{}'
-    );
+    const object = this.encryptStorage.getItem<any>('chosen_announcement');
     this.data
       .fetchData('announcements/' + object.id, '')
       .subscribe((response: any) => {
@@ -34,7 +38,7 @@ export class ViewAnnouncementComponent implements OnInit {
         this.img = announcement.img;
         this.date = announcement.date;
       });
-    localStorage.removeItem('chosen_announcement');
+    this.encryptStorage.removeItem('chosen_announcement');
   }
   setPhoto(event: any): void {
     this.img = event.target.files[0];
@@ -55,7 +59,6 @@ export class ViewAnnouncementComponent implements OnInit {
     this.data
       .fetchData('update_announcement', object)
       .subscribe((response: any) => {
-        localStorage.setItem('page', 'announcepost');
         this.dialog.open(SuccessComponent, {
           height: 'fit-content',
           width: '300px',
@@ -69,7 +72,6 @@ export class ViewAnnouncementComponent implements OnInit {
       this.data
         .fetchData('delete_announcement/' + this.id, '')
         .subscribe((response: any) => {
-          localStorage.setItem('page', 'announcepost');
           this.dialog.open(DeleteComponent, {
             height: 'fit-content',
             width: '300px',

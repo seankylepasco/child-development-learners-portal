@@ -1,3 +1,4 @@
+import { EncryptStorage } from 'encrypt-storage';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DataService } from 'src/app/services/data.service';
@@ -16,9 +17,13 @@ export class ChangePasswordComponent implements OnInit {
   wrong_password: boolean = false;
   correct_password: boolean = false;
 
+  encryptStorage = new EncryptStorage('secret-key', {
+    prefix: '@instance1',
+  });
+
   constructor(private data: DataService, private dialog: MatDialog) {}
   ngOnInit(): void {
-    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    const user = this.encryptStorage.getItem<any>('user');
     this.user = user;
     this.email = user.email;
   }
@@ -54,7 +59,6 @@ export class ChangePasswordComponent implements OnInit {
         password: this.new_password,
       };
       this.data.fetchData('update_user', object).subscribe((response: any) => {
-        localStorage.setItem('page', 'student-profile');
         this.dialog.open(SuccessComponent, {
           height: 'fit-content',
           width: '300px',

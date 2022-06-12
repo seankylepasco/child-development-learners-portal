@@ -4,21 +4,23 @@
     <h1>{{ module.firstname }} {{ module.lastname }}</h1>
     <br /><br />
     Activity:
-    <a [href]="file" download="{{ module.file_name }}">{{
-      module.file_name
-    }}</a>
+    <div class="flex-row">
+      <a [href]="file" download="{{ module.file_name }}" class="download">
+        <mat-icon inline="true">download</mat-icon> &nbsp;{{ module.file_name }}</a
+      >
+    </div>
     <br /><br />
     Score:
     <!-- <input [(ngModel)]="module.score" type="number" /> -->
-    <select name="score" id="score" [(ngModel)]="module.score">
+    <select name="score" id="score" [(ngModel)]="module.score" class="score">
       <option value="0">No Score Yet!</option>
-      <option value="1">Bad</option>
-      <option value="2" >Good</option>
+      <option value="1">More Practice</option>
+      <option value="2">Good</option>
       <option value="3">Very Good</option>
       <option value="4">Excellent</option>
     </select>
     <br /><br />
-      <!-- Total Score:
+    <!-- Total Score:
       <h2>{{ module.score }} / {{ module.total_score }}</h2> -->
     <button (click)="updateCompletedScore()" class="red">
       <mat-icon>check_circle</mat-icon> Save

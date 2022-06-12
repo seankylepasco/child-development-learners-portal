@@ -1,28 +1,22 @@
+<head>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap");
+  </style>
+</head>
 <mat-drawer-container autosize>
-  <!-- SIDE NAVBAR -->
   <mat-drawer #drawer mode="side">
     <div class="flex-row end-obj">
       <button class="button-44 none" (click)="drawer.toggle()">
         <i class="fas fa-times"></i>
       </button>
     </div>
-    <div class="center" *ngFor="let userArray of userArray">
-      <img
-        src="assets/img/signup/user.jpeg"
-        *ngIf="userArray?.img === noData"
-      />
-      <img
-        appLazyLoad
-        src="{{ userArray?.img }}"
-        *ngIf="userArray?.img != noData"
-      />
+    <div class="center">
+      <img *ngIf="!user.img" src="assets/img/student/no-pic-user.png" />
+      <img *ngIf="user?.img" appLazyLoad src="{{ user?.img }}" />
     </div>
-    <div class="user" *ngFor="let userArray of userArray">
-      Hello {{ userArray?.firstname }}!
-    </div>
+    <div class="user">Hello {{ user?.firstname }}!</div>
     <div class="profile">
       <button class="blue"><i class="fas fa-user"></i> &nbsp;Dashboard</button>
-     
     </div>
     <div class="logout" (click)="logout()">
       <button class="blue" (click)="logout()">
@@ -41,11 +35,11 @@
 
     <section class="section-right" (click)="drawer.toggle()">
       <div class="con">
+        <h2>Request Pending....</h2>
         <div class="center flex-row">
-          <h2>Request Pending....</h2>
           <img
             class="img-body"
-            src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/6ce62da3-cd24-4cde-8bfe-9c3919a11ab9/de6trub-3b7721cb-1914-4e29-8b23-39c66bf227ec.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzZjZTYyZGEzLWNkMjQtNGNkZS04YmZlLTljMzkxOWExMWFiOVwvZGU2dHJ1Yi0zYjc3MjFjYi0xOTE0LTRlMjktOGIyMy0zOWM2NmJmMjI3ZWMuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.dRBW3i_BnOs4LZcHH3TdTIPrU-b82ZEFZE0typo5SMs"
+            src="assets/img/background/guest.gif"
             alt=""
           />
         </div>

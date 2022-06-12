@@ -33,13 +33,15 @@
           <input id="lastname" type="text" [(ngModel)]="user.lastname" />
           <label for="email">email</label>
           <input id="email" type="text" [(ngModel)]="user.email" />
-          <label for="email">type</label>
-          <select [(ngModel)]="user.type">
-            <option value="admin">admin</option>
-            <option value="enrollee">enrollee</option>
-            <option value="student">student</option>
-            <option value="teacher">teacher</option>
-          </select>
+          <div *ngIf="type === 'admin'">
+            <label for="email">type</label>
+            <select [(ngModel)]="user.type">
+              <option value="admin">admin</option>
+              <option value="enrollee">enrollee</option>
+              <option value="student">student</option>
+              <option value="teacher">teacher</option>
+            </select>
+          </div>
           <label for="password">change password</label>
           <input
             id="passsword"

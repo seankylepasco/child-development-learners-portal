@@ -1,5 +1,9 @@
-import { Router } from '@angular/router';
+import 'jspdf-autotable';
+import jsPDF from 'jspdf';
+import autoTable from 'jspdf-autotable';
+import { Router } from '@angular/router'
 import { DatePipe } from '@angular/common';
+import { EncryptStorage } from 'encrypt-storage';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DataService } from 'src/app/services/data.service';
@@ -18,7 +22,6 @@ export class EnrolleesComponent implements OnInit {
   students: any;
   user: any = {};
   info: any = {};
-  userArray: any = ([] = []);
   student: any = 'student';
   edit: any;
   userInput: any = {};
@@ -28,6 +31,11 @@ export class EnrolleesComponent implements OnInit {
   isLoading = true;
   isEmpty = false;
   Date: Date = new Date();
+
+  encryptStorage = new EncryptStorage('secret-key', {
+    prefix: '@instance1',
+  });
+
   constructor(
     private datepipe: DatePipe,
     private router: Router,
@@ -44,6 +52,56 @@ export class EnrolleesComponent implements OnInit {
   ngOnInit(): void {
     this.checkifLoggedIn();
     this.getStudents();
+  }
+  downloadPDF(): void {
+    const doc = new jsPDF();
+    this.data.fetchData('enrollees', '').subscribe(
+      (response: any) => {
+        this.isLoading = false;
+        const arr = response.payload;
+        console.log(arr);
+        arr.forEach((object: any) => {
+          delete object['password'];
+          delete object['gender'];
+          delete object['img'];
+          delete object['psa'];
+          delete object['type'];
+          delete object['year'];
+        });
+        console.log(arr);
+        var output = arr.map(function (obj: any) {
+          return Object.keys(obj)
+            .sort()
+            .map(function (key) {
+              return obj[key];
+            });
+        });
+        console.log(output);
+        autoTable(doc, {
+          head: [
+            [
+              'address',
+              'birthdate',
+              'email',
+              'firstname',
+              'id',
+              'lastname',
+              'middlename',
+              'parent/guardian',
+              'mobile number',
+            ],
+          ],
+          body: output,
+        });
+        doc.save('enrollees');
+      },
+      (error: any) => {
+        if ((error.status = 404)) {
+          this.isLoading = false;
+          this.isEmpty = true;
+        }
+      }
+    );
   }
   updateToStudent(data: any): void {
     if (confirm('Are you sure to accept this?')) {
@@ -63,19 +121,12 @@ export class EnrolleesComponent implements OnInit {
     }
   }
   checkifLoggedIn(): void {
-    this.info = JSON.parse(localStorage.getItem('user') || '{}');
-    this.userArray.push(this.info);
-    let type = this.getFields(this.userArray, 'type');
-    this.type = type.toString();
+    this.info =  this.encryptStorage.getItem<any>('user');
+    this.type = this.info.type;
     this.getProfile();
     if (Object.keys(this.info).length === 0) {
       this.router.navigate(['welcome']);
     }
-  }
-  getFields(input: any, field: any) {
-    var output = [];
-    for (var i = 0; i < input.length; ++i) output.push(input[i][field]);
-    return output;
   }
   getProfile(): void {
     this.data
@@ -110,6 +161,12 @@ export class EnrolleesComponent implements OnInit {
   }
   transform(url: any) {
     return this.domSanitizer.bypassSecurityTrustResourceUrl(url);
+  }
+  toReports(): void {
+    this.router.navigate(['teacher-reports']);
+  }
+  toArchive(): void {
+    this.router.navigate(['archive']);
   }
   toMasterList(): void {
     this.router.navigate(['masterlist']);

@@ -1,4 +1,5 @@
 import { Router } from '@angular/router';
+import { EncryptStorage } from 'encrypt-storage';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DataService } from 'src/app/services/data.service';
@@ -21,12 +22,16 @@ export class AnnouncepostComponent implements OnInit {
   userInput: any = {};
   user: any = {};
   info: any = {};
-  userArray: any = ([] = []);
   profile: any = '';
   submit: boolean = false;
   isLoading = true;
   isEmpty = false;
   Date: Date = new Date();
+
+  encryptStorage = new EncryptStorage('secret-key', {
+    prefix: '@instance1',
+  });
+
   constructor(
     private router: Router,
     private data: DataService,
@@ -35,11 +40,6 @@ export class AnnouncepostComponent implements OnInit {
 
   ngOnInit(): void {
     this.checkifLoggedIn();
-  }
-  getFields(input: any, field: any) {
-    var output = [];
-    for (var i = 0; i < input.length; ++i) output.push(input[i][field]);
-    return output;
   }
   getProfile(): void {
     this.data
@@ -74,10 +74,8 @@ export class AnnouncepostComponent implements OnInit {
     );
   }
   checkifLoggedIn(): void {
-    this.info = JSON.parse(localStorage.getItem('user') || '{}');
-    this.userArray.push(this.info);
-    let type = this.getFields(this.userArray, 'type');
-    this.type = type.toString();
+    this.info = this.encryptStorage.getItem<any>('user');
+    this.type = this.info.type;
     this.getProfile();
     this.getAnnouncements();
     if (Object.keys(this.info).length === 0) {
@@ -95,7 +93,6 @@ export class AnnouncepostComponent implements OnInit {
       this.data
         .fetchData('add_announcement', this.userInput)
         .subscribe((response: any) => {
-          localStorage.setItem('page', 'announcepost');
           this.dialog.open(SuccessComponent, {
             height: 'fit-content',
             width: '300px',
@@ -115,7 +112,7 @@ export class AnnouncepostComponent implements OnInit {
     } else alert('Not an Image!');
   }
   viewAnnouncePost(data: any): void {
-    localStorage.setItem('chosen_announcement', JSON.stringify(data));
+    this.encryptStorage.setItem('chosen_announcement', data);
     this.dialog.open(ViewAnnouncementComponent, {
       height: '101%',
       autoFocus: false,
@@ -132,8 +129,14 @@ export class AnnouncepostComponent implements OnInit {
     reader.readAsDataURL(this.img);
     this.submit = true;
   }
+  toReports(): void {
+    this.router.navigate(['teacher-reports']);
+  }
   toTeacher(): void {
     this.router.navigate(['teacher']);
+  }
+  toArchive(): void {
+    this.router.navigate(['archive']);
   }
   toMasterList(): void {
     this.router.navigate(['masterlist']);
