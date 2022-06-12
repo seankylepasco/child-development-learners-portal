@@ -1,51 +1,30 @@
-<!---<body>
-  <head>
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap");
-    </style>
-  </head>
-  <div class="container">
-    <div class="container1">
-      <img src="assets/icon.png" class="image" />
-    </div>
 
-    <div class="container2">
-      <style>
-        .pushable:focus:not(:focus-visible) {
-          outline: none;
-        }
-      </style>
-      <button class="pushable" (click)="login()">
-        <span class="front"> Log In </span></button
-      ><br /><br />
-      <style>
-        .pushable:focus:not(:focus-visible) {
-          outline: none;
-        }
-      </style>
-
-      <button class="pushable2" (click)="register()" (click)="BtnSound()">
-        <span class="front2"> Enroll Now! </span></button
-      ><br /><br />
-
-      <span class="develop"
-        ><mat-icon>people</mat-icon> Developed by: Team LogiDev</span
-      >
-    </div>
-  </div>
-</body>
--->
 
 <head>
   <style>
     @import url("https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap");
   </style>
 </head>
+
 <mat-drawer-container class="example-container" autosize>
   <mat-drawer #drawer class="example-sidenav" mode="side">
    
     <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
+    <div class="profile">
+      <a href="#homes"><button  class="red-active">
+        <mat-icon>home</mat-icon>&nbsp; Home
+      </button></a>
+      <a href="#feature"><button  class="red">
+        <mat-icon>list</mat-icon>&nbsp; Features
+      </button></a>
+      <a href="#partner"><button class="red">
+        <mat-icon>announcement</mat-icon>&nbsp; Our Partners
+      </button></a>
+      <a href="#contacts"><button class="red">
+        <mat-icon>calendar_today</mat-icon>&nbsp; Contact
+      </button> </a>
     
+    </div>
   </mat-drawer>
 
 
@@ -56,11 +35,11 @@
  <img src="assets/letter.png" alt="" width="300px" style="margin-top: 10px;">
 </div>
   <div class="titles">
-    <h2 >Home</h2>
-  <h2>Feature</h2>
-  <h2>Our Partners</h2>
-  <h2 >About</h2>
-  <h2 >Contact</h2>
+    <h2 ><a href="#homes" >Home</a></h2>
+  <h2><a href="#feature" >Feature</a></h2>
+  <h2><a href="#partner" >Our Partner</a></h2>
+  <h2 ><a href="#about" >About</a></h2>
+  <h2 ><a href="#contacts" >Contact</a></h2>
 </div>
 </div>
 </header>
@@ -73,7 +52,7 @@
   </button>
   
  </section>
-  <div class="container">
+  <div class="container" id="homes">
 <div class="btns1">
   <img id="kids" src="assets/mainside.png" alt="" width="700px">
 </div>
@@ -91,7 +70,7 @@
 </div>
 
 </div>
-<div >
+<div id="feature" >
   <h1 class="features">_____________<br><br>Features<br>______________</h1>
 
   <div class="card"> 
@@ -135,14 +114,14 @@
 </div>
 <div>
 
-  <h1 class="features">_____________<br><br>Our Partners<br>______________</h1>
+  <h1 class="features" id="partner">_____________<br><br>Our Partner<br>______________</h1>
   <div class="card">
   <img class="imglogo" src="assets/ilalim.png" alt="" width="250px">
   </div>
   
 </div>
 <div>
-  <h1 class="features">_____________<br><br>About<br>______________</h1>
+  <h1 class="features" id="about">_____________<br><br>About<br>______________</h1>
   <div class="cardonit">
     <div class="con1">
     <img id="pc" src="assets/pc.png" alt="" width="500px">
@@ -163,11 +142,11 @@
 
 </div>
 <div>
-  <h1 class="features">_____________<br><br>Contact<br>______________</h1>
+  <h1 class="features" id="contacts">_____________<br><br>Contact<br>______________</h1>
   <div class="cardon">
-    <img id="contact" src="assets/fb.png" alt="" width="150px" height="150px">&nbsp;
-    <img id="contact" src="assets/insta.png" alt="" width="150px" height="150px">
-    <img  id="contact" src="assets/twit.png" alt="" width="150px" height="150px">
+    <a href="https://www.facebook.com/CDLP.official"><img id="contact" src="assets/fb.png" alt="" width="150px" height="150px"></a>&nbsp;
+    <a href="https://www.instagram.com/officialcdlp/"><img id="contact" src="assets/insta.png" alt="" width="150px" height="150px"></a>
+    <a href="officialteamlogidev@gmail.com"><img  id="contact" src="assets/twit.png" alt="" width="150px" height="150px"></a>
   </div>
 </div>
 

@@ -66,4 +66,7 @@ export class SettingsComponent implements OnInit {
   toPrivacy(): void {
     this.router.navigate(['privacy']);
   }
+  tocredits(): void {
+    this.router.navigate(['credits']);
+  }
 }

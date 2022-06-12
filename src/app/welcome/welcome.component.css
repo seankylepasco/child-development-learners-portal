@@ -1,3 +1,18 @@
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateY(100%);
+  }
+
+  100% {
+    transform: translateY(100);
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 .letterbanner{
   display: none;
 }
@@ -14,7 +29,7 @@ footer{
   background-image: url(../../assets/body.png);
   background-size: 1500px 725px;
   background-repeat: no-repeat;
-  background-color: #ffa958;
+
   width: 100%;
   height: 725px;
 }
@@ -98,6 +113,7 @@ mat-card:hover{
   width: 100%;
   height: 400px;
   display: flex;
+  background-color: #e9e9e9;
 
  
 }
@@ -207,13 +223,13 @@ mat-card:hover{
 .btns1{
 width: 50%;
 margin-top: 100px;
- 
+animation: 1s ease-out 0s 1 slideInFromLeft;
 }
 
 
 .btns{
  
-
+ animation: 1s ease-out 0s 1 slideInFromLeft;
   width: 50%;
   height: 600px;
 }
@@ -278,7 +294,15 @@ mat-card-content{
 }
 
 #contact{
-  margin-right: 100px;
+  margin-right: 150px;
+  transition: .3;
+}
+#contact:hover{
+   transform: scale(1.1);
+  box-shadow: #222;
+}
+#contacts{
+  margin-left: 30px;
 }
 
 #dp{
@@ -289,9 +313,28 @@ mat-card-content{
   margin-left:60px;
 }
 #dp:hover{
-  transform: scale(1.3);
-  box-shadow: #222;
+ 
 }
+.profile {
+  display: flex;
+  padding: 20px;
+  margin-bottom: auto;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.profile button {
+  width: 150px !important;
+  height: 70px !important;
+  margin: 5px;
+  border-radius: 30px !important;
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+  border: 5px solid white !important;
+}
+
 .team{
   width: 70%;
   height: 300px;
@@ -320,7 +363,84 @@ mat-card-content{
   box-shadow: #222;
 }
 
+a{
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+}
+a:hover{
+  color: black;
+}
 
+.red-active {
+  background-color: #08d9d6;
+}
+
+.red {
+  background-color: #ff2e63;
+}
+.button-44 {
+  opacity: 0.3;
+  background: #e62143;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: none;
+  font-family: Mija, -apple-system, BlinkMacSystemFont, Roboto, "Roboto Slab",
+    "Droid Serif", "Segoe UI", system-ui, Arial, sans-serif;
+  font-size: 1.15em;
+  font-weight: 700;
+  justify-content: center;
+  line-height: 33.4929px;
+  padding: 0.8em 1em;
+  text-align: center;
+  text-decoration: none;
+  text-decoration-skip-ink: auto;
+  text-shadow: rgba(0, 0, 0, 0.3) 1px 1px 1px;
+  text-underline-offset: 1px;
+  transition: all 0.2s ease-in-out;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 100%;
+  word-break: break-word;
+  border: 0;
+}
+
+.button-44:active,
+.button-44:focus {
+  border-bottom-style: none;
+  border-color: #dadada;
+  box-shadow: rgba(0, 0, 0, 0.3) 0 3px 3px inset;
+  outline: 0;
+}
+
+.button-44:hover {
+  border-bottom-style: none;
+  border-color: #dadada;
+}
+@-webkit-keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
 @media (max-width: 800px) {
  
  header{
@@ -371,16 +491,7 @@ mat-card-content{
    .container{
     display: block;
    }
-  .sec{
-    display: flex;
-    margin-top: -20px;
-    width: 100%;
-    height: 60px;
-    background-color: #ffa958;
-    position: sticky;
-    top: 0;
-    z-index: 9999;
-  }
+  
   .h11{
     margin-top: -15px;
   }
@@ -443,6 +554,15 @@ mat-card-content{
   margin-top: 30px;
   margin-left: 90px;
 }
-
+.sec{
+    display: flex;
+    margin-top: -20px;
+    width: 100%;
+    height: 60px;
+    background-color: #ffa958;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
 }
 

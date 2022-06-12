@@ -79,6 +79,7 @@ import { NoemailComponent } from './modals/noemail/noemail.component';
 import { TermsComponent } from './terms/terms.component';
 import { ArchivesComponent } from './teacher/archives/archives.component';
 import { TeacherReportsComponent } from './teacher/teacher-reports/teacher-reports.component';
+import { CreditsComponent } from './credits/credits.component';
 
 
 @NgModule({
@@ -150,6 +151,7 @@ import { TeacherReportsComponent } from './teacher/teacher-reports/teacher-repor
     TermsComponent,
     ArchivesComponent,
     TeacherReportsComponent,
+    CreditsComponent,
 
 
   ],
