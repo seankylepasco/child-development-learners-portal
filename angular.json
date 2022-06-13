@@ -17,7 +17,14 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "allowedCommonJsDependencies": [  "fabric"  ],
+            "allowedCommonJsDependencies": [
+              "fabric",
+              "crypto",
+              "core-js",
+              "raf",
+              "jspdf-autotable",
+              "encrypt-storage"
+            ],
             "outputPath": "dist/ChildDevelopmentLearnersPortal",
             "index": "src/index.html",
             "main": "src/main.ts",
