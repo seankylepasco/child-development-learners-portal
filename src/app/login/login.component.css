@@ -2,9 +2,9 @@ body {
   margin-right: 300px;
   background-color: #caebea;
   /* background-image: url("/assets/img/background/body.png"); */
-  background-image: url("/assets/img/background/body - before.png");
+  background-image: url(../../assets/body.png);
   background-repeat: no-repeat;
-  animation: 1s ease-out 0s 1 slideInFromLeft;
+
 }
 
 
@@ -100,6 +100,7 @@ h1 {
   padding: 20px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   border-radius: 40px !important;
+  animation: 1s ease-out 0s 1 slideInFromLeft;
 }
 
 .card-student-login {

@@ -10,6 +10,7 @@ export class WelcomeComponent implements OnInit {
   type: any;
   user: any = {};
   userArray: any = ([] = []);
+  showFiller = false;
   constructor(private router: Router) {}
 
   ngOnInit(): void {

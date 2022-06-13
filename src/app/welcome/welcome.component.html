@@ -1,38 +1,156 @@
-<body>
-  <head>
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap");
-    </style>
-  </head>
-  <div class="container">
-    <div class="container1">
-      <img src="assets/icon.png" class="image" />
+
+
+<head>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap");
+  </style>
+</head>
+
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+    <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
+    <div class="profile">
+      <a href="#homes"><button  class="red-active">
+        <mat-icon>home</mat-icon>&nbsp; Home
+      </button></a>
+      <a href="#feature"><button  class="red">
+        <mat-icon>list</mat-icon>&nbsp; Features
+      </button></a>
+      <a href="#partner"><button class="red">
+        <mat-icon>announcement</mat-icon>&nbsp; Our Partners
+      </button></a>
+      <a href="#contacts"><button class="red">
+        <mat-icon>calendar_today</mat-icon>&nbsp; Contact
+      </button> </a>
+
+    </div>
+  </mat-drawer>
+<div>
+<header>
+  <div class="headermain">
+<div class="imgs">
+ <img src="assets/letter.png" alt="" width="320px" style="margin-top: 10px; margin-left: 10px;">
+</div>
+  <div class="titles">
+    <h2 ><a href="#homes" >Home</a></h2>
+  <h2><a href="#feature" >Feature</a></h2>
+  <h2><a href="#partner" >Our Partner</a></h2>
+  <h2 ><a href="#about" >About</a></h2>
+  <h2 ><a href="#contacts" >Contact</a></h2>
+</div>
+</div>
+</header>
+<div class="front">
+  <br>
+  <section class="sec">
+  <button  id="nav" type="button" mat-button (click)="drawer.toggle()">
+    <mat-icon>view_headline</mat-icon>
+  </button>
+ </section>
+  <div class="container" id="homes">
+<div class="btns1">
+  <img id="kids" src="assets/mainside.png" alt="" width="700px">
+</div>
+<div class="btns">
+  <div class="push">
+  <a (click)="login()" class="btn-push red">Login
+
+  </a><br><br><br><br>
+  <a (click)="register()" class="btn-push blue">Enroll&nbsp;Now!</a>
+  </div>
+  </div>
+</div>
+</div>
+<div id="feature" >
+  <h1 class="features">_____________<br><br>Features<br>______________</h1>
+  <div class="card">
+    <div class="cardinside">
+    <mat-card >
+      <div>
+          <img class="guide1" src="assets/guide1.png" alt="">
+          </div>
+          <mat-card-content><br>
+            <h1 class="h11">Learning Tools</h1>
+            <p>
+              Provides guidance to Students in learning
+            </p>
+          </mat-card-content>
+              </mat-card>
+              &nbsp;&nbsp;
+              <mat-card class="box2">
+                <img class="guide1" src="assets/guide2.png" alt="">
+
+                <mat-card-content>
+                  <h1>Provide Access</h1>
+                  <p>
+                    Access to study materials at any time and from any location
+                  </p>
+                </mat-card-content>
+              </mat-card>
+              &nbsp;     &nbsp;
+              <mat-card>
+                <img class="guide2" src="assets/guide3.png" alt="">
+                <mat-card-content><br>
+                  <h1>Learning Management</h1>
+                  <p>
+                    Provides an assisantance to Teachers in management
+                  </p>
+                </mat-card-content>
+              </mat-card>
+  </div>
+  </div>
+</div>
+<div>
+ <h1 class="features" id="partner">_____________<br><br>Our Partner<br>______________</h1>
+  <div class="card">
+  <img class="imglogo" src="assets/ilalim.png" alt="" width="250px">
+  </div>
+
+</div>
+<div>
+  <h1 class="features" id="about">_____________<br><br>About<br>______________</h1>
+  <div class="cardonit">
+    <div class="con1">
+    <img id="pc" src="assets/pc.png" alt="" width="500px">
     </div>
 
-    s
-
-    <div class="container2">
-      <style>
-        .pushable:focus:not(:focus-visible) {
-          outline: none;
-        }
-      </style>
-      <button class="pushable" (click)="login()">
-        <span class="front"> Log In </span></button
-      ><br /><br />
-      <style>
-        .pushable:focus:not(:focus-visible) {
-          outline: none;
-        }
-      </style>
-
-      <button class="pushable2" (click)="register()" (click)="BtnSound()">
-        <span class="front2"> Enroll Now! </span></button
-      ><br /><br />
-
-      <span class="develop"
-        ><mat-icon>people</mat-icon> Developed by: Team LogiDev</span
-      >
+    <div class="con2">
+      <h1>A platform  that serves as a student guide for Barangay New Ilalim Daycare pupils.
+        The CDLP App has many features in order to manage all aspects in a child development center, from students, to teachers, and and also for admins.
+        It aims to help improve the children’s reading, writing and other learning comprehensions.
+        This is to provide a channel for  student-to-teacher exchange and communication.
+        Also, it offers an infotainment learning for the children.</h1>
     </div>
   </div>
-</body>
+</div>
+<div>
+  <h1 class="features" id="contacts">_____________<br><br>Contact<br>______________</h1>
+  <div class="cardon">
+    <a href="https://www.facebook.com/CDLP.official"><img id="contact" src="assets/fb.png" alt="" width="150px" height="150px"></a>&nbsp;
+    <a href="https://www.instagram.com/officialcdlp/"><img id="contact" src="assets/insta.png" alt="" width="150px" height="150px"></a>
+    <a href="officialteamlogidev@gmail.com"><img  id="contact" src="assets/twit.png" alt="" width="150px" height="150px"></a>
+  </div>
+</div>
+
+<div>
+  <h1 class="features">_____________<br><br>Our Amazing Team<br>______________</h1>
+  <div class="team">
+    <img id="dp" src="assets/arnie.jpg" alt="" width="150px" height="150px">
+    <img id="dp" src="assets/sean.jpg" alt="" width="150px" height="150px">
+    <img id="dp" src="assets/melner.jpg" alt="" width="150px" height="150px">
+    <img  id="dp" src="assets/mark.jpg" alt="" width="150px" height="150px">
+    <div class="names">
+      <h3 class="n2">Mr.Arnie Armada<br>Project Adviser</h3>
+      <h3 class="n1">Mr.Sean Kyle Pasco<br>Full Stack Developer</h3>
+      <h3 class="n1">Mr.Melner Morante<br>Full Stack Developer</h3>
+      <h3 class="n1">Mr.Mark Angelo Elduayan<br>Project Manager</h3>
+    </div>
+  </div>
+
+</div>
+<footer>
+  <h1>CDLP©2022.ALL RIGHTS RESERVED. </h1>
+  <h1>Developed By: Team Logidev</h1>
+</footer>
+</div>
+</mat-drawer-container>

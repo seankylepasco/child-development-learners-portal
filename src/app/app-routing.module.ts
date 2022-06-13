@@ -51,6 +51,7 @@ import { PrivacyComponent } from './privacy/privacy.component';
 import { TermsComponent } from './terms/terms.component';
 import { ArchivesComponent } from './teacher/archives/archives.component';
 import { TeacherReportsComponent } from './teacher/teacher-reports/teacher-reports.component';
+import { CreditsComponent } from './credits/credits.component';
 
 const routes: Routes = [
   {
@@ -261,6 +262,9 @@ const routes: Routes = [
   {
     path: 'teacher-reports',
     component: TeacherReportsComponent,
+  },{
+    path: 'credits',
+    component: CreditsComponent,
   }
 ];
 
