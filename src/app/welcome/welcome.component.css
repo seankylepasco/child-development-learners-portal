@@ -218,7 +218,12 @@ mat-card:hover{
   font-size: 30px;
 
 }
-/*==========  Orange  ==========*/
+.btn-push.blue:hover{
+  cursor: pointer;
+}
+.btn-push.red:hover{
+  cursor: pointer;
+}
 
 .btns1{
 width: 50%;
@@ -313,7 +318,8 @@ mat-card-content{
   margin-left:60px;
 }
 #dp:hover{
- 
+  transform: scale(1.1);
+  box-shadow: #222;
 }
 .profile {
   display: flex;

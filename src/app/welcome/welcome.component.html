@@ -8,7 +8,6 @@
 
 <mat-drawer-container class="example-container" autosize>
   <mat-drawer #drawer class="example-sidenav" mode="side">
-   
     <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
     <div class="profile">
       <a href="#homes"><button  class="red-active">
@@ -26,13 +25,11 @@
     
     </div>
   </mat-drawer>
-
-
 <div>
 <header>
   <div class="headermain">
 <div class="imgs">
- <img src="assets/letter.png" alt="" width="300px" style="margin-top: 10px;">
+ <img src="assets/letter.png" alt="" width="320px" style="margin-top: 10px; margin-left: 10px;">
 </div>
   <div class="titles">
     <h2 ><a href="#homes" >Home</a></h2>
@@ -45,18 +42,15 @@
 </header>
 <div class="front">
   <br>
-  <section class="sec">
-    
+  <section class="sec"> 
   <button  id="nav" type="button" mat-button (click)="drawer.toggle()">
     <mat-icon>view_headline</mat-icon>
   </button>
-  
  </section>
   <div class="container" id="homes">
 <div class="btns1">
   <img id="kids" src="assets/mainside.png" alt="" width="700px">
 </div>
-
 <div class="btns">
   <div class="push">
   <a (click)="login()" class="btn-push red">Login
@@ -65,14 +59,10 @@
   <a (click)="register()" class="btn-push blue">Enroll&nbsp;Now!</a> 
   </div>
   </div>
-
- 
 </div>
-
 </div>
 <div id="feature" >
   <h1 class="features">_____________<br><br>Features<br>______________</h1>
-
   <div class="card"> 
     <div class="cardinside">
     <mat-card >
@@ -108,13 +98,10 @@
                 </mat-card-content>
               </mat-card>
   </div>
-
   </div>
-
 </div>
 <div>
-
-  <h1 class="features" id="partner">_____________<br><br>Our Partner<br>______________</h1>
+ <h1 class="features" id="partner">_____________<br><br>Our Partner<br>______________</h1>
   <div class="card">
   <img class="imglogo" src="assets/ilalim.png" alt="" width="250px">
   </div>
@@ -133,13 +120,8 @@
         It aims to help improve the children’s reading, writing and other learning comprehensions.
         This is to provide a channel for  student-to-teacher exchange and communication.
         Also, it offers an infotainment learning for the children.</h1>
-
     </div>
-
-
   </div>
-
-
 </div>
 <div>
   <h1 class="features" id="contacts">_____________<br><br>Contact<br>______________</h1>
