@@ -18,3 +18,11 @@ header {
     margin-top: 10px;
   }
   .main{padding: 100px;}
+  @media (max-width: 800px) {
+    .main{
+      margin-left: -60px;
+      padding: -100px;
+    }
+  
+  }
+  
